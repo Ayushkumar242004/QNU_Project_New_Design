@@ -9,73 +9,139 @@ const MAX_STACK_SIZE_ESTIMATE = 1 * 1024 * 1024;
 const Team = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
   const [binaryInput, setBinaryInput] = useState("");
+  const [binaryInput2, setBinaryInput2] = useState("");
+  const [binaryInput3, setBinaryInput3] = useState("");
+  const [binaryInput4, setBinaryInput4] = useState("");
+  const [binaryInput5, setBinaryInput5] = useState("");
+  const [binaryInput6, setBinaryInput6] = useState("");
+  const [binaryInput7, setBinaryInput7] = useState("");
+  const [binaryInput8, setBinaryInput8] = useState("");
+  const [binaryInput9, setBinaryInput9] = useState("");
+  const [binaryInput10, setBinaryInput10] = useState("");
+  const [binaryInput11, setBinaryInput11] = useState("");
+  const [binaryInput12, setBinaryInput12] = useState("");
+  const [binaryInput13, setBinaryInput13] = useState("");
+  const [binaryInput14, setBinaryInput14] = useState("");
+  const [binaryInput15, setBinaryInput15] = useState("");
+  const [binaryInput16, setBinaryInput16] = useState("");
+  const [binaryInput17, setBinaryInput17] = useState("");
+  const [binaryInput18, setBinaryInput18] = useState("");
+  const [binaryInput19, setBinaryInput19] = useState("");
+  const [binaryInput20, setBinaryInput20] = useState("");
+
   const fileInputRef = useRef(null);
+  const fileInputRef2 = useRef(null);
+  const fileInputRef3 = useRef(null);
+  const fileInputRef4 = useRef(null);
+  const fileInputRef5 = useRef(null);
+  const fileInputRef6 = useRef(null);
+  const fileInputRef7 = useRef(null);
+  const fileInputRef8 = useRef(null);
+  const fileInputRef_nine = useRef(null);
+  const fileInputRef10 = useRef(null);
+  const fileInputRef11 = useRef(null);
+  const fileInputRef12 = useRef(null);
+  const fileInputRef13 = useRef(null);
+  const fileInputRef14 = useRef(null);
+  const fileInputRef15 = useRef(null);
+  const fileInputRef16 = useRef(null);
+  const fileInputRef17 = useRef(null);
+  const fileInputRef18 = useRef(null);
+  const fileInputRef19 = useRef(null);
+  const fileInputRef20 = useRef(null);
 
-  const [frequencyTestResponse, setFrequencyTestResponse] = useState(null);
-  const [frequencyBlockTestResponse, setFrequencyBlockTestResponse] =
-    useState(null);
-  const [runTestResponse, setrunTestResponse] = useState(null);
-  const [ApproximateEntropyTestResponse, setApproximateEntropyTestResponse] =
-    useState(null);
-  const [runLinearComplexityTestResponse, setrunLinearComplexityTestResponse] =
-    useState(null);
-  const [runNonOverlappingTestResponse, setrunNonOverlappingTestResponse] =
-    useState(null);
-  const [runOverlappingTestResponse, setrunOverlappingTestResponse] =
-    useState(null);
-  const [runUniversalTestResponse, setrunUniversalTestResponse] = useState(null);
-  const [runSerialTestResponse, setrunSerialTestResponse] = useState(null);
-  const [runCumulativeSumsTestResponse, setrunCumulativeSumsTestResponse] =
-    useState(null);
-  const [runlongestOneBlockTestResponse, setrunlongestOneBlockTestResponse] =
-    useState(null);
-  const [runBinaryMatrixRankTestResponse, setrunBinaryMatrixRankTestResponse] =
-    useState(null);
-  const [runSpectralTestResponse, setrunSpectralTestResponse] = useState(null);
-
-  const [runAutoCorrelationtResponse, setrunAutoCorrelationtResponse] = useState(null);
-
-  const [runAdaptiveStatisticalTestResponse, setrunAdaptiveStatisticalTestResponse] = useState(null);
-
-
-  const [runBinarySpacingsTestResponse, setrunBinarySpacingsTestResponse] = useState("");
-  const [runParkingLotTestResponse, setrunParkingLotTestResponse] = useState("");
-  const [runOverlapping5PermutationTestResponse, setrunOverlapping5PermutationTestResponse] = useState("");
-  const [runMinimumDistanceTestResponse, setrunMinimumDistanceTestResponse] = useState("");
-  const [run31MatrixTestResponse, setrun31MatrixTestResponse] = useState("");
-  const [runSpeheresTestResponse, setrunSpeheresTestResponse] = useState("");
-  const [run32MatrixTestResponse, setrun32MatrixTestResponse] = useState("");
-  const [runCrapsTestResponse, setrunCrapsTestResponse] = useState("");
-  const [runBitstreamTestResponse, setrunBitstreamTestResponse] = useState("");
-  const [rungcdTestResponse, setrungcdTestResponse] = useState("");
-  const [runopsoTestResponse, setrunopsoTestResponse] = useState("");
-  const [runoqsoTestResponse, setrunoqsoTestResponse] = useState("");
-  const [rundnaTestResponse, setrundnaTestResponse] = useState("");
-  const [runoneStreamTestResponse, setrunoneStreamTestResponse] = useState("");
-  const [runoneByteTestResponse, setrunoneByteTestResponse] = useState("");
-  const [rungcdSimpleTestResponse, setrungcdSimpleTestResponse] = useState("");
-  const [rungeneralisedMinimumTestResponse, setrungeneralisedMinimumTestResponse] = useState("");
-  const [runu01LinearComplexityTestResponse, setrunu01LinearComplexityTestResponse] = useState("");
-  const [runu01LongestSubstringTestResponse, setrunu01LongestSubstringTestResponse] = useState("");
-  const [runmatrixRankTestResponse, setrunmatrixRankTestResponse] = useState("");
+  const [result, setResult] = useState(null);
+  const [result2, setResult2] = useState(null);
+  const [result3, setResult3] = useState(null);
+  const [result4, setResult4] = useState(null);
+  const [result5, setResult5] = useState(null);
+  const [result6, setResult6] = useState(null);
+  const [result7, setResult7] = useState(null);
+  const [result8, setResult8] = useState(null);
+  const [result9, setResult9] = useState(null);
+  const [result10, setResult10] = useState(null);
+  const [result11, setResult11] = useState(null);
+  const [result12, setResult12] = useState(null);
+  const [result13, setResult13] = useState(null);
+  const [result14, setResult14] = useState(null);
+  const [result15, setResult15] = useState(null);
+  const [result16, setResult16] = useState(null);
+  const [result17, setResult17] = useState(null);
+  const [result18, setResult18] = useState(null);
+  const [result19, setResult19] = useState(null);
+  const [result20, setResult20] = useState(null);
 
 
 
-  // Handle binary input change
-  const handleBinaryChange = (event) => {
-    const value = event.target.value;
 
-    setBinaryInput(value);
-  };
 
-  // Handle file upload
   const handleFileUpload = () => {
     fileInputRef.current.click();
+  };
+  const handleFileUpload2 = () => {
+    fileInputRef2.current.click();
+  };
+  const handleFileUpload3 = () => {
+    fileInputRef3.current.click();
+  };
+  const handleFileUpload4 = () => {
+    fileInputRef4.current.click();
+  };
+  const handleFileUpload5 = () => {
+    fileInputRef5.current.click();
+  };
+  const handleFileUpload6 = () => {
+    fileInputRef6.current.click();
+  };
+  const handleFileUpload7 = () => {
+    fileInputRef7.current.click();
+  };
+  const handleFileUpload8 = () => {
+    fileInputRef8.current.click();
+  };
+  const handleFileUpload9 = () => {
+    fileInputRef_nine.current.click();
+  };
+  const handleFileUpload10 = () => {
+    fileInputRef10.current.click();
+  };
+  const handleFileUpload11 = () => {
+    fileInputRef11.current.click();
+  };
+  const handleFileUpload12 = () => {
+    fileInputRef12.current.click();
+  };
+  const handleFileUpload13 = () => {
+    fileInputRef13.current.click();
+  };
+  const handleFileUpload14 = () => {
+    fileInputRef14.current.click();
+  };
+  const handleFileUpload15 = () => {
+    fileInputRef15.current.click();
+  };
+  const handleFileUpload16 = () => {
+    fileInputRef16.current.click();
+  };
+  const handleFileUpload17 = () => {
+    fileInputRef17.current.click();
+  };
+  const handleFileUpload18 = () => {
+    fileInputRef18.current.click();
+  };
+  const handleFileUpload19 = () => {
+    fileInputRef19.current.click();
+  };
+  const handleFileUpload20 = () => {
+    fileInputRef20.current.click();
   };
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
+    if (!selectedFile) return; // Handle cases where no file is selected
+
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
       alert("Warning: The selected file is too large. Please choose a smaller file.");
       return;
@@ -87,424 +153,818 @@ const Team = () => {
       const byteArray = new Uint8Array(binaryData);
       const decoder = new TextDecoder();
       const textData = decoder.decode(byteArray).trim();
+
+      // Update binaryInput state with new binary data
       setBinaryInput(textData);
+
+      // Reset the file input value to allow the same file to be uploaded again
+      event.target.value = "";
     };
     reader.readAsArrayBuffer(selectedFile);
   };
 
-  useEffect(() => {
-    const runBinarySpacingsTestData = async () => {
-      try {
-       
-        const response = await axios.post(
-          'http://localhost:8000/run_binary_spacings_test/', // POST endpoint
-          { binary_data: binaryInput } // JSON payload
-        );
-      
-        setrunBinarySpacingsTestResponse(response.data); // Update response state
-      } catch (error) {
-        console.error("Error executing binary spacings test:", error);
-      }
+  const handleFileChange2 = (event) => {
+    const selectedFile = event.target.files[0];
+    if (!selectedFile) return; // Handle cases where no file is selected
+
+    if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
+      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const binaryData = e.target.result;
+      const byteArray = new Uint8Array(binaryData);
+      const decoder = new TextDecoder();
+      const textData = decoder.decode(byteArray).trim();
+
+      // Update binaryInput state with new binary data
+      setBinaryInput2(textData);
+
+      // Reset the file input value to allow the same file to be uploaded again
+      event.target.value = "";
     };
-  
-    runBinarySpacingsTestData();
-  }, [binaryInput]); 
+    reader.readAsArrayBuffer(selectedFile);
+  };
+
+  const handleFileChange3 = (event) => {
+    const selectedFile = event.target.files[0];
+    if (!selectedFile) return; // Handle cases where no file is selected
+
+    if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
+      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const binaryData = e.target.result;
+      const byteArray = new Uint8Array(binaryData);
+      const decoder = new TextDecoder();
+      const textData = decoder.decode(byteArray).trim();
+
+      // Update binaryInput state with new binary data
+      setBinaryInput3(textData);
+
+      // Reset the file input value to allow the same file to be uploaded again
+      event.target.value = "";
+    };
+    reader.readAsArrayBuffer(selectedFile);
+  };
+
+  const handleFileChange4 = (event) => {
+    const selectedFile = event.target.files[0];
+    if (!selectedFile) return; // Handle cases where no file is selected
+
+    if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
+      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const binaryData = e.target.result;
+      const byteArray = new Uint8Array(binaryData);
+      const decoder = new TextDecoder();
+      const textData = decoder.decode(byteArray).trim();
+
+      // Update binaryInput state with new binary data
+      setBinaryInput4(textData);
+
+      // Reset the file input value to allow the same file to be uploaded again
+      event.target.value = "";
+    };
+    reader.readAsArrayBuffer(selectedFile);
+  };
+
+  const handleFileChange5 = (event) => {
+    const selectedFile = event.target.files[0];
+    if (!selectedFile) return; // Handle cases where no file is selected
+
+    if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
+      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const binaryData = e.target.result;
+      const byteArray = new Uint8Array(binaryData);
+      const decoder = new TextDecoder();
+      const textData = decoder.decode(byteArray).trim();
+
+      // Update binaryInput state with new binary data
+      setBinaryInput5(textData);
+
+      // Reset the file input value to allow the same file to be uploaded again
+      event.target.value = "";
+    };
+    reader.readAsArrayBuffer(selectedFile);
+  };
+
+  const handleFileChange6 = (event) => {
+    const selectedFile = event.target.files[0];
+    if (!selectedFile) return; // Handle cases where no file is selected
+
+    if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
+      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const binaryData = e.target.result;
+      const byteArray = new Uint8Array(binaryData);
+      const decoder = new TextDecoder();
+      const textData = decoder.decode(byteArray).trim();
+
+      // Update binaryInput state with new binary data
+      setBinaryInput6(textData);
+
+      // Reset the file input value to allow the same file to be uploaded again
+      event.target.value = "";
+    };
+    reader.readAsArrayBuffer(selectedFile);
+  };
+
+  const handleFileChange7 = (event) => {
+    const selectedFile = event.target.files[0];
+    if (!selectedFile) return; // Handle cases where no file is selected
+
+    if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
+      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const binaryData = e.target.result;
+      const byteArray = new Uint8Array(binaryData);
+      const decoder = new TextDecoder();
+      const textData = decoder.decode(byteArray).trim();
+
+      // Update binaryInput state with new binary data
+      setBinaryInput7(textData);
+
+      // Reset the file input value to allow the same file to be uploaded again
+      event.target.value = "";
+    };
+    reader.readAsArrayBuffer(selectedFile);
+  };
+
+  const handleFileChange8 = (event) => {
+    const selectedFile = event.target.files[0];
+    if (!selectedFile) return; // Handle cases where no file is selected
+
+    if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
+      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const binaryData = e.target.result;
+      const byteArray = new Uint8Array(binaryData);
+      const decoder = new TextDecoder();
+      const textData = decoder.decode(byteArray).trim();
+
+      // Update binaryInput state with new binary data
+      setBinaryInput8(textData);
+
+      // Reset the file input value to allow the same file to be uploaded again
+      event.target.value = "";
+    };
+    reader.readAsArrayBuffer(selectedFile);
+  };
+
+  const handleFileChange9 = (event) => {
+    const selectedFile = event.target.files[0];
+    if (!selectedFile) return; // Handle cases where no file is selected
+
+    if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
+      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const binaryData = e.target.result;
+      const byteArray = new Uint8Array(binaryData);
+      const decoder = new TextDecoder();
+      const textData = decoder.decode(byteArray).trim();
+
+      // Update binaryInput state with new binary data
+      setBinaryInput9(textData);
+
+      // Reset the file input value to allow the same file to be uploaded again
+      event.target.value = "";
+    };
+    reader.readAsArrayBuffer(selectedFile);
+  };
+
+  const handleFileChange10 = (event) => {
+    const selectedFile = event.target.files[0];
+    if (!selectedFile) return; // Handle cases where no file is selected
+
+    if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
+      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const binaryData = e.target.result;
+      const byteArray = new Uint8Array(binaryData);
+      const decoder = new TextDecoder();
+      const textData = decoder.decode(byteArray).trim();
+
+      // Update binaryInput state with new binary data
+      setBinaryInput10(textData);
+
+      // Reset the file input value to allow the same file to be uploaded again
+      event.target.value = "";
+    };
+    reader.readAsArrayBuffer(selectedFile);
+  };
+
+  const handleFileChange11 = (event) => {
+    const selectedFile = event.target.files[0];
+    if (!selectedFile) return; // Handle cases where no file is selected
+
+    if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
+      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const binaryData = e.target.result;
+      const byteArray = new Uint8Array(binaryData);
+      const decoder = new TextDecoder();
+      const textData = decoder.decode(byteArray).trim();
+
+      // Update binaryInput state with new binary data
+      setBinaryInput11(textData);
+
+      // Reset the file input value to allow the same file to be uploaded again
+      event.target.value = "";
+    };
+    reader.readAsArrayBuffer(selectedFile);
+  };
+
+  const handleFileChange12 = (event) => {
+    const selectedFile = event.target.files[0];
+    if (!selectedFile) return; // Handle cases where no file is selected
+
+    if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
+      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const binaryData = e.target.result;
+      const byteArray = new Uint8Array(binaryData);
+      const decoder = new TextDecoder();
+      const textData = decoder.decode(byteArray).trim();
+
+      // Update binaryInput state with new binary data
+      setBinaryInput12(textData);
+
+      // Reset the file input value to allow the same file to be uploaded again
+      event.target.value = "";
+    };
+    reader.readAsArrayBuffer(selectedFile);
+  };
+
+  const handleFileChange13 = (event) => {
+    const selectedFile = event.target.files[0];
+    if (!selectedFile) return; // Handle cases where no file is selected
+
+    if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
+      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const binaryData = e.target.result;
+      const byteArray = new Uint8Array(binaryData);
+      const decoder = new TextDecoder();
+      const textData = decoder.decode(byteArray).trim();
+
+      // Update binaryInput state with new binary data
+      setBinaryInput13(textData);
+
+      // Reset the file input value to allow the same file to be uploaded again
+      event.target.value = "";
+    };
+    reader.readAsArrayBuffer(selectedFile);
+  };
+
+  const handleFileChange14 = (event) => {
+    const selectedFile = event.target.files[0];
+    if (!selectedFile) return; // Handle cases where no file is selected
+
+    if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
+      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const binaryData = e.target.result;
+      const byteArray = new Uint8Array(binaryData);
+      const decoder = new TextDecoder();
+      const textData = decoder.decode(byteArray).trim();
+
+      // Update binaryInput state with new binary data
+      setBinaryInput14(textData);
+
+      // Reset the file input value to allow the same file to be uploaded again
+      event.target.value = "";
+    };
+    reader.readAsArrayBuffer(selectedFile);
+  };
+
+  const handleFileChange15 = (event) => {
+    const selectedFile = event.target.files[0];
+    if (!selectedFile) return; // Handle cases where no file is selected
+
+    if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
+      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const binaryData = e.target.result;
+      const byteArray = new Uint8Array(binaryData);
+      const decoder = new TextDecoder();
+      const textData = decoder.decode(byteArray).trim();
+
+      // Update binaryInput state with new binary data
+      setBinaryInput15(textData);
+
+      // Reset the file input value to allow the same file to be uploaded again
+      event.target.value = "";
+    };
+    reader.readAsArrayBuffer(selectedFile);
+  };
+
+  const handleFileChange16 = (event) => {
+    const selectedFile = event.target.files[0];
+    if (!selectedFile) return; // Handle cases where no file is selected
+
+    if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
+      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const binaryData = e.target.result;
+      const byteArray = new Uint8Array(binaryData);
+      const decoder = new TextDecoder();
+      const textData = decoder.decode(byteArray).trim();
+
+      // Update binaryInput state with new binary data
+      setBinaryInput16(textData);
+
+      // Reset the file input value to allow the same file to be uploaded again
+      event.target.value = "";
+    };
+    reader.readAsArrayBuffer(selectedFile);
+  };
+
+  const handleFileChange17 = (event) => {
+    const selectedFile = event.target.files[0];
+    if (!selectedFile) return; // Handle cases where no file is selected
+
+    if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
+      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const binaryData = e.target.result;
+      const byteArray = new Uint8Array(binaryData);
+      const decoder = new TextDecoder();
+      const textData = decoder.decode(byteArray).trim();
+
+      // Update binaryInput state with new binary data
+      setBinaryInput17(textData);
+
+      // Reset the file input value to allow the same file to be uploaded again
+      event.target.value = "";
+    };
+    reader.readAsArrayBuffer(selectedFile);
+  };
+
+  const handleFileChange18 = (event) => {
+    const selectedFile = event.target.files[0];
+    if (!selectedFile) return; // Handle cases where no file is selected
+
+    if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
+      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const binaryData = e.target.result;
+      const byteArray = new Uint8Array(binaryData);
+      const decoder = new TextDecoder();
+      const textData = decoder.decode(byteArray).trim();
+
+      // Update binaryInput state with new binary data
+      setBinaryInput18(textData);
+
+      // Reset the file input value to allow the same file to be uploaded again
+      event.target.value = "";
+    };
+    reader.readAsArrayBuffer(selectedFile);
+  };
+
+  const handleFileChange19 = (event) => {
+    const selectedFile = event.target.files[0];
+    if (!selectedFile) return; // Handle cases where no file is selected
+
+    if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
+      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const binaryData = e.target.result;
+      const byteArray = new Uint8Array(binaryData);
+      const decoder = new TextDecoder();
+      const textData = decoder.decode(byteArray).trim();
+
+      // Update binaryInput state with new binary data
+      setBinaryInput19(textData);
+
+      // Reset the file input value to allow the same file to be uploaded again
+      event.target.value = "";
+    };
+    reader.readAsArrayBuffer(selectedFile);
+  };
+
+  const handleFileChange20 = (event) => {
+    const selectedFile = event.target.files[0];
+    if (!selectedFile) return; // Handle cases where no file is selected
+
+    if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
+      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const binaryData = e.target.result;
+      const byteArray = new Uint8Array(binaryData);
+      const decoder = new TextDecoder();
+      const textData = decoder.decode(byteArray).trim();
+
+      // Update binaryInput state with new binary data
+      setBinaryInput20(textData);
+
+      // Reset the file input value to allow the same file to be uploaded again
+      event.target.value = "";
+    };
+    reader.readAsArrayBuffer(selectedFile);
+  };
+
 
   useEffect(() => {
     if (!binaryInput) return; // Do not fetch if binaryInput is empty
-    const runParkingLotTestData = async () => {
-      try {
-        const response = await axios.post(
-          'http://localhost:8000/run_parking_lot_test/', // The POST endpoint
-          { binary_data: binaryInput } // Data sent in the POST request body
-        );
-        setrunParkingLotTestResponse(response.data);
-      } catch (error) {
-        console.error("Error executing parking lot test:", error);
-      }
-    };
-  
-    if (binaryInput) {
-      runParkingLotTestData();
-    }
-  }, [binaryInput]);
 
-  
-  useEffect(() => {
-    const runOverlapping5PermutationTestData = async () => {
+    const fetchResult = async () => {
       try {
-        const response = await axios.post(
-          'http://localhost:8000/run_overlapping_5_test/',
-          { binary_data: binaryInput }
-        );
-        setrunOverlapping5PermutationTestResponse(response.data);
+        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput });
+        setResult(response.data); // Set the response data
+
       } catch (error) {
-        console.error("Error executing overlapping 5 test:", error);
+        console.error("Error executing generating final answer:", error);
       }
     };
 
-    if (binaryInput){
-    runOverlapping5PermutationTestData();
-    }
-  }, [binaryInput]);
-
-
-  useEffect(() => {
-    const runMinimumDistanceTestData = async () => {
-      try {
-        const response = await axios.post(
-          'http://localhost:8000/run_minimum_distance_test/',
-          { binary_data: binaryInput }
-        );
-        setrunMinimumDistanceTestResponse(response.data);
-      } catch (error) {
-        console.error("Error executing minimum distance test:", error);
-      }
-    };
-
-    runMinimumDistanceTestData();
+    fetchResult();
   }, [binaryInput]);
 
   useEffect(() => {
-    const run31MatrixTestData = async () => {
+    if (!binaryInput2) return; // Do not fetch if binaryInput is empty
+
+    const fetchResult = async () => {
       try {
-        const response = await axios.post(
-          'http://localhost:8000/run_31matrix_test/',
-          { binary_data: binaryInput }
-        );
-        setrun31MatrixTestResponse(response.data);
+        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput2 });
+        setResult2(response.data); // Set the response data
+
       } catch (error) {
-        console.error("Error executing 31 matrix test:", error);
+        console.error("Error executing generating final answer:", error);
       }
     };
 
-    run31MatrixTestData();
-  }, [binaryInput]);
+    fetchResult();
+  }, [binaryInput2]);
 
   useEffect(() => {
-    const runSpheresTestData = async () => {
+    if (!binaryInput3) return; // Do not fetch if binaryInput is empty
+
+    const fetchResult = async () => {
       try {
-        const response = await axios.post(
-        'http://localhost:8000/run_spheres_test/',
-        { binary_data: binaryInput }
-        );
-        setrunSpeheresTestResponse(response.data);
+        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput3 });
+        setResult3(response.data); // Set the response data
+
       } catch (error) {
-        console.error("Error executing spheres test:", error);
+        console.error("Error executing generating final answer:", error);
       }
     };
 
-    runSpheresTestData();
-  }, [binaryInput]);
+    fetchResult();
+  }, [binaryInput3]);
 
   useEffect(() => {
-    const run32MatrixTestData = async () => {
+    if (!binaryInput4) return; // Do not fetch if binaryInput is empty
+
+    const fetchResult = async () => {
       try {
-        const response = await axios.post(
-          'http://localhost:8000/run_32matrix_test/',
-          { binary_data: binaryInput }
-        );
-        setrun32MatrixTestResponse(response.data);
+        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput4 });
+        setResult4(response.data); // Set the response data
+
       } catch (error) {
-        console.error("Error executing 32 matrix test:", error);
+        console.error("Error executing generating final answer:", error);
       }
     };
 
-    run32MatrixTestData();
-  }, [binaryInput]);
+    fetchResult();
+  }, [binaryInput4]);
 
   useEffect(() => {
-    const runCrapsTestData = async () => {
+    if (!binaryInput5) return; // Do not fetch if binaryInput is empty
+
+    const fetchResult = async () => {
       try {
-        const response = await axios.post(
-          'http://localhost:8000/run_craps_test/',
-          { binary_data: binaryInput }
-        );
-        setrunCrapsTestResponse(response.data);
+        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput5 });
+        setResult5(response.data); // Set the response data
+
       } catch (error) {
-        console.error("Error executing craps test:", error);
+        console.error("Error executing generating final answer:", error);
       }
     };
 
-    runCrapsTestData();
-  }, [binaryInput]);
-
-  
-  useEffect(() => {
-    const runBitstreamTestData = async () => {
-      try {
-        const response = await axios.post(
-          'http://localhost:8000/run_bitstream_test/',
-          { binary_data: binaryInput }
-        );
-        setrunBitstreamTestResponse(response.data);
-      } catch (error) {
-        console.error("Error executing bitstream test:", error);
-      }
-    };
-
-    runBitstreamTestData();
-  }, [binaryInput]);
+    fetchResult();
+  }, [binaryInput5]);
 
   useEffect(() => {
-    const rungcdTestData = async () => {
+    if (!binaryInput6) return; // Do not fetch if binaryInput is empty
+
+    const fetchResult = async () => {
       try {
-        const response = await axios.post(
-          'http://localhost:8000/run_gcd_test/',
-          { binary_data: binaryInput }
-        );
-        setrungcdTestResponse(response.data);
+        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput6 });
+        setResult6(response.data); // Set the response data
+
       } catch (error) {
-        console.error("Error executing gcd test:", error);
+        console.error("Error executing generating final answer:", error);
       }
     };
 
-    rungcdTestData();
-  }, [binaryInput]);
-
-  
-  useEffect(() => {
-    const runopsoTestData = async () => {
-      try {
-        const response = await axios.post(
-          'http://localhost:8000/run_opso_test/',
-          { binary_data: binaryInput }
-        );
-        setrunopsoTestResponse(response.data);
-      } catch (error) {
-        console.error("Error executing opso test:", error);
-      }
-    };
-
-    runopsoTestData();
-  }, [binaryInput]);
+    fetchResult();
+  }, [binaryInput6]);
 
   useEffect(() => {
-    const runoqsoTestData = async () => {
+    if (!binaryInput7) return; // Do not fetch if binaryInput is empty
+
+    const fetchResult = async () => {
       try {
-        const response = await axios.post(
-          'http://localhost:8000/run_oqso_test/',
-          { binary_data: binaryInput }
-        );
-        setrunoqsoTestResponse(response.data);
+        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput7 });
+        setResult7(response.data); // Set the response data
+
       } catch (error) {
-        console.error("Error executing oqso test:", error);
+        console.error("Error executing generating final answer:", error);
       }
     };
 
-    runoqsoTestData();
-  }, [binaryInput]);
+    fetchResult();
+  }, [binaryInput7]);
 
   useEffect(() => {
-    const runoneStreamTestData = async () => {
+    if (!binaryInput8) return; // Do not fetch if binaryInput is empty
+
+    const fetchResult = async () => {
       try {
-        const response = await axios.post(
-          'http://localhost:8000/run_count_one_test/',
-          { binary_data: binaryInput }
-        );
-        setrunoneStreamTestResponse(response.data);
+        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput8 });
+        setResult8(response.data); // Set the response data
+
       } catch (error) {
-        console.error("Error executing one stream test:", error);
+        console.error("Error executing generating final answer:", error);
       }
     };
 
-    runoneStreamTestData();
-  }, [binaryInput]);
-
+    fetchResult();
+  }, [binaryInput8]);
 
   useEffect(() => {
-    const rundnaTestData = async () => {
+    if (!binaryInput9) return; // Do not fetch if binaryInput is empty
+
+    const fetchResult = async () => {
       try {
-        const response = await axios.post(
-          'http://localhost:8000/run_dna_test/',
-          { binary_data: binaryInput }
-        );
-        setrundnaTestResponse(response.data);
+        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput9 });
+        setResult9(response.data); // Set the response data
+
       } catch (error) {
-        console.error("Error executing dna test:", error);
+        console.error("Error executing generating final answer:", error);
       }
     };
 
-    rundnaTestData();
-  }, [binaryInput]);
-
-
+    fetchResult();
+  }, [binaryInput9]);
 
   useEffect(() => {
-    const runoneByteTestData = async () => {
+    if (!binaryInput10) return; // Do not fetch if binaryInput is empty
+
+    const fetchResult = async () => {
       try {
-        const response = await axios.post(
-          'http://localhost:8000/run_count_one_byte_test/',
-          { binary_data: binaryInput }
-        );
-        setrunoneByteTestResponse(response.data);
+        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput10 });
+        setResult10(response.data); // Set the response data
+
       } catch (error) {
-        console.error("Error executing one byte test:", error);
+        console.error("Error executing generating final answer:", error);
       }
     };
 
-    runoneByteTestData();
-  }, [binaryInput]);
-
-
+    fetchResult();
+  }, [binaryInput10]);
 
   useEffect(() => {
-    const rungcdSimpleTestData = async () => {
+    if (!binaryInput11) return; // Do not fetch if binaryInput is empty
+
+    const fetchResult = async () => {
       try {
-        const response = await axios.post(
-        'http://localhost:8000/run_simple_gcd_test/',
-        { binary_data: binaryInput }
-        );
-        setrungcdSimpleTestResponse(response.data);
+        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput11 });
+        setResult11(response.data); // Set the response data
+
       } catch (error) {
-        console.error("Error executing gcd simple test:", error);
+        console.error("Error executing generating final answer:", error);
       }
     };
 
-    rungcdSimpleTestData();
-  }, [binaryInput]);
-
-
+    fetchResult();
+  }, [binaryInput11]);
 
   useEffect(() => {
-    const rungeneralisedMinimumDistanceTestData = async () => {
+    if (!binaryInput12) return; // Do not fetch if binaryInput is empty
+
+    const fetchResult = async () => {
       try {
-        const response = await axios.post(
-          'http://localhost:8000/run_general_minimum_distance_test/',
-          { binary_data: binaryInput }
-        );
-        setrungeneralisedMinimumTestResponse(response.data);
+        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput12 });
+        setResult12(response.data); // Set the response data
+
       } catch (error) {
-        console.error("Error executing generalised minimum test:", error);
+        console.error("Error executing generating final answer:", error);
       }
     };
 
-    rungeneralisedMinimumDistanceTestData();
-  }, [binaryInput]);
-
-
+    fetchResult();
+  }, [binaryInput12]);
 
   useEffect(() => {
-    const runu01LinearComplexityTestData = async () => {
+    if (!binaryInput13) return; // Do not fetch if binaryInput is empty
+
+    const fetchResult = async () => {
       try {
-        const response = await axios.post(
-          'http://localhost:8000/run_u01_linear_complexity_test/',
-          { binary_data: binaryInput }
-        );
-        setrunu01LinearComplexityTestResponse(response.data);
+        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput13 });
+        setResult13(response.data); // Set the response data
+
       } catch (error) {
-        console.error("Error executing linear complexity test:", error);
+        console.error("Error executing generating final answer:", error);
       }
     };
 
-    runu01LinearComplexityTestData();
-  }, [binaryInput]);
-
-
-
+    fetchResult();
+  }, [binaryInput13]);
 
   useEffect(() => {
-    const runu01LongestSubstringTestData = async () => {
+    if (!binaryInput14) return; // Do not fetch if binaryInput is empty
+
+    const fetchResult = async () => {
       try {
-        const response = await axios.post(
-          'http://localhost:8000/run_u01_longest_repeated_substring_test/',
-          { binary_data: binaryInput }
-        );
-        setrunu01LongestSubstringTestResponse(response.data);
+        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput14 });
+        setResult14(response.data); // Set the response data
+
       } catch (error) {
-        console.error("Error executing longest substring test:", error);
+        console.error("Error executing generating final answer:", error);
       }
     };
 
-    runu01LongestSubstringTestData();
-  }, [binaryInput]);
-
-
-
+    fetchResult();
+  }, [binaryInput14]);
 
   useEffect(() => {
-    const runmatrixRankTestData = async () => {
+    if (!binaryInput15) return; // Do not fetch if binaryInput is empty
+
+    const fetchResult = async () => {
       try {
-        const response = await axios.post(
-          'http://localhost:8000/run_matrix_rank_test/',
-          { binary_data: binaryInput }
-        );
-        setrunmatrixRankTestResponse(response.data);
+        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput15 });
+        setResult15(response.data); // Set the response data
+
       } catch (error) {
-        console.error("Error executing matrix rank test:", error);
+        console.error("Error executing generating final answer:", error);
       }
     };
 
-    runmatrixRankTestData();
-  }, [binaryInput]);
+    fetchResult();
+  }, [binaryInput15]);
+
+  useEffect(() => {
+    if (!binaryInput16) return; // Do not fetch if binaryInput is empty
+
+    const fetchResult = async () => {
+      try {
+        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput16 });
+        setResult16(response.data); // Set the response data
+
+      } catch (error) {
+        console.error("Error executing generating final answer:", error);
+      }
+    };
+
+    fetchResult();
+  }, [binaryInput16]);
+
+  useEffect(() => {
+    if (!binaryInput17) return; // Do not fetch if binaryInput is empty
+
+    const fetchResult = async () => {
+      try {
+        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput17 });
+        setResult17(response.data); // Set the response data
+
+      } catch (error) {
+        console.error("Error executing generating final answer:", error);
+      }
+    };
+
+    fetchResult();
+  }, [binaryInput17]);
+
+  useEffect(() => {
+    if (!binaryInput18) return; // Do not fetch if binaryInput is empty
+
+    const fetchResult = async () => {
+      try {
+        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput18 });
+        setResult18(response.data); // Set the response data
+
+      } catch (error) {
+        console.error("Error executing generating final answer:", error);
+      }
+    };
+
+    fetchResult();
+  }, [binaryInput18]);
+
+  useEffect(() => {
+    if (!binaryInput19) return; // Do not fetch if binaryInput is empty
+
+    const fetchResult = async () => {
+      try {
+        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput19 });
+        setResult19(response.data); // Set the response data
+
+      } catch (error) {
+        console.error("Error executing generating final answer:", error);
+      }
+    };
+
+    fetchResult();
+  }, [binaryInput19]);
+
+  useEffect(() => {
+    if (!binaryInput20) return; // Do not fetch if binaryInput is empty
+
+    const fetchResult = async () => {
+      try {
+        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput20 });
+        setResult20(response.data); // Set the response data
+
+      } catch (error) {
+        console.error("Error executing generating final answer:", error);
+      }
+    };
+
+    fetchResult();
+  }, [binaryInput20]);
 
 
 
-  const BSTestPValue = runBinarySpacingsTestResponse?.p_value || "N/A";
-  const BSTestResult = runBinarySpacingsTestResponse?.result || "N/A";
-
-
-  const OverPermTestPValue = runOverlapping5PermutationTestResponse?.p_value || "N/A";
-  const OverPermTestResult = runOverlapping5PermutationTestResponse?.result || "N/A";
-
-  const Rank31TestPValue = run31MatrixTestResponse?.p_value || "N/A";
-  const Rank31TestResult = run31MatrixTestResponse?.result || "N/A";
-
-  const Rank32TestPValue = run32MatrixTestResponse?.p_value || "N/A";
-  const Rank32TestResult = run32MatrixTestResponse?.result || "N/A";
-  
-  const BitstreamTestPValue = runBitstreamTestResponse?.p_value || "N/A";
-  const BitstreamTestResult = runBitstreamTestResponse?.result || "N/A";
-  
-  const OPSOPValue = runopsoTestResponse?.p_value || "N/A";
-  const OPSOTestResult = runopsoTestResponse?.result || "N/A";
-  
-  const DNATestPValue = rundnaTestResponse?.p_value || "N/A";
-  const DNATestResult = rundnaTestResponse?.result || "N/A";
-  
-  const OneStreamTestPValue = runoneStreamTestResponse?.p_value || "N/A";
-  const OneStreamTestResult = runoneStreamTestResponse?.result || "N/A";
-  
-  const OneByteTestPValue = runoneByteTestResponse?.p_value || "N/A";
-  const OneByteTestResult = runoneByteTestResponse?.result || "N/A";
-  
-  const ParkTestPValue = runParkingLotTestResponse?.p_value || "N/A";
-  const ParkTestResult = runParkingLotTestResponse?.result || "N/A";
-  
-  const MinDisTestPValue = runMinimumDistanceTestResponse?.p_value || "N/A";
-  const MinDisTestResult = runMinimumDistanceTestResponse?.result || "N/A";
-  
-  const SpheresTestPValue = runSpeheresTestResponse?.p_value || "N/A";
-  const SpheresTestResult = runSpeheresTestResponse?.result || "N/A";
-  
-  const CrapsTestPValue = runCrapsTestResponse?.p_value || "N/A";
-  const CrapsTestResult = runCrapsTestResponse?.result || "N/A";
-  
-  const GcdTestPValue = rungcdTestResponse?.p_value || "N/A";
-  const GcdTestResult = rungcdTestResponse?.result || "N/A";
-  
-  const SimpleGcdTestPValue = rungcdSimpleTestResponse?.p_value || "N/A";
-  const SimpleGcdTestResult = rungcdSimpleTestResponse?.result || "N/A";
-  
-  const GenMinDisTestPValue = rungeneralisedMinimumTestResponse?.p_value || "N/A";
-  const GenMinDisTestResult = rungeneralisedMinimumTestResponse?.result || "N/A";
-  
-  const LCTestPValue = runu01LinearComplexityTestResponse?.p_value || "N/A";
-  const LCTestResult = runu01LinearComplexityTestResponse?.result || "N/A";
-  
-  const RepSubTestPValue = runu01LongestSubstringTestResponse?.p_value || "N/A";
-  const RepSubTestResult = runu01LongestSubstringTestResponse?.result || "N/A";
-  
-  const MatrixRankTestPValue = runmatrixRankTestResponse?.p_value || "N/A";
-  const MatrixRankTestResult = runmatrixRankTestResponse?.result || "N/A";
-  
-  const OQSOTestPValue = runoqsoTestResponse?.p_value || "N/A";
-  const OQSOTestResult = runoqsoTestResponse?.result || "N/A";
-  
 
   const handleButtonClick = (type) => {
     if (type === "report") {
-      fetch("http://localhost:8000/pdf-report/", {
+      fetch("http://localhost:8000/pdf-report-dieharder/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ binary_data: binaryInput }),
@@ -516,7 +976,7 @@ const Team = () => {
         })
         .catch((error) => console.error("Error generating report:", error));
     } else if (type === "graph") {
-      fetch("http://localhost:8000/graph-generation/", {
+      fetch("http://localhost:8000/graph-generaion-dieharder/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ binary_data: binaryInput }),
@@ -530,86 +990,552 @@ const Team = () => {
     }
   };
 
+  const handleButtonClick2 = (type) => {
+    if (type === "report") {
+      fetch("http://localhost:8000/pdf-report-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput2 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating report:", error));
+    } else if (type === "graph") {
+      fetch("http://localhost:8000/graph-generaion-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput2 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating graph:", error));
+    }
+  };
+
+  const handleButtonClick3 = (type) => {
+    if (type === "report") {
+      fetch("http://localhost:8000/pdf-report-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput3 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating report:", error));
+    } else if (type === "graph") {
+      fetch("http://localhost:8000/graph-generaion-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput3 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating graph:", error));
+    }
+  };
+
+  const handleButtonClick4 = (type) => {
+    if (type === "report") {
+      fetch("http://localhost:8000/pdf-report-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput4 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating report:", error));
+    } else if (type === "graph") {
+      fetch("http://localhost:8000/graph-generaion-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput4 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating graph:", error));
+    }
+  };
+
+  const handleButtonClick5 = (type) => {
+    if (type === "report") {
+      fetch("http://localhost:8000/pdf-report-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput5 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating report:", error));
+    } else if (type === "graph") {
+      fetch("http://localhost:8000/graph-generaion-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput5 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating graph:", error));
+    }
+  };
+
+
+  const handleButtonClick6 = (type) => {
+    if (type === "report") {
+      fetch("http://localhost:8000/pdf-report-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput6 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating report:", error));
+    } else if (type === "graph") {
+      fetch("http://localhost:8000/graph-generaion-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput6 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating graph:", error));
+    }
+  };
+
+  const handleButtonClick7 = (type) => {
+    if (type === "report") {
+      fetch("http://localhost:8000/pdf-report-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput7 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating report:", error));
+    } else if (type === "graph") {
+      fetch("http://localhost:8000/graph-generaion-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput7 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating graph:", error));
+    }
+  };
+
+  const handleButtonClick8 = (type) => {
+    if (type === "report") {
+      fetch("http://localhost:8000/pdf-report-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput8 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating report:", error));
+    } else if (type === "graph") {
+      fetch("http://localhost:8000/graph-generaion-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput8 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating graph:", error));
+    }
+  };
+
+  const handleButtonClick9 = (type) => {
+    if (type === "report") {
+      fetch("http://localhost:8000/pdf-report-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput9 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating report:", error));
+    } else if (type === "graph") {
+      fetch("http://localhost:8000/graph-generaion-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput9 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating graph:", error));
+    }
+  };
+
+  const handleButtonClick10 = (type) => {
+    if (type === "report") {
+      fetch("http://localhost:8000/pdf-report-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput10 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating report:", error));
+    } else if (type === "graph") {
+      fetch("http://localhost:8000/graph-generaion-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput10 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating graph:", error));
+    }
+  };
+
+  const handleButtonClick11 = (type) => {
+    if (type === "report") {
+      fetch("http://localhost:8000/pdf-report-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput11 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating report:", error));
+    } else if (type === "graph") {
+      fetch("http://localhost:8000/graph-generaion-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput11 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating graph:", error));
+    }
+  };
+
+  const handleButtonClick12 = (type) => {
+    if (type === "report") {
+      fetch("http://localhost:8000/pdf-report-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput12 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating report:", error));
+    } else if (type === "graph") {
+      fetch("http://localhost:8000/graph-generaion-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput12 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating graph:", error));
+    }
+  };
+
+  const handleButtonClick13 = (type) => {
+    if (type === "report") {
+      fetch("http://localhost:8000/pdf-report-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput13 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating report:", error));
+    } else if (type === "graph") {
+      fetch("http://localhost:8000/graph-generaion-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput13 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating graph:", error));
+    }
+  };
+
+  const handleButtonClick14 = (type) => {
+    if (type === "report") {
+      fetch("http://localhost:8000/pdf-report-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput14 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating report:", error));
+    } else if (type === "graph") {
+      fetch("http://localhost:8000/graph-generaion-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput14 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating graph:", error));
+    }
+  };
+
+  const handleButtonClick15 = (type) => {
+    if (type === "report") {
+      fetch("http://localhost:8000/pdf-report-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput15 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating report:", error));
+    } else if (type === "graph") {
+      fetch("http://localhost:8000/graph-generaion-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput15 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating graph:", error));
+    }
+  };
+
+
+  const handleButtonClick16 = (type) => {
+    if (type === "report") {
+      fetch("http://localhost:8000/pdf-report-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput16 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating report:", error));
+    } else if (type === "graph") {
+      fetch("http://localhost:8000/graph-generaion-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput16 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating graph:", error));
+    }
+  };
+
+  const handleButtonClick17 = (type) => {
+    if (type === "report") {
+      fetch("http://localhost:8000/pdf-report-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput17 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating report:", error));
+    } else if (type === "graph") {
+      fetch("http://localhost:8000/graph-generaion-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput17 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating graph:", error));
+    }
+  };
+
+  const handleButtonClick18 = (type) => {
+    if (type === "report") {
+      fetch("http://localhost:8000/pdf-report-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput18 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating report:", error));
+    } else if (type === "graph") {
+      fetch("http://localhost:8000/graph-generaion-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput18 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating graph:", error));
+    }
+  };
+
+  const handleButtonClick19 = (type) => {
+    if (type === "report") {
+      fetch("http://localhost:8000/pdf-report-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput19 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating report:", error));
+    } else if (type === "graph") {
+      fetch("http://localhost:8000/graph-generaion-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput19 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating graph:", error));
+    }
+  };
+
+  const handleButtonClick20 = (type) => {
+    if (type === "report") {
+      fetch("http://localhost:8000/pdf-report-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput20 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating report:", error));
+    } else if (type === "graph") {
+      fetch("http://localhost:8000/graph-generaion-dieharder/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput20 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating graph:", error));
+    }
+  };
+
   return (
     <Box m="20px">
       {/* Header Section */}
-      <Header title="NIST Statistical Tests" />
-
-      {/* Input Box */}
-      <Box mt="20px">
-        <TextField
-          fullWidth
-          variant="outlined"
-          placeholder="Enter the binary number"
-          value={binaryInput}
-          onChange={handleBinaryChange}
-          InputProps={{
-            style: { backgroundColor: colors.primary[400], borderRadius: 8 },
-          }}
-          sx={{
-            "& .MuiOutlinedInput-root": {
-              "& fieldset": { borderColor: colors.greenAccent[300] },
-              "&:hover fieldset": { borderColor: colors.greenAccent[400] },
-              "&.Mui-focused fieldset": { borderColor: colors.greenAccent[500] },
-            },
-          }}
-        />
-      </Box>
-
-      {/* Buttons Section */}
-      <Box mt="20px" display="flex" justifyContent="center" gap="20px">
-        <Button
-          variant="contained"
-          onClick={handleFileUpload}
-          sx={{
-            backgroundColor: colors.greenAccent[400],
-            color: colors.grey[100],
-            textTransform: "none",
-            padding: "10px 20px",
-            borderRadius: "8px",
-            "&:hover": { backgroundColor: colors.greenAccent[500] },
-          }}
-        >
-          Upload Binary File
-        </Button>
-        <input
-          type="file"
-          ref={fileInputRef}
-          style={{ display: "none" }}
-          onChange={handleFileChange}
-        />
-        <Button
-          variant="contained"
-          onClick={() => handleButtonClick("graph")}
-          sx={{
-            backgroundColor: colors.blueAccent[400],
-            color: colors.grey[100],
-            textTransform: "none",
-            padding: "10px 20px",
-            borderRadius: "8px",
-            "&:hover": { backgroundColor: colors.blueAccent[500] },
-          }}
-        >
-          Generate Graph
-        </Button>
-        <Button
-          variant="contained"
-          onClick={() => handleButtonClick("report")}
-          sx={{
-            backgroundColor: colors.redAccent[400],
-            color: colors.grey[100],
-            textTransform: "none",
-            padding: "10px 20px",
-            borderRadius: "8px",
-            "&:hover": { backgroundColor: colors.redAccent[500] },
-          }}
-        >
-          Generate Report
-        </Button>
-      </Box>
-
-      {/* Table Section */}
-      <Box mt="40px" p="20px" sx={{ backgroundColor: colors.primary[400], borderRadius: "8px" }}>
+      <Header title="Dieharder Tests" />
+      <Box
+        mt="40px"
+        p="20px"
+        sx={{
+          backgroundColor: colors.primary[400],
+          borderRadius: "8px",
+        }}
+      >
         <Box
           component="table"
           sx={{
@@ -629,166 +1555,1398 @@ const Team = () => {
         >
           <thead>
             <tr>
-              <th>Serial No</th>
-              <th>Test</th>
-              <th>p-value</th>
-              <th>Result</th>
+              <th style={{ width: "10%" }}>Serial No</th>
+              <th style={{ width: "60%" }}>Upload File</th>
+              <th style={{ width: "30%" }}>Result</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>1</td>
-              <td>Birthday Spacings Test </td>
-              <td>{BSTestPValue}</td>
-              <td>{BSTestResult}</td>
+              <td>
+                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                  <Box display="flex" justifyContent="center" gap="20px">
+                    <Button
+                      variant="contained"
+                      onClick={handleFileUpload}
+                      sx={{
+                        backgroundColor: colors.greenAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.greenAccent[500],
+                        },
+                      }}
+                    >
+                      Upload Binary File
+                    </Button>
+                    <input
+                      type="file"
+                      ref={fileInputRef}
+                      style={{ display: "none" }}
+                      onChange={handleFileChange}
+                    />
+                    <Button
+                      variant="contained"
+                      onClick={() => handleButtonClick("graph")}
+                      sx={{
+                        backgroundColor: colors.blueAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.blueAccent[500],
+                        },
+                      }}
+                    >
+                      Generate Graph
+                    </Button>
+                    <Box display="flex" alignItems="center" gap="10px">
+                      <Button
+                        variant="contained"
+                        onClick={() => handleButtonClick("report")}
+                        sx={{
+                          backgroundColor: colors.redAccent[400],
+                          color: colors.grey[100],
+                          textTransform: "none",
+                          padding: "10px 20px",
+                          borderRadius: "8px",
+                          "&:hover": {
+                            backgroundColor: colors.redAccent[500],
+                          },
+                        }}
+                      >
+                        Generate Report
+                      </Button>
+
+                    </Box>
+                  </Box>
+                </Box>
+              </td>
+              <td>{result}</td>
+              {/* <td>{binaryInput}</td> */}
             </tr>
 
             <tr>
               <td>2</td>
-              <td>Overlapping 5-Permutation Test</td>
-              <td>{OverPermTestPValue}</td>
-              <td>{OverPermTestResult}</td>
+              <td>
+                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                  <Box display="flex" justifyContent="center" gap="20px">
+                    <Button
+                      variant="contained"
+                      onClick={handleFileUpload2}
+                      sx={{
+                        backgroundColor: colors.greenAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.greenAccent[500],
+                        },
+                      }}
+                    >
+                      Upload Binary File
+                    </Button>
+                    <input
+                      type="file"
+                      ref={fileInputRef2}
+                      style={{ display: "none" }}
+                      onChange={handleFileChange2}
+                    />
+                    <Button
+                      variant="contained"
+                      onClick={() => handleButtonClick2("graph")}
+                      sx={{
+                        backgroundColor: colors.blueAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.blueAccent[500],
+                        },
+                      }}
+                    >
+                      Generate Graph
+                    </Button>
+                    <Box display="flex" alignItems="center" gap="10px">
+                      <Button
+                        variant="contained"
+                        onClick={() => handleButtonClick2("report")}
+                        sx={{
+                          backgroundColor: colors.redAccent[400],
+                          color: colors.grey[100],
+                          textTransform: "none",
+                          padding: "10px 20px",
+                          borderRadius: "8px",
+                          "&:hover": {
+                            backgroundColor: colors.redAccent[500],
+                          },
+                        }}
+                      >
+                        Generate Report
+                      </Button>
+
+                    </Box>
+                  </Box>
+                </Box>
+              </td>
+              <td>{result2}</td>
+              {/* <td>{binaryInput2}</td> */}
             </tr>
 
             <tr>
               <td>3</td>
-              <td>Ranks of 31x31 Matrices Test</td>
-              <td>{Rank31TestPValue}</td>
-              <td>{Rank31TestResult}</td>
+              <td>
+                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                  <Box display="flex" justifyContent="center" gap="20px">
+                    <Button
+                      variant="contained"
+                      onClick={handleFileUpload3}
+                      sx={{
+                        backgroundColor: colors.greenAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.greenAccent[500],
+                        },
+                      }}
+                    >
+                      Upload Binary File
+                    </Button>
+                    <input
+                      type="file"
+                      ref={fileInputRef3}
+                      style={{ display: "none" }}
+                      onChange={handleFileChange3}
+                    />
+                    <Button
+                      variant="contained"
+                      onClick={() => handleButtonClick3("graph")}
+                      sx={{
+                        backgroundColor: colors.blueAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.blueAccent[500],
+                        },
+                      }}
+                    >
+                      Generate Graph
+                    </Button>
+                    <Box display="flex" alignItems="center" gap="10px">
+                      <Button
+                        variant="contained"
+                        onClick={() => handleButtonClick3("report")}
+                        sx={{
+                          backgroundColor: colors.redAccent[400],
+                          color: colors.grey[100],
+                          textTransform: "none",
+                          padding: "10px 20px",
+                          borderRadius: "8px",
+                          "&:hover": {
+                            backgroundColor: colors.redAccent[500],
+                          },
+                        }}
+                      >
+                        Generate Report
+                      </Button>
+
+                    </Box>
+                  </Box>
+                </Box>
+              </td>
+              <td>{result3}</td>
+              {/* <td>{binaryInput}</td> */}
             </tr>
 
             <tr>
               <td>4</td>
-              <td>Ranks of 32x32 Matrices Test</td>
-              <td>{Rank32TestPValue}</td>
-              <td>{Rank32TestResult}</td>
+              <td>
+                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                  <Box display="flex" justifyContent="center" gap="20px">
+                    <Button
+                      variant="contained"
+                      onClick={handleFileUpload4}
+                      sx={{
+                        backgroundColor: colors.greenAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.greenAccent[500],
+                        },
+                      }}
+                    >
+                      Upload Binary File
+                    </Button>
+                    <input
+                      type="file"
+                      ref={fileInputRef4}
+                      style={{ display: "none" }}
+                      onChange={handleFileChange4}
+                    />
+                    <Button
+                      variant="contained"
+                      onClick={() => handleButtonClick4("graph")}
+                      sx={{
+                        backgroundColor: colors.blueAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.blueAccent[500],
+                        },
+                      }}
+                    >
+                      Generate Graph
+                    </Button>
+                    <Box display="flex" alignItems="center" gap="10px">
+                      <Button
+                        variant="contained"
+                        onClick={() => handleButtonClick4("report")}
+                        sx={{
+                          backgroundColor: colors.redAccent[400],
+                          color: colors.grey[100],
+                          textTransform: "none",
+                          padding: "10px 20px",
+                          borderRadius: "8px",
+                          "&:hover": {
+                            backgroundColor: colors.redAccent[500],
+                          },
+                        }}
+                      >
+                        Generate Report
+                      </Button>
+
+                    </Box>
+                  </Box>
+                </Box>
+              </td>
+              <td>{result4}</td>
+              {/* <td>{binaryInput}</td> */}
             </tr>
 
             <tr>
               <td>5</td>
-              <td>Bitstream Test</td>
-              <td>{BitstreamTestPValue}</td>
-              <td>{BitstreamTestResult}</td>
+              <td>
+                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                  <Box display="flex" justifyContent="center" gap="20px">
+                    <Button
+                      variant="contained"
+                      onClick={handleFileUpload5}
+                      sx={{
+                        backgroundColor: colors.greenAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.greenAccent[500],
+                        },
+                      }}
+                    >
+                      Upload Binary File
+                    </Button>
+                    <input
+                      type="file"
+                      ref={fileInputRef5}
+                      style={{ display: "none" }}
+                      onChange={handleFileChange5}
+                    />
+                    <Button
+                      variant="contained"
+                      onClick={() => handleButtonClick5("graph")}
+                      sx={{
+                        backgroundColor: colors.blueAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.blueAccent[500],
+                        },
+                      }}
+                    >
+                      Generate Graph
+                    </Button>
+                    <Box display="flex" alignItems="center" gap="10px">
+                      <Button
+                        variant="contained"
+                        onClick={() => handleButtonClick5("report")}
+                        sx={{
+                          backgroundColor: colors.redAccent[400],
+                          color: colors.grey[100],
+                          textTransform: "none",
+                          padding: "10px 20px",
+                          borderRadius: "8px",
+                          "&:hover": {
+                            backgroundColor: colors.redAccent[500],
+                          },
+                        }}
+                      >
+                        Generate Report
+                      </Button>
+
+                    </Box>
+                  </Box>
+                </Box>
+              </td>
+              <td>{result5}</td>
+              {/* <td>{binaryInput}</td> */}
             </tr>
 
             <tr>
               <td>6</td>
-              <td>Overlapping-Pairs-Sparse-Occupancy (OPSO) Test</td>
-              <td>{OPSOPValue}</td>
-              <td>{OPSOTestResult}</td>
+              <td>
+                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                  <Box display="flex" justifyContent="center" gap="20px">
+                    <Button
+                      variant="contained"
+                      onClick={handleFileUpload6}
+                      sx={{
+                        backgroundColor: colors.greenAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.greenAccent[500],
+                        },
+                      }}
+                    >
+                      Upload Binary File
+                    </Button>
+                    <input
+                      type="file"
+                      ref={fileInputRef6}
+                      style={{ display: "none" }}
+                      onChange={handleFileChange6}
+                    />
+                    <Button
+                      variant="contained"
+                      onClick={() => handleButtonClick6("graph")}
+                      sx={{
+                        backgroundColor: colors.blueAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.blueAccent[500],
+                        },
+                      }}
+                    >
+                      Generate Graph
+                    </Button>
+                    <Box display="flex" alignItems="center" gap="10px">
+                      <Button
+                        variant="contained"
+                        onClick={() => handleButtonClick6("report")}
+                        sx={{
+                          backgroundColor: colors.redAccent[400],
+                          color: colors.grey[100],
+                          textTransform: "none",
+                          padding: "10px 20px",
+                          borderRadius: "8px",
+                          "&:hover": {
+                            backgroundColor: colors.redAccent[500],
+                          },
+                        }}
+                      >
+                        Generate Report
+                      </Button>
+
+                    </Box>
+                  </Box>
+                </Box>
+              </td>
+              <td>{result6}</td>
+              {/* <td>{binaryInput}</td> */}
             </tr>
 
             <tr>
               <td>7</td>
-              <td>DNA Test</td>
-              <td>{DNATestPValue}</td>
-              <td>{DNATestResult}</td>
+              <td>
+                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                  <Box display="flex" justifyContent="center" gap="20px">
+                    <Button
+                      variant="contained"
+                      onClick={handleFileUpload7}
+                      sx={{
+                        backgroundColor: colors.greenAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.greenAccent[500],
+                        },
+                      }}
+                    >
+                      Upload Binary File
+                    </Button>
+                    <input
+                      type="file"
+                      ref={fileInputRef7}
+                      style={{ display: "none" }}
+                      onChange={handleFileChange7}
+                    />
+                    <Button
+                      variant="contained"
+                      onClick={() => handleButtonClick7("graph")}
+                      sx={{
+                        backgroundColor: colors.blueAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.blueAccent[500],
+                        },
+                      }}
+                    >
+                      Generate Graph
+                    </Button>
+                    <Box display="flex" alignItems="center" gap="10px">
+                      <Button
+                        variant="contained"
+                        onClick={() => handleButtonClick7("report")}
+                        sx={{
+                          backgroundColor: colors.redAccent[400],
+                          color: colors.grey[100],
+                          textTransform: "none",
+                          padding: "10px 20px",
+                          borderRadius: "8px",
+                          "&:hover": {
+                            backgroundColor: colors.redAccent[500],
+                          },
+                        }}
+                      >
+                        Generate Report
+                      </Button>
+
+                    </Box>
+                  </Box>
+                </Box>
+              </td>
+              <td>{result7}</td>
+              {/* <td>{binaryInput}</td> */}
             </tr>
 
             <tr>
               <td>8</td>
-              <td>Count-the-1s (stream) Test</td>
-              <td>{OneStreamTestPValue}</td>
-              <td>{OneStreamTestResult}</td>
+              <td>
+                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                  <Box display="flex" justifyContent="center" gap="20px">
+                    <Button
+                      variant="contained"
+                      onClick={handleFileUpload8}
+                      sx={{
+                        backgroundColor: colors.greenAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.greenAccent[500],
+                        },
+                      }}
+                    >
+                      Upload Binary File
+                    </Button>
+                    <input
+                      type="file"
+                      ref={fileInputRef8}
+                      style={{ display: "none" }}
+                      onChange={handleFileChange8}
+                    />
+                    <Button
+                      variant="contained"
+                      onClick={() => handleButtonClick8("graph")}
+                      sx={{
+                        backgroundColor: colors.blueAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.blueAccent[500],
+                        },
+                      }}
+                    >
+                      Generate Graph
+                    </Button>
+                    <Box display="flex" alignItems="center" gap="10px">
+                      <Button
+                        variant="contained"
+                        onClick={() => handleButtonClick8("report")}
+                        sx={{
+                          backgroundColor: colors.redAccent[400],
+                          color: colors.grey[100],
+                          textTransform: "none",
+                          padding: "10px 20px",
+                          borderRadius: "8px",
+                          "&:hover": {
+                            backgroundColor: colors.redAccent[500],
+                          },
+                        }}
+                      >
+                        Generate Report
+                      </Button>
+
+                    </Box>
+                  </Box>
+                </Box>
+              </td>
+              <td>{result8}</td>
+              {/* <td>{binaryInput}</td> */}
             </tr>
 
             <tr>
               <td>9</td>
-              <td>Count-the-1s (byte) Test</td>
-              <td>{OneByteTestPValue}</td>
-              <td>{OneByteTestResult}</td>
+              <td>
+                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                  <Box display="flex" justifyContent="center" gap="20px">
+                    <Button
+                      variant="contained"
+                      onClick={handleFileUpload9}
+                      sx={{
+                        backgroundColor: colors.greenAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.greenAccent[500],
+                        },
+                      }}
+                    >
+                      Upload Binary File
+                    </Button>
+                    <input
+                      type="file"
+                      ref={fileInputRef_nine}
+                      style={{ display: "none" }}
+                      onChange={handleFileChange9}
+                    />
+                    <Button
+                      variant="contained"
+                      onClick={() => handleButtonClick9("graph")}
+                      sx={{
+                        backgroundColor: colors.blueAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.blueAccent[500],
+                        },
+                      }}
+                    >
+                      Generate Graph
+                    </Button>
+                    <Box display="flex" alignItems="center" gap="10px">
+                      <Button
+                        variant="contained"
+                        onClick={() => handleButtonClick9("report")}
+                        sx={{
+                          backgroundColor: colors.redAccent[400],
+                          color: colors.grey[100],
+                          textTransform: "none",
+                          padding: "10px 20px",
+                          borderRadius: "8px",
+                          "&:hover": {
+                            backgroundColor: colors.redAccent[500],
+                          },
+                        }}
+                      >
+                        Generate Report
+                      </Button>
+
+                    </Box>
+                  </Box>
+                </Box>
+              </td>
+              <td>{result9}</td>
+              {/* <td>{binaryInput}</td> */}
             </tr>
 
-           
             <tr>
               <td>10</td>
-              <td>Parking Lot Test</td>
-              <td>{ParkTestPValue}</td>
-              <td>{ParkTestResult}</td>
+              <td>
+                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                  <Box display="flex" justifyContent="center" gap="20px">
+                    <Button
+                      variant="contained"
+                      onClick={handleFileUpload10}
+                      sx={{
+                        backgroundColor: colors.greenAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.greenAccent[500],
+                        },
+                      }}
+                    >
+                      Upload Binary File
+                    </Button>
+                    <input
+                      type="file"
+                      ref={fileInputRef10}
+                      style={{ display: "none" }}
+                      onChange={handleFileChange10}
+                    />
+                    <Button
+                      variant="contained"
+                      onClick={() => handleButtonClick10("graph")}
+                      sx={{
+                        backgroundColor: colors.blueAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.blueAccent[500],
+                        },
+                      }}
+                    >
+                      Generate Graph
+                    </Button>
+                    <Box display="flex" alignItems="center" gap="10px">
+                      <Button
+                        variant="contained"
+                        onClick={() => handleButtonClick10("report")}
+                        sx={{
+                          backgroundColor: colors.redAccent[400],
+                          color: colors.grey[100],
+                          textTransform: "none",
+                          padding: "10px 20px",
+                          borderRadius: "8px",
+                          "&:hover": {
+                            backgroundColor: colors.redAccent[500],
+                          },
+                        }}
+                      >
+                        Generate Report
+                      </Button>
+
+                    </Box>
+                  </Box>
+                </Box>
+              </td>
+              <td>{result10}</td>
+              {/* <td>{binaryInput}</td> */}
             </tr>
+
 
             <tr>
               <td>11</td>
-              <td>Minimum Distance Test</td>
-              <td>{MinDisTestPValue}</td>
-              <td>{MinDisTestResult}</td>
+              <td>
+                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                  <Box display="flex" justifyContent="center" gap="20px">
+                    <Button
+                      variant="contained"
+                      onClick={handleFileUpload11}
+                      sx={{
+                        backgroundColor: colors.greenAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.greenAccent[500],
+                        },
+                      }}
+                    >
+                      Upload Binary File
+                    </Button>
+                    <input
+                      type="file"
+                      ref={fileInputRef11}
+                      style={{ display: "none" }}
+                      onChange={handleFileChange11}
+                    />
+                    <Button
+                      variant="contained"
+                      onClick={() => handleButtonClick11("graph")}
+                      sx={{
+                        backgroundColor: colors.blueAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.blueAccent[500],
+                        },
+                      }}
+                    >
+                      Generate Graph
+                    </Button>
+                    <Box display="flex" alignItems="center" gap="10px">
+                      <Button
+                        variant="contained"
+                        onClick={() => handleButtonClick11("report")}
+                        sx={{
+                          backgroundColor: colors.redAccent[400],
+                          color: colors.grey[100],
+                          textTransform: "none",
+                          padding: "10px 20px",
+                          borderRadius: "8px",
+                          "&:hover": {
+                            backgroundColor: colors.redAccent[500],
+                          },
+                        }}
+                      >
+                        Generate Report
+                      </Button>
+
+                    </Box>
+                  </Box>
+                </Box>
+              </td>
+              <td>{result11}</td>
+              {/* <td>{binaryInput}</td> */}
             </tr>
 
             <tr>
               <td>12</td>
-              <td>3d Spheres Test</td>
-              <td>{SpheresTestPValue}</td>
-              <td>{SpheresTestResult}</td>
+              <td>
+                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                  <Box display="flex" justifyContent="center" gap="20px">
+                    <Button
+                      variant="contained"
+                      onClick={handleFileUpload12}
+                      sx={{
+                        backgroundColor: colors.greenAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.greenAccent[500],
+                        },
+                      }}
+                    >
+                      Upload Binary File
+                    </Button>
+                    <input
+                      type="file"
+                      ref={fileInputRef12}
+                      style={{ display: "none" }}
+                      onChange={handleFileChange12}
+                    />
+                    <Button
+                      variant="contained"
+                      onClick={() => handleButtonClick12("graph")}
+                      sx={{
+                        backgroundColor: colors.blueAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.blueAccent[500],
+                        },
+                      }}
+                    >
+                      Generate Graph
+                    </Button>
+                    <Box display="flex" alignItems="center" gap="10px">
+                      <Button
+                        variant="contained"
+                        onClick={() => handleButtonClick12("report")}
+                        sx={{
+                          backgroundColor: colors.redAccent[400],
+                          color: colors.grey[100],
+                          textTransform: "none",
+                          padding: "10px 20px",
+                          borderRadius: "8px",
+                          "&:hover": {
+                            backgroundColor: colors.redAccent[500],
+                          },
+                        }}
+                      >
+                        Generate Report
+                      </Button>
+
+                    </Box>
+                  </Box>
+                </Box>
+              </td>
+              <td>{result12}</td>
+              {/* <td>{binaryInput}</td> */}
             </tr>
 
             <tr>
               <td>13</td>
-              <td>Craps Test</td>
-              <td>{CrapsTestPValue}</td>
-              <td>{CrapsTestResult}</td>
+              <td>
+                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                  <Box display="flex" justifyContent="center" gap="20px">
+                    <Button
+                      variant="contained"
+                      onClick={handleFileUpload13}
+                      sx={{
+                        backgroundColor: colors.greenAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.greenAccent[500],
+                        },
+                      }}
+                    >
+                      Upload Binary File
+                    </Button>
+                    <input
+                      type="file"
+                      ref={fileInputRef13}
+                      style={{ display: "none" }}
+                      onChange={handleFileChange13}
+                    />
+                    <Button
+                      variant="contained"
+                      onClick={() => handleButtonClick13("graph")}
+                      sx={{
+                        backgroundColor: colors.blueAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.blueAccent[500],
+                        },
+                      }}
+                    >
+                      Generate Graph
+                    </Button>
+                    <Box display="flex" alignItems="center" gap="10px">
+                      <Button
+                        variant="contained"
+                        onClick={() => handleButtonClick13("report")}
+                        sx={{
+                          backgroundColor: colors.redAccent[400],
+                          color: colors.grey[100],
+                          textTransform: "none",
+                          padding: "10px 20px",
+                          borderRadius: "8px",
+                          "&:hover": {
+                            backgroundColor: colors.redAccent[500],
+                          },
+                        }}
+                      >
+                        Generate Report
+                      </Button>
+
+                    </Box>
+                  </Box>
+                </Box>
+              </td>
+              <td>{result13}</td>
+              {/* <td>{binaryInput}</td> */}
             </tr>
 
             <tr>
               <td>14</td>
-              <td>Marsaglia-Tsang GCD Test</td>
-              <td>{GcdTestPValue}</td>
-              <td>{GcdTestResult}</td>
+              <td>
+                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                  <Box display="flex" justifyContent="center" gap="20px">
+                    <Button
+                      variant="contained"
+                      onClick={handleFileUpload14}
+                      sx={{
+                        backgroundColor: colors.greenAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.greenAccent[500],
+                        },
+                      }}
+                    >
+                      Upload Binary File
+                    </Button>
+                    <input
+                      type="file"
+                      ref={fileInputRef14}
+                      style={{ display: "none" }}
+                      onChange={handleFileChange14}
+                    />
+                    <Button
+                      variant="contained"
+                      onClick={() => handleButtonClick14("graph")}
+                      sx={{
+                        backgroundColor: colors.blueAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.blueAccent[500],
+                        },
+                      }}
+                    >
+                      Generate Graph
+                    </Button>
+                    <Box display="flex" alignItems="center" gap="10px">
+                      <Button
+                        variant="contained"
+                        onClick={() => handleButtonClick14("report")}
+                        sx={{
+                          backgroundColor: colors.redAccent[400],
+                          color: colors.grey[100],
+                          textTransform: "none",
+                          padding: "10px 20px",
+                          borderRadius: "8px",
+                          "&:hover": {
+                            backgroundColor: colors.redAccent[500],
+                          },
+                        }}
+                      >
+                        Generate Report
+                      </Button>
+
+                    </Box>
+                  </Box>
+                </Box>
+              </td>
+              <td>{result14}</td>
+              {/* <td>{binaryInput}</td> */}
             </tr>
 
             <tr>
               <td>15</td>
-              <td>Marsaglia-Tsang Simple GCD Test</td>
-              <td>{SimpleGcdTestPValue}</td>
-              <td>{SimpleGcdTestResult}</td>
+              <td>
+                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                  <Box display="flex" justifyContent="center" gap="20px">
+                    <Button
+                      variant="contained"
+                      onClick={handleFileUpload15}
+                      sx={{
+                        backgroundColor: colors.greenAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.greenAccent[500],
+                        },
+                      }}
+                    >
+                      Upload Binary File
+                    </Button>
+                    <input
+                      type="file"
+                      ref={fileInputRef15}
+                      style={{ display: "none" }}
+                      onChange={handleFileChange15}
+                    />
+                    <Button
+                      variant="contained"
+                      onClick={() => handleButtonClick15("graph")}
+                      sx={{
+                        backgroundColor: colors.blueAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.blueAccent[500],
+                        },
+                      }}
+                    >
+                      Generate Graph
+                    </Button>
+                    <Box display="flex" alignItems="center" gap="10px">
+                      <Button
+                        variant="contained"
+                        onClick={() => handleButtonClick15("report")}
+                        sx={{
+                          backgroundColor: colors.redAccent[400],
+                          color: colors.grey[100],
+                          textTransform: "none",
+                          padding: "10px 20px",
+                          borderRadius: "8px",
+                          "&:hover": {
+                            backgroundColor: colors.redAccent[500],
+                          },
+                        }}
+                      >
+                        Generate Report
+                      </Button>
+
+                    </Box>
+                  </Box>
+                </Box>
+              </td>
+              <td>{result15}</td>
+              {/* <td>{binaryInput}</td> */}
             </tr>
 
-            
             <tr>
               <td>16</td>
-              <td>Generalized Minimum Distance Test</td>
-              <td>{GenMinDisTestPValue}</td>
-              <td>{GenMinDisTestResult}</td>
+              <td>
+                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                  <Box display="flex" justifyContent="center" gap="20px">
+                    <Button
+                      variant="contained"
+                      onClick={handleFileUpload16}
+                      sx={{
+                        backgroundColor: colors.greenAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.greenAccent[500],
+                        },
+                      }}
+                    >
+                      Upload Binary File
+                    </Button>
+                    <input
+                      type="file"
+                      ref={fileInputRef16}
+                      style={{ display: "none" }}
+                      onChange={handleFileChange16}
+                    />
+                    <Button
+                      variant="contained"
+                      onClick={() => handleButtonClick16("graph")}
+                      sx={{
+                        backgroundColor: colors.blueAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.blueAccent[500],
+                        },
+                      }}
+                    >
+                      Generate Graph
+                    </Button>
+                    <Box display="flex" alignItems="center" gap="10px">
+                      <Button
+                        variant="contained"
+                        onClick={() => handleButtonClick16("report")}
+                        sx={{
+                          backgroundColor: colors.redAccent[400],
+                          color: colors.grey[100],
+                          textTransform: "none",
+                          padding: "10px 20px",
+                          borderRadius: "8px",
+                          "&:hover": {
+                            backgroundColor: colors.redAccent[500],
+                          },
+                        }}
+                      >
+                        Generate Report
+                      </Button>
+
+                    </Box>
+                  </Box>
+                </Box>
+              </td>
+              <td>{result16}</td>
+              {/* <td>{binaryInput}</td> */}
             </tr>
 
-            
             <tr>
               <td>17</td>
-              <td>TestU01 Linear Complexity Test</td>
-              <td>{LCTestPValue}</td>
-              <td>{LCTestResult}</td>
+              <td>
+                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                  <Box display="flex" justifyContent="center" gap="20px">
+                    <Button
+                      variant="contained"
+                      onClick={handleFileUpload17}
+                      sx={{
+                        backgroundColor: colors.greenAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.greenAccent[500],
+                        },
+                      }}
+                    >
+                      Upload Binary File
+                    </Button>
+                    <input
+                      type="file"
+                      ref={fileInputRef17}
+                      style={{ display: "none" }}
+                      onChange={handleFileChange17}
+                    />
+                    <Button
+                      variant="contained"
+                      onClick={() => handleButtonClick17("graph")}
+                      sx={{
+                        backgroundColor: colors.blueAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.blueAccent[500],
+                        },
+                      }}
+                    >
+                      Generate Graph
+                    </Button>
+                    <Box display="flex" alignItems="center" gap="10px">
+                      <Button
+                        variant="contained"
+                        onClick={() => handleButtonClick17("report")}
+                        sx={{
+                          backgroundColor: colors.redAccent[400],
+                          color: colors.grey[100],
+                          textTransform: "none",
+                          padding: "10px 20px",
+                          borderRadius: "8px",
+                          "&:hover": {
+                            backgroundColor: colors.redAccent[500],
+                          },
+                        }}
+                      >
+                        Generate Report
+                      </Button>
+
+                    </Box>
+                  </Box>
+                </Box>
+              </td>
+              <td>{result17}</td>
+              {/* <td>{binaryInput}</td> */}
             </tr>
 
-            
             <tr>
               <td>18</td>
-              <td>TestU01 Longest Repeated Substring Test</td>
-              <td>{RepSubTestPValue}</td>
-              <td>{RepSubTestResult}</td>
+              <td>
+                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                  <Box display="flex" justifyContent="center" gap="20px">
+                    <Button
+                      variant="contained"
+                      onClick={handleFileUpload18}
+                      sx={{
+                        backgroundColor: colors.greenAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.greenAccent[500],
+                        },
+                      }}
+                    >
+                      Upload Binary File
+                    </Button>
+                    <input
+                      type="file"
+                      ref={fileInputRef18}
+                      style={{ display: "none" }}
+                      onChange={handleFileChange18}
+                    />
+                    <Button
+                      variant="contained"
+                      onClick={() => handleButtonClick18("graph")}
+                      sx={{
+                        backgroundColor: colors.blueAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.blueAccent[500],
+                        },
+                      }}
+                    >
+                      Generate Graph
+                    </Button>
+                    <Box display="flex" alignItems="center" gap="10px">
+                      <Button
+                        variant="contained"
+                        onClick={() => handleButtonClick18("report")}
+                        sx={{
+                          backgroundColor: colors.redAccent[400],
+                          color: colors.grey[100],
+                          textTransform: "none",
+                          padding: "10px 20px",
+                          borderRadius: "8px",
+                          "&:hover": {
+                            backgroundColor: colors.redAccent[500],
+                          },
+                        }}
+                      >
+                        Generate Report
+                      </Button>
+
+                    </Box>
+                  </Box>
+                </Box>
+              </td>
+              <td>{result18}</td>
+              {/* <td>{binaryInput}</td> */}
             </tr>
 
-            
             <tr>
               <td>19</td>
-              <td>TestU01 Matrix Rank Test</td>
-              <td>{MatrixRankTestPValue}</td>
-              <td>{MatrixRankTestResult}</td>
+              <td>
+                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                  <Box display="flex" justifyContent="center" gap="20px">
+                    <Button
+                      variant="contained"
+                      onClick={handleFileUpload19}
+                      sx={{
+                        backgroundColor: colors.greenAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.greenAccent[500],
+                        },
+                      }}
+                    >
+                      Upload Binary File
+                    </Button>
+                    <input
+                      type="file"
+                      ref={fileInputRef19}
+                      style={{ display: "none" }}
+                      onChange={handleFileChange19}
+                    />
+                    <Button
+                      variant="contained"
+                      onClick={() => handleButtonClick19("graph")}
+                      sx={{
+                        backgroundColor: colors.blueAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.blueAccent[500],
+                        },
+                      }}
+                    >
+                      Generate Graph
+                    </Button>
+                    <Box display="flex" alignItems="center" gap="10px">
+                      <Button
+                        variant="contained"
+                        onClick={() => handleButtonClick19("report")}
+                        sx={{
+                          backgroundColor: colors.redAccent[400],
+                          color: colors.grey[100],
+                          textTransform: "none",
+                          padding: "10px 20px",
+                          borderRadius: "8px",
+                          "&:hover": {
+                            backgroundColor: colors.redAccent[500],
+                          },
+                        }}
+                      >
+                        Generate Report
+                      </Button>
+
+                    </Box>
+                  </Box>
+                </Box>
+              </td>
+              <td>{result19}</td>
+              {/* <td>{binaryInput}</td> */}
             </tr>
 
-            
             <tr>
               <td>20</td>
-              <td>Overlapping-Quadruples-Sparse-Occupancy (OQSO) Test</td>
-              <td>{OQSOTestPValue}</td>
-              <td>{OQSOTestResult}</td>
+              <td>
+                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                  <Box display="flex" justifyContent="center" gap="20px">
+                    <Button
+                      variant="contained"
+                      onClick={handleFileUpload20}
+                      sx={{
+                        backgroundColor: colors.greenAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.greenAccent[500],
+                        },
+                      }}
+                    >
+                      Upload Binary File
+                    </Button>
+                    <input
+                      type="file"
+                      ref={fileInputRef20}
+                      style={{ display: "none" }}
+                      onChange={handleFileChange20}
+                    />
+                    <Button
+                      variant="contained"
+                      onClick={() => handleButtonClick20("graph")}
+                      sx={{
+                        backgroundColor: colors.blueAccent[400],
+                        color: colors.grey[100],
+                        textTransform: "none",
+                        padding: "10px 20px",
+                        borderRadius: "8px",
+                        "&:hover": {
+                          backgroundColor: colors.blueAccent[500],
+                        },
+                      }}
+                    >
+                      Generate Graph
+                    </Button>
+                    <Box display="flex" alignItems="center" gap="10px">
+                      <Button
+                        variant="contained"
+                        onClick={() => handleButtonClick20("report")}
+                        sx={{
+                          backgroundColor: colors.redAccent[400],
+                          color: colors.grey[100],
+                          textTransform: "none",
+                          padding: "10px 20px",
+                          borderRadius: "8px",
+                          "&:hover": {
+                            backgroundColor: colors.redAccent[500],
+                          },
+                        }}
+                      >
+                        Generate Report
+                      </Button>
+
+                    </Box>
+                  </Box>
+                </Box>
+              </td>
+              <td>{result20}</td>
+              {/* <td>{binaryInput}</td> */}
             </tr>
-
-            
-
-           
 
           </tbody>
         </Box>
       </Box>
+
+
     </Box>
   );
 };

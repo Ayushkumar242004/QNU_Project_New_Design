@@ -62,6 +62,9 @@ urlpatterns = [
     #graph generation
     path('graph-generation/', views.create_graph, name='create_graph'),
     path('graph-generaion-dieharder/', views.create_graph_dieharder, name='create_graph_dieharder'),
+    
+    path('generate_final_ans/', views.generate_final_ans, name='generate_final_ans'),
+    path('generate_final_ans_dieharder/', views.generate_final_ans_dieharder, name='generate_final_ans_dieharder'),
 ]
 
 # http://127.0.0.1:8000/sse_binary_example/

@@ -3811,3 +3811,204 @@ def generate_pdf_report_server(request):
 
     return response
 
+@csrf_exempt
+def generate_final_ans(request):
+    global global_graph_image
+
+    try:
+        data = json.loads(request.body)
+        binary_data = data.get('binary_data', '')
+        print('Received binary data:', binary_data)
+    except json.JSONDecodeError as e:
+        print('Error parsing JSON:', e)
+        return HttpResponse("Invalid JSON data.", status=400)
+
+    # Initialize x to 0
+    x = 0
+
+    # Perform the tests and check results
+    try:
+        frequency_test_result = FrequencyTest.monobit_test(binary_data)[1]
+        if frequency_test_result:
+            x += 1
+
+        frequency_test_block_result = FrequencyTest.block_frequency(binary_data)[1]
+        if frequency_test_block_result:
+            x += 1
+
+        runs_test_result = RunTest.run_test(binary_data)[1]
+        if runs_test_result:
+            x += 1
+
+        approximate_entropy_test_result = ApproximateEntropy.approximate_entropy_test(binary_data)[1]
+        if approximate_entropy_test_result:
+            x += 1
+
+        longest_run_of_one_test_result = RunTest.longest_one_block_test(binary_data)[1]
+        if longest_run_of_one_test_result:
+            x += 1
+
+        binary_matrix_rank_test_result = Matrix.binary_matrix_rank_text(binary_data)[1]
+        if binary_matrix_rank_test_result:
+            x += 1
+
+        dft_test_result = SpectralTest.spectral_test(binary_data)[1]
+        if dft_test_result:
+            x += 1
+
+        non_overlapping_test_result = TemplateMatching.non_overlapping_test(binary_data)[1]
+        if non_overlapping_test_result:
+            x += 1
+
+        overlapping_test_result = TemplateMatching.overlapping_patterns(binary_data)[1]
+        if overlapping_test_result:
+            x += 1
+
+        maurers_universal_test_result = Universal.statistical_test(binary_data)[1]
+        if maurers_universal_test_result:
+            x += 1
+
+        linear_complexity_test_result = ComplexityTest.linear_complexity_test(binary_data)[1]
+        if linear_complexity_test_result:
+            x += 1
+
+        serial_test_result = Serial.serial_test(binary_data)[1]
+        if serial_test_result:
+            x += 1
+
+        cumulative_sums_test_result = CumulativeSums.cumulative_sums_test(binary_data)[1]
+        if cumulative_sums_test_result:
+            x += 1
+
+        random_excursions_test_result = RandomExcursions.random_excursions_test(binary_data)[1]
+        if random_excursions_test_result:
+            x += 1
+
+        random_excursion_variant_test_result = RandomExcursions.variant_test(binary_data)[1]
+        if random_excursion_variant_test_result:
+            x += 1
+
+        autocorrelation_test_result = AutocorrelationTest.autocorrelation_test(binary_data)[1]
+        if autocorrelation_test_result:
+            x += 1
+
+        adaptive_statistical_test_result = AdaptiveStatisticalTest.adaptive_statistical_test(binary_data)[1]
+        if adaptive_statistical_test_result:
+            x += 1
+    except Exception as e:
+        print(f"Error during testing: {e}")
+        return HttpResponse("Error during randomness tests.", status=500)
+
+    # Determine if the number is random or not
+    final_text = 'random number' if x > 10 else 'non-random number'
+    
+    # Return the result as an HTTP response
+    return HttpResponse(final_text, content_type="text/plain")
+
+
+
+@csrf_exempt
+def generate_final_ans_dieharder(request):
+    global global_graph_image
+
+    try:
+        data = json.loads(request.body)
+        binary_data = data.get('binary_data', '')
+        print('Received binary data:', binary_data)
+    except json.JSONDecodeError as e:
+        print('Error parsing JSON:', e)
+        return HttpResponse("Invalid JSON data.", status=400)
+
+    # Initialize x to 0
+    x = 0
+
+    # Perform the tests and check results
+    try:
+        birthday_test_result = BirthdaySpacingsTest.BirthdaySpacingsTest(binary_data)[1]
+        if birthday_test_result:
+            x += 1
+
+        parking_test_block_result = ParkingLotTest.ParkingLotTest(binary_data)[1]
+        if parking_test_block_result:
+            x += 1
+
+        overlapping_5_test_result = Overlapping5PermutationTest.Overlapping5PermutationTest(binary_data)[1]
+        if overlapping_5_test_result:
+            x += 1
+
+        minimum_distance_test_result = MinimumDistanceTest.MinimumDistanceTest(binary_data)[1]
+        if minimum_distance_test_result:
+            x += 1
+
+        rank_31_test_result = Ranks31x31MatricesTest.Ranks31x31MatricesTest(binary_data)[1]
+        if rank_31_test_result:
+            x += 1
+
+        spheres_test_result = Spheres3DTest.Spheres3DTest(binary_data)[1]
+        if spheres_test_result:
+            x += 1
+
+        rank_32_result = Ranks32x32MatricesTest.Ranks32x32MatricesTest(binary_data)[1]
+        if rank_32_result:
+            x += 1
+
+        craps_test_result = CrapsTest.CrapsTest(binary_data)[1]
+        if craps_test_result:
+            x += 1
+
+        bitstream_test_result = BitstreamTest.BitstreamTest(binary_data)[1]
+        if bitstream_test_result:
+            x += 1
+
+        gcd_test_result = MarsagliaTsangGCDTest.MarsagliaTsangGCDTest(binary_data)[1]
+        if gcd_test_result:
+            x += 1
+
+        opso_test_result = OPSOTest.OPSOTest(binary_data)[1]
+        if opso_test_result:
+            x += 1
+
+        oqsq_test_result = OQSOTest.OQSOTest(binary_data)[1]
+        if oqsq_test_result:
+            x += 1
+
+        dna_test_result = DNATest.DNATest(binary_data)[1]
+        if dna_test_result:
+            x += 1
+
+        count_one_stream_test_result = CountThe1sStreamTest.CountThe1sStreamTest(binary_data)[1]
+        if count_one_stream_test_result:
+            x += 1
+
+        count_one_byte_test_result = CountThe1sByteTest.CountThe1sByteTest(binary_data)[1]
+        if count_one_byte_test_result:
+            x += 1
+
+        simple_gcd_test_result = MarsagliaTsangSimpleGCDTest.MarsagliaTsangSimpleGCDTest(binary_data)[1]
+        if simple_gcd_test_result:
+            x += 1
+
+        generalized_minimum_test_result = GeneralizedMinimumDistanceTest.GeneralizedMinimumDistanceTest(binary_data)[1]
+        if generalized_minimum_test_result:
+            x += 1
+
+        u01_linear_complexity_test_result = TestU01LinearComplexityTest.TestU01LinearComplexityTest(binary_data)[1]
+        if u01_linear_complexity_test_result:
+            x += 1
+
+        u01_longest_repeated_test_result = TestU01LongestRepeatedSubstringTest.TestU01LongestRepeatedSubstringTest(binary_data)[1]
+        if u01_longest_repeated_test_result:
+            x += 1
+
+        u01_matrix_rank_test_result = TestU01MatrixRankTest.TestU01MatrixRankTest(binary_data)[1]
+        if u01_matrix_rank_test_result:
+            x += 1
+    except Exception as e:
+        print(f"Error during testing: {e}")
+        return HttpResponse("Error during randomness tests.", status=500)
+
+    # Determine if the number is random or not
+    final_text = 'random number' if x > 10 else 'non-random number'
+    
+    # Return the result as an HTTP response
+    return HttpResponse(final_text, content_type="text/plain")
