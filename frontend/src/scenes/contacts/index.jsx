@@ -3,6 +3,7 @@ import { tokens } from "../../theme";
 import Header from "../../components/Header";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios"; // Make sure axios is imported
+import CircularProgress from '@mui/material/CircularProgress';
 
 const MAX_STACK_SIZE_ESTIMATE = 1 * 1024 * 1024;
 
@@ -74,7 +75,47 @@ const Team = () => {
   const [result20, setResult20] = useState(null);
 
 
+  const [uploadTime, setUploadTime] = useState("");
+  const [uploadTime2, setUploadTime2] = useState("");
+  const [uploadTime3, setUploadTime3] = useState("");
+  const [uploadTime4, setUploadTime4] = useState("");
+  const [uploadTime5, setUploadTime5] = useState("");
+  const [uploadTime6, setUploadTime6] = useState("");
+  const [uploadTime7, setUploadTime7] = useState("");
+  const [uploadTime8, setUploadTime8] = useState("");
+  const [uploadTime9, setUploadTime9] = useState("");
+  const [uploadTime10, setUploadTime10] = useState("");
+  const [uploadTime11, setUploadTime11] = useState("");
+  const [uploadTime12, setUploadTime12] = useState("");
+  const [uploadTime13, setUploadTime13] = useState("");
+  const [uploadTime14, setUploadTime14] = useState("");
+  const [uploadTime15, setUploadTime15] = useState("");
+  const [uploadTime16, setUploadTime16] = useState("");
+  const [uploadTime17, setUploadTime17] = useState("");
+  const [uploadTime18, setUploadTime18] = useState("");
+  const [uploadTime19, setUploadTime19] = useState("");
+  const [uploadTime20, setUploadTime20] = useState("");
 
+  const [fileName, setFileName] = useState(""); // New state to store filename
+  const [fileName2, setFileName2] = useState(""); // New state to store filename
+  const [fileName3, setFileName3] = useState(""); // New state to store filename
+  const [fileName4, setFileName4] = useState(""); // New state to store filename
+  const [fileName5, setFileName5] = useState(""); // New state to store filename
+  const [fileName6, setFileName6] = useState(""); // New state to store filename
+  const [fileName7, setFileName7] = useState(""); // New state to store filename
+  const [fileName8, setFileName8] = useState(""); // New state to store filename
+  const [fileName9, setFileName9] = useState(""); // New state to store filename
+  const [fileName10, setFileName10] = useState(""); // New state to store filename
+  const [fileName11, setFileName11] = useState(""); // New state to store filename
+  const [fileName12, setFileName12] = useState(""); // New state to store filename
+  const [fileName13, setFileName13] = useState(""); // New state to store filename
+  const [fileName14, setFileName14] = useState(""); // New state to store filename
+  const [fileName15, setFileName15] = useState(""); // New state to store filename
+  const [fileName16, setFileName16] = useState(""); // New state to store filename
+  const [fileName17, setFileName17] = useState(""); // New state to store filename
+  const [fileName18, setFileName18] = useState(""); // New state to store filename
+  const [fileName19, setFileName19] = useState(""); // New state to store filename
+  const [fileName20, setFileName20] = useState(""); // New state to store filename
 
 
   const handleFileUpload = () => {
@@ -146,6 +187,7 @@ const Team = () => {
       alert("Warning: The selected file is too large. Please choose a smaller file.");
       return;
     }
+    setFileName(selectedFile.name);
 
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -156,7 +198,8 @@ const Team = () => {
 
       // Update binaryInput state with new binary data
       setBinaryInput(textData);
-
+      const currentTime = new Date().toLocaleTimeString();
+      setUploadTime(currentTime);
       // Reset the file input value to allow the same file to be uploaded again
       event.target.value = "";
     };
@@ -171,6 +214,7 @@ const Team = () => {
       alert("Warning: The selected file is too large. Please choose a smaller file.");
       return;
     }
+    setFileName2(selectedFile.name);
 
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -181,7 +225,8 @@ const Team = () => {
 
       // Update binaryInput state with new binary data
       setBinaryInput2(textData);
-
+      const currentTime = new Date().toLocaleTimeString();
+      setUploadTime2(currentTime);
       // Reset the file input value to allow the same file to be uploaded again
       event.target.value = "";
     };
@@ -196,6 +241,7 @@ const Team = () => {
       alert("Warning: The selected file is too large. Please choose a smaller file.");
       return;
     }
+    setFileName3(selectedFile.name);
 
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -206,7 +252,8 @@ const Team = () => {
 
       // Update binaryInput state with new binary data
       setBinaryInput3(textData);
-
+      const currentTime = new Date().toLocaleTimeString();
+      setUploadTime3(currentTime);
       // Reset the file input value to allow the same file to be uploaded again
       event.target.value = "";
     };
@@ -221,6 +268,7 @@ const Team = () => {
       alert("Warning: The selected file is too large. Please choose a smaller file.");
       return;
     }
+    setFileName4(selectedFile.name);
 
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -231,7 +279,8 @@ const Team = () => {
 
       // Update binaryInput state with new binary data
       setBinaryInput4(textData);
-
+      const currentTime = new Date().toLocaleTimeString();
+      setUploadTime4(currentTime);
       // Reset the file input value to allow the same file to be uploaded again
       event.target.value = "";
     };
@@ -246,6 +295,7 @@ const Team = () => {
       alert("Warning: The selected file is too large. Please choose a smaller file.");
       return;
     }
+    setFileName5(selectedFile.name);
 
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -256,7 +306,8 @@ const Team = () => {
 
       // Update binaryInput state with new binary data
       setBinaryInput5(textData);
-
+      const currentTime = new Date().toLocaleTimeString();
+      setUploadTime5(currentTime);
       // Reset the file input value to allow the same file to be uploaded again
       event.target.value = "";
     };
@@ -271,6 +322,7 @@ const Team = () => {
       alert("Warning: The selected file is too large. Please choose a smaller file.");
       return;
     }
+    setFileName6(selectedFile.name);
 
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -281,7 +333,8 @@ const Team = () => {
 
       // Update binaryInput state with new binary data
       setBinaryInput6(textData);
-
+      const currentTime = new Date().toLocaleTimeString();
+      setUploadTime6(currentTime);
       // Reset the file input value to allow the same file to be uploaded again
       event.target.value = "";
     };
@@ -296,6 +349,7 @@ const Team = () => {
       alert("Warning: The selected file is too large. Please choose a smaller file.");
       return;
     }
+    setFileName7(selectedFile.name);
 
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -306,7 +360,8 @@ const Team = () => {
 
       // Update binaryInput state with new binary data
       setBinaryInput7(textData);
-
+      const currentTime = new Date().toLocaleTimeString();
+      setUploadTime7(currentTime);
       // Reset the file input value to allow the same file to be uploaded again
       event.target.value = "";
     };
@@ -321,6 +376,7 @@ const Team = () => {
       alert("Warning: The selected file is too large. Please choose a smaller file.");
       return;
     }
+    setFileName8(selectedFile.name);
 
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -331,7 +387,8 @@ const Team = () => {
 
       // Update binaryInput state with new binary data
       setBinaryInput8(textData);
-
+      const currentTime = new Date().toLocaleTimeString();
+      setUploadTime8(currentTime);
       // Reset the file input value to allow the same file to be uploaded again
       event.target.value = "";
     };
@@ -346,6 +403,7 @@ const Team = () => {
       alert("Warning: The selected file is too large. Please choose a smaller file.");
       return;
     }
+    setFileName9(selectedFile.name);
 
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -356,7 +414,8 @@ const Team = () => {
 
       // Update binaryInput state with new binary data
       setBinaryInput9(textData);
-
+      const currentTime = new Date().toLocaleTimeString();
+      setUploadTime9(currentTime);
       // Reset the file input value to allow the same file to be uploaded again
       event.target.value = "";
     };
@@ -371,6 +430,7 @@ const Team = () => {
       alert("Warning: The selected file is too large. Please choose a smaller file.");
       return;
     }
+    setFileName10(selectedFile.name);
 
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -381,7 +441,8 @@ const Team = () => {
 
       // Update binaryInput state with new binary data
       setBinaryInput10(textData);
-
+      const currentTime = new Date().toLocaleTimeString();
+      setUploadTime10(currentTime);
       // Reset the file input value to allow the same file to be uploaded again
       event.target.value = "";
     };
@@ -396,6 +457,7 @@ const Team = () => {
       alert("Warning: The selected file is too large. Please choose a smaller file.");
       return;
     }
+    setFileName11(selectedFile.name);
 
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -406,7 +468,8 @@ const Team = () => {
 
       // Update binaryInput state with new binary data
       setBinaryInput11(textData);
-
+      const currentTime = new Date().toLocaleTimeString();
+      setUploadTime11(currentTime);
       // Reset the file input value to allow the same file to be uploaded again
       event.target.value = "";
     };
@@ -421,6 +484,7 @@ const Team = () => {
       alert("Warning: The selected file is too large. Please choose a smaller file.");
       return;
     }
+    setFileName12(selectedFile.name);
 
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -431,7 +495,8 @@ const Team = () => {
 
       // Update binaryInput state with new binary data
       setBinaryInput12(textData);
-
+      const currentTime = new Date().toLocaleTimeString();
+      setUploadTime12(currentTime);
       // Reset the file input value to allow the same file to be uploaded again
       event.target.value = "";
     };
@@ -446,6 +511,7 @@ const Team = () => {
       alert("Warning: The selected file is too large. Please choose a smaller file.");
       return;
     }
+    setFileName13(selectedFile.name);
 
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -456,7 +522,8 @@ const Team = () => {
 
       // Update binaryInput state with new binary data
       setBinaryInput13(textData);
-
+      const currentTime = new Date().toLocaleTimeString();
+      setUploadTime13(currentTime);
       // Reset the file input value to allow the same file to be uploaded again
       event.target.value = "";
     };
@@ -471,6 +538,7 @@ const Team = () => {
       alert("Warning: The selected file is too large. Please choose a smaller file.");
       return;
     }
+    setFileName14(selectedFile.name);
 
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -481,7 +549,8 @@ const Team = () => {
 
       // Update binaryInput state with new binary data
       setBinaryInput14(textData);
-
+      const currentTime = new Date().toLocaleTimeString();
+      setUploadTime14(currentTime);
       // Reset the file input value to allow the same file to be uploaded again
       event.target.value = "";
     };
@@ -496,6 +565,7 @@ const Team = () => {
       alert("Warning: The selected file is too large. Please choose a smaller file.");
       return;
     }
+    setFileName15(selectedFile.name);
 
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -506,7 +576,8 @@ const Team = () => {
 
       // Update binaryInput state with new binary data
       setBinaryInput15(textData);
-
+      const currentTime = new Date().toLocaleTimeString();
+      setUploadTime15(currentTime);
       // Reset the file input value to allow the same file to be uploaded again
       event.target.value = "";
     };
@@ -521,6 +592,7 @@ const Team = () => {
       alert("Warning: The selected file is too large. Please choose a smaller file.");
       return;
     }
+    setFileName16(selectedFile.name);
 
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -531,7 +603,8 @@ const Team = () => {
 
       // Update binaryInput state with new binary data
       setBinaryInput16(textData);
-
+      const currentTime = new Date().toLocaleTimeString();
+      setUploadTime16(currentTime);
       // Reset the file input value to allow the same file to be uploaded again
       event.target.value = "";
     };
@@ -546,6 +619,7 @@ const Team = () => {
       alert("Warning: The selected file is too large. Please choose a smaller file.");
       return;
     }
+    setFileName17(selectedFile.name);
 
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -556,7 +630,8 @@ const Team = () => {
 
       // Update binaryInput state with new binary data
       setBinaryInput17(textData);
-
+      const currentTime = new Date().toLocaleTimeString();
+      setUploadTime17(currentTime);
       // Reset the file input value to allow the same file to be uploaded again
       event.target.value = "";
     };
@@ -571,6 +646,7 @@ const Team = () => {
       alert("Warning: The selected file is too large. Please choose a smaller file.");
       return;
     }
+    setFileName18(selectedFile.name);
 
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -581,7 +657,8 @@ const Team = () => {
 
       // Update binaryInput state with new binary data
       setBinaryInput18(textData);
-
+      const currentTime = new Date().toLocaleTimeString();
+      setUploadTime18(currentTime);
       // Reset the file input value to allow the same file to be uploaded again
       event.target.value = "";
     };
@@ -596,6 +673,7 @@ const Team = () => {
       alert("Warning: The selected file is too large. Please choose a smaller file.");
       return;
     }
+    setFileName19(selectedFile.name);
 
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -606,7 +684,8 @@ const Team = () => {
 
       // Update binaryInput state with new binary data
       setBinaryInput19(textData);
-
+      const currentTime = new Date().toLocaleTimeString();
+      setUploadTime19(currentTime);
       // Reset the file input value to allow the same file to be uploaded again
       event.target.value = "";
     };
@@ -621,6 +700,7 @@ const Team = () => {
       alert("Warning: The selected file is too large. Please choose a smaller file.");
       return;
     }
+    setFileName20(selectedFile.name);
 
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -631,40 +711,83 @@ const Team = () => {
 
       // Update binaryInput state with new binary data
       setBinaryInput20(textData);
-
+      const currentTime = new Date().toLocaleTimeString();
+      setUploadTime20(currentTime);
       // Reset the file input value to allow the same file to be uploaded again
       event.target.value = "";
     };
     reader.readAsArrayBuffer(selectedFile);
   };
 
+  const [loadingProgress, setLoadingProgress] = useState(0);
+  const [loadingProgress2, setLoadingProgress2] = useState(0);
+  const [loadingProgress3, setLoadingProgress3] = useState(0);
+  const [loadingProgress4, setLoadingProgress4] = useState(0);
+  const [loadingProgress5, setLoadingProgress5] = useState(0);
+  const [loadingProgress6, setLoadingProgress6] = useState(0);
+  const [loadingProgress7, setLoadingProgress7] = useState(0);
+  const [loadingProgress8, setLoadingProgress8] = useState(0);
+  const [loadingProgress9, setLoadingProgress9] = useState(0);
+  const [loadingProgress10, setLoadingProgress10] = useState(0);
+  const [loadingProgress11, setLoadingProgress11] = useState(0);
+  const [loadingProgress12, setLoadingProgress12] = useState(0);
+  const [loadingProgress13, setLoadingProgress13] = useState(0);
+  const [loadingProgress14, setLoadingProgress14] = useState(0);
+  const [loadingProgress15, setLoadingProgress15] = useState(0);
+  const [loadingProgress16, setLoadingProgress16] = useState(0);
+  const [loadingProgress17, setLoadingProgress17] = useState(0);
+  const [loadingProgress18, setLoadingProgress18] = useState(0);
+  const [loadingProgress19, setLoadingProgress19] = useState(0);
+  const [loadingProgress20, setLoadingProgress20] = useState(0);
+
 
   useEffect(() => {
     if (!binaryInput) return; // Do not fetch if binaryInput is empty
 
     const fetchResult = async () => {
-      try {
-        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput });
-        setResult(response.data); // Set the response data
+      setLoadingProgress(0); // Start loading from 0%
 
+      try {
+        let progressInterval = setInterval(() => {
+          setLoadingProgress((prev) => (prev < 90 ? prev + 10 : prev));
+        }, 500); // Increment progress every 500ms until 90%
+
+        const response = await axios.post("http://localhost:8000/generate_final_ans_dieharder/", {
+          binary_data: binaryInput,
+        });
+
+        clearInterval(progressInterval); // Stop the interval
+        setLoadingProgress(100); // Set progress to 100% after response is received
+        setResult(response.data); // Set the result data
       } catch (error) {
         console.error("Error executing generating final answer:", error);
+        setLoadingProgress(0); // Reset progress in case of failure
       }
     };
 
     fetchResult();
   }, [binaryInput]);
 
+
   useEffect(() => {
     if (!binaryInput2) return; // Do not fetch if binaryInput is empty
 
     const fetchResult = async () => {
+      setLoadingProgress2(0);
       try {
+        let progressInterval = setInterval(() => {
+          setLoadingProgress2((prev) => (prev < 90 ? prev + 10 : prev));
+        }, 500); // Increment progress every 500ms until 90%
+
+
         const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput2 });
+        clearInterval(progressInterval); // Stop the interval
+        setLoadingProgress2(100);
         setResult2(response.data); // Set the response data
 
       } catch (error) {
         console.error("Error executing generating final answer:", error);
+        setLoadingProgress(0);
       }
     };
 
@@ -673,14 +796,20 @@ const Team = () => {
 
   useEffect(() => {
     if (!binaryInput3) return; // Do not fetch if binaryInput is empty
-
+    setLoadingProgress3(0);
     const fetchResult = async () => {
       try {
+        let progressInterval = setInterval(() => {
+          setLoadingProgress3((prev) => (prev < 90 ? prev + 10 : prev));
+        }, 500);
         const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput3 });
+        clearInterval(progressInterval); // Stop the interval
+        setLoadingProgress3(100);
         setResult3(response.data); // Set the response data
 
       } catch (error) {
         console.error("Error executing generating final answer:", error);
+        setLoadingProgress(0);
       }
     };
 
@@ -691,11 +820,18 @@ const Team = () => {
     if (!binaryInput4) return; // Do not fetch if binaryInput is empty
 
     const fetchResult = async () => {
+      setLoadingProgress4(0);
       try {
+        let progressInterval = setInterval(() => {
+          setLoadingProgress4((prev) => (prev < 90 ? prev + 10 : prev));
+        }, 500);
         const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput4 });
+        clearInterval(progressInterval); // Stop the interval
+        setLoadingProgress4(100);
         setResult4(response.data); // Set the response data
 
       } catch (error) {
+        setLoadingProgress4(0);
         console.error("Error executing generating final answer:", error);
       }
     };
@@ -707,11 +843,18 @@ const Team = () => {
     if (!binaryInput5) return; // Do not fetch if binaryInput is empty
 
     const fetchResult = async () => {
+      setLoadingProgress5(0);
       try {
+        let progressInterval = setInterval(() => {
+          setLoadingProgress5((prev) => (prev < 90 ? prev + 10 : prev));
+        }, 500);
         const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput5 });
+        clearInterval(progressInterval); // Stop the interval
+        setLoadingProgress5(100);
         setResult5(response.data); // Set the response data
 
       } catch (error) {
+        setLoadingProgress5(0);
         console.error("Error executing generating final answer:", error);
       }
     };
@@ -721,13 +864,19 @@ const Team = () => {
 
   useEffect(() => {
     if (!binaryInput6) return; // Do not fetch if binaryInput is empty
-
+    setLoadingProgress(0);
     const fetchResult = async () => {
       try {
+        let progressInterval = setInterval(() => {
+          setLoadingProgress6((prev) => (prev < 90 ? prev + 10 : prev));
+        }, 500);
         const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput6 });
+        clearInterval(progressInterval); // Stop the interval
+        setLoadingProgress6(100);
         setResult6(response.data); // Set the response data
 
       } catch (error) {
+        setLoadingProgress6(0);
         console.error("Error executing generating final answer:", error);
       }
     };
@@ -737,13 +886,19 @@ const Team = () => {
 
   useEffect(() => {
     if (!binaryInput7) return; // Do not fetch if binaryInput is empty
-
+    setLoadingProgress7(0);
     const fetchResult = async () => {
       try {
+        let progressInterval = setInterval(() => {
+          setLoadingProgress7((prev) => (prev < 90 ? prev + 10 : prev));
+        }, 500);
         const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput7 });
+        clearInterval(progressInterval); // Stop the interval
+        setLoadingProgress7(100);
         setResult7(response.data); // Set the response data
 
       } catch (error) {
+        setLoadingProgress7(0);
         console.error("Error executing generating final answer:", error);
       }
     };
@@ -753,13 +908,19 @@ const Team = () => {
 
   useEffect(() => {
     if (!binaryInput8) return; // Do not fetch if binaryInput is empty
-
+    setLoadingProgress8(0);
     const fetchResult = async () => {
       try {
+        let progressInterval = setInterval(() => {
+          setLoadingProgress8((prev) => (prev < 90 ? prev + 10 : prev));
+        }, 500);
         const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput8 });
+        clearInterval(progressInterval); // Stop the interval
+        setLoadingProgress8(100);
         setResult8(response.data); // Set the response data
 
       } catch (error) {
+        setLoadingProgress8(0);
         console.error("Error executing generating final answer:", error);
       }
     };
@@ -771,11 +932,18 @@ const Team = () => {
     if (!binaryInput9) return; // Do not fetch if binaryInput is empty
 
     const fetchResult = async () => {
+      setLoadingProgress9(0);
       try {
+        let progressInterval = setInterval(() => {
+          setLoadingProgress9((prev) => (prev < 90 ? prev + 10 : prev));
+        }, 500);
         const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput9 });
+        clearInterval(progressInterval); // Stop the interval
+        setLoadingProgress9(100);
         setResult9(response.data); // Set the response data
 
       } catch (error) {
+        setLoadingProgress9(0);
         console.error("Error executing generating final answer:", error);
       }
     };
@@ -785,13 +953,19 @@ const Team = () => {
 
   useEffect(() => {
     if (!binaryInput10) return; // Do not fetch if binaryInput is empty
-
+    setLoadingProgress10(0);
     const fetchResult = async () => {
       try {
+        let progressInterval = setInterval(() => {
+          setLoadingProgress10((prev) => (prev < 90 ? prev + 10 : prev));
+        }, 500);
         const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput10 });
+        clearInterval(progressInterval); // Stop the interval
+        setLoadingProgress10(100);
         setResult10(response.data); // Set the response data
 
       } catch (error) {
+        setLoadingProgress(0);
         console.error("Error executing generating final answer:", error);
       }
     };
@@ -803,11 +977,19 @@ const Team = () => {
     if (!binaryInput11) return; // Do not fetch if binaryInput is empty
 
     const fetchResult = async () => {
+      setLoadingProgress11(0);
       try {
+        let progressInterval = setInterval(() => {
+          setLoadingProgress11((prev) => (prev < 90 ? prev + 10 : prev));
+        }, 500);
         const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput11 });
+        clearInterval(progressInterval); // Stop the interval
+        setLoadingProgress11(100); // Set progress to 100% after response is received
+
         setResult11(response.data); // Set the response data
 
       } catch (error) {
+        setLoadingProgress11(0);
         console.error("Error executing generating final answer:", error);
       }
     };
@@ -835,11 +1017,18 @@ const Team = () => {
     if (!binaryInput13) return; // Do not fetch if binaryInput is empty
 
     const fetchResult = async () => {
+      setLoadingProgress13(0);
       try {
+        let progressInterval = setInterval(() => {
+          setLoadingProgress13((prev) => (prev < 90 ? prev + 10 : prev));
+        }, 500);
         const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput13 });
+        clearInterval(progressInterval); // Stop the interval
+        setLoadingProgress13(100);
         setResult13(response.data); // Set the response data
 
       } catch (error) {
+        setLoadingProgress13(0); 
         console.error("Error executing generating final answer:", error);
       }
     };
@@ -849,13 +1038,19 @@ const Team = () => {
 
   useEffect(() => {
     if (!binaryInput14) return; // Do not fetch if binaryInput is empty
-
+    setLoadingProgress14(0); 
     const fetchResult = async () => {
       try {
+        let progressInterval = setInterval(() => {
+          setLoadingProgress14((prev) => (prev < 90 ? prev + 10 : prev));
+        }, 500); 
         const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput14 });
+        clearInterval(progressInterval); // Stop the interval
+        setLoadingProgress14(100);
         setResult14(response.data); // Set the response data
 
       } catch (error) {
+        setLoadingProgress14(0);
         console.error("Error executing generating final answer:", error);
       }
     };
@@ -867,11 +1062,19 @@ const Team = () => {
     if (!binaryInput15) return; // Do not fetch if binaryInput is empty
 
     const fetchResult = async () => {
+      setLoadingProgress15(0);
       try {
+        let progressInterval = setInterval(() => {
+          setLoadingProgress15((prev) => (prev < 90 ? prev + 10 : prev));
+        }, 500);
         const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput15 });
+        clearInterval(progressInterval); // Stop the interval
+        setLoadingProgress15(100); // Set progress to 100% after response is received
+
         setResult15(response.data); // Set the response data
 
       } catch (error) {
+        setLoadingProgress15(0);
         console.error("Error executing generating final answer:", error);
       }
     };
@@ -883,11 +1086,16 @@ const Team = () => {
     if (!binaryInput16) return; // Do not fetch if binaryInput is empty
 
     const fetchResult = async () => {
+      setLoadingProgress16(0);
       try {
+        let progressInterval = setInterval(() => {
+          setLoadingProgress16((prev) => (prev < 90 ? prev + 10 : prev));
+        }, 500);
         const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput16 });
         setResult16(response.data); // Set the response data
 
       } catch (error) {
+        setLoadingProgress16(100);
         console.error("Error executing generating final answer:", error);
       }
     };
@@ -899,8 +1107,14 @@ const Team = () => {
     if (!binaryInput17) return; // Do not fetch if binaryInput is empty
 
     const fetchResult = async () => {
+      setLoadingProgress17(0);
       try {
+        let progressInterval = setInterval(() => {
+          setLoadingProgress17((prev) => (prev < 90 ? prev + 10 : prev));
+        }, 500); 
         const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput17 });
+        clearInterval(progressInterval); // Stop the interval
+        setLoadingProgress17(100); 
         setResult17(response.data); // Set the response data
 
       } catch (error) {
@@ -915,11 +1129,18 @@ const Team = () => {
     if (!binaryInput18) return; // Do not fetch if binaryInput is empty
 
     const fetchResult = async () => {
+      setLoadingProgress18(0); 
       try {
+        let progressInterval = setInterval(() => {
+          setLoadingProgress18((prev) => (prev < 90 ? prev + 10 : prev));
+        }, 500);
         const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput18 });
+        clearInterval(progressInterval); // Stop the interval
+        setLoadingProgress18(100); 
         setResult18(response.data); // Set the response data
 
       } catch (error) {
+        setLoadingProgress18(0);
         console.error("Error executing generating final answer:", error);
       }
     };
@@ -931,11 +1152,18 @@ const Team = () => {
     if (!binaryInput19) return; // Do not fetch if binaryInput is empty
 
     const fetchResult = async () => {
+      setLoadingProgress19(0);
       try {
+        let progressInterval = setInterval(() => {
+          setLoadingProgress19((prev) => (prev < 90 ? prev + 10 : prev));
+        }, 500);
         const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput19 });
+        clearInterval(progressInterval); // Stop the interval
+        setLoadingProgress19(100);
         setResult19(response.data); // Set the response data
 
       } catch (error) {
+        setLoadingProgress19(0);
         console.error("Error executing generating final answer:", error);
       }
     };
@@ -947,11 +1175,19 @@ const Team = () => {
     if (!binaryInput20) return; // Do not fetch if binaryInput is empty
 
     const fetchResult = async () => {
+      setLoadingProgress20(0); 
       try {
+        let progressInterval = setInterval(() => {
+          setLoadingProgress20((prev) => (prev < 90 ? prev + 10 : prev));
+        }, 500); 
+        
         const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput20 });
+        clearInterval(progressInterval); // Stop the interval
+        setLoadingProgress20(100);
         setResult20(response.data); // Set the response data
 
       } catch (error) {
+        setLoadingProgress(0);
         console.error("Error executing generating final answer:", error);
       }
     };
@@ -1556,8 +1792,12 @@ const Team = () => {
           <thead>
             <tr>
               <th style={{ width: "10%" }}>Serial No</th>
-              <th style={{ width: "60%" }}>Upload File</th>
-              <th style={{ width: "30%" }}>Result</th>
+              <th style={{ width: "30%" }}>Upload File</th>
+              <th style={{ width: "20%" }}>Result</th>
+              <th style={{ width: "10%" }}>Loading Bar</th>
+              <th style={{ width: "10%" }}>Uploading Time</th>
+              <th style={{ width: "20%" }}>Filename</th>
+
             </tr>
           </thead>
           <tbody>
@@ -1627,7 +1867,35 @@ const Team = () => {
                 </Box>
               </td>
               <td>{result}</td>
-              {/* <td>{binaryInput}</td> */}
+              <td>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  width="100%"
+                  height="100%"
+                  p="5px"
+                >
+                  <CircularProgress
+                    variant="determinate"
+                    value={loadingProgress} // Updated progress state
+                    size={50}
+                    thickness={5}
+                    sx={{
+                      color: "green",
+                    }}
+                  />
+                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                    {loadingProgress}%
+                  </Typography>
+                </Box>
+              </td>
+
+
+              <td>{uploadTime || ""}</td>
+              <td>{fileName || "No file selected"}</td>
+
             </tr>
 
             <tr>
@@ -1696,7 +1964,33 @@ const Team = () => {
                 </Box>
               </td>
               <td>{result2}</td>
-              {/* <td>{binaryInput2}</td> */}
+              <td>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  width="100%"
+                  height="100%"
+                  p="5px"
+                >
+                  <CircularProgress
+                    variant="determinate"
+                    value={loadingProgress2} // Updated progress state
+                    size={50}
+                    thickness={5}
+                    sx={{
+                      color: "green",
+                    }}
+                  />
+                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                    {loadingProgress2}%
+                  </Typography>
+                </Box>
+              </td>
+              <td>{uploadTime2 || ""}</td>
+              <td>{fileName2 || "No file selected"}</td>
+
             </tr>
 
             <tr>
@@ -1765,7 +2059,33 @@ const Team = () => {
                 </Box>
               </td>
               <td>{result3}</td>
-              {/* <td>{binaryInput}</td> */}
+              <td>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  width="100%"
+                  height="100%"
+                  p="5px"
+                >
+                  <CircularProgress
+                    variant="determinate"
+                    value={loadingProgress3} // Updated progress state
+                    size={50}
+                    thickness={5}
+                    sx={{
+                      color: "green",
+                    }}
+                  />
+                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                    {loadingProgress3}%
+                  </Typography>
+                </Box>
+              </td>
+              <td>{uploadTime3 || ""}</td>
+              <td>{fileName3 || "No file selected"}</td>
+
             </tr>
 
             <tr>
@@ -1834,7 +2154,33 @@ const Team = () => {
                 </Box>
               </td>
               <td>{result4}</td>
-              {/* <td>{binaryInput}</td> */}
+              <td>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  width="100%"
+                  height="100%"
+                  p="5px"
+                >
+                  <CircularProgress
+                    variant="determinate"
+                    value={loadingProgress4} // Updated progress state
+                    size={50}
+                    thickness={5}
+                    sx={{
+                      color: "green",
+                    }}
+                  />
+                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                    {loadingProgress4}%
+                  </Typography>
+                </Box>
+              </td>
+              <td>{uploadTime4 || ""}</td>
+              <td>{fileName4 || "No file selected"}</td>
+
             </tr>
 
             <tr>
@@ -1903,7 +2249,32 @@ const Team = () => {
                 </Box>
               </td>
               <td>{result5}</td>
-              {/* <td>{binaryInput}</td> */}
+              <td>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  width="100%"
+                  height="100%"
+                  p="5px"
+                >
+                  <CircularProgress
+                    variant="determinate"
+                    value={loadingProgress5} // Updated progress state
+                    size={50}
+                    thickness={5}
+                    sx={{
+                      color: "green",
+                    }}
+                  />
+                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                    {loadingProgress5}%
+                  </Typography>
+                </Box>
+              </td>
+              <td>{uploadTime5 || ""}</td>
+              <td>{fileName5 || "No file selected"}</td>
             </tr>
 
             <tr>
@@ -1972,7 +2343,33 @@ const Team = () => {
                 </Box>
               </td>
               <td>{result6}</td>
-              {/* <td>{binaryInput}</td> */}
+              <td>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  width="100%"
+                  height="100%"
+                  p="5px"
+                >
+                  <CircularProgress
+                    variant="determinate"
+                    value={loadingProgress6} // Updated progress state
+                    size={50}
+                    thickness={5}
+                    sx={{
+                      color: "green",
+                    }}
+                  />
+                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                    {loadingProgress6}%
+                  </Typography>
+                </Box>
+              </td>
+              <td>{uploadTime6 || ""}</td>
+              <td>{fileName6 || "No file selected"}</td>
+
             </tr>
 
             <tr>
@@ -2041,7 +2438,33 @@ const Team = () => {
                 </Box>
               </td>
               <td>{result7}</td>
-              {/* <td>{binaryInput}</td> */}
+              <td>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  width="100%"
+                  height="100%"
+                  p="5px"
+                >
+                  <CircularProgress
+                    variant="determinate"
+                    value={loadingProgress7} // Updated progress state
+                    size={50}
+                    thickness={5}
+                    sx={{
+                      color: "green",
+                    }}
+                  />
+                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                    {loadingProgress7}%
+                  </Typography>
+                </Box>
+              </td>
+              <td>{uploadTime7 || ""}</td>
+              <td>{fileName7 || "No file selected"}</td>
+
             </tr>
 
             <tr>
@@ -2110,7 +2533,32 @@ const Team = () => {
                 </Box>
               </td>
               <td>{result8}</td>
-              {/* <td>{binaryInput}</td> */}
+              <td>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  width="100%"
+                  height="100%"
+                  p="5px"
+                >
+                  <CircularProgress
+                    variant="determinate"
+                    value={loadingProgress8} // Updated progress state
+                    size={50}
+                    thickness={5}
+                    sx={{
+                      color: "green",
+                    }}
+                  />
+                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                    {loadingProgress8}%
+                  </Typography>
+                </Box>
+              </td>
+              <td>{uploadTime8 || ""}</td>
+              <td>{fileName8 || "No file selected"}</td>
             </tr>
 
             <tr>
@@ -2179,7 +2627,32 @@ const Team = () => {
                 </Box>
               </td>
               <td>{result9}</td>
-              {/* <td>{binaryInput}</td> */}
+              <td>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  width="100%"
+                  height="100%"
+                  p="5px"
+                >
+                  <CircularProgress
+                    variant="determinate"
+                    value={loadingProgress9} // Updated progress state
+                    size={50}
+                    thickness={5}
+                    sx={{
+                      color: "green",
+                    }}
+                  />
+                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                    {loadingProgress9}%
+                  </Typography>
+                </Box>
+              </td>
+              <td>{uploadTime9 || ""}</td>
+              <td>{fileName9 || "No file selected"}</td>
             </tr>
 
             <tr>
@@ -2248,7 +2721,32 @@ const Team = () => {
                 </Box>
               </td>
               <td>{result10}</td>
-              {/* <td>{binaryInput}</td> */}
+              <td>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  width="100%"
+                  height="100%"
+                  p="5px"
+                >
+                  <CircularProgress
+                    variant="determinate"
+                    value={loadingProgress10} // Updated progress state
+                    size={50}
+                    thickness={5}
+                    sx={{
+                      color: "green",
+                    }}
+                  />
+                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                    {loadingProgress10}%
+                  </Typography>
+                </Box>
+              </td>
+              <td>{uploadTime10 || ""}</td>
+              <td>{fileName10 || "No file selected"}</td>
             </tr>
 
 
@@ -2318,7 +2816,32 @@ const Team = () => {
                 </Box>
               </td>
               <td>{result11}</td>
-              {/* <td>{binaryInput}</td> */}
+              <td>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  width="100%"
+                  height="100%"
+                  p="5px"
+                >
+                  <CircularProgress
+                    variant="determinate"
+                    value={loadingProgress11} // Updated progress state
+                    size={50}
+                    thickness={5}
+                    sx={{
+                      color: "green",
+                    }}
+                  />
+                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                    {loadingProgress11}%
+                  </Typography>
+                </Box>
+              </td>
+              <td>{uploadTime11 || ""}</td>
+              <td>{fileName11 || "No file selected"}</td>
             </tr>
 
             <tr>
@@ -2387,7 +2910,32 @@ const Team = () => {
                 </Box>
               </td>
               <td>{result12}</td>
-              {/* <td>{binaryInput}</td> */}
+              <td>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  width="100%"
+                  height="100%"
+                  p="5px"
+                >
+                  <CircularProgress
+                    variant="determinate"
+                    value={loadingProgress12} // Updated progress state
+                    size={50}
+                    thickness={5}
+                    sx={{
+                      color: "green",
+                    }}
+                  />
+                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                    {loadingProgress12}%
+                  </Typography>
+                </Box>
+              </td>
+              <td>{uploadTime12 || ""}</td>
+              <td>{fileName12 || "No file selected"}</td>
             </tr>
 
             <tr>
@@ -2456,7 +3004,32 @@ const Team = () => {
                 </Box>
               </td>
               <td>{result13}</td>
-              {/* <td>{binaryInput}</td> */}
+              <td>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  width="100%"
+                  height="100%"
+                  p="5px"
+                >
+                  <CircularProgress
+                    variant="determinate"
+                    value={loadingProgress13} // Updated progress state
+                    size={50}
+                    thickness={5}
+                    sx={{
+                      color: "green",
+                    }}
+                  />
+                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                    {loadingProgress13}%
+                  </Typography>
+                </Box>
+              </td>
+              <td>{uploadTime13 || ""}</td>
+              <td>{fileName13 || "No file selected"}</td>
             </tr>
 
             <tr>
@@ -2525,7 +3098,32 @@ const Team = () => {
                 </Box>
               </td>
               <td>{result14}</td>
-              {/* <td>{binaryInput}</td> */}
+              <td>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  width="100%"
+                  height="100%"
+                  p="5px"
+                >
+                  <CircularProgress
+                    variant="determinate"
+                    value={loadingProgress14} // Updated progress state
+                    size={50}
+                    thickness={5}
+                    sx={{
+                      color: "green",
+                    }}
+                  />
+                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                    {loadingProgress14}%
+                  </Typography>
+                </Box>
+              </td>
+              <td>{uploadTime14 || ""}</td>
+              <td>{fileName14 || "No file selected"}</td>
             </tr>
 
             <tr>
@@ -2594,7 +3192,32 @@ const Team = () => {
                 </Box>
               </td>
               <td>{result15}</td>
-              {/* <td>{binaryInput}</td> */}
+              <td>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  width="100%"
+                  height="100%"
+                  p="5px"
+                >
+                  <CircularProgress
+                    variant="determinate"
+                    value={loadingProgress15} // Updated progress state
+                    size={50}
+                    thickness={5}
+                    sx={{
+                      color: "green",
+                    }}
+                  />
+                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                    {loadingProgress15}%
+                  </Typography>
+                </Box>
+              </td>
+              <td>{uploadTime15 || ""}</td>
+              <td>{fileName15 || "No file selected"}</td>
             </tr>
 
             <tr>
@@ -2663,7 +3286,32 @@ const Team = () => {
                 </Box>
               </td>
               <td>{result16}</td>
-              {/* <td>{binaryInput}</td> */}
+              <td>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  width="100%"
+                  height="100%"
+                  p="5px"
+                >
+                  <CircularProgress
+                    variant="determinate"
+                    value={loadingProgress16} // Updated progress state
+                    size={50}
+                    thickness={5}
+                    sx={{
+                      color: "green",
+                    }}
+                  />
+                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                    {loadingProgress16}%
+                  </Typography>
+                </Box>
+              </td>
+              <td>{uploadTime16 || ""}</td>
+              <td>{fileName16 || "No file selected"}</td>
             </tr>
 
             <tr>
@@ -2732,7 +3380,32 @@ const Team = () => {
                 </Box>
               </td>
               <td>{result17}</td>
-              {/* <td>{binaryInput}</td> */}
+              <td>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  width="100%"
+                  height="100%"
+                  p="5px"
+                >
+                  <CircularProgress
+                    variant="determinate"
+                    value={loadingProgress17} // Updated progress state
+                    size={50}
+                    thickness={5}
+                    sx={{
+                      color: "green",
+                    }}
+                  />
+                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                    {loadingProgress17}%
+                  </Typography>
+                </Box>
+              </td>
+              <td>{uploadTime17 || ""}</td>
+              <td>{fileName17 || "No file selected"}</td>
             </tr>
 
             <tr>
@@ -2801,7 +3474,32 @@ const Team = () => {
                 </Box>
               </td>
               <td>{result18}</td>
-              {/* <td>{binaryInput}</td> */}
+              <td>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  width="100%"
+                  height="100%"
+                  p="5px"
+                >
+                  <CircularProgress
+                    variant="determinate"
+                    value={loadingProgress18} // Updated progress state
+                    size={50}
+                    thickness={5}
+                    sx={{
+                      color: "green",
+                    }}
+                  />
+                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                    {loadingProgress18}%
+                  </Typography>
+                </Box>
+              </td>
+              <td>{uploadTime18 || ""}</td>
+              <td>{fileName18 || "No file selected"}</td>
             </tr>
 
             <tr>
@@ -2870,7 +3568,32 @@ const Team = () => {
                 </Box>
               </td>
               <td>{result19}</td>
-              {/* <td>{binaryInput}</td> */}
+              <td>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  width="100%"
+                  height="100%"
+                  p="5px"
+                >
+                  <CircularProgress
+                    variant="determinate"
+                    value={loadingProgress19} // Updated progress state
+                    size={50}
+                    thickness={5}
+                    sx={{
+                      color: "green",
+                    }}
+                  />
+                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                    {loadingProgress19}%
+                  </Typography>
+                </Box>
+              </td>
+              <td>{uploadTime19 || ""}</td>
+              <td>{fileName19 || "No file selected"}</td>
             </tr>
 
             <tr>
@@ -2939,7 +3662,32 @@ const Team = () => {
                 </Box>
               </td>
               <td>{result20}</td>
-              {/* <td>{binaryInput}</td> */}
+              <td>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  width="100%"
+                  height="100%"
+                  p="5px"
+                >
+                  <CircularProgress
+                    variant="determinate"
+                    value={loadingProgress20} // Updated progress state
+                    size={50}
+                    thickness={5}
+                    sx={{
+                      color: "green",
+                    }}
+                  />
+                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                    {loadingProgress20}%
+                  </Typography>
+                </Box>
+              </td>
+              <td>{uploadTime20 || ""}</td>
+              <td>{fileName20 || "No file selected"}</td>
             </tr>
 
           </tbody>

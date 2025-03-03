@@ -222,14 +222,14 @@ const Sidebar = () => {
                       <TableCell>Variance = 0</TableCell>
                       <TableCell>-6</TableCell>
                     </TableRow>
-                    <TableRow>
+                    {/* <TableRow>
                       <TableCell>ValueError</TableCell>
                       <TableCell>-7</TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell>Unknown error</TableCell>
                       <TableCell>-9</TableCell>
-                    </TableRow>
+                    </TableRow> */}
                   </TableBody>
                 </Table>
               </TableContainer>

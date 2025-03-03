@@ -59,27 +59,27 @@ const Team = () => {
     }
 };
   const startFetching2 = () => {
-    if (!isFetching) {
+    if (!isFetching2) {
         console.log("clicked");
-        setIsFetching(true);
+        setIsFetching2(true);
     }
 };
   const startFetching3 = () => {
-    if (!isFetching) {
+    if (!isFetching3) {
         console.log("clicked");
-        setIsFetching(true);
+        setIsFetching3(true);
     }
 };
   const startFetching4 = () => {
-    if (!isFetching) {
+    if (!isFetching4) {
         console.log("clicked");
-        setIsFetching(true);
+        setIsFetching4(true);
     }
 };
   const startFetching5 = () => {
-    if (!isFetching) {
+    if (!isFetching5) {
         console.log("clicked");
-        setIsFetching(true);
+        setIsFetching5(true);
     }
 };
 
@@ -87,7 +87,7 @@ useEffect(() => {
   if (isFetching) {
     console.log("hi");
       fetchRandomNumber(); // Fetch immediately
-      intervalRef.current = setInterval(fetchRandomNumber, 5000);
+      intervalRef.current = setInterval(fetchRandomNumber, 3000);
   } else {
       clearInterval(intervalRef.current);
   }
@@ -98,8 +98,8 @@ useEffect(() => {
 useEffect(() => {
   if (isFetching2) {
     console.log("hi");
-      fetchRandomNumber(); // Fetch immediately
-      intervalRef2.current = setInterval(fetchRandomNumber, 5000);
+      fetchRandomNumber2(); // Fetch immediately
+      intervalRef2.current = setInterval(fetchRandomNumber2, 3000);
   } else {
       clearInterval(intervalRef2.current);
   }
@@ -110,8 +110,8 @@ useEffect(() => {
 useEffect(() => {
   if (isFetching3) {
     console.log("hi");
-      fetchRandomNumber(); // Fetch immediately
-      intervalRef3.current = setInterval(fetchRandomNumber, 5000);
+      fetchRandomNumber3(); // Fetch immediately
+      intervalRef3.current = setInterval(fetchRandomNumber3, 3000);
   } else {
       clearInterval(intervalRef3.current);
   }
@@ -122,8 +122,8 @@ useEffect(() => {
 useEffect(() => {
   if (isFetching4) {
     console.log("hi");
-      fetchRandomNumber(); // Fetch immediately
-      intervalRef4.current = setInterval(fetchRandomNumber, 5000);
+      fetchRandomNumber4(); // Fetch immediately
+      intervalRef4.current = setInterval(fetchRandomNumber4, 3000);
   } else {
       clearInterval(intervalRef4.current);
   }
@@ -134,8 +134,8 @@ useEffect(() => {
 useEffect(() => {
   if (isFetching5) {
     console.log("hi");
-      fetchRandomNumber(); // Fetch immediately
-      intervalRef5.current = setInterval(fetchRandomNumber, 5000);
+      fetchRandomNumber5(); // Fetch immediately
+      intervalRef5.current = setInterval(fetchRandomNumber5, 3000);
   } else {
       clearInterval(intervalRef5.current);
   }
@@ -221,7 +221,7 @@ useEffect(() => {
     console.log("function called");
     try {
       const response = await axios.get("http://localhost:3000/random-binary", {
-        params: { length: length }, // Use the length state here
+        params: { length: length2 }, // Use the length state here
       });
 
       if (response.data?.binary) {
@@ -239,7 +239,7 @@ useEffect(() => {
     console.log("function called");
     try {
       const response = await axios.get("http://localhost:3000/random-binary", {
-        params: { length: length }, // Use the length state here
+        params: { length: length3 }, // Use the length state here
       });
 
       if (response.data?.binary) {
@@ -257,7 +257,7 @@ useEffect(() => {
     console.log("function called");
     try {
       const response = await axios.get("http://localhost:3000/random-binary", {
-        params: { length: length }, // Use the length state here
+        params: { length: length4 }, // Use the length state here
       });
 
       if (response.data?.binary) {
@@ -275,7 +275,7 @@ useEffect(() => {
     console.log("function called");
     try {
       const response = await axios.get("http://localhost:3000/random-binary", {
-        params: { length: length }, // Use the length state here
+        params: { length: length5 }, // Use the length state here
       });
 
       if (response.data?.binary) {
@@ -361,7 +361,7 @@ useEffect(() => {
 
   const saveBinaryNumber2 = async () => {
     // Use the binaryInput state which holds the fetched binary data
-    const binaryNumber = binaryInput;
+    const binaryNumber = binaryInput2;
 
     if (!binaryNumber) {
 
@@ -431,7 +431,7 @@ useEffect(() => {
 
   const saveBinaryNumber3 = async () => {
     // Use the binaryInput state which holds the fetched binary data
-    const binaryNumber = binaryInput;
+    const binaryNumber = binaryInput3;
 
     if (!binaryNumber) {
 
@@ -501,7 +501,7 @@ useEffect(() => {
 
   const saveBinaryNumber4 = async () => {
     // Use the binaryInput state which holds the fetched binary data
-    const binaryNumber = binaryInput;
+    const binaryNumber = binaryInput4;
 
     if (!binaryNumber) {
 
@@ -657,7 +657,6 @@ useEffect(() => {
 
     fetchResult();
   }, [binaryInput]);
-
   useEffect(() => {
     if (!binaryInput) return; // Do not fetch if binaryInput is empty
 
@@ -674,6 +673,139 @@ useEffect(() => {
     fetchResult();
   }, [binaryInput]);
 
+
+
+
+
+  useEffect(() => {
+    if (!binaryInput2) return; // Do not fetch if binaryInput is empty
+
+    const fetchResult = async () => {
+      try {
+        const response = await axios.post('http://localhost:8000/generate_final_ans/', { binary_data: binaryInput2 });
+        setResultNIST2(response.data); // Set the response data
+
+      } catch (error) {
+        console.error("Error executing generating final answer:", error);
+      }
+    };
+
+    fetchResult();
+  }, [binaryInput2]);
+  useEffect(() => {
+    if (!binaryInput2) return; // Do not fetch if binaryInput is empty
+
+    const fetchResult = async () => {
+      try {
+        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput2 });
+        setResultDieharder2(response.data); // Set the response data
+
+      } catch (error) {
+        console.error("Error executing generating final answer:", error);
+      }
+    };
+
+    fetchResult();
+  }, [binaryInput2]);
+
+
+
+  useEffect(() => {
+    if (!binaryInput3) return; // Do not fetch if binaryInput is empty
+
+    const fetchResult = async () => {
+      try {
+        const response = await axios.post('http://localhost:8000/generate_final_ans/', { binary_data: binaryInput3 });
+        setResultNIST3(response.data); // Set the response data
+
+      } catch (error) {
+        console.error("Error executing generating final answer:", error);
+      }
+    };
+
+    fetchResult();
+  }, [binaryInput3]);
+  useEffect(() => {
+    if (!binaryInput3) return; // Do not fetch if binaryInput is empty
+
+    const fetchResult = async () => {
+      try {
+        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput3 });
+        setResultDieharder3(response.data); // Set the response data
+
+      } catch (error) {
+        console.error("Error executing generating final answer:", error);
+      }
+    };
+
+    fetchResult();
+  }, [binaryInput3]);
+
+
+
+  useEffect(() => {
+    if (!binaryInput4) return; // Do not fetch if binaryInput is empty
+
+    const fetchResult = async () => {
+      try {
+        const response = await axios.post('http://localhost:8000/generate_final_ans/', { binary_data: binaryInput4 });
+        setResultNIST4(response.data); // Set the response data
+
+      } catch (error) {
+        console.error("Error executing generating final answer:", error);
+      }
+    };
+
+    fetchResult();
+  }, [binaryInput4]);
+  useEffect(() => {
+    if (!binaryInput4) return; // Do not fetch if binaryInput is empty
+
+    const fetchResult = async () => {
+      try {
+        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput4 });
+        setResultDieharder4(response.data); // Set the response data
+
+      } catch (error) {
+        console.error("Error executing generating final answer:", error);
+      }
+    };
+
+    fetchResult();
+  }, [binaryInput4]);
+
+
+
+  useEffect(() => {
+    if (!binaryInput5) return; // Do not fetch if binaryInput is empty
+
+    const fetchResult = async () => {
+      try {
+        const response = await axios.post('http://localhost:8000/generate_final_ans/', { binary_data: binaryInput5 });
+        setResultNIST5(response.data); // Set the response data
+
+      } catch (error) {
+        console.error("Error executing generating final answer:", error);
+      }
+    };
+
+    fetchResult();
+  }, [binaryInput5]);
+  useEffect(() => {
+    if (!binaryInput5) return; // Do not fetch if binaryInput is empty
+
+    const fetchResult = async () => {
+      try {
+        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput5 });
+        setResultDieharder5(response.data); // Set the response data
+
+      } catch (error) {
+        console.error("Error executing generating final answer:", error);
+      }
+    };
+
+    fetchResult();
+  }, [binaryInput5]);
 
 
   const handleButtonClick = (type) => {
@@ -694,6 +826,118 @@ useEffect(() => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ binary_data: binaryInput }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating graph:", error));
+    }
+  };
+
+  const handleButtonClick2 = (type) => {
+    if (type === "report") {
+      fetch("http://localhost:8000/pdf-report-server/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput2 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating report:", error));
+    } else if (type === "graph") {
+      fetch("http://localhost:8000/graph-generation/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput2 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating graph:", error));
+    }
+  };
+
+  const handleButtonClick3 = (type) => {
+    if (type === "report") {
+      fetch("http://localhost:8000/pdf-report-server/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput3 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating report:", error));
+    } else if (type === "graph") {
+      fetch("http://localhost:8000/graph-generation/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput3 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating graph:", error));
+    }
+  };
+
+  const handleButtonClick4 = (type) => {
+    if (type === "report") {
+      fetch("http://localhost:8000/pdf-report-server/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput4 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating report:", error));
+    } else if (type === "graph") {
+      fetch("http://localhost:8000/graph-generation/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput4 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating graph:", error));
+    }
+  };
+
+  const handleButtonClick5 = (type) => {
+    if (type === "report") {
+      fetch("http://localhost:8000/pdf-report-server/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput5 }),
+      })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob);
+          window.open(url, "_blank");
+        })
+        .catch((error) => console.error("Error generating report:", error));
+    } else if (type === "graph") {
+      fetch("http://localhost:8000/graph-generation/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ binary_data: binaryInput5 }),
       })
         .then((response) => response.blob())
         .then((blob) => {
@@ -729,11 +973,12 @@ useEffect(() => {
           <thead>
             <tr>
               <th style={{ width: "5%" }}>Serial No</th>
-              <th style={{ width: "60%" }}>Test</th>
+              <th style={{ width: "40%" }}>Test</th>
              
-              <th>Enter Length</th>
-              <th>NIST Results</th>
-              <th>Dieharder Tests Result</th>
+              <th style={{ width: "10%" }}>Enter Length</th>
+              <th style={{ width: "15%" }}>NIST Results</th>
+              <th style={{ width: "15%" }}>Dieharder Tests Result</th>
+              <th>IP Address</th>
             </tr>
           </thead>
           <tbody>
@@ -822,7 +1067,9 @@ useEffect(() => {
                 />
               </td>
               <td>{resultNIST}</td>
+              {/* <td>{binaryInput}</td> */}
               <td>{resultDieharder}</td>
+              <td>160.20.123.9</td>
             </tr>
 
 
@@ -839,7 +1086,7 @@ useEffect(() => {
                   gap="10px"
                 >
                   <button
-                    onClick={startFetching}
+                    onClick={startFetching2}
                     style={{
                       backgroundColor: colors.greenAccent[400],
                       color: colors.primary[100],
@@ -852,24 +1099,24 @@ useEffect(() => {
                     Start Fetching
                   </button>
                   <button
-                    onClick={stopFetching}
-                    disabled={!isFetching}
+                    onClick={stopFetching2}
+                    disabled={!isFetching2}
                     style={{
-                      backgroundColor: isFetching
+                      backgroundColor: isFetching2
                         ? colors.redAccent[400]
                         : colors.primary[300],
                       color: colors.primary[100],
                       border: "none",
                       borderRadius: 8,
                       padding: "10px 20px",
-                      cursor: isFetching ? "pointer" : "not-allowed",
+                      cursor: isFetching2 ? "pointer" : "not-allowed",
                     }}
                   >
                     Stop Fetching
                   </button>
                   <Button
                     variant="contained"
-                    onClick={() => handleButtonClick("report")}
+                    onClick={() => handleButtonClick2("report")}
                     sx={{
                       backgroundColor: colors.redAccent[400],
                       color: colors.grey[100],
@@ -883,7 +1130,7 @@ useEffect(() => {
                   </Button>
                   {/* New Button for Saving Binary Number */}
                   <button
-                    onClick={saveBinaryNumber} // Add your saveBinaryNumber function here
+                    onClick={saveBinaryNumber2} // Add your saveBinaryNumber function here
                     style={{
                       backgroundColor: colors.blueAccent[400],
                       color: colors.primary[100],
@@ -904,15 +1151,17 @@ useEffect(() => {
                 <TextField
                   label="Enter Length"
                   type="number"
-                  value={length}
-                  onChange={(e) => setLength(Number(e.target.value))}
+                  value={length2}
+                  onChange={(e) => setLength2(Number(e.target.value))}
                   variant="outlined"
                   size="small"
                   sx={{ width: "100px" }}
                 />
               </td>
-              <td>{resultNIST}</td>
-              <td>{resultDieharder}</td>
+              <td>{resultNIST2}</td>
+              {/* <td>{binaryInput2}</td> */}
+              <td>{resultDieharder2}</td>
+              <td>160.20.123.9</td>
             </tr>
 
             <tr>
@@ -927,7 +1176,7 @@ useEffect(() => {
                   gap="10px"
                 >
                   <button
-                    onClick={startFetching}
+                    onClick={startFetching3}
                     style={{
                       backgroundColor: colors.greenAccent[400],
                       color: colors.primary[100],
@@ -940,24 +1189,24 @@ useEffect(() => {
                     Start Fetching
                   </button>
                   <button
-                    onClick={stopFetching}
-                    disabled={!isFetching}
+                    onClick={stopFetching3}
+                    disabled={!isFetching3}
                     style={{
-                      backgroundColor: isFetching
+                      backgroundColor: isFetching3
                         ? colors.redAccent[400]
                         : colors.primary[300],
                       color: colors.primary[100],
                       border: "none",
                       borderRadius: 8,
                       padding: "10px 20px",
-                      cursor: isFetching ? "pointer" : "not-allowed",
+                      cursor: isFetching3 ? "pointer" : "not-allowed",
                     }}
                   >
                     Stop Fetching
                   </button>
                   <Button
                     variant="contained"
-                    onClick={() => handleButtonClick("report")}
+                    onClick={() => handleButtonClick3("report")}
                     sx={{
                       backgroundColor: colors.redAccent[400],
                       color: colors.grey[100],
@@ -971,7 +1220,7 @@ useEffect(() => {
                   </Button>
                   {/* New Button for Saving Binary Number */}
                   <button
-                    onClick={saveBinaryNumber} // Add your saveBinaryNumber function here
+                    onClick={saveBinaryNumber3} // Add your saveBinaryNumber function here
                     style={{
                       backgroundColor: colors.blueAccent[400],
                       color: colors.primary[100],
@@ -992,15 +1241,16 @@ useEffect(() => {
                 <TextField
                   label="Enter Length"
                   type="number"
-                  value={length}
-                  onChange={(e) => setLength(Number(e.target.value))}
+                  value={length3}
+                  onChange={(e) => setLength3(Number(e.target.value))}
                   variant="outlined"
                   size="small"
                   sx={{ width: "100px" }}
                 />
               </td>
-              <td>{resultNIST}</td>
-              <td>{resultDieharder}</td>
+              <td>{resultNIST3}</td>
+              <td>{resultDieharder3}</td>
+              <td>160.20.123.9</td>
             </tr>
 
             <tr>
@@ -1015,7 +1265,7 @@ useEffect(() => {
                   gap="10px"
                 >
                   <button
-                    onClick={startFetching}
+                    onClick={startFetching4}
                     style={{
                       backgroundColor: colors.greenAccent[400],
                       color: colors.primary[100],
@@ -1028,24 +1278,24 @@ useEffect(() => {
                     Start Fetching
                   </button>
                   <button
-                    onClick={stopFetching}
-                    disabled={!isFetching}
+                    onClick={stopFetching4}
+                    disabled={!isFetching4}
                     style={{
-                      backgroundColor: isFetching
+                      backgroundColor: isFetching4
                         ? colors.redAccent[400]
                         : colors.primary[300],
                       color: colors.primary[100],
                       border: "none",
                       borderRadius: 8,
                       padding: "10px 20px",
-                      cursor: isFetching ? "pointer" : "not-allowed",
+                      cursor: isFetching4 ? "pointer" : "not-allowed",
                     }}
                   >
                     Stop Fetching
                   </button>
                   <Button
                     variant="contained"
-                    onClick={() => handleButtonClick("report")}
+                    onClick={() => handleButtonClick4("report")}
                     sx={{
                       backgroundColor: colors.redAccent[400],
                       color: colors.grey[100],
@@ -1059,7 +1309,7 @@ useEffect(() => {
                   </Button>
                   {/* New Button for Saving Binary Number */}
                   <button
-                    onClick={saveBinaryNumber} // Add your saveBinaryNumber function here
+                    onClick={saveBinaryNumber4} // Add your saveBinaryNumber function here
                     style={{
                       backgroundColor: colors.blueAccent[400],
                       color: colors.primary[100],
@@ -1080,15 +1330,16 @@ useEffect(() => {
                 <TextField
                   label="Enter Length"
                   type="number"
-                  value={length}
-                  onChange={(e) => setLength(Number(e.target.value))}
+                  value={length4}
+                  onChange={(e) => setLength4(Number(e.target.value))}
                   variant="outlined"
                   size="small"
                   sx={{ width: "100px" }}
                 />
               </td>
-              <td>{resultNIST}</td>
-              <td>{resultDieharder}</td>
+              <td>{resultNIST4}</td>
+              <td>{resultDieharder4}</td>
+              <td>160.20.123.9</td>
             </tr>
 
             <tr>
@@ -1103,7 +1354,7 @@ useEffect(() => {
                   gap="10px"
                 >
                   <button
-                    onClick={startFetching}
+                    onClick={startFetching5}
                     style={{
                       backgroundColor: colors.greenAccent[400],
                       color: colors.primary[100],
@@ -1116,24 +1367,24 @@ useEffect(() => {
                     Start Fetching
                   </button>
                   <button
-                    onClick={stopFetching}
-                    disabled={!isFetching}
+                    onClick={stopFetching5}
+                    disabled={!isFetching5}
                     style={{
-                      backgroundColor: isFetching
+                      backgroundColor: isFetching5
                         ? colors.redAccent[400]
                         : colors.primary[300],
                       color: colors.primary[100],
                       border: "none",
                       borderRadius: 8,
                       padding: "10px 20px",
-                      cursor: isFetching ? "pointer" : "not-allowed",
+                      cursor: isFetching5 ? "pointer" : "not-allowed",
                     }}
                   >
                     Stop Fetching
                   </button>
                   <Button
                     variant="contained"
-                    onClick={() => handleButtonClick("report")}
+                    onClick={() => handleButtonClick5("report")}
                     sx={{
                       backgroundColor: colors.redAccent[400],
                       color: colors.grey[100],
@@ -1147,7 +1398,7 @@ useEffect(() => {
                   </Button>
                   {/* New Button for Saving Binary Number */}
                   <button
-                    onClick={saveBinaryNumber} // Add your saveBinaryNumber function here
+                    onClick={saveBinaryNumber5} // Add your saveBinaryNumber function here
                     style={{
                       backgroundColor: colors.blueAccent[400],
                       color: colors.primary[100],
@@ -1168,15 +1419,16 @@ useEffect(() => {
                 <TextField
                   label="Enter Length"
                   type="number"
-                  value={length}
-                  onChange={(e) => setLength(Number(e.target.value))}
+                  value={length5}
+                  onChange={(e) => setLength5(Number(e.target.value))}
                   variant="outlined"
                   size="small"
                   sx={{ width: "100px" }}
                 />
               </td>
-              <td>{resultNIST}</td>
-              <td>{resultDieharder}</td>
+              <td>{resultNIST5}</td>
+              <td>{resultDieharder5}</td>
+              <td>160.20.123.9</td>
             </tr>
 
 
