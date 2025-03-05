@@ -12,6 +12,7 @@ import Line from "./scenes/line";
 import Pie from "./scenes/pie";
 import FAQ from "./scenes/faq";
 import Geography from "./scenes/geography";
+import UploadReport from "./scenes/reportAnalysis/UploadReport";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import Calendar from "./scenes/calendar/calendar";
@@ -84,6 +85,7 @@ function App() {
               <Route path="/faq" element={<PrivateRoute element={<FAQ />} />} />
               <Route path="/calendar" element={<PrivateRoute element={<Calendar />} />} />
               <Route path="/geography" element={<PrivateRoute element={<Geography />} />} />
+              <Route path="/report" element={<PrivateRoute element={<UploadReport />} />} />
               <Route path="/login" element={<ProtectedRouteRedirect element={<Login setIsLoggedIn={setIsLoggedIn} />} />} />
               <Route path="/register" element={<ProtectedRouteRedirect element={<Register />} />} />
             </Routes>

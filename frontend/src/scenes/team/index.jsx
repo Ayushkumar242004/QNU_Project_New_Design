@@ -4,6 +4,8 @@ import Header from "../../components/Header";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios"; // Make sure axios is imported
 import CircularProgress from '@mui/material/CircularProgress';
+import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
+
 
 const MAX_STACK_SIZE_ESTIMATE = 1 * 1024 * 1024;
 
@@ -447,10 +449,10 @@ const Team = () => {
       try {
         let progressInterval = setInterval(() => {
           setLoadingProgress3((prev) => (prev < 90 ? prev + 10 : prev));
-        }, 500); 
+        }, 500);
         const response = await axios.post('http://localhost:8000/generate_final_ans/', { binary_data: binaryInput3 });
         clearInterval(progressInterval); // Stop the interval
-        setLoadingProgress3(100); 
+        setLoadingProgress3(100);
         setResult3(response.data); // Set the response data
 
       } catch (error) {
@@ -473,7 +475,7 @@ const Team = () => {
         }, 500);
         const response = await axios.post('http://localhost:8000/generate_final_ans/', { binary_data: binaryInput4 });
         clearInterval(progressInterval); // Stop the interval
-        setLoadingProgress4(100); 
+        setLoadingProgress4(100);
         setResult4(response.data); // Set the response data
 
       } catch (error) {
@@ -493,14 +495,14 @@ const Team = () => {
       try {
         let progressInterval = setInterval(() => {
           setLoadingProgress5((prev) => (prev < 90 ? prev + 10 : prev));
-        }, 500); 
+        }, 500);
         const response = await axios.post('http://localhost:8000/generate_final_ans/', { binary_data: binaryInput5 });
         clearInterval(progressInterval); // Stop the interval
-        setLoadingProgress5(100); 
+        setLoadingProgress5(100);
         setResult5(response.data); // Set the response data
 
       } catch (error) {
-        setLoadingProgress5(0); 
+        setLoadingProgress5(0);
         console.error("Error executing generating final answer:", error);
       }
     };
@@ -515,14 +517,14 @@ const Team = () => {
       try {
         let progressInterval = setInterval(() => {
           setLoadingProgress6((prev) => (prev < 90 ? prev + 10 : prev));
-        }, 500); 
+        }, 500);
         const response = await axios.post('http://localhost:8000/generate_final_ans/', { binary_data: binaryInput6 });
         clearInterval(progressInterval); // Stop the interval
         setLoadingProgress6(100);
         setResult6(response.data); // Set the response data
 
       } catch (error) {
-        setLoadingProgress6(0); 
+        setLoadingProgress6(0);
         console.error("Error executing generating final answer:", error);
       }
     };
@@ -544,7 +546,7 @@ const Team = () => {
         setResult7(response.data); // Set the response data
 
       } catch (error) {
-        setLoadingProgress7(0); 
+        setLoadingProgress7(0);
         console.error("Error executing generating final answer:", error);
       }
     };
@@ -1003,6 +1005,8 @@ const Team = () => {
                       >
                         Generate Report
                       </Button>
+
+
 
                     </Box>
                   </Box>
@@ -1513,7 +1517,7 @@ const Team = () => {
                 </Box>
               </td>
               <td>{uploadTime6 || ""}</td>
-              <td>{fileName6|| "No file selected"}</td>
+              <td>{fileName6 || "No file selected"}</td>
 
             </tr>
 
@@ -1899,8 +1903,84 @@ const Team = () => {
 
           </tbody>
         </Box>
-      </Box>
 
+
+      </Box>
+      <Header title="AI Analysis" />
+      <Box
+  sx={{
+    background: "linear-gradient(135deg, #1F2A40 30%, #29314F 100%)",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "250px",
+    textAlign: "center",
+    borderRadius: "12px",
+    mt: 4,
+    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Subtle shadow for depth
+    position: "relative",
+    overflow: "hidden",
+  }}
+>
+  {/* Floating AI Elements for Design */}
+  <AutoAwesomeIcon
+    sx={{
+      position: "absolute",
+      top: 20,
+      left: 30,
+      fontSize: 40,
+      color: "rgba(255, 255, 255, 0.3)",
+    }}
+  />
+  <AutoAwesomeIcon
+    sx={{
+      position: "absolute",
+      bottom: 20,
+      right: 30,
+      fontSize: 40,
+      color: "rgba(255, 255, 255, 0.3)",
+    }}
+  />
+
+  {/* Gemini Logo */}
+  <Box
+    component="img"
+    src="/image.png"
+    alt="Gemini Logo"
+    sx={{ width: 80, height: "auto", mb: 2,borderRadius: "12px"  }}
+  />
+
+  {/* Title */}
+  
+
+  {/* Button */}
+  <Button
+    variant="contained"
+    onClick={() => {
+      window.open("http://localhost:3000/report", "_blank");
+
+    }}
+    sx={{
+      backgroundColor: "#E63946", // Red theme
+      color: "white",
+      textTransform: "none",
+      padding: "15px 40px",
+      fontSize: "1.5rem",
+      width: "50%",
+      maxWidth: "320px",
+      borderRadius: "8px",
+      transition: "all 0.3s ease-in-out",
+      "&:hover": {
+        backgroundColor: "#F77F00",
+        transform: "scale(1.05)",
+        boxShadow: "0px 4px 10px rgba(255, 99, 71, 0.5)", // Glow effect
+      },
+    }}
+  >
+    Analyze with AI
+  </Button>
+</Box>
 
     </Box>
   );

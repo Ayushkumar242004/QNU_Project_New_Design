@@ -50,8 +50,9 @@ INSTALLED_APPS = [
     'home', 
     'rest_framework',
     'accounts',
+    'reports',
     'rest_framework_simplejwt.token_blacklist',
-    
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -211,6 +212,5 @@ SIMPLE_JWT = {
 
 
 CORS_ALLOW_ALL_ORIGINS = True
-
 
 

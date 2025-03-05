@@ -2929,22 +2929,18 @@ def create_graph_dieharder(request):
 
 
 
-
 @csrf_exempt
 def generate_pdf_report(request):
     global global_graph_image
 
-    
-    # binary_data = request.GET.get('binary_data', '')
     try:
         data = json.loads(request.body)
         binary_data = data.get('binary_data', '')
         print('Received binary data:', binary_data)
+       
     except json.JSONDecodeError as e:
         print('Error parsing JSON:', e)
         return HttpResponse("Invalid JSON data.", status=400)
-
-    
 
     # Create an HttpResponse object with PDF headers
     graph_response = create_graph(request)
@@ -2954,23 +2950,18 @@ def generate_pdf_report(request):
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'inline; filename="report.pdf"'
 
-    
-
     # Set up the PDF buffer and document template with margins
     buffer = BytesIO()
     doc = SimpleDocTemplate(buffer, pagesize=A4,
                              rightMargin=10, leftMargin=10,
                              topMargin=10, bottomMargin=30, title="QNU Labs")
 
-    
-    
-    
     # Set up styles
     styles = getSampleStyleSheet()
 
     current_date = datetime.now().strftime("%B %d, %Y")  # Format as "December 06, 2024"
 
-     # Add a paragraph with the current date
+    # Add a paragraph with the current date
     date_style = ParagraphStyle('Date', parent=styles['Normal'], fontSize=10, fontName='Helvetica-Bold',  alignment=2, spaceAfter=10)
     date_paragraph = Paragraph(f"Date: {current_date}", date_style)
 
@@ -2978,8 +2969,6 @@ def generate_pdf_report(request):
     title = Paragraph("Report-QNu Labs", styles['Title'])
     title_space = Spacer(1, 0.0 * inch)  # Small spacer below the title
 
-
-    
     # Add subtitles with underlining
     subtitle_style = styles['Heading2']
     subtitle_style.fontName = 'Helvetica-Bold'
@@ -2988,9 +2977,10 @@ def generate_pdf_report(request):
 
     nist_subtitle = Paragraph("NIST Tests:", subtitle_style)
     graph_subtitle = Paragraph("Graphical Analysis:", subtitle_style)
+    description_subtitle = Paragraph("Test Descriptions:", subtitle_style)
 
     subtitle_space = Spacer(1, 0.0 * inch)  # Spacer below the subtitles
-
+    graph_space= Spacer(1, 0.0 * inch) 
     # Initialize x to 0
     x = 0
 
@@ -3064,9 +3054,7 @@ def generate_pdf_report(request):
         x += 1
 
     # Now x contains the count of tests that returned True
-    # print("Number of tests that returned True:", x)
-    final_text='random number' if x > 10 else 'non-random number'
-
+    final_text = 'random number' if x > 10 else 'non-random number'
 
     # Dynamically set the result text based on the test outcome
     frequency_test_text = 'random number' if frequency_test_result else 'non-random number'
@@ -3088,20 +3076,21 @@ def generate_pdf_report(request):
     adaptive_statistical_text = 'random number' if adaptive_statistical_test_result else 'non-random number'
 
     bold_red_style = ParagraphStyle(
-    'BoldRed', 
-    parent=styles['Normal'], 
-    fontSize=12,          # Adjust the font size as needed
-    fontName='Helvetica-Bold',  # Bold font
-    textColor='red'       # Red color
+        'BoldRed',
+        parent=styles['Normal'],
+        fontSize=12,
+        fontName='Helvetica-Bold',
+        textColor='red'
     )
 
     bold_black_style = ParagraphStyle(
-    'BoldBlack', 
-    parent=styles['Normal'], 
-    fontSize=12,          # Adjust the font size as needed
-    fontName='Helvetica-Bold',  # Bold font
-    textColor='black'       # Red color
+        'BoldBlack',
+        parent=styles['Normal'],
+        fontSize=12,
+        fontName='Helvetica-Bold',
+        textColor='black'
     )
+
     # Sample Table Data for the first table with "Final Result" in the last row
     data1 = [
         [Paragraph('Test type', styles['Normal']), 'Result', 'Test type', 'Result'],
@@ -3123,8 +3112,6 @@ def generate_pdf_report(request):
          Paragraph('16. Autocorrelation Test', styles['Normal']), autocorrelation_text],
         [Paragraph('17. Adaptive Statistical Test', styles['Normal']), adaptive_statistical_text],
         [Paragraph('Final Result', styles['Normal']), Paragraph(final_text, bold_red_style)],
-
-       
     ]
 
     # Adjust column widths
@@ -3151,28 +3138,87 @@ def generate_pdf_report(request):
     table2 = Table(data2, colWidths=[4 * inch])
     table2.setStyle(TableStyle([('ALIGN', (0, 0), (-1, -1), 'CENTER')]))
 
-    
-     # Add logo on the top-right corner (adjust the path of your logo)
+    # Add logo on the top-right corner (adjust the path of your logo)
     logo_path = os.path.join(os.path.dirname(__file__), 'qnulogo.png')
-
     logo_image = Image(logo_path, width=0.5 * inch, height=0.5 * inch)
-    # logo_image.hAlign = 'LEFT'  # Right-align the image on the page
-    # logo_image.vAlign = 'TOP'    # Top-align the image on the page
-
     logo_table = Table([[logo_image]], colWidths=[6.5 * inch], rowHeights=[0.5 * inch])
     logo_table.setStyle(TableStyle([
-    ('ALIGN', (0, 0), (0, 0), 'CENTRE'),  # Align logo to the left
-    ('VALIGN', (100, 100), (0, 0), 'TOP'),  # Align logo to the top
-    
+        ('ALIGN', (0, 0), (0, 0), 'CENTRE'),  # Align logo to the left
+        ('VALIGN', (100, 100), (0, 0), 'TOP'),  # Align logo to the top
     ]))
 
+    # Add the descriptions of the NIST and Dieharder tests
+    nist_description = """
+    <b>NIST Statistical Tests Description:</b><br/><br/>
+
+    1. <b>Frequency Test</b>: This test checks the proportion of zeros and ones in the entire binary sequence. For a random sequence, the number of ones and zeros should be approximately equal. If the sequence is too skewed towards either ones or zeros, it indicates non-randomness.<br/><br/>
+
+    2. <b>Frequency Test within a Block</b>: This test divides the binary sequence into smaller blocks and checks the proportion of ones within each block. It ensures that local subsequences are also balanced and do not deviate significantly from the expected 50% distribution of ones and zeros.<br/><br/>
+
+    3. <b>Runs Test</b>: A run is a sequence of consecutive identical bits (either all ones or all zeros). This test counts the total number of runs in the sequence. Too many or too few runs can indicate non-randomness, as a random sequence should have an expected number of runs based on its length.<br/><br/>
+
+    4. <b>Test for the Longest Run of Ones</b>: This test focuses on the longest run of ones within a block of the sequence. It checks if the length of the longest run of ones is consistent with what is expected in a random sequence. Unusually long runs of ones may indicate non-randomness.<br/><br/>
+
+    5. <b>Binary Matrix Rank Test</b>: This test evaluates the rank of disjoint sub-matrices created from the binary sequence. It checks for linear dependence among fixed-length subsequences. A random sequence should produce matrices with full rank, while non-random sequences may result in matrices with lower rank.<br/><br/>
+
+    6. <b>Discrete Fourier Transform Test</b>: This test analyzes the sequence in the frequency domain using a Fourier transform. It detects periodic patterns or regularities in the sequence that would not be present in a truly random sequence. Peaks in the frequency domain may indicate non-randomness.<br/><br/>
+
+    7. <b>Non-overlapping Template Matching Test</b>: This test searches for the occurrence of specific non-periodic patterns (templates) in the sequence. It ensures that the sequence does not contain predictable patterns that could indicate non-randomness.<br/><br/>
+
+    8. <b>Overlapping Template Matching Test</b>: Similar to the non-overlapping test, this test looks for specific patterns but allows for overlapping occurrences. It detects if the sequence contains recurring patterns, which would suggest non-randomness.<br/><br/>
+
+    9. <b>Maurer’s Universal Test</b>: This test measures the compressibility of the sequence. A truly random sequence should not be compressible, as it lacks patterns or regularities. If the sequence can be compressed significantly, it indicates non-randomness.<br/><br/>
+
+    10. <b>Linear Complexity Test</b>: This test assesses the complexity of the sequence using linear feedback shift registers (LFSRs). It checks if the sequence can be generated by a simple linear process. A random sequence should have high linear complexity, while a non-random sequence may have low complexity.<br/><br/>
+
+    11. <b>Serial Test</b>: This test examines the frequency of all possible overlapping m-bit patterns in the sequence. It ensures that all possible patterns of a given length appear with approximately the same frequency in a random sequence.<br/><br/>
+
+    12. <b>Approximate Entropy Test</b>: This test measures the frequency of m-bit and (m+1)-bit patterns in the sequence. It checks for irregularities in the sequence by comparing the frequencies of these patterns. A random sequence should have consistent frequencies for all patterns.<br/><br/>
+
+    13. <b>Cumulative Sums Test</b>: This test converts the binary sequence into a random walk (where each bit contributes to a cumulative sum) and checks if the cumulative sums are too large or too small. A random sequence should have cumulative sums that stay close to zero.<br/><br/>
+
+    14. <b>Random Excursions Test</b>: This test analyzes the number of cycles in a random walk derived from the binary sequence. It checks if the sequence has too many or too few cycles, which would indicate non-randomness.<br/><br/>
+
+    15. <b>Random Excursions Variant Test</b>: Similar to the Random Excursions Test, this test focuses on specific states in the random walk. It checks if the sequence deviates from the expected behavior in certain states, which could indicate non-randomness.<br/><br/>
+
+    16. <b>Autocorrelation Test</b>: This test measures the correlation between the binary sequence and a shifted version of itself. It detects if there are dependencies between bits that are separated by a certain distance. A random sequence should have low autocorrelation for all shifts.<br/><br/>
+
+    17. <b>Adaptive Statistical Test</b>: This test combines multiple statistical tests to detect deviations from randomness. <br/><br/>
+    """
+
+
+    description_style = ParagraphStyle(
+        'Description',
+        parent=styles['Normal'],
+        fontSize=10,
+        fontName='Helvetica',
+        leading=12,
+        spaceAfter=10
+    )
+
+    nist_description_paragraph = Paragraph(nist_description, description_style)
+    
     # Build the PDF document
-    elements = [logo_table, date_paragraph, title, title_space, nist_subtitle, subtitle_space, table1, subtitle_space, graph_subtitle, table2]
+    elements = [
+        logo_table,
+        date_paragraph,
+        title,
+        title_space,
+        nist_subtitle,
+        subtitle_space,
+        
+        table1,
+        subtitle_space,
+        graph_subtitle,
+        table2,
+        subtitle_space,
+        description_subtitle,
+        subtitle_space,
+        nist_description_paragraph,
+      
+    ]
     doc.build(elements)
 
-
-    
-    
     # Get the PDF data and write it to the response
     pdf = buffer.getvalue()
     buffer.close()
@@ -3180,12 +3226,10 @@ def generate_pdf_report(request):
 
     return response
 
-
+@csrf_exempt
 @csrf_exempt
 def generate_pdf_report_dieharder(request):
     global global_graph_image
-
-    # binary_data = request.GET.get('binary_data', '')
 
     try:
         data = json.loads(request.body)
@@ -3195,11 +3239,9 @@ def generate_pdf_report_dieharder(request):
         print('Error parsing JSON:', e)
         return HttpResponse("Invalid JSON data.", status=400)
 
-    
-
+    # Clean up binary data
     binary_data = binary_data.replace('%0A', '').replace('%20', '').replace(' ', '').replace('\n', '').replace('\r', '')
 
-    
     # Create a HttpResponse object with PDF headers
     graph_response = create_graph_dieharder(request)
     graph_buffer = graph_response.content
@@ -3227,23 +3269,12 @@ def generate_pdf_report_dieharder(request):
     subtitle_style.fontSize = 12
     subtitle_style.underline = True
 
-    nist_subtitle = Paragraph("Dieharder Tests:", subtitle_style)
-    # other_tests_subtitle = Paragraph("Other Tests:", subtitle_style)
+    dieharder_subtitle = Paragraph("Dieharder Tests:", subtitle_style)
     graph_subtitle = Paragraph("Graphical Analysis:", subtitle_style)
 
-    subtitle_space = Spacer(1, 0.0 * inch)  # Spacer below the subtitles
+    subtitle_space = Spacer(2, 0.0 * inch)  # Spacer below the subtitles
 
-
-
-    x = 0
-
-    bold_red_style = ParagraphStyle(
-    'BoldRed', 
-    parent=styles['Normal'], 
-    fontSize=12,          # Adjust the font size as needed
-    fontName='Helvetica-Bold',  # Bold font
-    textColor='red'       # Red color
-    )
+    x = 0  # Counter for random results
 
     # Perform tests and increment x for each test that returns True
     birthday_test_result = BirthdaySpacingsTest.BirthdaySpacingsTest(binary_data)[1]
@@ -3306,51 +3337,44 @@ def generate_pdf_report_dieharder(request):
     u01_matrix_rank_test_result = TestU01MatrixRankTest.TestU01MatrixRankTest(binary_data)[1]
     x += 1 if u01_matrix_rank_test_result else 0
 
-
-    final_text='random number' if x > 10 else 'non-random number'
-
-    print('hi sir random',x)
+    final_text = 'random number' if x > 10 else 'non-random number'
 
     # Dynamically set the result text based on the test outcome
     birthday_text = 'random number' if birthday_test_result else 'non-random number'
-    parking_text= 'random number' if parking_test_block_result else 'non-random number'
-    oevrlapping_5_text= 'random number' if overlapping_5_test_result else 'non-random number'
-    minimum_distance_text= 'random number' if minimum_distance_test_result else 'non-random number'
-    rank31x31_text= 'random number' if rank_31_test_result else 'non-random number'
-    spheres_text= 'random number' if spheres_test_result else 'non-random number'
-    rank32x32_text= 'random number' if rank_32_result else 'non-random number'
-    craps_text= 'random number' if craps_test_result else 'non-random number'
-    bitstream_text= 'random number' if bitstream_test_result else 'non-random number'
-    gcd_text= 'random number' if gcd_test_result else 'non-random number'
-    opso_text= 'random number' if opso_test_result else 'non-random number'
-    oqsq_text= 'random number' if oqsq_test_result else 'non-random number'
-    dna_text= 'random number' if dna_test_result else 'non-random number'
-    one_stream_text= 'random number' if count_one_stream_test_result else 'non-random number'
-    one_byte_text= 'random number' if count_one_byte_test_result else 'non-random number'
-    simple_gcd_text= 'random number' if simple_gcd_test_result else 'non-random number'
-    generalised_minimum_text= 'random number' if generalized_minimum_test_result else 'non-random number'
-    u01_linear_text= 'random number' if u01_linear_complexity_test_result else 'non-random number'
-    u01longest_text= 'random number' if u01_longest_repeated_test_result else 'non-random number'
-    u01_matrix_text= 'random number' if u01_matrix_rank_test_result else 'non-random number'
-
-
-
+    parking_text = 'random number' if parking_test_block_result else 'non-random number'
+    overlapping_5_text = 'random number' if overlapping_5_test_result else 'non-random number'
+    minimum_distance_text = 'random number' if minimum_distance_test_result else 'non-random number'
+    rank31x31_text = 'random number' if rank_31_test_result else 'non-random number'
+    spheres_text = 'random number' if spheres_test_result else 'non-random number'
+    rank32x32_text = 'random number' if rank_32_result else 'non-random number'
+    craps_text = 'random number' if craps_test_result else 'non-random number'
+    bitstream_text = 'random number' if bitstream_test_result else 'non-random number'
+    gcd_text = 'random number' if gcd_test_result else 'non-random number'
+    opso_text = 'random number' if opso_test_result else 'non-random number'
+    oqsq_text = 'random number' if oqsq_test_result else 'non-random number'
+    dna_text = 'random number' if dna_test_result else 'non-random number'
+    one_stream_text = 'random number' if count_one_stream_test_result else 'non-random number'
+    one_byte_text = 'random number' if count_one_byte_test_result else 'non-random number'
+    simple_gcd_text = 'random number' if simple_gcd_test_result else 'non-random number'
+    generalized_minimum_text = 'random number' if generalized_minimum_test_result else 'non-random number'
+    u01_linear_text = 'random number' if u01_linear_complexity_test_result else 'non-random number'
+    u01longest_text = 'random number' if u01_longest_repeated_test_result else 'non-random number'
+    u01_matrix_text = 'random number' if u01_matrix_rank_test_result else 'non-random number'
 
     # Sample Table Data for the first table with "Final Result" in the last row
     data1 = [
         [Paragraph('Test type', styles['Normal']), 'Result', 'Test type', 'Result'],
         [Paragraph('1. Birthday Spacing', styles['Normal']), birthday_text, Paragraph('2. Parking Lot Test', styles['Normal']), parking_text],
-        [Paragraph('3. Overlapping 5 Permutation', styles['Normal']), oevrlapping_5_text, Paragraph('4. Minimum Distance Test', styles['Normal']), minimum_distance_text],
-        [Paragraph('5. Ranks of 31x31 Test', styles['Normal']), rank31x31_text, Paragraph('6. 3d Spheres Test', styles['Normal']), spheres_text],
+        [Paragraph('3. Overlapping 5 Permutation', styles['Normal']), overlapping_5_text, Paragraph('4. Minimum Distance Test', styles['Normal']), minimum_distance_text],
+        [Paragraph('5. Ranks of 31x31 Test', styles['Normal']), rank31x31_text, Paragraph('6. 3D Spheres Test', styles['Normal']), spheres_text],
         [Paragraph('7. Ranks of 32x32 Test', styles['Normal']), rank32x32_text, Paragraph('8. Craps Test', styles['Normal']), craps_text],
-        [Paragraph('9. Bitstream test', styles['Normal']), bitstream_text, Paragraph('10. Marsaglia-Tsang GCD Test', styles['Normal']), gcd_text],
-        [Paragraph('11. OPSO Test', styles['Normal']), opso_text, Paragraph('12. OQSO Test', styles['Normal']),oqsq_text],
-        [Paragraph('13. DNA Test', styles['Normal']), dna_text, Paragraph('14. Count the Ones(Stream) Test', styles['Normal']), one_stream_text],
-        [Paragraph('15. Count the Ones(Bytes) Test', styles['Normal']),one_byte_text,Paragraph('16. Marsalia-Tsang Simple GCD Test', styles['Normal']), simple_gcd_text],
-        [Paragraph('17. Generalized Minimum DIstance Test', styles['Normal']),generalised_minimum_text,Paragraph('18. TestU01 Linear Complexity Test', styles['Normal']), u01_linear_text],
-        [Paragraph('18. TestU01 Longest Repeated Substring Test', styles['Normal']), u01longest_text,Paragraph('20. TestU01 Matrix Rank Test', styles['Normal']),u01_matrix_text],
-        [Paragraph(' Final Result', styles['Normal']),  Paragraph(final_text, bold_red_style)],
-       
+        [Paragraph('9. Bitstream Test', styles['Normal']), bitstream_text, Paragraph('10. Marsaglia-Tsang GCD Test', styles['Normal']), gcd_text],
+        [Paragraph('11. OPSO Test', styles['Normal']), opso_text, Paragraph('12. OQSO Test', styles['Normal']), oqsq_text],
+        [Paragraph('13. DNA Test', styles['Normal']), dna_text, Paragraph('14. Count the Ones (Stream) Test', styles['Normal']), one_stream_text],
+        [Paragraph('15. Count the Ones (Bytes) Test', styles['Normal']), one_byte_text, Paragraph('16. Marsaglia-Tsang Simple GCD Test', styles['Normal']), simple_gcd_text],
+        [Paragraph('17. Generalized Minimum Distance Test', styles['Normal']), generalized_minimum_text, Paragraph('18. TestU01 Linear Complexity Test', styles['Normal']), u01_linear_text],
+        [Paragraph('19. TestU01 Longest Repeated Substring Test', styles['Normal']), u01longest_text, Paragraph('20. TestU01 Matrix Rank Test', styles['Normal']), u01_matrix_text],
+        [Paragraph('Final Result', styles['Normal']), Paragraph(final_text, styles['Heading2'])],
     ]
 
     # Adjust column widths
@@ -3367,69 +3391,80 @@ def generate_pdf_report_dieharder(request):
         ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),  # Bold header
         ('FONTSIZE', (0, 0), (-1, -1), 10),  # Set font size
         ('GRID', (0, 0), (-1, -1), 1, colors.black),  # Add gridlines
-        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),  # Vertically align text to the middle
-        ('WORDWRAP', (0, 0), (-1, -1), True),  # Enable text wrapping
+        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),  # Center vertically
     ]))
-
 
     # Use the BytesIO object to create an Image
-    graph_image = Image(graph_image_io)
-    
-    # Automatically scale the image
-    graph_image.drawHeight = 4.5 * inch  # Set height
-    graph_image.drawWidth = 7 * inch  # Set width
+    graph_image = Image(graph_image_io, width=7 * inch, height=4.5 * inch)
 
-    # Ensure the image fits within the page margins
-    max_width = A4[0] - 20  # A4 width minus margins
-    max_height = A4[1] - 20  # A4 height minus margins
-
-    # Adjust if necessary
-    if graph_image.drawWidth > max_width or graph_image.drawHeight > max_height:
-        aspect_ratio = graph_image.drawWidth / graph_image.drawHeight
-        if graph_image.drawWidth > max_width:
-            graph_image.drawWidth = max_width
-            graph_image.drawHeight = max_width / aspect_ratio
-        if graph_image.drawHeight > max_height:
-            graph_image.drawHeight = max_height
-            graph_image.drawWidth = max_height * aspect_ratio
-
-
+    # Add a paragraph with the current date
     current_date = datetime.now().strftime("%B %d, %Y")  # Format as "December 06, 2024"
-
-     # Add a paragraph with the current date
-    date_style = ParagraphStyle('Date', parent=styles['Normal'], fontSize=10, fontName='Helvetica-Bold',  alignment=2, spaceAfter=10)
+    date_style = ParagraphStyle('Date', parent=styles['Normal'], fontSize=10, fontName='Helvetica-Bold', alignment=2, spaceAfter=10)
     date_paragraph = Paragraph(f"Date: {current_date}", date_style)
 
+    # Add logo on the top-right corner
     logo_path = os.path.join(os.path.dirname(__file__), 'qnulogo.png')
-
     logo_image = Image(logo_path, width=0.5 * inch, height=0.5 * inch)
-    # logo_image.hAlign = 'LEFT'  # Right-align the image on the page
-    # logo_image.vAlign = 'TOP'    # Top-align the image on the page
-
     logo_table = Table([[logo_image]], colWidths=[6.5 * inch], rowHeights=[0.5 * inch])
     logo_table.setStyle(TableStyle([
-    ('ALIGN', (0, 0), (0, 0), 'CENTRE'),  # Align logo to the left
-    ('VALIGN', (100, 100), (0, 0), 'TOP'),  # Align logo to the top
-    
+        ('ALIGN', (0, 0), (0, 0), 'CENTRE'),  # Align logo to the left
+        ('VALIGN', (100, 100), (0, 0), 'TOP'),  # Align logo to the top
     ]))
 
-    # Build the PDF with the title, subtitles, tables, graph, and spacers
-    elements = []
-    elements.append(logo_table)
-    elements.append(title)
-    elements.append(date_paragraph)
-    elements.append(title_space)  # Add space after the title
-    elements.append(nist_subtitle)
-    elements.append(subtitle_space)  # Spacer below the first subtitle
-    elements.append(table1)
-    # elements.append(Spacer(1, 0.5 * inch))  # Spacer between tables
-    # elements.append(other_tests_subtitle)
-    elements.append(subtitle_space)  # Spacer below the second subtitle
-    # elements.append(table2)
-    elements.append(graph_subtitle)
-    elements.append(subtitle_space)  # Spacer below the graph subtitle
-    elements.append(graph_image)
-    
+    description_subtitle = Paragraph("Dieharder Tests Description:", subtitle_style)
+    # Dieharder Tests Description
+    dieharder_description = """
+    1. <b>Birthday Spacing</b>: This test simulates the "birthday paradox" by generating random "birthdays" and measuring the spacing between them. It checks if the spacings between these random points are uniformly distributed. Non-random sequences may show clustering or gaps in the spacings.<br/><br/>
+    2. <b>Overlapping Permutations</b>: This test checks the frequency of overlapping sequences of five random numbers. It ensures that all possible permutations of five numbers appear with approximately equal frequency. Non-random sequences may show biases in certain permutations.<br/><br/>
+    3. <b>Ranks of 31x31 and 32x32 Matrices</b>: This test evaluates the rank of random matrices generated from the sequence. It checks if the matrices are of full rank, as expected in a random sequence. Non-random sequences may produce matrices with lower rank due to dependencies.<br/><br/>
+    4. <b>Ranks of 6x8 Matrices</b>: Similar to the above test, but it uses smaller matrices (6x8). It checks for linear independence in smaller subsets of the sequence. Non-random sequences may fail to produce full-rank matrices.<br/><br/>
+    5. <b>Monkey Tests</b>: This test simulates monkeys randomly typing on a keyboard. It checks if the sequence behaves like random typing, where all possible patterns should appear with equal probability. Non-random sequences may show biases or missing patterns.<br/><br/>
+    6. <b>Count the 1s</b>: This test counts the number of ones in specific bit lengths of the sequence. It ensures that the count of ones is consistent with the expected binomial distribution. Non-random sequences may show deviations in the number of ones.<br/><br/>
+    7. <b>Count the 1s in Specific Bytes</b>: This test focuses on the number of ones in specific byte lengths. It checks if the distribution of ones within bytes is uniform. Non-random sequences may show biases in certain byte patterns.<br/><br/>
+    8. <b>Parking Lot Test</b>: This test simulates parking cars randomly in a parking lot. It checks if the placement of cars (points) is uniformly distributed. Non-random sequences may show clustering or gaps in the placement of points.<br/><br/>
+    9. <b>Minimum Distance Test</b>: This test measures the minimum distance between random points placed in a square. It checks if the distances between points follow the expected distribution. Non-random sequences may show points that are too close or too far apart.<br/><br/>
+    10. <b>Random Spheres Test</b>: This test places random points in a cube and checks the distribution of distances between them. It ensures that the distances are consistent with a random distribution. Non-random sequences may show unusual clustering or spacing.<br/><br/>
+    11. <b>Squeeze Test</b>: This test compresses the sequence and checks for compressibility. A truly random sequence should not be compressible, as it lacks patterns. If the sequence can be compressed significantly, it indicates non-randomness.<br/><br/>
+    12. <b>Overlapping Sums Test</b>: This test checks the distribution of sums of overlapping subsequences. It ensures that the sums are normally distributed, as expected in a random sequence. Non-random sequences may show deviations in the distribution of sums.<br/><br/>
+    13. <b>Runs Test</b>: Similar to the NIST Runs Test, this test counts the number of runs (sequences of consecutive identical bits) in the sequence. It checks if the number of runs is consistent with a random sequence. Non-random sequences may have too many or too few runs.<br/><br/>
+    14. <b>Craps Test</b>: This test simulates the game of craps using the sequence as a source of random numbers. It checks if the outcomes of the dice rolls are consistent with the expected probabilities. Non-random sequences may show biases in the outcomes.<br/><br/>
+    15. <b>Marsaglia and Tsang GCD Test</b>: This test uses the greatest common divisor (GCD) of pairs of numbers generated from the sequence. It checks if the distribution of GCD values is consistent with a random sequence. Non-random sequences may show deviations in the GCD distribution.<br/><br/>
+    16. <b>STS Monobit Test</b>: This test checks the proportion of ones and zeros in the sequence. It ensures that the sequence has an approximately equal number of ones and zeros. Non-random sequences may show a bias towards ones or zeros.<br/><br/>
+    17. <b>STS Runs Test</b>: Similar to the NIST Runs Test, this test counts the number of runs in the sequence. It checks if the sequence has the expected number of runs for a random sequence. Non-random sequences may have too many or too few runs.<br/><br/>
+    18. <b>STS Serial Test</b>: This test examines the frequency of overlapping m-bit patterns in the sequence. It ensures that all possible patterns appear with approximately equal frequency. Non-random sequences may show biases in certain patterns.<br/><br/>
+    19. <b>RGB Bit Distribution Test</b>: This test checks the distribution of bits in RGB color values generated from the sequence. It ensures that the bits are uniformly distributed across the color channels. Non-random sequences may show biases in certain color channels.<br/><br/>
+    20. <b>RGB Generalized Minimum Distance Test</b>: This test measures the minimum distance between RGB color values generated from the sequence. It checks if the distances between colors are consistent with a random distribution. Non-random sequences may show unusual clustering or spacing in color values.<br/><br/>
+    """
+
+    description_style = ParagraphStyle(
+        'Description',
+        parent=styles['Normal'],
+        fontSize=10,
+        fontName='Helvetica',
+        leading=12,
+        spaceAfter=10
+    )
+
+    dieharder_description_paragraph = Paragraph(dieharder_description, description_style)
+
+    # Build the PDF document
+    elements = [
+        logo_table,
+        date_paragraph,
+        title,
+        title_space,
+        dieharder_subtitle,
+        subtitle_space,
+        table1,
+        subtitle_space,
+        graph_subtitle,
+        subtitle_space,
+        graph_image,
+        subtitle_space,
+        description_subtitle,
+        dieharder_description_paragraph,
+    ]
+
     doc.build(elements)
 
     # Write the PDF to the HttpResponse

@@ -1,0 +1,258 @@
+/* Background and Layout */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    background-color: #141B2D;
+    padding: 20px;
+    color: white;
+}
+
+/* Upload Box */
+.upload-box {
+    background: #1F2A40;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 30px;
+}
+
+/* File Input Styling */
+.file-label {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.file-label:hover {
+    background-color: #45A049;
+}
+
+.file-input {
+    display: none;
+}
+
+.file-name {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #B0BEC5;
+}
+
+/* Upload Button */
+.upload-btn {
+    width: 100%;
+    background-color: #3498DB;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.upload-btn:hover {
+    background-color: #2980B9;
+}
+
+.upload-btn:disabled {
+    background-color: #7F8C8D;
+    cursor: not-allowed;
+}
+
+/* Structured Analysis Section */
+.analysis-container {
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+/* Analysis Title */
+.analysis-heading {
+    font-size: 22px;
+    font-weight: bold;
+    color: #E3F2FD;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+/* Analysis Box */
+.analysis-box {
+    background: #2C3E50;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);
+    text-align: left;  /* Aligns text to left */
+    width: 85%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Key Metrics Section */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 15px;
+    padding: 15px;
+}
+
+/* Individual Metric Card */
+.metric-card {
+    background: #34495E;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+    color: #E3F2FD;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Centered Table with Borders */
+.analysis-table {
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;  /* Centers the table */
+    border-collapse: collapse; /* Ensures borders are merged */
+    background: #1F2A40;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Table Header */
+.analysis-table th {
+    background-color: #3498DB;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #2C3E50;
+}
+
+/* Table Rows */
+.analysis-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #2C3E50;
+    color: #B0BEC5;
+}
+
+/* Alternate Row Colors */
+.analysis-table tr:nth-child(even) {
+    background-color: #2C3E50;
+}
+
+/* Detailed Analysis Section */
+.analysis-details {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #B0BEC5;
+    line-height: 1.6;
+    padding: 10px;
+    border-left: 4px solid #3498DB;
+    background: rgba(255, 255, 255, 0.05);
+    text-align: left;  /* Left-aligned text */
+}
+
+/* Bullet Points (Closer to Text) */
+.analysis-details ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.analysis-details li {
+    margin-bottom: 5px;  /* Reduces space between bullet points */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .analysis-box {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .metrics-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .analysis-table {
+        width: 95%;
+    }
+}
+
+@media (max-width: 480px) {
+    .analysis-box {
+        width: 95%;
+        padding: 12px;
+    }
+
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .analysis-table {
+        font-size: 12px;
+    }
+}
+
+.analysis-box p {
+    font-size: 14px;
+    color: #B0BEC5;
+}
+
+/* File Upload Box with Dotted Border */
+.file-upload-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border: 2px dashed #4CAF50; /* Dotted border */
+    border-radius: 10px;
+    background-color: #1F2A40;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.file-upload-container:hover {
+    background-color: #26324D;
+    border-color: #fff;
+}
+
+/* Hidden File Input */
+.file-input {
+    display: none;
+}
+
+/* Placeholder Text */
+.file-upload-text {
+    font-size: 16px;
+    font-weight: bold;
+    color: #B0BEC5;
+}
+
+/* Selected File Name */
+.file-name {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #E3F2FD;
+    font-style: italic;
+}
+
