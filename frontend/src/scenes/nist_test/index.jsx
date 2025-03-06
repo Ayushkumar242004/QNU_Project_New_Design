@@ -9,7 +9,7 @@ import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 
 const MAX_STACK_SIZE_ESTIMATE = 1 * 1024 * 1024;
 
-const Team = () => {
+const Nist_tests = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [binaryInput, setBinaryInput] = useState("");
@@ -939,7 +939,7 @@ const Team = () => {
               <th style={{ width: "10%" }}>Serial No</th>
               <th style={{ width: "30%" }}>Upload File</th>
               <th style={{ width: "20%" }}>Result</th>
-              <th style={{ width: "10%" }}>Loading Bar</th>
+              <th style={{ width: "10%" }}>Progress Bar</th>
               <th style={{ width: "10%" }}>Uploading Time</th>
               <th style={{ width: "20%" }}>Filename</th>
             </tr>
@@ -1986,4 +1986,4 @@ const Team = () => {
   );
 };
 
-export default Team;
+export default Nist_tests;

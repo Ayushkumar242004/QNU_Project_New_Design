@@ -3,10 +3,11 @@ import { tokens } from "../../theme";
 import Header from "../../components/Header";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios"; // Make sure axios is imported
+import {  Select, MenuItem, FormControl, InputLabel } from "@mui/material";
 
 const MAX_STACK_SIZE_ESTIMATE = 1 * 1024 * 1024;
 
-const Team = () => {
+const Qrng_Server = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -50,7 +51,28 @@ const Team = () => {
   const intervalRef4 = useRef(null);
   const intervalRef5 = useRef(null);
 
+  const [selectedServer, setSelectedServer] = useState("Server 1"); // State for selected server
+  const [selectedServer2, setSelectedServer2] = useState("Server 1"); // State for selected server
+  const [selectedServer3, setSelectedServer3] = useState("Server 1"); // State for selected server
+  const [selectedServer4, setSelectedServer4] = useState("Server 1"); // State for selected server
+  const [selectedServer5, setSelectedServer5] = useState("Server 1"); // State for selected server
 
+  // Handle server selection change
+  const handleServerChange = (event) => {
+    setSelectedServer(event.target.value);
+  };
+  const handleServerChange2 = (event) => {
+    setSelectedServer2(event.target.value);
+  };
+  const handleServerChange3 = (event) => {
+    setSelectedServer3(event.target.value);
+  };
+  const handleServerChange4 = (event) => {
+    setSelectedServer4(event.target.value);
+  };
+  const handleServerChange5 = (event) => {
+    setSelectedServer5(event.target.value);
+  };
 
   const startFetching = () => {
     if (!isFetching) {
@@ -978,7 +1000,7 @@ useEffect(() => {
               <th style={{ width: "10%" }}>Enter Length</th>
               <th style={{ width: "15%" }}>NIST Results</th>
               <th style={{ width: "15%" }}>Dieharder Tests Result</th>
-              <th>IP Address</th>
+              <th>Server </th>
             </tr>
           </thead>
           <tbody>
@@ -1069,7 +1091,34 @@ useEffect(() => {
               <td>{resultNIST}</td>
               {/* <td>{binaryInput}</td> */}
               <td>{resultDieharder}</td>
-              <td>160.20.123.9</td>
+              <td>
+            {/* Dropdown for server selection */}
+            <FormControl variant="outlined" size="small" sx={{ minWidth: 120 }}>
+              
+              <Select
+                value={selectedServer}
+                onChange={handleServerChange}
+                
+                MenuProps={{
+                  anchorOrigin: {
+                    vertical: "bottom",
+                    horizontal: "left",
+                  },
+                  transformOrigin: {
+                    vertical: "top",
+                    horizontal: "left",
+                  },
+                  getContentAnchorEl: null,
+                }}
+              >
+                <MenuItem value="Server 1">Server 1</MenuItem>
+                <MenuItem value="Server 2">Server 2</MenuItem>
+                <MenuItem value="Server 3">Server 3</MenuItem>
+                <MenuItem value="Server 4">Server 4</MenuItem>
+                <MenuItem value="Server 5">Server 5</MenuItem>
+              </Select>
+            </FormControl>
+          </td>
             </tr>
 
 
@@ -1161,7 +1210,34 @@ useEffect(() => {
               <td>{resultNIST2}</td>
               {/* <td>{binaryInput2}</td> */}
               <td>{resultDieharder2}</td>
-              <td>160.20.123.9</td>
+              <td>
+            {/* Dropdown for server selection */}
+            <FormControl variant="outlined" size="small" sx={{ minWidth: 120 }}>
+              
+              <Select
+                value={selectedServer2}
+                onChange={handleServerChange2}
+                
+                MenuProps={{
+                  anchorOrigin: {
+                    vertical: "bottom",
+                    horizontal: "left",
+                  },
+                  transformOrigin: {
+                    vertical: "top",
+                    horizontal: "left",
+                  },
+                  getContentAnchorEl: null,
+                }}
+              >
+                <MenuItem value="Server 1">Server 1</MenuItem>
+                <MenuItem value="Server 2">Server 2</MenuItem>
+                <MenuItem value="Server 3">Server 3</MenuItem>
+                <MenuItem value="Server 4">Server 4</MenuItem>
+                <MenuItem value="Server 5">Server 5</MenuItem>
+              </Select>
+            </FormControl>
+          </td>
             </tr>
 
             <tr>
@@ -1250,7 +1326,34 @@ useEffect(() => {
               </td>
               <td>{resultNIST3}</td>
               <td>{resultDieharder3}</td>
-              <td>160.20.123.9</td>
+              <td>
+            {/* Dropdown for server selection */}
+            <FormControl variant="outlined" size="small" sx={{ minWidth: 120 }}>
+              
+              <Select
+                value={selectedServer3}
+                onChange={handleServerChange3}
+                
+                MenuProps={{
+                  anchorOrigin: {
+                    vertical: "bottom",
+                    horizontal: "left",
+                  },
+                  transformOrigin: {
+                    vertical: "top",
+                    horizontal: "left",
+                  },
+                  getContentAnchorEl: null,
+                }}
+              >
+                <MenuItem value="Server 1">Server 1</MenuItem>
+                <MenuItem value="Server 2">Server 2</MenuItem>
+                <MenuItem value="Server 3">Server 3</MenuItem>
+                <MenuItem value="Server 4">Server 4</MenuItem>
+                <MenuItem value="Server 5">Server 5</MenuItem>
+              </Select>
+            </FormControl>
+          </td>
             </tr>
 
             <tr>
@@ -1339,7 +1442,34 @@ useEffect(() => {
               </td>
               <td>{resultNIST4}</td>
               <td>{resultDieharder4}</td>
-              <td>160.20.123.9</td>
+              <td>
+            {/* Dropdown for server selection */}
+            <FormControl variant="outlined" size="small" sx={{ minWidth: 120 }}>
+              
+              <Select
+                value={selectedServer4}
+                onChange={handleServerChange4}
+                
+                MenuProps={{
+                  anchorOrigin: {
+                    vertical: "bottom",
+                    horizontal: "left",
+                  },
+                  transformOrigin: {
+                    vertical: "top",
+                    horizontal: "left",
+                  },
+                  getContentAnchorEl: null,
+                }}
+              >
+                <MenuItem value="Server 1">Server 1</MenuItem>
+                <MenuItem value="Server 2">Server 2</MenuItem>
+                <MenuItem value="Server 3">Server 3</MenuItem>
+                <MenuItem value="Server 4">Server 4</MenuItem>
+                <MenuItem value="Server 5">Server 5</MenuItem>
+              </Select>
+            </FormControl>
+          </td>
             </tr>
 
             <tr>
@@ -1428,7 +1558,34 @@ useEffect(() => {
               </td>
               <td>{resultNIST5}</td>
               <td>{resultDieharder5}</td>
-              <td>160.20.123.9</td>
+              <td>
+            {/* Dropdown for server selection */}
+            <FormControl variant="outlined" size="small" sx={{ minWidth: 120 }}>
+              
+              <Select
+                value={selectedServer5}
+                onChange={handleServerChange5}
+                
+                MenuProps={{
+                  anchorOrigin: {
+                    vertical: "bottom",
+                    horizontal: "left",
+                  },
+                  transformOrigin: {
+                    vertical: "top",
+                    horizontal: "left",
+                  },
+                  getContentAnchorEl: null,
+                }}
+              >
+                <MenuItem value="Server 1">Server 1</MenuItem>
+                <MenuItem value="Server 2">Server 2</MenuItem>
+                <MenuItem value="Server 3">Server 3</MenuItem>
+                <MenuItem value="Server 4">Server 4</MenuItem>
+                <MenuItem value="Server 5">Server 5</MenuItem>
+              </Select>
+            </FormControl>
+          </td>
             </tr>
 
 
@@ -1439,4 +1596,4 @@ useEffect(() => {
   );
 };
 
-export default Team;
+export default Qrng_Server;

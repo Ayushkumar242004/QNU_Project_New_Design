@@ -54,7 +54,7 @@ import axios from "axios"; // Make sure axios is imported
 //   );
 // };
 
-
+const isLargeScreen = window.innerWidth > 768;
 const BinaryGraphDisplay = ({ binaryInput }) => {
   const [graphUrl, setGraphUrl] = useState(null);
   const [error, setError] = useState("");
@@ -135,7 +135,7 @@ const Dashboard = () => {
   const colors = tokens(theme.palette.mode);
   const [isLive, setIsLive] = useState(false);
   const [binaryInput, setBinaryInput] = useState(""); // State to store fetched binary data
-  const [url, setUrl] = useState("http://localhost:3003/proxy"); // Default URL
+  const [url, setUrl] = useState("http://localhost:3001/random-binary"); // Default URL
   const [isFetching, setIsFetching] = useState(false); // Fetching status
   const [intervalId, setIntervalId] = useState(null); // Interval ID
   const [reportUrl, setReportUrl] = useState(null);
@@ -163,43 +163,63 @@ const Dashboard = () => {
     }
   };
 
-  // Fetch binary data from the proxy server
+  // // Fetch binary data from the proxy server
+  // const fetchRandomNumber = async () => {
+  //   try {
+  //     const response = await fetch(url, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         API_Key: "6625a404-fcf7-aa22-595f-1ce908fc5ebb",
+  //         APISalt: "$2a$04$nArWqsGVKLmYJ3ob48c2/.fL8hULjZTJLWdtTEstM4Ss8oqagInmu",
+  //         Rand_type: 1, // Request binary data
+  //         Length: 64, // Example length
+  //       }),
+  //     });
+
+  //     if (!response.ok) {
+  //       throw new Error("Network response was not ok");
+  //     }
+
+  //     const data = await response.json();
+  //     if (data && data.random) {
+  //       setBinaryInput(data.random); // Update binaryInput state
+  //     } else {
+  //       throw new Error("Invalid API response format");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching binary number:", error);
+  //     setBinaryInput("Error fetching data");
+  //   }
+  // };
+
+
   const fetchRandomNumber = async () => {
+    if (!isFetching) return; // Prevent multiple simultaneous requests
+
+
     try {
-      const response = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          API_Key: "6625a404-fcf7-aa22-595f-1ce908fc5ebb",
-          APISalt: "$2a$04$nArWqsGVKLmYJ3ob48c2/.fL8hULjZTJLWdtTEstM4Ss8oqagInmu",
-          Rand_type: 1, // Request binary data
-          Length: 64, // Example length
-        }),
+      const response = await axios.get("http://localhost:3000/random-binary", {
+        params: { length: 8 }, // Use the length state here
       });
 
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      const data = await response.json();
-      if (data && data.random) {
-        setBinaryInput(data.random); // Update binaryInput state
+      if (response.data?.binary) {
+        setBinaryInput(response.data.binary); // Update binaryInput state
       } else {
-        throw new Error("Invalid API response format");
+        console.error("Invalid response format:", response.data);
       }
     } catch (error) {
-      console.error("Error fetching binary number:", error);
-      setBinaryInput("Error fetching data");
+      console.error("Error fetching random binary number:", error);
+      setBinaryInput("Error fetching data"); // Optionally handle the error state
     }
   };
-
 
   // Fetch data every 10 seconds when isFetching is active
   useEffect(() => {
     if (isFetching && url) {
-      const id = setInterval(fetchRandomNumber, 5000);
+      const id = setInterval(fetchRandomNumber, 3000);
       setIntervalId(id);
     }
     return () => clearInterval(intervalId);
@@ -233,6 +253,13 @@ const Dashboard = () => {
           alignItems="center"
           gap="10px"
         >
+          <Typography
+            variant="body1"
+            color={colors.grey[100]}
+            sx={{ fontSize: "18px" }} // Adjust the size here
+          >
+            Binary Number: {binaryInput || ""}
+          </Typography>
           <button
             onClick={startFetching}
             style={{
@@ -264,6 +291,7 @@ const Dashboard = () => {
           >
             Stop Fetching
           </button>
+
 
 
           {isLive && (
@@ -339,8 +367,8 @@ const Dashboard = () => {
           justifyContent="center"
         >
           <StatBox
-            title="B00000001"
-            subtitle="Active Quantum Number"
+            title={binaryInput || "No binary number"}
+            subtitle="Binary Number"
             progress="0.50"
             increase="+21%"
             icon={
@@ -359,8 +387,8 @@ const Dashboard = () => {
           justifyContent="center"
         >
           <StatBox
-            title="10/10/24, 08:11:24"
-            subtitle="Boot Time"
+            title="Non-Random number"
+            subtitle="Result"
             progress="0.30"
             increase="+5%"
             icon={
@@ -379,8 +407,8 @@ const Dashboard = () => {
           justifyContent="center"
         >
           <StatBox
-            title="28 min, 15 sec"
-            subtitle="Time Remaining"
+            title="2s"
+            subtitle="Average Computation Time"
             progress="0.80"
             increase="+43%"
             icon={
@@ -439,21 +467,29 @@ const Dashboard = () => {
 
           </Box>
 
-          <Box mt="10px" p="0 30px">
-            <Typography variant="h6" fontWeight="500" color={colors.grey[200]}>
-              Fetched Binary Number:
-            </Typography>
-            <Typography 
-  variant="body1" 
-  color={colors.grey[100]}
-  sx={{ fontSize: "18px" }} // Adjust the size here
+
+          <div
+  style={{
+    width: "100%", 
+    height: "50vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    overflow: "hidden",
+  }}
 >
-  {binaryInput || "No binary number fetched yet"}
-</Typography>
+  <div
+    style={{
+      width: "100%",
+      height: "100%",
+      transform: "scale(0.9)", // Adjust scale dynamically if needed
+      transformOrigin: "center",
+    }}
+  >
+    <BinaryGraphDisplay binaryInput={binaryInput} />
+  </div>
+</div>
 
-          </Box>
-
-          <BinaryGraphDisplay binaryInput={binaryInput} />
 
         </Box>
 
