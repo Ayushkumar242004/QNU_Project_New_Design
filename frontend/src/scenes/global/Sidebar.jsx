@@ -131,19 +131,19 @@ const Sidebar = () => {
               DATA
             </Typography>
             <Item
-              title="NIST Statistical Tests"
+              title="NIST SP 800-22"
               to="/nist_test"
               icon={<ReceiptOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
-            {/* <Item
-              title="NIST Statistical Tests"
-              to="/team"
+            <Item
+              title="NIST SP 800-90B"
+              to="/nist_test90b"
               icon={<ReceiptOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
-            /> */}
+            />
             <Item
               title="Die - Harder Tests"
               to="/die_harder_tests"

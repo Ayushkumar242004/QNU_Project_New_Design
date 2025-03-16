@@ -7,7 +7,7 @@ from .views import sse_binary_view,sse_binary_example_view
 
 urlpatterns = [
     
-    
+    # nist sp 800-22
     path('run_frequency_test/', views.run_frequency_test, name='run_frequency_test'),
     path('run_frequency_block_test/', views.run_frequency_block_test, name='run_frequency_block_test'),
     path('run_runs_test/', views.run_runs_test, name='run_runs_test'),
@@ -26,6 +26,10 @@ urlpatterns = [
 
     path('run_autocorrelation_test/',views.run_autocorrelation_test, name='run_autocorrelation_test'),
     path('run_adaptive_statistical_test/',views.run_adaptive_statistical_test, name='adaptive_statistical_test'),   
+
+    # nist sp 800-22b
+
+
 
     # dieharder tests
     path('run_binary_spacings_test/',views.run_birthday_spacings_test, name='binary_spacings_test'),  
@@ -57,13 +61,21 @@ urlpatterns = [
     
     #report generation
     path('pdf-report/', views.generate_pdf_report, name='generate_pdf_report'),
+    path('pdf-report-nist90b/', views.generate_pdf_report_nist90b, name='generate_pdf_report'),
     path('pdf-report-dieharder/', views.generate_pdf_report_dieharder, name='generate_pdf_report_dieharder'),
     path('pdf-report-server/', views.generate_pdf_report_server, name='generate_pdf_report_server'),
+    
+    
     #graph generation
     path('graph-generation/', views.create_graph, name='create_graph'),
+    path('graph-generation-nist90b/', views.create_graph_nist90b, name='create_graph_nist90b'),
     path('graph-generaion-dieharder/', views.create_graph_dieharder, name='create_graph_dieharder'),
     
     path('generate_final_ans/', views.generate_final_ans, name='generate_final_ans'),
+    path('generate_final_ans_nist90b/', views.generate_final_ans_nist90b, name='generate_final_ans_nist90b'),
+
+
+
     path('generate_final_ans_dieharder/', views.generate_final_ans_dieharder, name='generate_final_ans_dieharder'),
 ]
 

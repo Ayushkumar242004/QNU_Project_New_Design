@@ -17,6 +17,17 @@ from tests.autocorrelation_test import AutocorrelationTest
 from tests.adaptive_statistical_test import AdaptiveStatisticalTest
 from reportlab.platypus import PageBreak
 
+from tests.mcv_test import MostCommonValueTest
+from tests.chiSquare_test import ChiSquareTest
+from tests.collision_test import CollisionTest
+from tests.compression_test import CompressionTest
+from tests.l278y_test import LZ78YTest
+from tests.markov_test import MarkovTest
+from tests.minEntropy_test import MinEntropyTest
+from tests.multiBlock_test import MultiBlockEntropyTest
+from tests.predictor_test import PredictorTest
+from tests.ttuple_test import TTupleTest
+
 
 from tests.Birthday_spacings_test import BirthdaySpacingsTest
 from tests.parking_lot_test import ParkingLotTest
@@ -85,32 +96,6 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 
-# def run_frequency_test(request):
-#     # Example binary data received from the request query parameters
-#     binary_data = request.GET.get('binary_data', '')
-
-#     # Print the request URL and parameters
-#     # print("Request URL:", request.get_full_path())
-#     # print("Request Parameters:", request.GET)
-
-#     # Call the monobit_test method from the FrequencyTest class
-#     p_value, result = FrequencyTest.monobit_test(binary_data)
-
-#     print("FrequencyTest p_value:", p_value)
-#     print("FrequencyTest Result:", result)
-    
-#     # Prepare the response data
-#     if result == 1:
-#         result_text = "random number"
-#     else:
-#         result_text = "non-random number"
-        
-#     response_data = {
-#         'p_value': p_value,
-#         'result': result_text
-#     }
-
-#     return JsonResponse(response_data)
 
 
 
@@ -152,38 +137,6 @@ def run_frequency_test(request):
         return JsonResponse({"error": "Invalid request method. Use POST."}, status=405)
 
 
-# def run_frequency_block_test(request):
-#     # Example binary data received from the request query parameters
-#     binary_data = request.GET.get('binary_data', '')
-
-#     # Print the request URL and parameters
-#     # print("Request URL:", request.get_full_path())
-#     # print("Request Parameters:", request.GET)
-
-
-#     if not binary_data:
-#         # If there's no binary data, return an empty JsonResponse with status code 204 (No Content)
-#         return JsonResponse({}, status=204)
-    
-#     # Call the block_frequency method
-#     p_value, result = FrequencyTest.block_frequency(binary_data)
-
-#     print("run_frequency_block_test p_value:", p_value)
-#     print("run_frequency_block_test Result:", result)
-    
-#     # Prepare the response data
-#     if result:
-#         result_text = "random number"
-#     else:
-#         result_text = "non-random number"
-        
-#     response_data = {
-#         'p_value': p_value,
-#         'result': result_text
-#     }
-
-#     return JsonResponse(response_data)
-
 
 @csrf_exempt  # Remove this in production or secure with CSRF token handling
 def run_frequency_block_test(request):
@@ -218,32 +171,7 @@ def run_frequency_block_test(request):
     else:
         return JsonResponse({"error": "Invalid request method. Use POST."}, status=405)
 
-# def run_runs_test(request):
-#     # Example binary data received from the request query parameters
-#     binary_data = request.GET.get('binary_data', '')
 
-#     # Print the request URL and parameters
-#     # print("Request URL:", request.get_full_path())
-#     # print("Request Parameters:", request.GET)
-
-#     # Call the block_frequency method
-#     p_value, result = RunTest.run_test(binary_data)
-
-#     print("run_runs_test p_value:", p_value)
-#     print("run_runs_test Result:", result)
-    
-#     # Prepare the response data
-#     if result:
-#         result_text = "random number"
-#     else:
-#         result_text = "non-random number"
-        
-#     response_data = {
-#         'p_value': p_value,
-#         'result': result_text
-#     }
-
-#     return JsonResponse(response_data)
 
 @csrf_exempt  # Remove this in production or secure with CSRF token handling
 def run_runs_test(request):
@@ -278,37 +206,7 @@ def run_runs_test(request):
     else:
         return JsonResponse({"error": "Invalid request method. Use POST."}, status=405)
 
-# def run_longest_one_block_test(request):
-#     # Example binary data received from the request query parameters
-#     binary_data = request.GET.get('binary_data', '')
 
-#     if not binary_data:
-#         # If there's no binary data, return an empty JsonResponse with status code 204 (No Content)
-#         return JsonResponse({}, status=204)
-
-#     # Print the request URL and parameters
-#     # print("Request URL:", request.get_full_path())
-#     # print("Request Parameters:", request.GET)
-
-#     # Call the block_frequency method
-#     p_value, result, error_message = RunTest.longest_one_block_test(binary_data)
-
-    
-#     print("run_longest_one_block_test p_value:", p_value)
-#     print("run_longest_one_block_test Result:", result)
-    
-#     # Prepare the response data
-#     if result:
-#         result_text = "random number"
-#     else:
-#         result_text = "non-random number"
-        
-#     response_data = {
-#         'p_value': p_value,
-#         'result': result_text
-#     }
-
-#     return JsonResponse(response_data)
 
 @csrf_exempt  # Remove this in production or secure with CSRF token handling
 def run_longest_one_block_test(request):
@@ -344,36 +242,6 @@ def run_longest_one_block_test(request):
     else:
         return JsonResponse({"error": "Invalid request method. Use POST."}, status=405)
 
-# def run_approximate_entropy_test(request):
-#     # Example binary data received from the request query parameters
-#     binary_data = request.GET.get('binary_data', '')
-
-#     if not binary_data:
-#         # If there's no binary data, return an empty JsonResponse with status code 204 (No Content)
-#         return JsonResponse({}, status=204)
-
-#     # Print the request URL and parameters
-#     # print("Request URL:", request.get_full_path())
-#     # print("Request Parameters:", request.GET)
-
-#     # Call the block_frequency method
-#     p_value, result = ApproximateEntropy.approximate_entropy_test(binary_data)
-
-#     print("run_approximate_entropy_test p_value:", p_value)
-#     print("run_approximate_entropy_test Result:", result)
-    
-#     # Prepare the response data
-#     if result:
-#         result_text = "random number"
-#     else:
-#         result_text = "non-random number"
-        
-#     response_data = {
-#         'p_value': p_value,
-#         'result': result_text
-#     }
-
-#     return JsonResponse(response_data)
 
 @csrf_exempt  # Remove this in production or secure with CSRF token handling
 def run_approximate_entropy_test(request):
@@ -408,32 +276,7 @@ def run_approximate_entropy_test(request):
     else:
         return JsonResponse({"error": "Invalid request method. Use POST."}, status=405)
 
-# def run_linear_complexity_test(request):
-#     # Example binary data received from the request query parameters
-#     binary_data = request.GET.get('binary_data', '')
 
-#     # Print the request URL and parameters
-#     # print("Request URL:", request.get_full_path())
-#     # print("Request Parameters:", request.GET)
-
-#     # Call the block_frequency method
-#     p_value, result = ComplexityTest.linear_complexity_test(binary_data)
-
-#     print("run_linear_complexity_test p_value:", p_value)
-#     print("run_linear_complexity_test Result:", result)
-    
-#     # Prepare the response data
-#     if result:
-#         result_text = "random number"
-#     else:
-#         result_text = "non-random number"
-        
-#     response_data = {
-#         'p_value': p_value,
-#         'result': result_text
-#     }
-
-#     return JsonResponse(response_data)
 
 @csrf_exempt  # Remove this in production or secure with CSRF token handling
 def run_linear_complexity_test(request):
@@ -468,32 +311,7 @@ def run_linear_complexity_test(request):
     else:
         return JsonResponse({"error": "Invalid request method. Use POST."}, status=405)
     
-# def run_non_overlapping_test(request):
-#     # Example binary data received from the request query parameters
-#     binary_data = request.GET.get('binary_data', '')
 
-#     # # Print the request URL and parameters
-#     # print("Request URL:", request.get_full_path())
-#     # print("Request Parameters:", request.GET)
-
-#     # Call the block_frequency method
-#     p_value, result = TemplateMatching.non_overlapping_test(binary_data)
-
-#     print("run_non_overlapping_test p_value:", p_value)
-#     print("run_non_overlapping_test Result:", result)
-    
-#     # Prepare the response data
-#     if result:
-#         result_text = "random number"
-#     else:
-#         result_text = "non-random number"
-        
-#     response_data = {
-#         'p_value': p_value,
-#         'result': result_text
-#     }
-
-#     return JsonResponse(response_data)
 
 @csrf_exempt  # Remove this in production or secure with CSRF token handling
 def run_non_overlapping_test(request):
@@ -1575,36 +1393,6 @@ def run_minimum_distance_test(request):
         return JsonResponse({"error": "Invalid request method. Use POST."}, status=405)
 
 
-# def run_31matrix_test(request):
-#     # Example binary data received from the request query parameters
-#     binary_data = request.GET.get('binary_data', '')
-
-#     if not binary_data:
-#         # If there's no binary data, return an empty JsonResponse with status code 204 (No Content)
-#         return JsonResponse({}, status=204)
-
-#     # Print the request URL and parameters
-#     # print("Request URL:", request.get_full_path())
-#     # print("Request Parameters:", request.GET)
-
-#     # Call the block_frequency method
-#     p_value, result = Ranks31x31MatricesTest.Ranks31x31MatricesTest(binary_data)
-
-#     print("run_31matrix_test p_value:", p_value)
-#     print("run_31matrix_test Result:", result)
-    
-#     # Prepare the response data
-#     if result:
-#         result_text = "random number"
-#     else:
-#         result_text = "non-random number"
-        
-#     response_data = {
-#         'p_value': p_value,
-#         'result': result_text
-#     }
-
-#     return JsonResponse(response_data)
 
 
 @csrf_exempt
@@ -2392,6 +2180,228 @@ def run_matrix_rank_test(request):
     else:
         return JsonResponse({"error": "Invalid request method. Use POST."}, status=405)
 
+
+
+@csrf_exempt  # Remove this in production, only for testing purposes
+def run_chi_square_test(request):
+    if request.method == 'POST':
+        try:
+            # Parse the binary data from the JSON body
+            data = json.loads(request.body)
+            binary_data = data.get('binary_data', '')
+
+            # Ensure binary_data is in the expected format, otherwise return an error
+            if not binary_data:
+                return JsonResponse({"error": "binary_data is missing or empty"}, status=400)
+
+            # Call the chi_square_test method from the ChiSquareTest class
+            p_value, result = ChiSquareTest.ChiSquareTest(binary_data)
+
+            print("ChiSquareTest p_value:", p_value)  # Debugging line
+            print("ChiSquareTest Result:", result)    # Debugging line
+            
+            # Prepare the response data
+            result_text = "random number" if result == 1 else "non-random number"
+            response_data = {
+                'p_value': p_value,
+                'result': result_text
+            }
+
+            return JsonResponse(response_data)
+        
+        except json.JSONDecodeError:
+            print("JSON Decode Error")  # Debugging line
+            return JsonResponse({"error": "Invalid JSON data"}, status=400)
+
+    else:
+        print("Invalid request method")  # Debugging line
+        return JsonResponse({"error": "Invalid request method. Use POST."}, status=405)
+
+
+
+@csrf_exempt
+def run_mcv_test(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            binary_data = data.get('binary_data', '')
+
+            if not binary_data:
+                return JsonResponse({"error": "binary_data is missing or empty"}, status=400)
+
+            p_value, result = MostCommonValueTest.MostCommonValueTest(binary_data)
+
+            result_text = "random number" if result == 1 else "non-random number"
+            return JsonResponse({'p_value': p_value, 'result': result_text})
+        
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON data"}, status=400)
+
+    return JsonResponse({"error": "Invalid request method. Use POST."}, status=405)
+
+@csrf_exempt
+def run_collision_test(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            binary_data = data.get('binary_data', '')
+
+            if not binary_data:
+                return JsonResponse({"error": "binary_data is missing or empty"}, status=400)
+
+            p_value, result = CollisionTest.CollisionTest(binary_data)
+
+            result_text = "random number" if result == 1 else "non-random number"
+            return JsonResponse({'p_value': p_value, 'result': result_text})
+
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON data"}, status=400)
+
+    return JsonResponse({"error": "Invalid request method. Use POST."}, status=405)
+
+@csrf_exempt
+def run_markov_test(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            binary_data = data.get('binary_data', '')
+
+            if not binary_data:
+                return JsonResponse({"error": "binary_data is missing or empty"}, status=400)
+
+            p_value, result = MarkovTest.MarkovTest(binary_data)
+
+            result_text = "random number" if result == 1 else "non-random number"
+            return JsonResponse({'p_value': p_value, 'result': result_text})
+
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON data"}, status=400)
+
+    return JsonResponse({"error": "Invalid request method. Use POST."}, status=405)
+
+@csrf_exempt
+def run_compression_test(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            binary_data = data.get('binary_data', '')
+
+            if not binary_data:
+                return JsonResponse({"error": "binary_data is missing or empty"}, status=400)
+
+            p_value, result = CompressionTest.CompressionTest(binary_data)
+
+            result_text = "random number" if result == 1 else "non-random number"
+            return JsonResponse({'p_value': p_value, 'result': result_text})
+
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON data"}, status=400)
+
+    return JsonResponse({"error": "Invalid request method. Use POST."}, status=405)
+
+@csrf_exempt
+def run_t_tuple_test(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            binary_data = data.get('binary_data', '')
+
+            if not binary_data:
+                return JsonResponse({"error": "binary_data is missing or empty"}, status=400)
+
+            p_value, result = TTupleTest.TTupleTest(binary_data)
+
+            result_text = "random number" if result == 1 else "non-random number"
+            return JsonResponse({'p_value': p_value, 'result': result_text})
+
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON data"}, status=400)
+
+    return JsonResponse({"error": "Invalid request method. Use POST."}, status=405)
+
+@csrf_exempt
+def run_longest_repeated_substring_test(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            binary_data = data.get('binary_data', '')
+
+            if not binary_data:
+                return JsonResponse({"error": "binary_data is missing or empty"}, status=400)
+
+            p_value, result = TestU01LongestRepeatedSubstringTest.TestU01LongestRepeatedSubstringTest(binary_data)
+
+            result_text = "random number" if result == 1 else "non-random number"
+            return JsonResponse({'p_value': p_value, 'result': result_text})
+
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON data"}, status=400)
+
+    return JsonResponse({"error": "Invalid request method. Use POST."}, status=405)
+
+@csrf_exempt
+def run_multi_block_entropy_test(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            binary_data = data.get('binary_data', '')
+
+            if not binary_data:
+                return JsonResponse({"error": "binary_data is missing or empty"}, status=400)
+
+            p_value, result = MultiBlockEntropyTest.MultiBlockEntropyTest(binary_data)
+
+            result_text = "random number" if result == 1 else "non-random number"
+            return JsonResponse({'p_value': p_value, 'result': result_text})
+
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON data"}, status=400)
+
+    return JsonResponse({"error": "Invalid request method. Use POST."}, status=405)
+
+
+@csrf_exempt
+def run_lz78y_test(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            binary_data = data.get('binary_data', '')
+
+            if not binary_data:
+                return JsonResponse({"error": "binary_data is missing or empty"}, status=400)
+
+            p_value, result = LZ78YTest.LZ78YTest(binary_data)
+
+            result_text = "random number" if result == 1 else "non-random number"
+            return JsonResponse({'p_value': p_value, 'result': result_text})
+
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON data"}, status=400)
+
+    return JsonResponse({"error": "Invalid request method. Use POST."}, status=405)
+
+@csrf_exempt
+def run_min_entropy_test(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            binary_data = data.get('binary_data', '')
+
+            if not binary_data:
+                return JsonResponse({"error": "binary_data is missing or empty"}, status=400)
+
+            p_value, result = MinEntropyTest.MinEntropyTest(binary_data)
+
+            result_text = "random number" if result == 1 else "non-random number"
+            return JsonResponse({'p_value': p_value, 'result': result_text})
+
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON data"}, status=400)
+
+    return JsonResponse({"error": "Invalid request method. Use POST."}, status=405)
+
+
+
 def send_binary_data(request):
     binary_data = '101010'  # Example binary data as a string
     response_data = {
@@ -2427,142 +2437,7 @@ def sse_binary_example_view(request):
 
 
 
-    # Create a HttpResponse object with PDF headers
-    response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'inline; filename="report.pdf"'
-
-    # Set up the PDF buffer and document template with margins
-    buffer = BytesIO()
-    doc = SimpleDocTemplate(buffer, pagesize=A4,
-                            rightMargin=10, leftMargin=10,
-                            topMargin=10, bottomMargin=30)
-
-    # Set up styles
-    styles = getSampleStyleSheet()
-
-    # Add a headline (title)
-    title = Paragraph("Report-QNu Labs", styles['Title'])
-    title_space = Spacer(1, 0.0 * inch)  # Small spacer below the title
-
-    # Add subtitles with underlining
-    subtitle_style = styles['Heading2']
-    subtitle_style.fontName = 'Helvetica-Bold'
-    subtitle_style.fontSize = 12
-    subtitle_style.underline = True
-
-    nist_subtitle = Paragraph("NIST Statistical Tests:", subtitle_style)
-    other_tests_subtitle = Paragraph("Other Tests:", subtitle_style)
-    graph_subtitle = Paragraph("Graphical Analysis:", subtitle_style)
-
-    subtitle_space = Spacer(1, 0.0 * inch)  # Spacer below the subtitles
-
-    # Sample Table Data for the first table with "Final Result" in the last row
-    data1 = [
-        [Paragraph('Test type', styles['Normal']), 'Result', 'Test type', 'Result'],
-        [Paragraph('1. Frequency Test', styles['Normal']),
-         'random number',
-         Paragraph('2. Frequency Test within a Block', styles['Normal']),
-         'random number'],
-        [Paragraph('3. Runs Test', styles['Normal']),
-         'non-random number',
-         Paragraph('4. Test for the longest Run of Ones', styles['Normal']),
-         'random number'],
-        [Paragraph('5. Binary Matrix Rank Test', styles['Normal']),
-         'non-random number',
-         Paragraph('6. Discrete Fourier Transform Test', styles['Normal']),
-         'random number'],
-        [Paragraph('7. Non-overlapping Template Match', styles['Normal']),
-         'random number',
-         Paragraph('8. Overlapping Template Matching Test', styles['Normal']),
-         'random number'],
-        [Paragraph('9. Maurers Universal test', styles['Normal']),
-         'non-random number',
-         Paragraph('10. Linear complexity Test', styles['Normal']),
-         'random number'],
-        [Paragraph('11. Serial Test', styles['Normal']),
-         'random number',
-         Paragraph('12. Approximate Entropy Test', styles['Normal']),
-         'non-random number'],
-        [Paragraph('13. Cumulative Sum Test', styles['Normal']),
-         'random number',
-         Paragraph('14. Random Excursions Test', styles['Normal']),
-         'non-random number'],
-        [Paragraph('15. Random Excursions Variant Test', styles['Normal']),
-         'random number', '', ''],
-        ['Final Result']
-    ]
-
-    # Adjust column widths
-    colWidths = [2 * inch, 1.5 * inch, 2 * inch, 1.5 * inch]
-
-    # Create the first table object with adjusted column widths
-    table1 = Table(data1, colWidths=colWidths)
-
-    # Apply styles to the first table
-    table1.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (-1, 0), colors.blue),  # Header background color
-        ('TEXTCOLOR', (0, 0), (-1, 0), colors.white),  # Header text color
-        ('ALIGN', (0, 0), (-1, -1), 'CENTER'),  # Center text alignment
-        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),  # Bold header
-        ('FONTSIZE', (0, 0), (-1, -1), 10),  # Set font size
-        ('GRID', (0, 0), (-1, -1), 1, colors.black),  # Add gridlines
-        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),  # Vertically align text to the middle
-        ('WORDWRAP', (0, 0), (-1, -1), True),  # Enable text wrapping
-    ]))
-
-    # Sample Table Data for the second table
-    data2 = [
-        [Paragraph('Test type', styles['Normal']), 'Result', 'Test type', 'Result'],
-        [Paragraph('1. Entropy Test', styles['Normal']),
-         'random number',
-         Paragraph('2. NIST SP 800-22', styles['Normal']),
-         'random number'],
-        [Paragraph('3. NIST SP 800-90b', styles['Normal']),
-         'non-random number',
-         Paragraph('4. Dieharder', styles['Normal']),
-         'random number'],
-    ]
-
-    # Create the second table object with adjusted column widths
-    table2 = Table(data2, colWidths=colWidths)
-
-    # Apply styles to the second table
-    table2.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (-1, 0), colors.blue),  # Header background color
-        ('TEXTCOLOR', (0, 0), (-1, 0), colors.white),  # Header text color
-        ('ALIGN', (0, 0), (-1, -1), 'CENTER'),  # Center text alignment
-        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),  # Bold header
-        ('FONTSIZE', (0, 0), (-1, -1), 10),  # Set font size
-        ('GRID', (0, 0), (-1, -1), 1, colors.black),  # Add gridlines
-        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),  # Vertically align text to the middle
-        ('WORDWRAP', (0, 0), (-1, -1), True),  # Enable text wrapping
-    ]))
-
-    # Create the graph and save to a BytesIO object
-    graph_io = create_graph()
-    graph_image = Image(graph_io, width=6 * inch, height=4 * inch)
-
-    # Build the PDF with the title, subtitles, tables, graph, and spacers
-    elements = []
-    elements.append(title)
-    elements.append(title_space)  # Add space after the title
-    elements.append(nist_subtitle)
-    elements.append(subtitle_space)  # Spacer below the first subtitle
-    elements.append(table1)
-    elements.append(Spacer(1, 0.0 * inch))  # Spacer between tables
-    elements.append(other_tests_subtitle)
-    elements.append(subtitle_space)  # Spacer below the second subtitle
-    elements.append(table2)
-    elements.append(graph_subtitle)
-    elements.append(subtitle_space)  # Spacer below the graph subtitle
-    elements.append(graph_image)
-    doc.build(elements)
-
-    # Write the PDF to the HttpResponse
-    response.write(buffer.getvalue())
-    buffer.close()
-
-    return response
+ 
 
 global_graph_image=None
 
@@ -2762,9 +2637,9 @@ def create_graph(request):
     ax.axhline(y=0.01, color='red', linestyle='--', linewidth=2, label='p-value = 0.01')
 
     # Label the axes
-    ax.set_xlabel('NIST Statistical Tests', fontsize=20)
+    ax.set_xlabel('NIST Sp 800-22 Tests', fontsize=20)
     ax.set_ylabel('P-values', fontsize=20)
-    ax.set_title('P-values of NIST Statistical Tests', fontsize=20)
+    
 
     # Set y-axis ticks at intervals of 0.1
     ax.set_yticks([i / 10.0 for i in range(0, 11)])
@@ -2798,6 +2673,117 @@ def create_graph(request):
     # Return the image as a response
     # return HttpResponse(buf, content_type='image/png')
     return HttpResponse(buf, content_type='image/png')
+
+@csrf_exempt
+def create_graph_nist90b(request):
+    # Parse the incoming JSON data
+    try:
+        data = json.loads(request.body)
+        binary_data = data.get('binary_data', '')
+        print('Received binary data:', binary_data)
+    except json.JSONDecodeError as e:
+        print('Error parsing JSON:', e)
+        return HttpResponse("Invalid JSON data.", status=400)
+
+    # Check if binary_data is empty
+    if not binary_data:
+        return HttpResponse("Binary data is required.", status=400)
+
+    # Dictionary to store p-values with error handling
+    test_p_values = {}
+
+    # Function to safely call each test
+    def safe_test_call(test_func, test_name, binary_data):
+        try:
+            result = test_func(binary_data)
+            p_value = result[0]
+            print(f'{test_name} p_value:', p_value)  # Log the p-value
+            # Handle invalid or out-of-range p-values
+            if p_value is None or p_value == -1 or str(p_value).strip() == '':
+                return 0
+            if p_value > 1:
+                return 0
+            return float(p_value)
+        except Exception as e:
+            print(f'Error in {test_name}:', e)
+            return 0
+
+    # Call the statistical tests and collect p-values
+    test_p_values['MCV Test'] = safe_test_call(MostCommonValueTest.MostCommonValueTest, 'Frequency Monobit', binary_data)
+    test_p_values['Collision Test'] = safe_test_call(CollisionTest.CollisionTest, 'Frequency Block Test', binary_data)
+    test_p_values['Markov Test'] = safe_test_call(MarkovTest.MarkovTest, 'Approximate Entropy Test', binary_data)
+    test_p_values['Compression Test'] = safe_test_call(CompressionTest.CompressionTest, 'Runs Test', binary_data)
+    test_p_values['T-tuple Test'] = safe_test_call(TTupleTest.TTupleTest, 'Longest Run of Ones Test', binary_data)
+    test_p_values['Longest Repeated Substring Test'] = safe_test_call(TestU01LongestRepeatedSubstringTest.TestU01LongestRepeatedSubstringTest, 'Binary Matrix Rank Test', binary_data)
+    test_p_values['MultiBlock Entropy Test'] = safe_test_call(MultiBlockEntropyTest.MultiBlockEntropyTest, 'Discrete Fourier Transform Test', binary_data)
+    test_p_values['Chi-Square Test'] = safe_test_call(ChiSquareTest.ChiSquareTest, 'Non-overlapping Template Match Test', binary_data)
+    test_p_values['LZ78Y Test'] = safe_test_call(LZ78YTest.LZ78YTest, 'Overlapping Template Match Test', binary_data)
+    test_p_values['Min Entropy Test'] = safe_test_call(MinEntropyTest.MinEntropyTest, 'Maurer’s Universal Statistical Test', binary_data)
+    
+    # Filter valid tests where p-value is within a valid range
+    valid_tests = {k: (0 if v is None or v > 1 else v) for k, v in test_p_values.items()}
+    print('Valid tests:', valid_tests)
+
+    # If no valid tests are found, return an error
+    if not valid_tests:
+        return HttpResponse("No valid test results to plot.", status=400)
+
+    # Extract test names and p-values for plotting
+    x = list(valid_tests.keys())
+    y = list(valid_tests.values())
+
+    # Create the plot
+    fig, ax = plt.subplots(figsize=(16, 9))
+
+    # Assign color based on the p-value threshold (0.01)
+    colors = ['green' if p > 0.01 else 'blue' for p in y]
+
+    # Plot the histogram with colors based on the condition
+    ax.bar(x, y, color=colors)
+
+    # Draw a horizontal dotted red line at p_value = 0.01
+    ax.axhline(y=0.01, color='red', linestyle='--', linewidth=2, label='p-value = 0.01')
+
+    # Label the axes
+    ax.set_xlabel('NIST SP 800-90B Tests', fontsize=20)
+    ax.set_ylabel('P-values', fontsize=20)
+    
+
+    # Set y-axis ticks at intervals of 0.1
+    ax.set_yticks([i / 10.0 for i in range(0, 11)])
+
+    # Set y-axis limits between 0 and 1
+    ax.set_ylim(0, 1)
+
+    # Rotate x-axis labels for better visibility
+    plt.xticks(rotation=45, ha='right', fontsize=12)
+
+    # Ensure tight layout to avoid overlap
+    plt.tight_layout()
+
+    from matplotlib.patches import Patch
+    # Add a custom legend for the color categories
+    legend_elements = [Patch(facecolor='green', edgecolor='green', label='Random (p > 0.01)'),
+                       Patch(facecolor='blue', edgecolor='blue', label='Non-random (p ≤ 0.01)')]
+    ax.legend(handles=legend_elements, loc='upper right', prop={'size': 10})
+
+    # Create a BytesIO object to hold the image
+    buf = io.BytesIO()
+    plt.savefig(buf, format='png', bbox_inches='tight')
+    buf.seek(0)
+
+    global_graph_image = buf
+  
+
+    # Close the figure to free memory
+    plt.close(fig)
+
+    # Return the image as a response
+    # return HttpResponse(buf, content_type='image/png')
+    return HttpResponse(buf, content_type='image/png')
+
+
+
 
 @csrf_exempt
 def create_graph_dieharder(request):
@@ -2975,7 +2961,7 @@ def generate_pdf_report(request):
     subtitle_style.fontSize = 12
     subtitle_style.underline = True
 
-    nist_subtitle = Paragraph("NIST Tests:", subtitle_style)
+    nist_subtitle = Paragraph("NIST SP 800-22 Tests:", subtitle_style)
     graph_subtitle = Paragraph("Graphical Analysis:", subtitle_style)
     description_subtitle = Paragraph("Test Descriptions:", subtitle_style)
 
@@ -3227,6 +3213,249 @@ def generate_pdf_report(request):
     return response
 
 @csrf_exempt
+def generate_pdf_report_nist90b(request):
+    global global_graph_image
+
+    try:
+        data = json.loads(request.body)
+        binary_data = data.get('binary_data', '')
+        print('Received binary data:', binary_data)
+       
+    except json.JSONDecodeError as e:
+        print('Error parsing JSON:', e)
+        return HttpResponse("Invalid JSON data.", status=400)
+
+    # Create an HttpResponse object with PDF headers
+    graph_response = create_graph_nist90b(request)
+    graph_buffer = graph_response.content
+    graph_image_io = BytesIO(graph_buffer)
+
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'inline; filename="report.pdf"'
+
+    # Set up the PDF buffer and document template with margins
+    buffer = BytesIO()
+    doc = SimpleDocTemplate(buffer, pagesize=A4,
+                             rightMargin=10, leftMargin=10,
+                             topMargin=10, bottomMargin=30, title="QNU Labs")
+
+    # Set up styles
+    styles = getSampleStyleSheet()
+
+    current_date = datetime.now().strftime("%B %d, %Y")  # Format as "December 06, 2024"
+
+    # Add a paragraph with the current date
+    date_style = ParagraphStyle('Date', parent=styles['Normal'], fontSize=10, fontName='Helvetica-Bold',  alignment=2, spaceAfter=10)
+    date_paragraph = Paragraph(f"Date: {current_date}", date_style)
+
+    # Add a headline (title)
+    title = Paragraph("Report-QNu Labs", styles['Title'])
+    title_space = Spacer(1, 0.0 * inch)  # Small spacer below the title
+
+    # Add subtitles with underlining
+    subtitle_style = styles['Heading2']
+    subtitle_style.fontName = 'Helvetica-Bold'
+    subtitle_style.fontSize = 12
+    subtitle_style.underline = True
+
+    nist_subtitle = Paragraph("NIST SP 800-90B Tests:", subtitle_style)
+    graph_subtitle = Paragraph("Graphical Analysis:", subtitle_style)
+    description_subtitle = Paragraph("Test Descriptions:", subtitle_style)
+
+    subtitle_space = Spacer(1, 0.0 * inch)  # Spacer below the subtitles
+    graph_space= Spacer(1, 0.0 * inch) 
+    # Initialize x to 0
+    x = 0
+
+    min_entropy_test_result = MinEntropyTest.MinEntropyTest(binary_data)[1]
+    if min_entropy_test_result:
+        x += 1
+
+    collision_test_result = CollisionTest.CollisionTest(binary_data)[1]
+    if collision_test_result:
+        x += 1
+
+    markov_test_result = MarkovTest.MarkovTest(binary_data)[1]
+    if markov_test_result:
+        x += 1
+
+    compression_test_result = CompressionTest.CompressionTest(binary_data)[1]
+    if compression_test_result:
+        x += 1
+
+    t_tuple_test_result = TTupleTest.TTupleTest(binary_data)[1]
+    if t_tuple_test_result:
+        x += 1
+
+    mcv_test_result = MostCommonValueTest.MostCommonValueTest(binary_data)[1]
+    if mcv_test_result:
+        x += 1
+
+    chiSquare_test_result = ChiSquareTest.ChiSquareTest(binary_data)[1]
+    if chiSquare_test_result:
+        x += 1
+
+    lz78y_test_result = LZ78YTest.LZ78YTest(binary_data)[1]
+    if lz78y_test_result:
+        x += 1
+
+    multiBlock_test_result = MultiBlockEntropyTest.MultiBlockEntropyTest(binary_data)[1]
+    if multiBlock_test_result:
+        x += 1
+
+    predictor_test_result = PredictorTest.PredictorTest(binary_data)[1]
+    if predictor_test_result:
+        x += 1
+
+    # Now x contains the count of tests that returned True
+    final_text = 'random number' if x > 5 else 'non-random number'
+
+    # Dynamically set the result text based on the test outcome
+    min_entropy_test_text = 'random number' if min_entropy_test_result else 'non-random number'
+    collision_test_text = 'random number' if collision_test_result else 'non-random number'
+    markov_test_text = 'random number' if markov_test_result else 'non-random number'
+    compression_test_text = 'random number' if compression_test_result else 'non-random number'
+    t_tuple_test_text = 'random number' if t_tuple_test_result else 'non-random number'
+    mcv_test_text = 'random number' if mcv_test_result else 'non-random number'
+    chiSquare_test_text = 'random number' if chiSquare_test_result else 'non-random number'
+    lz78y_test_text = 'random number' if lz78y_test_result else 'non-random number'
+    multiBlock_test_text = 'random number' if multiBlock_test_result else 'non-random number'
+    predictor_test_text = 'random number' if predictor_test_result else 'non-random number'
+   
+
+    bold_red_style = ParagraphStyle(
+        'BoldRed',
+        parent=styles['Normal'],
+        fontSize=12,
+        fontName='Helvetica-Bold',
+        textColor='red'
+    )
+
+    bold_black_style = ParagraphStyle(
+        'BoldBlack',
+        parent=styles['Normal'],
+        fontSize=12,
+        fontName='Helvetica-Bold',
+        textColor='black'
+    )
+
+    # Sample Table Data for the first table with "Final Result" in the last row
+    data1 = [
+        [Paragraph('Test type', styles['Normal']), 'Result', 'Test type', 'Result'],
+        [Paragraph('1. Minimum Entropy Test', styles['Normal']), min_entropy_test_text,
+         Paragraph('2. Collision Test', styles['Normal']), collision_test_text],
+        [Paragraph('3. Markov Test', styles['Normal']), markov_test_text,
+         Paragraph('4. Compression Test', styles['Normal']), compression_test_text],
+        [Paragraph('5. T-Tuple Test', styles['Normal']), t_tuple_test_text,
+         Paragraph('6. MCV Test', styles['Normal']), mcv_test_text],
+        [Paragraph('7. Chi-Square Test', styles['Normal']), chiSquare_test_text,
+         Paragraph('8. LZ78Y Test', styles['Normal']), lz78y_test_text],
+        [Paragraph('9. MultiBlock test', styles['Normal']), multiBlock_test_text,
+         Paragraph('10. Predictor Test', styles['Normal']), predictor_test_text],
+        [Paragraph('Final Result', styles['Normal']), Paragraph(final_text, bold_red_style)],
+    ]
+
+    # Adjust column widths
+    colWidths = [2 * inch, 1.5 * inch, 2 * inch, 1.5 * inch]
+
+    # Create the first table object with adjusted column widths
+    table1 = Table(data1, colWidths=colWidths)
+
+    # Apply styles to the first table
+    table1.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, 0), colors.blue),  # Header background color
+        ('TEXTCOLOR', (0, 0), (-1, 0), colors.white),  # Header text color
+        ('ALIGN', (0, 0), (-1, -1), 'CENTER'),  # Center text alignment
+        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),  # Bold header
+        ('FONTSIZE', (0, 0), (-1, -1), 10),  # Set font size
+        ('GRID', (0, 0), (-1, -1), 1, colors.black),  # Add gridlines
+        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),  # Center vertically
+    ]))
+
+    # Create the second table with graphical analysis
+    data2 = [
+        [Image(graph_image_io, width=400, height=350)]
+    ]
+    table2 = Table(data2, colWidths=[4 * inch])
+    table2.setStyle(TableStyle([('ALIGN', (0, 0), (-1, -1), 'CENTER')]))
+
+    # Add logo on the top-right corner (adjust the path of your logo)
+    logo_path = os.path.join(os.path.dirname(__file__), 'qnulogo.png')
+    logo_image = Image(logo_path, width=0.5 * inch, height=0.5 * inch)
+    logo_table = Table([[logo_image]], colWidths=[6.5 * inch], rowHeights=[0.5 * inch])
+    logo_table.setStyle(TableStyle([
+        ('ALIGN', (0, 0), (0, 0), 'CENTRE'),  # Align logo to the left
+        ('VALIGN', (100, 100), (0, 0), 'TOP'),  # Align logo to the top
+    ]))
+
+    # Add the descriptions of the NIST and Dieharder tests
+    nist_description = """
+    <b>NIST Statistical Tests Description:</b><br/><br/>
+
+    1. <b>Minimum Entropy Test</b>: Measures the lowest possible entropy among all probabilities of symbols in the sequence. It helps determine the unpredictability of the data.<br/><br/>
+
+    2. <b>Collision Test</b>: Evaluates how often identical sequences (or "collisions") appear in the data. Frequent collisions indicate a lack of randomness.<br/><br/>
+
+    3. <b>Markov Test</b>:Analyzes the transition probabilities between symbols in a sequence to detect dependencies. A truly random sequence should have transitions that are statistically independent.<br/><br/>
+
+    4. <b>Compression Test</b>:Checks whether the sequence can be significantly compressed. Highly compressible sequences are likely non-random, as random sequences should have little redundancy.<br/><br/>
+
+    5. <bT-Tuple Test</b>: Examines the frequency of t-bit patterns appearing in the sequence. A deviation from expected frequencies suggests non-randomness.<br/><br/>
+
+    6. <b>MCV Test</b>:  Identifies the most frequent value in the sequence and assesses whether it appears too often, which would indicate a lack of randomness.<br/><br/>
+
+    7. <b>Chi-Square Test</b>:Compares the observed frequency distribution of symbols in the sequence to the expected uniform distribution. Large deviations suggest a biased sequence.<br/><br/>
+
+    8. <b>LZ78Y Test</b>: Based on the Lempel-Ziv compression algorithm, this test measures the complexity of the sequence by checking how efficiently it can be parsed into unique substrings.<br/><br/>
+
+    9. <b>MultiBlock Test</b>:Splits the sequence into multiple blocks and examines randomness across each block to detect local patterns or biases.<br/><br/>
+
+    10. <b>Predictor Test</b>:Assesses whether future bits in the sequence can be predicted based on past bits. If the sequence is predictable, it is not truly random.<br/><br/>
+
+    """
+
+
+    description_style = ParagraphStyle(
+        'Description',
+        parent=styles['Normal'],
+        fontSize=10,
+        fontName='Helvetica',
+        leading=12,
+        spaceAfter=10
+    )
+
+    nist_description_paragraph = Paragraph(nist_description, description_style)
+    
+    # Build the PDF document
+    elements = [
+        logo_table,
+        date_paragraph,
+        title,
+        title_space,
+        nist_subtitle,
+        subtitle_space,
+        
+        table1,
+        subtitle_space,
+        graph_subtitle,
+        table2,
+        subtitle_space,
+        description_subtitle,
+        subtitle_space,
+        nist_description_paragraph,
+      
+    ]
+    doc.build(elements)
+
+    # Get the PDF data and write it to the response
+    pdf = buffer.getvalue()
+    buffer.close()
+    response.write(pdf)
+
+    return response
+
+
+
 @csrf_exempt
 def generate_pdf_report_dieharder(request):
     global global_graph_image
@@ -3939,6 +4168,75 @@ def generate_final_ans(request):
     
     # Return the result as an HTTP response
     return HttpResponse(final_text, content_type="text/plain")
+
+
+@csrf_exempt
+def generate_final_ans_nist90b(request):
+    global global_graph_image
+
+    try:
+        data = json.loads(request.body)
+        binary_data = data.get('binary_data', '')
+        print('Received binary data:', binary_data)
+    except json.JSONDecodeError as e:
+        print('Error parsing JSON:', e)
+        return HttpResponse("Invalid JSON data.", status=400)
+
+    # Initialize x to 0
+    x = 0
+
+    # Perform the NIST 800-90B tests and check results
+    try:
+        min_entropy_test_result = MinEntropyTest.MinEntropyTest(binary_data)[1]
+        if min_entropy_test_result:
+            x += 1
+
+        collision_test_result = CollisionTest.CollisionTest(binary_data)[1]
+        if collision_test_result:
+            x += 1
+
+        markov_test_result = MarkovTest.MarkovTest(binary_data)[1]
+        if markov_test_result:
+            x += 1
+
+        compression_test_result = CompressionTest.CompressionTest(binary_data)[1]
+        if compression_test_result:
+            x += 1
+
+        t_tuple_test_result = TTupleTest.TTupleTest(binary_data)[1]
+        if t_tuple_test_result:
+            x += 1
+
+        mcv_test_result = MostCommonValueTest.MostCommonValueTest(binary_data)[1]
+        if mcv_test_result:
+            x += 1
+
+        chiSquare_test_result = ChiSquareTest.ChiSquareTest(binary_data)[1]
+        if chiSquare_test_result:
+            x += 1
+
+        lz78y_test_result = LZ78YTest.LZ78YTest(binary_data)[1]
+        if lz78y_test_result:
+            x += 1
+
+        multiBlock_test_result = MultiBlockEntropyTest.MultiBlockEntropyTest(binary_data)[1]
+        if multiBlock_test_result:
+            x += 1
+
+        predictor_test_result = PredictorTest.PredictorTest(binary_data)[1]
+        if predictor_test_result:
+            x += 1
+    except Exception as e:
+        print(f"Error during testing: {e}")
+        return HttpResponse("Error during randomness tests.", status=500)
+
+    # Determine if the number is random or not
+    final_text = 'random number' if x > 5 else 'non-random number'
+    
+    # Return the result as an HTTP response
+    return HttpResponse(final_text, content_type="text/plain")
+
+
 
 
 

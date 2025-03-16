@@ -4,6 +4,7 @@ import Topbar from "./scenes/global/Topbar";
 import Sidebar from "./scenes/global/Sidebar";
 import Dashboard from "./scenes/dashboard";
 import Nist_test from "./scenes/nist_test";
+import Nist_tests90b from "./scenes/nist_test90b";
 import Qrng_Server from "./scenes/qrng_server";
 import Dieharder_tests from "./scenes/dieharder_tests";
 
@@ -68,6 +69,7 @@ function App() {
             <Routes>
               <Route path="/" element={<PrivateRoute element={<Dashboard />} />} />
               <Route path="/nist_test" element={<PrivateRoute element={<Nist_test />} />} />
+              <Route path="/nist_test90b" element={<PrivateRoute element={<Nist_tests90b />} />} />
               <Route path="/die_harder_tests" element={<PrivateRoute element={<Dieharder_tests />} />} />
              <Route path="/qrng_server" element={<PrivateRoute element={<Qrng_Server />} />} />
              
