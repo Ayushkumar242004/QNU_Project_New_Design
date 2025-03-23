@@ -71,6 +71,7 @@ import os
 #streaming
 import base64
 import time
+import datetime
 import requests
 from django.http import StreamingHttpResponse
 from django.shortcuts import render
@@ -103,39 +104,57 @@ import json
 def run_frequency_test(request):
     if request.method == 'POST':
         try:
-            # Parse the binary data from the JSON body
+            # Parse the JSON body
             data = json.loads(request.body)
             binary_data = data.get('binary_data', '')
+            scheduled_time_str = data.get('scheduled_time', '')
 
-            # print("Received binary_data:", binary_data)  # Debugging line
-
-            # Ensure binary_data is in the expected format, otherwise return an error
+            # Validate binary data
             if not binary_data:
                 return JsonResponse({"error": "binary_data is missing or empty"}, status=400)
 
-            # Call the monobit_test method from the FrequencyTest class
+            # Validate scheduled time format
+            if not scheduled_time_str:
+                return JsonResponse({"error": "scheduled_time is required"}, status=400)
+
+            try:
+                # Convert scheduled_time to a datetime object
+                scheduled_time = datetime.datetime.strptime(scheduled_time_str, "%Y-%m-%d %H:%M:%S")
+            except ValueError:
+                return JsonResponse({"error": "Invalid scheduled_time format. Use 'YYYY-MM-DD HH:MM:SS'."}, status=400)
+
+            # Get the current time
+            current_time = datetime.datetime.now()
+
+            # Wait until the scheduled time
+            time_difference = (scheduled_time - current_time).total_seconds()
+            if time_difference > 0:
+                print(f"Waiting {time_difference:.2f} seconds until the scheduled time...")
+                time.sleep(time_difference)  # Sleep until scheduled time
+
+            # Run the monobit test
             p_value, result = FrequencyTest.monobit_test(binary_data)
 
-            print("FrequencyTest p_value:", p_value)  # Debugging line
-            print("FrequencyTest Result:", result)    # Debugging line
+            print("FrequencyTest p_value:", p_value)
+            print("FrequencyTest Result:", result)
             
             # Prepare the response data
-            result_text = "random number" if result == 1 else "non-random number"
+            result_text = "random number" if result else "non-random number"
             response_data = {
                 'p_value': p_value,
-                'result': result_text
+                'result': result_text,
+                'executed_at': datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             }
 
             return JsonResponse(response_data)
-        
+
         except json.JSONDecodeError:
-            print("JSON Decode Error")  # Debugging line
+            print("JSON Decode Error")
             return JsonResponse({"error": "Invalid JSON data"}, status=400)
 
     else:
-        print("Invalid request method")  # Debugging line
+        print("Invalid request method")
         return JsonResponse({"error": "Invalid request method. Use POST."}, status=405)
-
 
 
 @csrf_exempt  # Remove this in production or secure with CSRF token handling
@@ -4075,99 +4094,90 @@ def generate_pdf_report_server(request):
 
     return response
 
+
 @csrf_exempt
 def generate_final_ans(request):
-    global global_graph_image
+    if request.method == 'POST':
+        try:
+            # Parse JSON data from the request
+            data = json.loads(request.body)
+            binary_data = data.get('binary_data', '')
+            scheduled_time_str = data.get('scheduled_time', '')
+            print("received", scheduled_time_str)
+            
+            # Validate binary data
+            if not binary_data:
+                return JsonResponse({"error": "binary_data is missing or empty"}, status=400)
 
-    try:
-        data = json.loads(request.body)
-        binary_data = data.get('binary_data', '')
-        print('Received binary data:', binary_data)
-    except json.JSONDecodeError as e:
-        print('Error parsing JSON:', e)
-        return HttpResponse("Invalid JSON data.", status=400)
+            # Validate scheduled time format
+            if not scheduled_time_str:
+                return JsonResponse({"error": "scheduled_time is required"}, status=400)
 
-    # Initialize x to 0
-    x = 0
+            try:
+                # Convert scheduled_time to a datetime object
+                scheduled_time = datetime.datetime.strptime(scheduled_time_str, "%Y-%m-%d %H:%M:%S")
+            except ValueError:
+                return JsonResponse({"error": "Invalid scheduled_time format. Use 'YYYY-MM-DD HH:MM:SS'."}, status=400)
 
-    # Perform the tests and check results
-    try:
-        frequency_test_result = FrequencyTest.monobit_test(binary_data)[1]
-        if frequency_test_result:
-            x += 1
+            # Get the current time
+            current_time = datetime.datetime.now()
 
-        frequency_test_block_result = FrequencyTest.block_frequency(binary_data)[1]
-        if frequency_test_block_result:
-            x += 1
+            # Calculate the time difference in seconds
+            time_difference = (scheduled_time - current_time).total_seconds()
+            if time_difference > 0:
+                print(f"Waiting {time_difference:.2f} seconds until the scheduled time...")
+                time.sleep(time_difference)  # Sleep until the scheduled time
 
-        runs_test_result = RunTest.run_test(binary_data)[1]
-        if runs_test_result:
-            x += 1
+            # Initialize x to 0
+            x = 0
 
-        approximate_entropy_test_result = ApproximateEntropy.approximate_entropy_test(binary_data)[1]
-        if approximate_entropy_test_result:
-            x += 1
+            # Perform the tests and check results
+            try:
+                tests = [
+                    FrequencyTest.monobit_test,
+                    FrequencyTest.block_frequency,
+                    RunTest.run_test,
+                    ApproximateEntropy.approximate_entropy_test,
+                    RunTest.longest_one_block_test,
+                    Matrix.binary_matrix_rank_text,
+                    SpectralTest.spectral_test,
+                    TemplateMatching.non_overlapping_test,
+                    TemplateMatching.overlapping_patterns,
+                    Universal.statistical_test,
+                    ComplexityTest.linear_complexity_test,
+                    Serial.serial_test,
+                    CumulativeSums.cumulative_sums_test,
+                    RandomExcursions.random_excursions_test,
+                    RandomExcursions.variant_test,
+                    AutocorrelationTest.autocorrelation_test,
+                    AdaptiveStatisticalTest.adaptive_statistical_test
+                ]
 
-        longest_run_of_one_test_result = RunTest.longest_one_block_test(binary_data)[1]
-        if longest_run_of_one_test_result:
-            x += 1
+                for test in tests:
+                    result = test(binary_data)[1]
+                    if result:
+                        x += 1
 
-        binary_matrix_rank_test_result = Matrix.binary_matrix_rank_text(binary_data)[1]
-        if binary_matrix_rank_test_result:
-            x += 1
+            except Exception as e:
+                print(f"Error during testing: {e}")
+                return HttpResponse("Error during randomness tests.", status=500)
 
-        dft_test_result = SpectralTest.spectral_test(binary_data)[1]
-        if dft_test_result:
-            x += 1
+            # Determine if the number is random or not
+            final_text = 'random number' if x > 10 else 'non-random number'
+            
+            # Prepare the response data
+            response_data = {
+                "final_result": final_text,
+                "executed_at": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            }
 
-        non_overlapping_test_result = TemplateMatching.non_overlapping_test(binary_data)[1]
-        if non_overlapping_test_result:
-            x += 1
+            return JsonResponse(response_data)
 
-        overlapping_test_result = TemplateMatching.overlapping_patterns(binary_data)[1]
-        if overlapping_test_result:
-            x += 1
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON data"}, status=400)
 
-        maurers_universal_test_result = Universal.statistical_test(binary_data)[1]
-        if maurers_universal_test_result:
-            x += 1
-
-        linear_complexity_test_result = ComplexityTest.linear_complexity_test(binary_data)[1]
-        if linear_complexity_test_result:
-            x += 1
-
-        serial_test_result = Serial.serial_test(binary_data)[1]
-        if serial_test_result:
-            x += 1
-
-        cumulative_sums_test_result = CumulativeSums.cumulative_sums_test(binary_data)[1]
-        if cumulative_sums_test_result:
-            x += 1
-
-        random_excursions_test_result = RandomExcursions.random_excursions_test(binary_data)[1]
-        if random_excursions_test_result:
-            x += 1
-
-        random_excursion_variant_test_result = RandomExcursions.variant_test(binary_data)[1]
-        if random_excursion_variant_test_result:
-            x += 1
-
-        autocorrelation_test_result = AutocorrelationTest.autocorrelation_test(binary_data)[1]
-        if autocorrelation_test_result:
-            x += 1
-
-        adaptive_statistical_test_result = AdaptiveStatisticalTest.adaptive_statistical_test(binary_data)[1]
-        if adaptive_statistical_test_result:
-            x += 1
-    except Exception as e:
-        print(f"Error during testing: {e}")
-        return HttpResponse("Error during randomness tests.", status=500)
-
-    # Determine if the number is random or not
-    final_text = 'random number' if x > 10 else 'non-random number'
-    
-    # Return the result as an HTTP response
-    return HttpResponse(final_text, content_type="text/plain")
+    else:
+        return JsonResponse({"error": "Invalid request method. Use POST."}, status=405)
 
 
 @csrf_exempt
