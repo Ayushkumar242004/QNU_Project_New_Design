@@ -3,9 +3,8 @@ import { tokens } from "../../theme";
 import Header from "../../components/Header";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios"; // Make sure axios is imported
-import CircularProgress from '@mui/material/CircularProgress';
+import CircularProgress from "@mui/material/CircularProgress";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
-
 
 const MAX_STACK_SIZE_ESTIMATE = 1 * 1024 * 1024;
 
@@ -33,7 +32,6 @@ const Nist_tests90b = () => {
   const fileInputRef8 = useRef(null);
   const fileInputRef_nine = useRef(null);
   const fileInputRef10 = useRef(null);
-
 
   const [result, setResult] = useState(null);
   const [result2, setResult2] = useState(null);
@@ -68,7 +66,6 @@ const Nist_tests90b = () => {
   const [fileName9, setFileName9] = useState(""); // New state to store filename
   const [fileName10, setFileName10] = useState(""); // New state to store filename
 
-
   // Handle file upload
   const handleFileUpload = () => {
     fileInputRef.current.click();
@@ -101,18 +98,18 @@ const Nist_tests90b = () => {
     fileInputRef10.current.click();
   };
 
-
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
     if (!selectedFile) return; // Handle cases where no file is selected
 
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
 
     setFileName(selectedFile.name);
-
 
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -139,7 +136,9 @@ const Nist_tests90b = () => {
     if (!selectedFile) return; // Handle cases where no file is selected
 
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
     setFileName2(selectedFile.name);
@@ -166,7 +165,9 @@ const Nist_tests90b = () => {
     if (!selectedFile) return; // Handle cases where no file is selected
 
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
     setFileName3(selectedFile.name);
@@ -193,7 +194,9 @@ const Nist_tests90b = () => {
     if (!selectedFile) return; // Handle cases where no file is selected
     setFileName4(selectedFile.name);
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
 
@@ -220,7 +223,9 @@ const Nist_tests90b = () => {
     if (!selectedFile) return; // Handle cases where no file is selected
 
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
     setFileName5(selectedFile.name);
@@ -247,7 +252,9 @@ const Nist_tests90b = () => {
     if (!selectedFile) return; // Handle cases where no file is selected
 
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
     setFileName6(selectedFile.name);
@@ -274,7 +281,9 @@ const Nist_tests90b = () => {
     if (!selectedFile) return; // Handle cases where no file is selected
 
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
     setFileName7(selectedFile.name);
@@ -301,7 +310,9 @@ const Nist_tests90b = () => {
     if (!selectedFile) return; // Handle cases where no file is selected
 
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
     setFileName8(selectedFile.name);
@@ -328,7 +339,9 @@ const Nist_tests90b = () => {
     if (!selectedFile) return; // Handle cases where no file is selected
 
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
     setFileName9(selectedFile.name);
@@ -355,7 +368,9 @@ const Nist_tests90b = () => {
     if (!selectedFile) return; // Handle cases where no file is selected
 
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
     setFileName10(selectedFile.name);
@@ -388,9 +403,197 @@ const Nist_tests90b = () => {
   const [loadingProgress9, setLoadingProgress9] = useState(0);
   const [loadingProgress10, setLoadingProgress10] = useState(0);
 
+  const [scheduledTime, setScheduledTime] = useState("");
+  const [debouncedScheduledTime, setDebouncedScheduledTime] = useState("");
+
+  const [scheduledTime2, setScheduledTime2] = useState("");
+  const [debouncedScheduledTime2, setDebouncedScheduledTime2] = useState("");
+
+  const [scheduledTime3, setScheduledTime3] = useState("");
+  const [debouncedScheduledTime3, setDebouncedScheduledTime3] = useState("");
+
+  const [scheduledTime4, setScheduledTime4] = useState("");
+  const [debouncedScheduledTime4, setDebouncedScheduledTime4] = useState("");
+
+  const [scheduledTime5, setScheduledTime5] = useState("");
+  const [debouncedScheduledTime5, setDebouncedScheduledTime5] = useState("");
+
+  const [scheduledTime6, setScheduledTime6] = useState("");
+  const [debouncedScheduledTime6, setDebouncedScheduledTime6] = useState("");
+
+  const [scheduledTime7, setScheduledTime7] = useState("");
+  const [debouncedScheduledTime7, setDebouncedScheduledTime7] = useState("");
+
+  const [scheduledTime8, setScheduledTime8] = useState("");
+  const [debouncedScheduledTime8, setDebouncedScheduledTime8] = useState("");
+
+  const [scheduledTime9, setScheduledTime9] = useState("");
+  const [debouncedScheduledTime9, setDebouncedScheduledTime9] = useState("");
+
+  const [scheduledTime10, setScheduledTime10] = useState("");
+  const [debouncedScheduledTime10, setDebouncedScheduledTime10] = useState("");
+
+  const finalResult = result ? result.final_result : " ";
+
+  const handleScheduledTimeChange = (event) => {
+    setScheduledTime(event.target.value);
+    console.log(scheduledTime);
+  };
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedScheduledTime(scheduledTime);
+    }, 3000);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [scheduledTime]);
+
+  const finalResult2 = result2 ? result2.final_result : " ";
+
+  const handleScheduledTimeChange2 = (event) => {
+    setScheduledTime2(event.target.value);
+  };
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedScheduledTime2(scheduledTime2);
+    }, 3000);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [scheduledTime2]);
+
+  const finalResult3 = result3 ? result3.final_result : " ";
+
+  const handleScheduledTimeChange3 = (event) => {
+    setScheduledTime3(event.target.value);
+    console.log(scheduledTime3);
+  };
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedScheduledTime3(scheduledTime3);
+    }, 3000);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [scheduledTime3]);
+
+  const finalResult4 = result4 ? result4.final_result : " ";
+
+  const handleScheduledTimeChange4 = (event) => {
+    setScheduledTime4(event.target.value);
+    console.log(scheduledTime4);
+  };
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedScheduledTime4(scheduledTime4);
+    }, 3000);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [scheduledTime4]);
+
+  const finalResult5 = result5 ? result5.final_result : " ";
+
+  const handleScheduledTimeChange5 = (event) => {
+    setScheduledTime5(event.target.value);
+    console.log(scheduledTime5);
+  };
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedScheduledTime5(scheduledTime5);
+    }, 3000);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [scheduledTime5]);
+
+  const finalResult6 = result6 ? result6.final_result : " ";
+
+  const handleScheduledTimeChange6 = (event) => {
+    setScheduledTime6(event.target.value);
+    console.log(scheduledTime6);
+  };
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedScheduledTime6(scheduledTime6);
+    }, 3000);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [scheduledTime6]);
+
+  const finalResult7 = result7 ? result7.final_result : " ";
+
+  const handleScheduledTimeChange7 = (event) => {
+    setScheduledTime7(event.target.value);
+    console.log(scheduledTime7);
+  };
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedScheduledTime7(scheduledTime7);
+    }, 3000);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [scheduledTime7]);
+
+  const finalResult8 = result8 ? result8.final_result : " ";
+
+  const handleScheduledTimeChange8 = (event) => {
+    setScheduledTime8(event.target.value);
+    console.log(scheduledTime8);
+  };
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedScheduledTime8(scheduledTime8);
+    }, 3000);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [scheduledTime8]);
+
+  const finalResult9 = result9 ? result9.final_result : " ";
+
+  const handleScheduledTimeChange9 = (event) => {
+    setScheduledTime9(event.target.value);
+    console.log(scheduledTime9);
+  };
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedScheduledTime9(scheduledTime9);
+    }, 3000);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [scheduledTime9]);
+
+  const finalResult10 = result10 ? result10.final_result : " ";
+
+  const handleScheduledTimeChange10 = (event) => {
+    setScheduledTime10(event.target.value);
+    console.log(scheduledTime10);
+  };
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedScheduledTime10(scheduledTime10);
+    }, 3000);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [scheduledTime10]);
 
   useEffect(() => {
-    if (!binaryInput) return; // Do not fetch if binaryInput is empty
+    if (!binaryInput || !debouncedScheduledTime) return; // Do not fetch if binaryInput is empty
 
     const fetchResult = async () => {
       setLoadingProgress(0); // Start loading from 0%
@@ -400,9 +603,13 @@ const Nist_tests90b = () => {
           setLoadingProgress((prev) => (prev < 90 ? prev + 10 : prev));
         }, 500); // Increment progress every 500ms until 90%
 
-        const response = await axios.post("http://localhost:8000/generate_final_ans_nist90b/", {
-          binary_data: binaryInput,
-        });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_nist90b/",
+          {
+            binary_data: binaryInput,
+            scheduled_time: debouncedScheduledTime,
+          }
+        );
 
         clearInterval(progressInterval); // Stop the interval
         setLoadingProgress(100); // Set progress to 100% after response is received
@@ -414,8 +621,7 @@ const Nist_tests90b = () => {
     };
 
     fetchResult();
-  }, [binaryInput]);
-
+  }, [binaryInput, debouncedScheduledTime]);
 
   useEffect(() => {
     if (!binaryInput2) return; // Do not fetch if binaryInput is empty
@@ -427,12 +633,16 @@ const Nist_tests90b = () => {
           setLoadingProgress2((prev) => (prev < 90 ? prev + 10 : prev));
         }, 500); // Increment progress every 500ms until 90%
 
-
-        const response = await axios.post('http://localhost:8000/generate_final_ans_nist90b/', { binary_data: binaryInput2 });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_nist90b/",
+          {
+            binary_data: binaryInput2,
+            scheduled_time: debouncedScheduledTime2,
+          }
+        );
         clearInterval(progressInterval); // Stop the interval
         setLoadingProgress2(100);
         setResult2(response.data); // Set the response data
-
       } catch (error) {
         console.error("Error executing generating final answer:", error);
         setLoadingProgress(0);
@@ -440,7 +650,7 @@ const Nist_tests90b = () => {
     };
 
     fetchResult();
-  }, [binaryInput2]);
+  }, [binaryInput2, debouncedScheduledTime2]);
 
   useEffect(() => {
     if (!binaryInput3) return; // Do not fetch if binaryInput is empty
@@ -450,11 +660,16 @@ const Nist_tests90b = () => {
         let progressInterval = setInterval(() => {
           setLoadingProgress3((prev) => (prev < 90 ? prev + 10 : prev));
         }, 500);
-        const response = await axios.post('http://localhost:8000/generate_final_ans_nist90b/', { binary_data: binaryInput3 });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_nist90b/",
+          {
+            binary_data: binaryInput3,
+            scheduled_time: debouncedScheduledTime3,
+          }
+        );
         clearInterval(progressInterval); // Stop the interval
         setLoadingProgress3(100);
         setResult3(response.data); // Set the response data
-
       } catch (error) {
         console.error("Error executing generating final answer:", error);
         setLoadingProgress(0);
@@ -462,7 +677,7 @@ const Nist_tests90b = () => {
     };
 
     fetchResult();
-  }, [binaryInput3]);
+  }, [binaryInput3, debouncedScheduledTime3]);
 
   useEffect(() => {
     if (!binaryInput4) return; // Do not fetch if binaryInput is empty
@@ -473,11 +688,13 @@ const Nist_tests90b = () => {
         let progressInterval = setInterval(() => {
           setLoadingProgress4((prev) => (prev < 90 ? prev + 10 : prev));
         }, 500);
-        const response = await axios.post('http://localhost:8000/generate_final_ans_nist90b/', { binary_data: binaryInput4 });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_nist90b/",
+          { binary_data: binaryInput4, scheduled_time: debouncedScheduledTime4 }
+        );
         clearInterval(progressInterval); // Stop the interval
         setLoadingProgress4(100);
         setResult4(response.data); // Set the response data
-
       } catch (error) {
         setLoadingProgress4(0);
         console.error("Error executing generating final answer:", error);
@@ -485,7 +702,7 @@ const Nist_tests90b = () => {
     };
 
     fetchResult();
-  }, [binaryInput4]);
+  }, [binaryInput4, debouncedScheduledTime4]);
 
   useEffect(() => {
     if (!binaryInput5) return; // Do not fetch if binaryInput is empty
@@ -496,11 +713,13 @@ const Nist_tests90b = () => {
         let progressInterval = setInterval(() => {
           setLoadingProgress5((prev) => (prev < 90 ? prev + 10 : prev));
         }, 500);
-        const response = await axios.post('http://localhost:8000/generate_final_ans_nist90b/', { binary_data: binaryInput5 });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_nist90b/",
+          { binary_data: binaryInput5, scheduled_time: debouncedScheduledTime5 }
+        );
         clearInterval(progressInterval); // Stop the interval
         setLoadingProgress5(100);
         setResult5(response.data); // Set the response data
-
       } catch (error) {
         setLoadingProgress5(0);
         console.error("Error executing generating final answer:", error);
@@ -508,7 +727,7 @@ const Nist_tests90b = () => {
     };
 
     fetchResult();
-  }, [binaryInput5]);
+  }, [binaryInput5, debouncedScheduledTime5]);
 
   useEffect(() => {
     if (!binaryInput6) return; // Do not fetch if binaryInput is empty
@@ -518,11 +737,13 @@ const Nist_tests90b = () => {
         let progressInterval = setInterval(() => {
           setLoadingProgress6((prev) => (prev < 90 ? prev + 10 : prev));
         }, 500);
-        const response = await axios.post('http://localhost:8000/generate_final_ans_nist90b/', { binary_data: binaryInput6 });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_nist90b/",
+          { binary_data: binaryInput6, scheduled_time: debouncedScheduledTime6 }
+        );
         clearInterval(progressInterval); // Stop the interval
         setLoadingProgress6(100);
         setResult6(response.data); // Set the response data
-
       } catch (error) {
         setLoadingProgress6(0);
         console.error("Error executing generating final answer:", error);
@@ -530,7 +751,7 @@ const Nist_tests90b = () => {
     };
 
     fetchResult();
-  }, [binaryInput6]);
+  }, [binaryInput6, debouncedScheduledTime6]);
 
   useEffect(() => {
     if (!binaryInput7) return; // Do not fetch if binaryInput is empty
@@ -540,11 +761,13 @@ const Nist_tests90b = () => {
         let progressInterval = setInterval(() => {
           setLoadingProgress7((prev) => (prev < 90 ? prev + 10 : prev));
         }, 500);
-        const response = await axios.post('http://localhost:8000/generate_final_ans_nist90b/', { binary_data: binaryInput7 });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_nist90b/",
+          { binary_data: binaryInput7, scheduled_time: debouncedScheduledTime7 }
+        );
         clearInterval(progressInterval); // Stop the interval
         setLoadingProgress7(100);
         setResult7(response.data); // Set the response data
-
       } catch (error) {
         setLoadingProgress7(0);
         console.error("Error executing generating final answer:", error);
@@ -552,7 +775,7 @@ const Nist_tests90b = () => {
     };
 
     fetchResult();
-  }, [binaryInput7]);
+  }, [binaryInput7, debouncedScheduledTime7]);
 
   useEffect(() => {
     if (!binaryInput8) return; // Do not fetch if binaryInput is empty
@@ -562,11 +785,13 @@ const Nist_tests90b = () => {
         let progressInterval = setInterval(() => {
           setLoadingProgress8((prev) => (prev < 90 ? prev + 10 : prev));
         }, 500);
-        const response = await axios.post('http://localhost:8000/generate_final_ans_nist90b/', { binary_data: binaryInput8 });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_nist90b/",
+          { binary_data: binaryInput8, scheduled_time: debouncedScheduledTime8 }
+        );
         clearInterval(progressInterval); // Stop the interval
         setLoadingProgress8(100);
         setResult8(response.data); // Set the response data
-
       } catch (error) {
         setLoadingProgress8(0);
         console.error("Error executing generating final answer:", error);
@@ -574,7 +799,7 @@ const Nist_tests90b = () => {
     };
 
     fetchResult();
-  }, [binaryInput8]);
+  }, [binaryInput8, debouncedScheduledTime8]);
 
   useEffect(() => {
     if (!binaryInput9) return; // Do not fetch if binaryInput is empty
@@ -585,11 +810,13 @@ const Nist_tests90b = () => {
         let progressInterval = setInterval(() => {
           setLoadingProgress9((prev) => (prev < 90 ? prev + 10 : prev));
         }, 500);
-        const response = await axios.post('http://localhost:8000/generate_final_ans_nist90b/', { binary_data: binaryInput9 });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_nist90b/",
+          { binary_data: binaryInput9, scheduled_time: debouncedScheduledTime9 }
+        );
         clearInterval(progressInterval); // Stop the interval
         setLoadingProgress9(100);
         setResult9(response.data); // Set the response data
-
       } catch (error) {
         setLoadingProgress9(0);
         console.error("Error executing generating final answer:", error);
@@ -597,7 +824,7 @@ const Nist_tests90b = () => {
     };
 
     fetchResult();
-  }, [binaryInput9]);
+  }, [binaryInput9, debouncedScheduledTime9]);
 
   useEffect(() => {
     if (!binaryInput10) return; // Do not fetch if binaryInput is empty
@@ -607,11 +834,16 @@ const Nist_tests90b = () => {
         let progressInterval = setInterval(() => {
           setLoadingProgress10((prev) => (prev < 90 ? prev + 10 : prev));
         }, 500);
-        const response = await axios.post('http://localhost:8000/generate_final_ans_nist90b/', { binary_data: binaryInput10 });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_nist90b/",
+          {
+            binary_data: binaryInput10,
+            scheduled_time: debouncedScheduledTime10,
+          }
+        );
         clearInterval(progressInterval); // Stop the interval
         setLoadingProgress10(100);
         setResult10(response.data); // Set the response data
-
       } catch (error) {
         setLoadingProgress(0);
         console.error("Error executing generating final answer:", error);
@@ -619,9 +851,7 @@ const Nist_tests90b = () => {
     };
 
     fetchResult();
-  }, [binaryInput10]);
-
-
+  }, [binaryInput10, debouncedScheduledTime10]);
 
   const handleButtonClick = (type) => {
     if (type === "report") {
@@ -763,7 +993,6 @@ const Nist_tests90b = () => {
     }
   };
 
-
   const handleButtonClick6 = (type) => {
     if (type === "report") {
       fetch("http://localhost:8000/pdf-report-nist90b/", {
@@ -904,7 +1133,6 @@ const Nist_tests90b = () => {
     }
   };
 
-
   return (
     <Box m="20px">
       {/* Header Section */}
@@ -938,17 +1166,25 @@ const Nist_tests90b = () => {
             <tr>
               <th style={{ width: "10%" }}>Serial No</th>
               <th style={{ width: "30%" }}>Upload File</th>
-              <th style={{ width: "20%" }}>Result</th>
+              <th style={{ width: "10%" }}>Result</th>
               <th style={{ width: "10%" }}>Progress Bar</th>
               <th style={{ width: "10%" }}>Uploading Time</th>
-              <th style={{ width: "20%" }}>Filename</th>
+              <th style={{ width: "10%" }}>Filename</th>
+              <th style={{ width: "20%" }}>Scheduling Time</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>1</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -1005,14 +1241,11 @@ const Nist_tests90b = () => {
                       >
                         Generate Report
                       </Button>
-
-
-
                     </Box>
                   </Box>
                 </Box>
               </td>
-              <td>{result}</td>
+              <td>{finalResult}</td>
               <td>
                 <Box
                   display="flex"
@@ -1032,23 +1265,52 @@ const Nist_tests90b = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress}%
                   </Typography>
                 </Box>
               </td>
 
-
               <td>{uploadTime || ""}</td>
               <td>{fileName || "No file selected"}</td>
 
-
+              <td>
+                <TextField
+                  value={scheduledTime}
+                  onChange={handleScheduledTimeChange}
+                  placeholder="Enter scheduled time"
+                  variant="outlined"
+                  size="small"
+                  InputProps={{
+                    style: {
+                      textAlign: "center",
+                    },
+                  }}
+                  sx={{
+                    "& .MuiInputBase-input": {
+                      textAlign: "center",
+                    },
+                  }}
+                />
+              </td>
             </tr>
 
             <tr>
               <td>2</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -1105,12 +1367,11 @@ const Nist_tests90b = () => {
                       >
                         Generate Report
                       </Button>
-
                     </Box>
                   </Box>
                 </Box>
               </td>
-              <td>{result2}</td>
+              <td>{finalResult2}</td>
               <td>
                 <Box
                   display="flex"
@@ -1130,20 +1391,50 @@ const Nist_tests90b = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress2}%
                   </Typography>
                 </Box>
               </td>
               <td>{uploadTime2 || ""}</td>
               <td>{fileName2 || "No file selected"}</td>
-
+              <td>
+                <TextField
+                  value={scheduledTime2}
+                  onChange={handleScheduledTimeChange2}
+                  placeholder="Enter scheduled time"
+                  variant="outlined"
+                  size="small"
+                  InputProps={{
+                    style: {
+                      textAlign: "center",
+                    },
+                  }}
+                  sx={{
+                    "& .MuiInputBase-input": {
+                      textAlign: "center",
+                    },
+                  }}
+                />
+              </td>
             </tr>
 
             <tr>
               <td>3</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -1200,12 +1491,11 @@ const Nist_tests90b = () => {
                       >
                         Generate Report
                       </Button>
-
                     </Box>
                   </Box>
                 </Box>
               </td>
-              <td>{result3}</td>
+              <td>{finalResult3}</td>
               <td>
                 <Box
                   display="flex"
@@ -1225,20 +1515,50 @@ const Nist_tests90b = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress3}%
                   </Typography>
                 </Box>
               </td>
               <td>{uploadTime3 || ""}</td>
               <td>{fileName3 || "No file selected"}</td>
-
+              <td>
+                <TextField
+                  value={scheduledTime3}
+                  onChange={handleScheduledTimeChange3}
+                  placeholder="Enter scheduled time"
+                  variant="outlined"
+                  size="small"
+                  InputProps={{
+                    style: {
+                      textAlign: "center",
+                    },
+                  }}
+                  sx={{
+                    "& .MuiInputBase-input": {
+                      textAlign: "center",
+                    },
+                  }}
+                />
+              </td>
             </tr>
 
             <tr>
               <td>4</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -1295,12 +1615,11 @@ const Nist_tests90b = () => {
                       >
                         Generate Report
                       </Button>
-
                     </Box>
                   </Box>
                 </Box>
               </td>
-              <td>{result4}</td>
+              <td>{finalResult4}</td>
               <td>
                 <Box
                   display="flex"
@@ -1320,20 +1639,50 @@ const Nist_tests90b = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress4}%
                   </Typography>
                 </Box>
               </td>
               <td>{uploadTime4 || ""}</td>
               <td>{fileName4 || "No file selected"}</td>
-
+              <td>
+                <TextField
+                  value={scheduledTime4}
+                  onChange={handleScheduledTimeChange4}
+                  placeholder="Enter scheduled time"
+                  variant="outlined"
+                  size="small"
+                  InputProps={{
+                    style: {
+                      textAlign: "center",
+                    },
+                  }}
+                  sx={{
+                    "& .MuiInputBase-input": {
+                      textAlign: "center",
+                    },
+                  }}
+                />
+              </td>
             </tr>
 
             <tr>
               <td>5</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -1390,12 +1739,11 @@ const Nist_tests90b = () => {
                       >
                         Generate Report
                       </Button>
-
                     </Box>
                   </Box>
                 </Box>
               </td>
-              <td>{result5}</td>
+              <td>{finalResult5}</td>
               <td>
                 <Box
                   display="flex"
@@ -1415,21 +1763,51 @@ const Nist_tests90b = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress5}%
                   </Typography>
                 </Box>
               </td>
               <td>{uploadTime5 || ""}</td>
               <td>{fileName5 || "No file selected"}</td>
-
+              <td>
+                <TextField
+                  value={scheduledTime5}
+                  onChange={handleScheduledTimeChange5}
+                  placeholder="Enter scheduled time"
+                  variant="outlined"
+                  size="small"
+                  InputProps={{
+                    style: {
+                      textAlign: "center",
+                    },
+                  }}
+                  sx={{
+                    "& .MuiInputBase-input": {
+                      textAlign: "center",
+                    },
+                  }}
+                />
+              </td>
               {/* <td>{binaryInput}</td> */}
             </tr>
 
             <tr>
               <td>6</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -1486,12 +1864,11 @@ const Nist_tests90b = () => {
                       >
                         Generate Report
                       </Button>
-
                     </Box>
                   </Box>
                 </Box>
               </td>
-              <td>{result6}</td>
+              <td>{finalResult6}</td>
               <td>
                 <Box
                   display="flex"
@@ -1511,20 +1888,50 @@ const Nist_tests90b = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress6}%
                   </Typography>
                 </Box>
               </td>
               <td>{uploadTime6 || ""}</td>
               <td>{fileName6 || "No file selected"}</td>
-
+              <td>
+                <TextField
+                  value={scheduledTime6}
+                  onChange={handleScheduledTimeChange6}
+                  placeholder="Enter scheduled time"
+                  variant="outlined"
+                  size="small"
+                  InputProps={{
+                    style: {
+                      textAlign: "center",
+                    },
+                  }}
+                  sx={{
+                    "& .MuiInputBase-input": {
+                      textAlign: "center",
+                    },
+                  }}
+                />
+              </td>
             </tr>
 
             <tr>
               <td>7</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -1581,12 +1988,11 @@ const Nist_tests90b = () => {
                       >
                         Generate Report
                       </Button>
-
                     </Box>
                   </Box>
                 </Box>
               </td>
-              <td>{result7}</td>
+              <td>{finalResult7}</td>
               <td>
                 <Box
                   display="flex"
@@ -1606,20 +2012,50 @@ const Nist_tests90b = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress7}%
                   </Typography>
                 </Box>
               </td>
               <td>{uploadTime7 || ""}</td>
               <td>{fileName7 || "No file selected"}</td>
-
+              <td>
+                <TextField
+                  value={scheduledTime7}
+                  onChange={handleScheduledTimeChange7}
+                  placeholder="Enter scheduled time"
+                  variant="outlined"
+                  size="small"
+                  InputProps={{
+                    style: {
+                      textAlign: "center",
+                    },
+                  }}
+                  sx={{
+                    "& .MuiInputBase-input": {
+                      textAlign: "center",
+                    },
+                  }}
+                />
+              </td>
             </tr>
 
             <tr>
               <td>8</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -1676,12 +2112,11 @@ const Nist_tests90b = () => {
                       >
                         Generate Report
                       </Button>
-
                     </Box>
                   </Box>
                 </Box>
               </td>
-              <td>{result8}</td>
+              <td>{finalResult8}</td>
               <td>
                 <Box
                   display="flex"
@@ -1701,20 +2136,50 @@ const Nist_tests90b = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress8}%
                   </Typography>
                 </Box>
               </td>
               <td>{uploadTime8 || ""}</td>
               <td>{fileName8 || "No file selected"}</td>
-
+              <td>
+                <TextField
+                  value={scheduledTime8}
+                  onChange={handleScheduledTimeChange8}
+                  placeholder="Enter scheduled time"
+                  variant="outlined"
+                  size="small"
+                  InputProps={{
+                    style: {
+                      textAlign: "center",
+                    },
+                  }}
+                  sx={{
+                    "& .MuiInputBase-input": {
+                      textAlign: "center",
+                    },
+                  }}
+                />
+              </td>
             </tr>
 
             <tr>
               <td>9</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -1771,12 +2236,11 @@ const Nist_tests90b = () => {
                       >
                         Generate Report
                       </Button>
-
                     </Box>
                   </Box>
                 </Box>
               </td>
-              <td>{result9}</td>
+              <td>{finalResult9}</td>
               <td>
                 <Box
                   display="flex"
@@ -1796,20 +2260,50 @@ const Nist_tests90b = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress9}%
                   </Typography>
                 </Box>
               </td>
               <td>{uploadTime9 || ""}</td>
               <td>{fileName9 || "No file selected"}</td>
-
+              <td>
+                <TextField
+                  value={scheduledTime9}
+                  onChange={handleScheduledTimeChange9}
+                  placeholder="Enter scheduled time"
+                  variant="outlined"
+                  size="small"
+                  InputProps={{
+                    style: {
+                      textAlign: "center",
+                    },
+                  }}
+                  sx={{
+                    "& .MuiInputBase-input": {
+                      textAlign: "center",
+                    },
+                  }}
+                />
+              </td>
             </tr>
 
             <tr>
               <td>10</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -1866,12 +2360,11 @@ const Nist_tests90b = () => {
                       >
                         Generate Report
                       </Button>
-
                     </Box>
                   </Box>
                 </Box>
               </td>
-              <td>{result10}</td>
+              <td>{finalResult10}</td>
               <td>
                 <Box
                   display="flex"
@@ -1891,97 +2384,114 @@ const Nist_tests90b = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress10}%
                   </Typography>
                 </Box>
               </td>
               <td>{uploadTime10 || ""}</td>
               <td>{fileName10 || "No file selected"}</td>
-
+              <td>
+                <TextField
+                  value={scheduledTime10}
+                  onChange={handleScheduledTimeChange10}
+                  placeholder="Enter scheduled time"
+                  variant="outlined"
+                  size="small"
+                  InputProps={{
+                    style: {
+                      textAlign: "center",
+                    },
+                  }}
+                  sx={{
+                    "& .MuiInputBase-input": {
+                      textAlign: "center",
+                    },
+                  }}
+                />
+              </td>
             </tr>
-
           </tbody>
         </Box>
-
-
       </Box>
       <Header title="AI Analysis" />
       <Box
-  sx={{
-    background: "linear-gradient(135deg, #1F2A40 30%, #29314F 100%)",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    height: "250px",
-    textAlign: "center",
-    borderRadius: "12px",
-    mt: 4,
-    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Subtle shadow for depth
-    position: "relative",
-    overflow: "hidden",
-  }}
->
-  {/* Floating AI Elements for Design */}
-  <AutoAwesomeIcon
-    sx={{
-      position: "absolute",
-      top: 20,
-      left: 30,
-      fontSize: 40,
-      color: "rgba(255, 255, 255, 0.3)",
-    }}
-  />
-  <AutoAwesomeIcon
-    sx={{
-      position: "absolute",
-      bottom: 20,
-      right: 30,
-      fontSize: 40,
-      color: "rgba(255, 255, 255, 0.3)",
-    }}
-  />
+        sx={{
+          background: "linear-gradient(135deg, #1F2A40 30%, #29314F 100%)",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "250px",
+          textAlign: "center",
+          borderRadius: "12px",
+          mt: 4,
+          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Subtle shadow for depth
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        {/* Floating AI Elements for Design */}
+        <AutoAwesomeIcon
+          sx={{
+            position: "absolute",
+            top: 20,
+            left: 30,
+            fontSize: 40,
+            color: "rgba(255, 255, 255, 0.3)",
+          }}
+        />
+        <AutoAwesomeIcon
+          sx={{
+            position: "absolute",
+            bottom: 20,
+            right: 30,
+            fontSize: 40,
+            color: "rgba(255, 255, 255, 0.3)",
+          }}
+        />
 
-  {/* Gemini Logo */}
-  <Box
-    component="img"
-    src="/image.png"
-    alt="Gemini Logo"
-    sx={{ width: 80, height: "auto", mb: 2,borderRadius: "12px"  }}
-  />
+        {/* Gemini Logo */}
+        <Box
+          component="img"
+          src="/image.png"
+          alt="Gemini Logo"
+          sx={{ width: 80, height: "auto", mb: 2, borderRadius: "12px" }}
+        />
 
-  {/* Title */}
-  
+        {/* Title */}
 
-  {/* Button */}
-  <Button
-    variant="contained"
-    onClick={() => {
-      window.open("http://localhost:3000/report", "_blank");
-
-    }}
-    sx={{
-      backgroundColor: "#E63946", // Red theme
-      color: "white",
-      textTransform: "none",
-      padding: "15px 40px",
-      fontSize: "1.5rem",
-      width: "50%",
-      maxWidth: "320px",
-      borderRadius: "8px",
-      transition: "all 0.3s ease-in-out",
-      "&:hover": {
-        backgroundColor: "#F77F00",
-        transform: "scale(1.05)",
-        boxShadow: "0px 4px 10px rgba(255, 99, 71, 0.5)", // Glow effect
-      },
-    }}
-  >
-    Analyze with AI
-  </Button>
-</Box>
-
+        {/* Button */}
+        <Button
+          variant="contained"
+          onClick={() => {
+            window.open("http://localhost:3000/report", "_blank");
+          }}
+          sx={{
+            backgroundColor: "#E63946", // Red theme
+            color: "white",
+            textTransform: "none",
+            padding: "15px 40px",
+            fontSize: "1.5rem",
+            width: "50%",
+            maxWidth: "320px",
+            borderRadius: "8px",
+            transition: "all 0.3s ease-in-out",
+            "&:hover": {
+              backgroundColor: "#F77F00",
+              transform: "scale(1.05)",
+              boxShadow: "0px 4px 10px rgba(255, 99, 71, 0.5)", // Glow effect
+            },
+          }}
+        >
+          Analyze with AI
+        </Button>
+      </Box>
     </Box>
   );
 };

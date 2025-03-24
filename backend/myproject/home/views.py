@@ -4180,178 +4180,172 @@ def generate_final_ans(request):
         return JsonResponse({"error": "Invalid request method. Use POST."}, status=405)
 
 
+
 @csrf_exempt
 def generate_final_ans_nist90b(request):
-    global global_graph_image
+    if request.method == 'POST':
+        try:
+            # Parse JSON data from the request
+            data = json.loads(request.body)
+            binary_data = data.get('binary_data', '')
+            scheduled_time_str = data.get('scheduled_time', '')
+            print("received", scheduled_time_str)
+            
+            # Validate binary data
+            if not binary_data:
+                return JsonResponse({"error": "binary_data is missing or empty"}, status=400)
 
-    try:
-        data = json.loads(request.body)
-        binary_data = data.get('binary_data', '')
-        print('Received binary data:', binary_data)
-    except json.JSONDecodeError as e:
-        print('Error parsing JSON:', e)
-        return HttpResponse("Invalid JSON data.", status=400)
+            # Validate scheduled time format
+            if not scheduled_time_str:
+                return JsonResponse({"error": "scheduled_time is required"}, status=400)
 
-    # Initialize x to 0
-    x = 0
+            try:
+                # Convert scheduled_time to a datetime object
+                scheduled_time = datetime.datetime.strptime(scheduled_time_str, "%Y-%m-%d %H:%M:%S")
+            except ValueError:
+                return JsonResponse({"error": "Invalid scheduled_time format. Use 'YYYY-MM-DD HH:MM:SS'."}, status=400)
 
-    # Perform the NIST 800-90B tests and check results
-    try:
-        min_entropy_test_result = MinEntropyTest.MinEntropyTest(binary_data)[1]
-        if min_entropy_test_result:
-            x += 1
+            # Get the current time
+            current_time = datetime.datetime.now()
 
-        collision_test_result = CollisionTest.CollisionTest(binary_data)[1]
-        if collision_test_result:
-            x += 1
+            # Calculate the time difference in seconds
+            time_difference = (scheduled_time - current_time).total_seconds()
+            if time_difference > 0:
+                print(f"Waiting {time_difference:.2f} seconds until the scheduled time...")
+                time.sleep(time_difference)  # Sleep until the scheduled time
 
-        markov_test_result = MarkovTest.MarkovTest(binary_data)[1]
-        if markov_test_result:
-            x += 1
+            # Initialize x to 0
+            x = 0
 
-        compression_test_result = CompressionTest.CompressionTest(binary_data)[1]
-        if compression_test_result:
-            x += 1
+            # Perform the NIST 800-90B tests and check results
+            try:
+                tests = [
+                    MinEntropyTest.MinEntropyTest,
+                    CollisionTest.CollisionTest,
+                    MarkovTest.MarkovTest,
+                    CompressionTest.CompressionTest,
+                    TTupleTest.TTupleTest,
+                    MostCommonValueTest.MostCommonValueTest,
+                    ChiSquareTest.ChiSquareTest,
+                    LZ78YTest.LZ78YTest,
+                    MultiBlockEntropyTest.MultiBlockEntropyTest,
+                    PredictorTest.PredictorTest
+                ]
 
-        t_tuple_test_result = TTupleTest.TTupleTest(binary_data)[1]
-        if t_tuple_test_result:
-            x += 1
+                for test in tests:
+                    result = test(binary_data)[1]
+                    if result:
+                        x += 1
 
-        mcv_test_result = MostCommonValueTest.MostCommonValueTest(binary_data)[1]
-        if mcv_test_result:
-            x += 1
+            except Exception as e:
+                print(f"Error during testing: {e}")
+                return HttpResponse("Error during randomness tests.", status=500)
 
-        chiSquare_test_result = ChiSquareTest.ChiSquareTest(binary_data)[1]
-        if chiSquare_test_result:
-            x += 1
+            # Determine if the number is random or not
+            final_text = 'random number' if x > 5 else 'non-random number'
+            
+            # Prepare the response data
+            response_data = {
+                "final_result": final_text,
+                "executed_at": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            }
 
-        lz78y_test_result = LZ78YTest.LZ78YTest(binary_data)[1]
-        if lz78y_test_result:
-            x += 1
+            return JsonResponse(response_data)
 
-        multiBlock_test_result = MultiBlockEntropyTest.MultiBlockEntropyTest(binary_data)[1]
-        if multiBlock_test_result:
-            x += 1
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON data"}, status=400)
 
-        predictor_test_result = PredictorTest.PredictorTest(binary_data)[1]
-        if predictor_test_result:
-            x += 1
-    except Exception as e:
-        print(f"Error during testing: {e}")
-        return HttpResponse("Error during randomness tests.", status=500)
-
-    # Determine if the number is random or not
-    final_text = 'random number' if x > 5 else 'non-random number'
-    
-    # Return the result as an HTTP response
-    return HttpResponse(final_text, content_type="text/plain")
-
+    else:
+        return JsonResponse({"error": "Invalid request method. Use POST."}, status=405)
 
 
 
 
 @csrf_exempt
 def generate_final_ans_dieharder(request):
-    global global_graph_image
+    if request.method == 'POST':
+        try:
+            # Parse JSON data from the request
+            data = json.loads(request.body)
+            binary_data = data.get('binary_data', '')
+            scheduled_time_str = data.get('scheduled_time', '')
+            print("received", scheduled_time_str)
+            # Validate binary data
+            if not binary_data:
+                return JsonResponse({"error": "binary_data is missing or empty"}, status=400)
 
-    try:
-        data = json.loads(request.body)
-        binary_data = data.get('binary_data', '')
-        print('Received binary data:', binary_data)
-    except json.JSONDecodeError as e:
-        print('Error parsing JSON:', e)
-        return HttpResponse("Invalid JSON data.", status=400)
+            if not binary_data:
+                return JsonResponse({"error": "binary_data is missing or empty"}, status=400)
 
-    # Initialize x to 0
-    x = 0
+            # Validate scheduled time format
+            if not scheduled_time_str:
+                return JsonResponse({"error": "scheduled_time is required"}, status=400)
 
-    # Perform the tests and check results
-    try:
-        birthday_test_result = BirthdaySpacingsTest.BirthdaySpacingsTest(binary_data)[1]
-        if birthday_test_result:
-            x += 1
+            try:
+                # Convert scheduled_time to a datetime object
+                scheduled_time = datetime.datetime.strptime(scheduled_time_str, "%Y-%m-%d %H:%M:%S")
+            except ValueError:
+                return JsonResponse({"error": "Invalid scheduled_time format. Use 'YYYY-MM-DD HH:MM:SS'."}, status=400)
 
-        parking_test_block_result = ParkingLotTest.ParkingLotTest(binary_data)[1]
-        if parking_test_block_result:
-            x += 1
+            # Get the current time
+            current_time = datetime.datetime.now()
 
-        overlapping_5_test_result = Overlapping5PermutationTest.Overlapping5PermutationTest(binary_data)[1]
-        if overlapping_5_test_result:
-            x += 1
+            # Calculate the time difference in seconds
+            time_difference = (scheduled_time - current_time).total_seconds()
+            if time_difference > 0:
+                print(f"Waiting {time_difference:.2f} seconds until the scheduled time...")
+                time.sleep(time_difference)  # Sleep until the scheduled time
 
-        minimum_distance_test_result = MinimumDistanceTest.MinimumDistanceTest(binary_data)[1]
-        if minimum_distance_test_result:
-            x += 1
+            # Initialize x to 0
+            x = 0
 
-        rank_31_test_result = Ranks31x31MatricesTest.Ranks31x31MatricesTest(binary_data)[1]
-        if rank_31_test_result:
-            x += 1
+            # List of Dieharder tests
+            tests = [
+                BirthdaySpacingsTest.BirthdaySpacingsTest,
+                ParkingLotTest.ParkingLotTest,
+                Overlapping5PermutationTest.Overlapping5PermutationTest,
+                MinimumDistanceTest.MinimumDistanceTest,
+                Ranks31x31MatricesTest.Ranks31x31MatricesTest,
+                Spheres3DTest.Spheres3DTest,
+                Ranks32x32MatricesTest.Ranks32x32MatricesTest,
+                CrapsTest.CrapsTest,
+                BitstreamTest.BitstreamTest,
+                MarsagliaTsangGCDTest.MarsagliaTsangGCDTest,
+                OPSOTest.OPSOTest,
+                OQSOTest.OQSOTest,
+                DNATest.DNATest,
+                CountThe1sStreamTest.CountThe1sStreamTest,
+                CountThe1sByteTest.CountThe1sByteTest,
+                MarsagliaTsangSimpleGCDTest.MarsagliaTsangSimpleGCDTest,
+                GeneralizedMinimumDistanceTest.GeneralizedMinimumDistanceTest,
+                TestU01LinearComplexityTest.TestU01LinearComplexityTest,
+                TestU01LongestRepeatedSubstringTest.TestU01LongestRepeatedSubstringTest,
+                TestU01MatrixRankTest.TestU01MatrixRankTest
+            ]
 
-        spheres_test_result = Spheres3DTest.Spheres3DTest(binary_data)[1]
-        if spheres_test_result:
-            x += 1
+            # Perform the Dieharder tests
+            try:
+                for test in tests:
+                    result = test(binary_data)[1]
+                    if result:
+                        x += 1
+            except Exception as e:
+                print(f"Error during testing: {e}")
+                return HttpResponse("Error during randomness tests.", status=500)
 
-        rank_32_result = Ranks32x32MatricesTest.Ranks32x32MatricesTest(binary_data)[1]
-        if rank_32_result:
-            x += 1
+            # Determine if the number is random or not
+            final_text = 'random number' if x > 10 else 'non-random number'
+            
+            # Prepare the response data
+            response_data = {
+                "final_result": final_text,
+                "executed_at": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            }
 
-        craps_test_result = CrapsTest.CrapsTest(binary_data)[1]
-        if craps_test_result:
-            x += 1
-
-        bitstream_test_result = BitstreamTest.BitstreamTest(binary_data)[1]
-        if bitstream_test_result:
-            x += 1
-
-        gcd_test_result = MarsagliaTsangGCDTest.MarsagliaTsangGCDTest(binary_data)[1]
-        if gcd_test_result:
-            x += 1
-
-        opso_test_result = OPSOTest.OPSOTest(binary_data)[1]
-        if opso_test_result:
-            x += 1
-
-        oqsq_test_result = OQSOTest.OQSOTest(binary_data)[1]
-        if oqsq_test_result:
-            x += 1
-
-        dna_test_result = DNATest.DNATest(binary_data)[1]
-        if dna_test_result:
-            x += 1
-
-        count_one_stream_test_result = CountThe1sStreamTest.CountThe1sStreamTest(binary_data)[1]
-        if count_one_stream_test_result:
-            x += 1
-
-        count_one_byte_test_result = CountThe1sByteTest.CountThe1sByteTest(binary_data)[1]
-        if count_one_byte_test_result:
-            x += 1
-
-        simple_gcd_test_result = MarsagliaTsangSimpleGCDTest.MarsagliaTsangSimpleGCDTest(binary_data)[1]
-        if simple_gcd_test_result:
-            x += 1
-
-        generalized_minimum_test_result = GeneralizedMinimumDistanceTest.GeneralizedMinimumDistanceTest(binary_data)[1]
-        if generalized_minimum_test_result:
-            x += 1
-
-        u01_linear_complexity_test_result = TestU01LinearComplexityTest.TestU01LinearComplexityTest(binary_data)[1]
-        if u01_linear_complexity_test_result:
-            x += 1
-
-        u01_longest_repeated_test_result = TestU01LongestRepeatedSubstringTest.TestU01LongestRepeatedSubstringTest(binary_data)[1]
-        if u01_longest_repeated_test_result:
-            x += 1
-
-        u01_matrix_rank_test_result = TestU01MatrixRankTest.TestU01MatrixRankTest(binary_data)[1]
-        if u01_matrix_rank_test_result:
-            x += 1
-    except Exception as e:
-        print(f"Error during testing: {e}")
-        return HttpResponse("Error during randomness tests.", status=500)
-
-    # Determine if the number is random or not
-    final_text = 'random number' if x > 10 else 'non-random number'
+            return JsonResponse(response_data)
+        
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON data"}, status=400)
     
-    # Return the result as an HTTP response
-    return HttpResponse(final_text, content_type="text/plain")
+    else:
+        return JsonResponse({"error": "Invalid request method. Use POST."}, status=405)
