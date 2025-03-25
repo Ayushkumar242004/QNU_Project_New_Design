@@ -100,8 +100,8 @@ import json
 from google import genai
 from google.genai import types
 
-your_api_key=""
-client = genai.Client(api_key=your_api_key)
+
+client = genai.Client(api_key="AIzaSyBEgl_your_api_key") # place your api key here in inverted commas
 
 @csrf_exempt  # Remove this in production, only for testing purposes
 def run_frequency_test(request):
