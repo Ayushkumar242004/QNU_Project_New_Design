@@ -97,8 +97,11 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 
+from google import genai
+from google.genai import types
 
 
+client = genai.Client(api_key="AIzaSyBEgltUoSm5vFEvDxOd29yZ1hJ3apSYpqg")
 
 @csrf_exempt  # Remove this in production, only for testing purposes
 def run_frequency_test(request):
@@ -2942,7 +2945,6 @@ def generate_pdf_report(request):
         data = json.loads(request.body)
         binary_data = data.get('binary_data', '')
         print('Received binary data:', binary_data)
-       
     except json.JSONDecodeError as e:
         print('Error parsing JSON:', e)
         return HttpResponse("Invalid JSON data.", status=400)
@@ -2964,11 +2966,11 @@ def generate_pdf_report(request):
     # Set up styles
     styles = getSampleStyleSheet()
 
-    current_date = datetime.now().strftime("%B %d, %Y")  # Format as "December 06, 2024"
+    # current_date = datetime.now().strftime("%B %d, %Y")  # Format as "December 06, 2024"
 
     # Add a paragraph with the current date
     date_style = ParagraphStyle('Date', parent=styles['Normal'], fontSize=10, fontName='Helvetica-Bold',  alignment=2, spaceAfter=10)
-    date_paragraph = Paragraph(f"Date: {current_date}", date_style)
+    # date_paragraph = Paragraph(f"Date: {current_date}", date_style)
 
     # Add a headline (title)
     title = Paragraph("Report-QNu Labs", styles['Title'])
@@ -2983,7 +2985,6 @@ def generate_pdf_report(request):
     nist_subtitle = Paragraph("NIST SP 800-22 Tests:", subtitle_style)
     graph_subtitle = Paragraph("Graphical Analysis:", subtitle_style)
     description_subtitle = Paragraph("Test Descriptions:", subtitle_style)
-
     subtitle_space = Spacer(1, 0.0 * inch)  # Spacer below the subtitles
     graph_space= Spacer(1, 0.0 * inch) 
     # Initialize x to 0
@@ -3138,7 +3139,7 @@ def generate_pdf_report(request):
 
     # Create the second table with graphical analysis
     data2 = [
-        [Image(graph_image_io, width=400, height=350)]
+        [Image(graph_image_io, width=400, height=370)]
     ]
     table2 = Table(data2, colWidths=[4 * inch])
     table2.setStyle(TableStyle([('ALIGN', (0, 0), (-1, -1), 'CENTER')]))
@@ -3191,7 +3192,6 @@ def generate_pdf_report(request):
     17. <b>Adaptive Statistical Test</b>: This test combines multiple statistical tests to detect deviations from randomness. <br/><br/>
     """
 
-
     description_style = ParagraphStyle(
         'Description',
         parent=styles['Normal'],
@@ -3202,16 +3202,60 @@ def generate_pdf_report(request):
     )
 
     nist_description_paragraph = Paragraph(nist_description, description_style)
+
+    # Send test results to Gemini for analysis
+    test_results = {
+        "Frequency Test": frequency_test_text,
+        "Frequency Test within a Block": frequency_test_block_text,
+        "Runs Test": runs_text,
+        "Test for the Longest Run of Ones": longest_run_of_ones_text,
+        "Binary Matrix Rank Test": binary_matrix_rank_text,
+        "Discrete Fourier Transform Test": dft_text,
+        "Non-overlapping Template Match": non_overlapping_text,
+        "Overlapping Template Matching Test": overlapping_text,
+        "Maurers Universal test": maurers_universal_text,
+        "Linear complexity Test": linear_complexity_text,
+        "Serial Test": serial_text,
+        "Approximate Entropy Test": approximate_entropy_text,
+        "Cumulative Sum Test": cumulative_sums_text,
+        "Random Excursions Test": random_excursion_text,
+        "Random Excursions Variant Test": random_excursion_variant_text,
+        "Autocorrelation Test": autocorrelation_text,
+        "Adaptive Statistical Test": adaptive_statistical_text,
+    }
+
+    AIAnalysis_subtitle = Paragraph("AI Analysis:", subtitle_style)
+
+    # Create the prompt
+    prompt = "Do the analysis of results of all these tests. Also tell about the quality of number used in that analysis. Note that if test gets p-value > 0.05 then they are random number else non-random number. GIve a short summary about the overall analysis also. "
+
+    # Send request to Gemini
+    response1 = client.models.generate_content(
+        model="gemini-2.0-flash",
+        contents=[{"text": prompt}, {"text": json.dumps(test_results)}],
+    )
+    if response1.candidates:
+        gemini_analysis = response1.candidates[0].content.parts[0].text
+        # print(gemini_analysis)
+    else:
+        print("No response received from Gemini.")
     
+
+
+
+    formatted_output = format_markdown(gemini_analysis)
+
+    gemini_analysis_paragraph = Paragraph(formatted_output, bold_red_style)
+    
+
     # Build the PDF document
     elements = [
         logo_table,
-        date_paragraph,
+        # date_paragraph,
         title,
         title_space,
         nist_subtitle,
         subtitle_space,
-        
         table1,
         subtitle_space,
         graph_subtitle,
@@ -3220,7 +3264,8 @@ def generate_pdf_report(request):
         description_subtitle,
         subtitle_space,
         nist_description_paragraph,
-      
+        AIAnalysis_subtitle,
+        gemini_analysis_paragraph,
     ]
     doc.build(elements)
 
@@ -3230,6 +3275,13 @@ def generate_pdf_report(request):
     response.write(pdf)
 
     return response
+
+import markdown
+def format_markdown(gemini_analysis):
+    """Convert the text response into Markdown format."""
+    md_content = markdown.markdown(gemini_analysis)
+    return md_content
+
 
 @csrf_exempt
 def generate_pdf_report_nist90b(request):
@@ -3261,11 +3313,11 @@ def generate_pdf_report_nist90b(request):
     # Set up styles
     styles = getSampleStyleSheet()
 
-    current_date = datetime.now().strftime("%B %d, %Y")  # Format as "December 06, 2024"
+    # current_date = datetime.now().strftime("%B %d, %Y")  # Format as "December 06, 2024"
 
     # Add a paragraph with the current date
     date_style = ParagraphStyle('Date', parent=styles['Normal'], fontSize=10, fontName='Helvetica-Bold',  alignment=2, spaceAfter=10)
-    date_paragraph = Paragraph(f"Date: {current_date}", date_style)
+    # date_paragraph = Paragraph(f"Date: {current_date}", date_style)
 
     # Add a headline (title)
     title = Paragraph("Report-QNu Labs", styles['Title'])
@@ -3445,10 +3497,53 @@ def generate_pdf_report_nist90b(request):
 
     nist_description_paragraph = Paragraph(nist_description, description_style)
     
+
+    test_results = {
+        "Minimum Entropy Test":  min_entropy_test_text,
+        "Collision Test":  collision_test_text ,
+        "Markov Test": markov_test_text,
+        "Compression Test": compression_test_text ,
+        "T Tuple Test":  t_tuple_test_text,
+        "MCV Test": mcv_test_text ,
+        "Chi-Square Test": chiSquare_test_text,
+        "Lz78Y Test": lz78y_test_text,
+        "Multiblock test":  multiBlock_test_text,
+        "Predictor Test": predictor_test_text ,
+    }
+
+    AIAnalysis_subtitle = Paragraph("AI Analysis:", subtitle_style)
+
+    # Create the prompt
+    prompt = "Do the analysis of results of all these tests. Also tell about the quality of number used in that analysis. Note that if test gets p-value > 0.05 then they are random number else non-random number. GIve a short summary about the overall analysis also. "
+
+    # Send request to Gemini
+    response1 = client.models.generate_content(
+        model="gemini-2.0-flash",
+        contents=[{"text": prompt}, {"text": json.dumps(test_results)}],
+    )
+    if response1.candidates:
+        gemini_analysis = response1.candidates[0].content.parts[0].text
+        # print(gemini_analysis)
+    else:
+        print("No response received from Gemini.")
+    
+
+
+
+    formatted_output = format_markdown(gemini_analysis)
+
+    
+
+    gemini_analysis_paragraph = Paragraph(formatted_output, description_style)
+    
+    AIAnalysis_subtitle = Paragraph("AI Analysis:", subtitle_style)
+
+    # print(gemini_analysis_paragraph)
+
     # Build the PDF document
     elements = [
         logo_table,
-        date_paragraph,
+        # date_paragraph,
         title,
         title_space,
         nist_subtitle,
@@ -3462,7 +3557,8 @@ def generate_pdf_report_nist90b(request):
         description_subtitle,
         subtitle_space,
         nist_description_paragraph,
-      
+        AIAnalysis_subtitle,
+        gemini_analysis_paragraph
     ]
     doc.build(elements)
 
@@ -3625,6 +3721,65 @@ def generate_pdf_report_dieharder(request):
         [Paragraph('Final Result', styles['Normal']), Paragraph(final_text, styles['Heading2'])],
     ]
 
+    test_results = {
+        "Birthday Test":  birthday_text,
+        "Parking Test": parking_text,
+        "Overlapping Test": overlapping_5_text,
+        "Minimum Distance Test": minimum_distance_text,
+        "31x31 Rank Test":  rank31x31_text,
+        "Spheres Test": spheres_text ,
+        "32x32 Rank Test": rank32x32_text,
+        "Craps Test": craps_text,
+        "Bitstream test":  bitstream_text,
+        "GCD Test": gcd_text,
+        "OPSO Test": opso_text,
+        "OQSO Test": oqsq_text,
+        "DNA Test": dna_text,
+        "One stream Test": one_stream_text,
+        "One byte Test": one_byte_text,
+        "Simple Gcd Test": simple_gcd_text,
+        "Generalised Minimum Test": generalized_minimum_text,
+        "U01 Linear Test": u01_linear_text,
+        "U01 Longest Test": u01longest_text,
+        "U01 Matrix Test": u01_matrix_text,
+    }
+
+    AIAnalysis_subtitle = Paragraph("AI Analysis:", subtitle_style)
+
+    # Create the prompt
+    prompt = "Do the analysis of results of all these tests. Also tell about the quality of number used in that analysis. Note that if test gets p-value > 0.05 then they are random number else non-random number. GIve a short summary about the overall analysis also. "
+
+    # Send request to Gemini
+    response1 = client.models.generate_content(
+        model="gemini-2.0-flash",
+        contents=[{"text": prompt}, {"text": json.dumps(test_results)}],
+    )
+    if response1.candidates:
+        gemini_analysis = response1.candidates[0].content.parts[0].text
+        # print(gemini_analysis)
+    else:
+        print("No response received from Gemini.")
+    
+
+
+
+    formatted_output = format_markdown(gemini_analysis)
+
+    description_style = ParagraphStyle(
+        'Description',
+        parent=styles['Normal'],
+        fontSize=10,
+        fontName='Helvetica',
+        leading=12,
+        spaceAfter=10
+    )
+
+    gemini_analysis_paragraph = Paragraph(formatted_output, description_style)
+    
+    AIAnalysis_subtitle = Paragraph("AI Analysis:", subtitle_style)
+
+
+
     # Adjust column widths
     colWidths = [2 * inch, 1.5 * inch, 2 * inch, 1.5 * inch]
 
@@ -3646,9 +3801,9 @@ def generate_pdf_report_dieharder(request):
     graph_image = Image(graph_image_io, width=7 * inch, height=4.5 * inch)
 
     # Add a paragraph with the current date
-    current_date = datetime.now().strftime("%B %d, %Y")  # Format as "December 06, 2024"
+    # current_date = datetime.now().strftime("%B %d, %Y")  # Format as "December 06, 2024"
     date_style = ParagraphStyle('Date', parent=styles['Normal'], fontSize=10, fontName='Helvetica-Bold', alignment=2, spaceAfter=10)
-    date_paragraph = Paragraph(f"Date: {current_date}", date_style)
+    # date_paragraph = Paragraph(f"Date: {current_date}", date_style)
 
     # Add logo on the top-right corner
     logo_path = os.path.join(os.path.dirname(__file__), 'qnulogo.png')
@@ -3698,7 +3853,7 @@ def generate_pdf_report_dieharder(request):
     # Build the PDF document
     elements = [
         logo_table,
-        date_paragraph,
+        # date_paragraph,
         title,
         title_space,
         dieharder_subtitle,
@@ -3711,6 +3866,8 @@ def generate_pdf_report_dieharder(request):
         subtitle_space,
         description_subtitle,
         dieharder_description_paragraph,
+        AIAnalysis_subtitle,
+        gemini_analysis_paragraph,
     ]
 
     doc.build(elements)
