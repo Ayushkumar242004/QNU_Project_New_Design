@@ -24,6 +24,7 @@ class ApproximateEntropy:
 
     @staticmethod
     def approximate_entropy_test(binary_data: str, verbose=False, pattern_length=10):
+        print("entropy")
         """
         Approximate entropy test to compare the frequency of overlapping patterns.
         """

@@ -6,6 +6,7 @@ class Serial:
 
     @staticmethod
     def serial_test(binary_data: str, verbose=False, pattern_length=16):
+        print("serial")
         """
         Serial Test for randomness based on the NIST documentation.
         Handles invalid input and returns appropriate default values in case of errors.

@@ -10,6 +10,7 @@ class RunTest:
 
     @staticmethod
     def run_test(binary_data: str, verbose=False):
+        print("runs")
         vObs = 0
         length_of_binary_data = len(binary_data)
         tau = 2 / sqrt(length_of_binary_data)

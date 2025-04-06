@@ -98,10 +98,12 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 
 from google import genai
+# import google.generativeai as genai  # ✅ Correct
+
 from google.genai import types
 
 
-client = genai.Client(api_key="AIzaSyBEgl_your_api_key") # place your api key here in inverted commas
+client = genai.Client(api_key="AIzaSyBEgltUoSm5vFEvDxOd29yZ1hJ3apSYpqg") # place your api key here in inverted commas
 
 @csrf_exempt  # Remove this in production, only for testing purposes
 def run_frequency_test(request):
@@ -3514,7 +3516,7 @@ def generate_pdf_report_nist90b(request):
     AIAnalysis_subtitle = Paragraph("AI Analysis:", subtitle_style)
 
     # Create the prompt
-    prompt = "Do the analysis of results of all these tests. Also tell about the quality of number used in that analysis. Note that if test gets p-value > 0.05 then they are random number else non-random number. GIve a short summary about the overall analysis also. "
+    prompt = "Do the analysis of results of all these tests. Also tell about the quality of number used in that analysis. Note that if test gets p-value > 0.05 then they are random number else non-random number. GIve a short summary about the overall analysis also."
 
     # Send request to Gemini
     response1 = client.models.generate_content(
@@ -4287,7 +4289,7 @@ def generate_final_ans(request):
 
             # Initialize x to 0
             x = 0
-
+            
             # Perform the tests and check results
             try:
                 tests = [
@@ -4311,13 +4313,18 @@ def generate_final_ans(request):
                 ]
 
                 for test in tests:
-                    result = test(binary_data)[1]
-                    if result:
-                        x += 1
+                    try:
+                        result = test(binary_data)[1]
+                        if result:
+                            x += 1
+                    except Exception as e:
+                        print(f"Error in test {test.__name__}: {e}")
+                        # Skip this test and continue with the next one
 
             except Exception as e:
                 print(f"Error during testing: {e}")
                 return HttpResponse("Error during randomness tests.", status=500)
+            
 
             # Determine if the number is random or not
             final_text = 'random number' if x > 10 else 'non-random number'
@@ -4327,7 +4334,7 @@ def generate_final_ans(request):
                 "final_result": final_text,
                 "executed_at": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             }
-
+            print("hi")
             return JsonResponse(response_data)
 
         except json.JSONDecodeError:
@@ -4390,9 +4397,12 @@ def generate_final_ans_nist90b(request):
                 ]
 
                 for test in tests:
-                    result = test(binary_data)[1]
-                    if result:
-                        x += 1
+                    try:
+                        result = test(binary_data)[1]
+                        if result:
+                            x += 1
+                    except Exception as e:
+                        print(f"Error in test {test.__name__}: {e}")
 
             except Exception as e:
                 print(f"Error during testing: {e}")
@@ -4483,9 +4493,12 @@ def generate_final_ans_dieharder(request):
             # Perform the Dieharder tests
             try:
                 for test in tests:
-                    result = test(binary_data)[1]
-                    if result:
-                        x += 1
+                    try:
+                        result = test(binary_data)[1]
+                        if result:
+                            x += 1
+                    except Exception as e:
+                        print(f"Error in test {test.__name__}: {e}")
             except Exception as e:
                 print(f"Error during testing: {e}")
                 return HttpResponse("Error during randomness tests.", status=500)

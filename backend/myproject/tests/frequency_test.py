@@ -6,6 +6,7 @@ class FrequencyTest:
 
     @staticmethod
     def monobit_test(binary_data: str, verbose=False):
+        print("monobit")
         """
         Monobit test for randomness.
         """
@@ -53,6 +54,7 @@ class FrequencyTest:
 
     @staticmethod
     def block_frequency(binary_data: str, block_size=128, verbose=False):
+        print("block freq")
         """
         Block frequency test for randomness.
         """
