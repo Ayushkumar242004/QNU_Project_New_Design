@@ -3,8 +3,9 @@ import { tokens } from "../../theme";
 import Header from "../../components/Header";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios"; // Make sure axios is imported
-import CircularProgress from '@mui/material/CircularProgress';
+import CircularProgress from "@mui/material/CircularProgress";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
+import dayjs from "dayjs";
 
 const MAX_STACK_SIZE_ESTIMATE = 1 * 1024 * 1024;
 
@@ -75,7 +76,6 @@ const Dieharder_tests = () => {
   const [result19, setResult19] = useState(null);
   const [result20, setResult20] = useState(null);
 
-
   const [uploadTime, setUploadTime] = useState("");
   const [uploadTime2, setUploadTime2] = useState("");
   const [uploadTime3, setUploadTime3] = useState("");
@@ -118,41 +118,32 @@ const Dieharder_tests = () => {
   const [fileName19, setFileName19] = useState(""); // New state to store filename
   const [fileName20, setFileName20] = useState(""); // New state to store filename
 
-
   const [scheduledTime, setScheduledTime] = useState("");
   const [debouncedScheduledTime, setDebouncedScheduledTime] = useState("");
-
 
   const [scheduledTime2, setScheduledTime2] = useState("");
   const [debouncedScheduledTime2, setDebouncedScheduledTime2] = useState("");
 
-
   const [scheduledTime3, setScheduledTime3] = useState("");
   const [debouncedScheduledTime3, setDebouncedScheduledTime3] = useState("");
-
 
   const [scheduledTime4, setScheduledTime4] = useState("");
   const [debouncedScheduledTime4, setDebouncedScheduledTime4] = useState("");
 
-
   const [scheduledTime5, setScheduledTime5] = useState("");
   const [debouncedScheduledTime5, setDebouncedScheduledTime5] = useState("");
-
 
   const [scheduledTime6, setScheduledTime6] = useState("");
   const [debouncedScheduledTime6, setDebouncedScheduledTime6] = useState("");
 
-
   const [scheduledTime7, setScheduledTime7] = useState("");
   const [debouncedScheduledTime7, setDebouncedScheduledTime7] = useState("");
-
 
   const [scheduledTime8, setScheduledTime8] = useState("");
   const [debouncedScheduledTime8, setDebouncedScheduledTime8] = useState("");
 
   const [scheduledTime9, setScheduledTime9] = useState("");
   const [debouncedScheduledTime9, setDebouncedScheduledTime9] = useState("");
-
 
   const [scheduledTime10, setScheduledTime10] = useState("");
   const [debouncedScheduledTime10, setDebouncedScheduledTime10] = useState("");
@@ -187,6 +178,745 @@ const Dieharder_tests = () => {
   const [scheduledTime20, setScheduledTime20] = useState("");
   const [debouncedScheduledTime20, setDebouncedScheduledTime20] = useState("");
 
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+
+  const [date2, setDate2] = useState("");
+  const [time2, setTime2] = useState("");
+
+  const [date3, setDate3] = useState("");
+  const [time3, setTime3] = useState("");
+
+  const [date4, setDate4] = useState("");
+  const [time4, setTime4] = useState("");
+
+  const [date5, setDate5] = useState("");
+  const [time5, setTime5] = useState("");
+
+  const [date6, setDate6] = useState("");
+  const [time6, setTime6] = useState("");
+
+  const [date7, setDate7] = useState("");
+  const [time7, setTime7] = useState("");
+
+  const [date8, setDate8] = useState("");
+  const [time8, setTime8] = useState("");
+
+  const [date9, setDate9] = useState("");
+  const [time9, setTime9] = useState("");
+
+  const [date10, setDate10] = useState("");
+  const [time10, setTime10] = useState("");
+
+  const [date11, setDate11] = useState("");
+  const [time11, setTime11] = useState("");
+
+  const [date12, setDate12] = useState("");
+  const [time12, setTime12] = useState("");
+
+  const [date13, setDate13] = useState("");
+  const [time13, setTime13] = useState("");
+
+  const [date14, setDate14] = useState("");
+  const [time14, setTime14] = useState("");
+
+  const [date15, setDate15] = useState("");
+  const [time15, setTime15] = useState("");
+
+  const [date16, setDate16] = useState("");
+  const [time16, setTime16] = useState("");
+
+  const [date17, setDate17] = useState("");
+  const [time17, setTime17] = useState("");
+
+  const [date18, setDate18] = useState("");
+  const [time18, setTime18] = useState("");
+
+  const [date19, setDate19] = useState("");
+  const [time19, setTime19] = useState("");
+
+  const [date20, setDate20] = useState("");
+  const [time20, setTime20] = useState("");
+
+  const handleDateChange = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  const handleDateChange2 = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate2(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  const handleDateChange3 = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate3(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  const handleDateChange4 = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate4(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  const handleDateChange5 = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate5(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  const handleDateChange6 = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate6(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  const handleDateChange7 = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate7(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  const handleDateChange8 = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate8(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  const handleDateChange9 = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate9(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  const handleDateChange10 = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate10(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  const handleDateChange11 = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate11(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  const handleDateChange12 = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate12(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  const handleDateChange13 = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate13(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  const handleDateChange14 = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate14(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  const handleDateChange15 = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate15(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  const handleDateChange16 = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate16(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  const handleDateChange17 = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate17(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  const handleDateChange18 = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate18(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  const handleDateChange19 = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate19(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  const handleDateChange20 = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate20(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  const handleTimeChange = (event) => {
+    const inputTime = event.target.value;
+    setTime(inputTime); // Update the time state immediately
+  };
+
+  const handleTimeChange2 = (event) => {
+    const inputTime = event.target.value;
+    setTime2(inputTime); // Update the time state immediately
+  };
+
+  const handleTimeChange3 = (event) => {
+    const inputTime = event.target.value;
+    setTime3(inputTime); // Update the time state immediately
+  };
+
+  const handleTimeChange4 = (event) => {
+    const inputTime = event.target.value;
+    setTime4(inputTime); // Update the time state immediately
+  };
+
+  const handleTimeChange5 = (event) => {
+    const inputTime = event.target.value;
+    setTime5(inputTime); // Update the time state immediately
+  };
+
+  const handleTimeChange6 = (event) => {
+    const inputTime = event.target.value;
+    setTime6(inputTime); // Update the time state immediately
+  };
+
+  const handleTimeChange7 = (event) => {
+    const inputTime = event.target.value;
+    setTime7(inputTime); // Update the time state immediately
+  };
+
+  const handleTimeChange8 = (event) => {
+    const inputTime = event.target.value;
+    setTime8(inputTime); // Update the time state immediately
+  };
+
+  const handleTimeChange9 = (event) => {
+    const inputTime = event.target.value;
+    setTime9(inputTime); // Update the time state immediately
+  };
+
+  const handleTimeChange10 = (event) => {
+    const inputTime = event.target.value;
+    setTime10(inputTime); // Update the time state immediately
+  };
+
+  const handleTimeChange11 = (event) => {
+    const inputTime = event.target.value;
+    setTime11(inputTime); // Update the time state immediately
+  };
+
+  const handleTimeChange12 = (event) => {
+    const inputTime = event.target.value;
+    setTime12(inputTime); // Update the time state immediately
+  };
+
+  const handleTimeChange13 = (event) => {
+    const inputTime = event.target.value;
+    setTime13(inputTime); // Update the time state immediately
+  };
+
+  const handleTimeChange14 = (event) => {
+    const inputTime = event.target.value;
+    setTime14(inputTime); // Update the time state immediately
+  };
+
+  const handleTimeChange15 = (event) => {
+    const inputTime = event.target.value;
+    setTime15(inputTime); // Update the time state immediately
+  };
+
+  const handleTimeChange16 = (event) => {
+    const inputTime = event.target.value;
+    setTime16(inputTime); // Update the time state immediately
+  };
+
+  const handleTimeChange17 = (event) => {
+    const inputTime = event.target.value;
+    setTime17(inputTime); // Update the time state immediately
+  };
+
+  const handleTimeChange18 = (event) => {
+    const inputTime = event.target.value;
+    setTime18(inputTime); // Update the time state immediately
+  };
+
+  const handleTimeChange19 = (event) => {
+    const inputTime = event.target.value;
+    setTime19(inputTime); // Update the time state immediately
+  };
+
+  const handleTimeChange20 = (event) => {
+    const inputTime = event.target.value;
+    setTime20(inputTime); // Update the time state immediately
+  };
+
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time && !timeRegex.test(time)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time]);
+
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time2 && !timeRegex.test(time2)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time2]);
+
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time3 && !timeRegex.test(time3)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time3]);
+
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time4 && !timeRegex.test(time4)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time4]);
+
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time5 && !timeRegex.test(time5)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time5]);
+
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time6 && !timeRegex.test(time6)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time6]);
+
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time7 && !timeRegex.test(time7)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time7]);
+
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time8 && !timeRegex.test(time8)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time8]);
+
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time9 && !timeRegex.test(time9)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time9]);
+
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time10 && !timeRegex.test(time10)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time10]);
+
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time11 && !timeRegex.test(time11)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time11]);
+
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time12 && !timeRegex.test(time12)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time12]);
+
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time13 && !timeRegex.test(time13)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time13]);
+
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time14 && !timeRegex.test(time14)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time14]);
+
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time15 && !timeRegex.test(time15)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time15]);
+
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time16 && !timeRegex.test(time16)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time16]);
+
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time17 && !timeRegex.test(time17)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time17]);
+
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time18 && !timeRegex.test(time18)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time18]);
+
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time19 && !timeRegex.test(time19)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time19]);
+
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time20 && !timeRegex.test(time20)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time20]);
+
+  useEffect(() => {
+    if (date && time) {
+      setScheduledTime(`${date} ${time}`);
+    }
+  }, [date, time]);
+
+  useEffect(() => {
+    if (date2 && time2) {
+      setScheduledTime2(`${date2} ${time2}`);
+    }
+  }, [date2, time2]);
+
+  useEffect(() => {
+    if (date3 && time3) {
+      setScheduledTime3(`${date3} ${time3}`);
+    }
+  }, [date3, time3]);
+
+  useEffect(() => {
+    if (date4 && time4) {
+      setScheduledTime4(`${date4} ${time4}`);
+    }
+  }, [date4, time4]);
+
+  useEffect(() => {
+    if (date5 && time5) {
+      setScheduledTime5(`${date5} ${time5}`);
+    }
+  }, [date5, time5]);
+
+  useEffect(() => {
+    if (date6 && time6) {
+      setScheduledTime6(`${date6} ${time6}`);
+    }
+  }, [date6, time6]);
+
+  useEffect(() => {
+    if (date7 && time7) {
+      setScheduledTime7(`${date7} ${time7}`);
+    }
+  }, [date7, time7]);
+
+  useEffect(() => {
+    if (date8 && time8) {
+      setScheduledTime8(`${date8} ${time8}`);
+    }
+  }, [date8, time8]);
+
+  useEffect(() => {
+    if (date9 && time9) {
+      setScheduledTime9(`${date9} ${time9}`);
+    }
+  }, [date9, time9]);
+
+  useEffect(() => {
+    if (date10 && time10) {
+      setScheduledTime10(`${date10} ${time10}`);
+    }
+  }, [date10, time10]);
+
+  useEffect(() => {
+    if (date11 && time11) {
+      setScheduledTime11(`${date11} ${time11}`);
+    }
+  }, [date11, time11]);
+
+  useEffect(() => {
+    if (date12 && time12) {
+      setScheduledTime12(`${date12} ${time12}`);
+    }
+  }, [date12, time12]);
+
+  useEffect(() => {
+    if (date13 && time13) {
+      setScheduledTime13(`${date13} ${time13}`);
+    }
+  }, [date13, time13]);
+
+  useEffect(() => {
+    if (date14 && time14) {
+      setScheduledTime14(`${date14} ${time14}`);
+    }
+  }, [date14, time14]);
+
+  useEffect(() => {
+    if (date15 && time15) {
+      setScheduledTime15(`${date15} ${time15}`);
+    }
+  }, [date15, time15]);
+
+  useEffect(() => {
+    if (date16 && time16) {
+      setScheduledTime16(`${date16} ${time16}`);
+    }
+  }, [date16, time16]);
+
+  useEffect(() => {
+    if (date17 && time17) {
+      setScheduledTime17(`${date17} ${time17}`);
+    }
+  }, [date17, time17]);
+
+  useEffect(() => {
+    if (date18 && time18) {
+      setScheduledTime18(`${date18} ${time18}`);
+    }
+  }, [date18, time18]);
+
+  useEffect(() => {
+    if (date19 && time19) {
+      setScheduledTime19(`${date19} ${time19}`);
+    }
+  }, [date19, time19]);
+
+  useEffect(() => {
+    if (date20 && time20) {
+      setScheduledTime20(`${date20} ${time20}`);
+    }
+  }, [date20, time20]);
 
   const finalResult = result ? result.final_result : " ";
 
@@ -204,7 +934,6 @@ const Dieharder_tests = () => {
     };
   }, [scheduledTime]);
 
-
   const finalResult2 = result2 ? result2.final_result : " ";
 
   const handleScheduledTimeChange2 = (event) => {
@@ -219,7 +948,6 @@ const Dieharder_tests = () => {
       clearTimeout(handler);
     };
   }, [scheduledTime2]);
-
 
   const finalResult3 = result3 ? result3.final_result : " ";
 
@@ -237,7 +965,6 @@ const Dieharder_tests = () => {
     };
   }, [scheduledTime3]);
 
-
   const finalResult4 = result4 ? result4.final_result : " ";
 
   const handleScheduledTimeChange4 = (event) => {
@@ -253,7 +980,6 @@ const Dieharder_tests = () => {
       clearTimeout(handler);
     };
   }, [scheduledTime4]);
-
 
   const finalResult5 = result5 ? result5.final_result : " ";
 
@@ -271,7 +997,6 @@ const Dieharder_tests = () => {
     };
   }, [scheduledTime5]);
 
-
   const finalResult6 = result6 ? result6.final_result : " ";
 
   const handleScheduledTimeChange6 = (event) => {
@@ -287,7 +1012,6 @@ const Dieharder_tests = () => {
       clearTimeout(handler);
     };
   }, [scheduledTime6]);
-
 
   const finalResult7 = result7 ? result7.final_result : " ";
 
@@ -305,7 +1029,6 @@ const Dieharder_tests = () => {
     };
   }, [scheduledTime7]);
 
-
   const finalResult8 = result8 ? result8.final_result : " ";
 
   const handleScheduledTimeChange8 = (event) => {
@@ -322,7 +1045,6 @@ const Dieharder_tests = () => {
     };
   }, [scheduledTime8]);
 
-
   const finalResult9 = result9 ? result9.final_result : " ";
 
   const handleScheduledTimeChange9 = (event) => {
@@ -338,7 +1060,6 @@ const Dieharder_tests = () => {
       clearTimeout(handler);
     };
   }, [scheduledTime9]);
-
 
   const finalResult10 = result10 ? result10.final_result : " ";
 
@@ -516,8 +1237,6 @@ const Dieharder_tests = () => {
     };
   }, [scheduledTime20]);
 
-
-
   const handleFileUpload = () => {
     fileInputRef.current.click();
   };
@@ -584,7 +1303,9 @@ const Dieharder_tests = () => {
     if (!selectedFile) return; // Handle cases where no file is selected
 
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
     setFileName(selectedFile.name);
@@ -611,7 +1332,9 @@ const Dieharder_tests = () => {
     if (!selectedFile) return; // Handle cases where no file is selected
 
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
     setFileName2(selectedFile.name);
@@ -638,7 +1361,9 @@ const Dieharder_tests = () => {
     if (!selectedFile) return; // Handle cases where no file is selected
 
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
     setFileName3(selectedFile.name);
@@ -665,7 +1390,9 @@ const Dieharder_tests = () => {
     if (!selectedFile) return; // Handle cases where no file is selected
 
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
     setFileName4(selectedFile.name);
@@ -692,7 +1419,9 @@ const Dieharder_tests = () => {
     if (!selectedFile) return; // Handle cases where no file is selected
 
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
     setFileName5(selectedFile.name);
@@ -719,7 +1448,9 @@ const Dieharder_tests = () => {
     if (!selectedFile) return; // Handle cases where no file is selected
 
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
     setFileName6(selectedFile.name);
@@ -746,7 +1477,9 @@ const Dieharder_tests = () => {
     if (!selectedFile) return; // Handle cases where no file is selected
 
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
     setFileName7(selectedFile.name);
@@ -773,7 +1506,9 @@ const Dieharder_tests = () => {
     if (!selectedFile) return; // Handle cases where no file is selected
 
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
     setFileName8(selectedFile.name);
@@ -800,7 +1535,9 @@ const Dieharder_tests = () => {
     if (!selectedFile) return; // Handle cases where no file is selected
 
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
     setFileName9(selectedFile.name);
@@ -827,7 +1564,9 @@ const Dieharder_tests = () => {
     if (!selectedFile) return; // Handle cases where no file is selected
 
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
     setFileName10(selectedFile.name);
@@ -854,7 +1593,9 @@ const Dieharder_tests = () => {
     if (!selectedFile) return; // Handle cases where no file is selected
 
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
     setFileName11(selectedFile.name);
@@ -881,7 +1622,9 @@ const Dieharder_tests = () => {
     if (!selectedFile) return; // Handle cases where no file is selected
 
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
     setFileName12(selectedFile.name);
@@ -908,7 +1651,9 @@ const Dieharder_tests = () => {
     if (!selectedFile) return; // Handle cases where no file is selected
 
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
     setFileName13(selectedFile.name);
@@ -935,7 +1680,9 @@ const Dieharder_tests = () => {
     if (!selectedFile) return; // Handle cases where no file is selected
 
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
     setFileName14(selectedFile.name);
@@ -962,7 +1709,9 @@ const Dieharder_tests = () => {
     if (!selectedFile) return; // Handle cases where no file is selected
 
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
     setFileName15(selectedFile.name);
@@ -989,7 +1738,9 @@ const Dieharder_tests = () => {
     if (!selectedFile) return; // Handle cases where no file is selected
 
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
     setFileName16(selectedFile.name);
@@ -1016,7 +1767,9 @@ const Dieharder_tests = () => {
     if (!selectedFile) return; // Handle cases where no file is selected
 
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
     setFileName17(selectedFile.name);
@@ -1043,7 +1796,9 @@ const Dieharder_tests = () => {
     if (!selectedFile) return; // Handle cases where no file is selected
 
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
     setFileName18(selectedFile.name);
@@ -1070,7 +1825,9 @@ const Dieharder_tests = () => {
     if (!selectedFile) return; // Handle cases where no file is selected
 
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
     setFileName19(selectedFile.name);
@@ -1097,7 +1854,9 @@ const Dieharder_tests = () => {
     if (!selectedFile) return; // Handle cases where no file is selected
 
     if (selectedFile.size > MAX_STACK_SIZE_ESTIMATE) {
-      alert("Warning: The selected file is too large. Please choose a smaller file.");
+      alert(
+        "Warning: The selected file is too large. Please choose a smaller file."
+      );
       return;
     }
     setFileName20(selectedFile.name);
@@ -1140,7 +1899,6 @@ const Dieharder_tests = () => {
   const [loadingProgress19, setLoadingProgress19] = useState(0);
   const [loadingProgress20, setLoadingProgress20] = useState(0);
 
-
   useEffect(() => {
     if (!binaryInput || !debouncedScheduledTime) return; // Do not fetch if binaryInput is empty
 
@@ -1152,10 +1910,13 @@ const Dieharder_tests = () => {
           setLoadingProgress((prev) => (prev < 90 ? prev + 10 : prev));
         }, 500); // Increment progress every 500ms until 90%
 
-        const response = await axios.post("http://localhost:8000/generate_final_ans_dieharder/", {
-          binary_data: binaryInput,
-          scheduled_time: debouncedScheduledTime,
-        });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_dieharder/",
+          {
+            binary_data: binaryInput,
+            scheduled_time: debouncedScheduledTime,
+          }
+        );
 
         clearInterval(progressInterval); // Stop the interval
         setLoadingProgress(100); // Set progress to 100% after response is received
@@ -1169,7 +1930,6 @@ const Dieharder_tests = () => {
     fetchResult();
   }, [binaryInput, debouncedScheduledTime]);
 
-
   useEffect(() => {
     if (!binaryInput2) return; // Do not fetch if binaryInput is empty
 
@@ -1180,13 +1940,13 @@ const Dieharder_tests = () => {
           setLoadingProgress2((prev) => (prev < 90 ? prev + 10 : prev));
         }, 500); // Increment progress every 500ms until 90%
 
-
-        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', {  binary_data: binaryInput2,
-          scheduled_time: debouncedScheduledTime2, });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_dieharder/",
+          { binary_data: binaryInput2, scheduled_time: debouncedScheduledTime2 }
+        );
         clearInterval(progressInterval); // Stop the interval
         setLoadingProgress2(100);
         setResult2(response.data); // Set the response data
-
       } catch (error) {
         console.error("Error executing generating final answer:", error);
         setLoadingProgress(0);
@@ -1204,12 +1964,13 @@ const Dieharder_tests = () => {
         let progressInterval = setInterval(() => {
           setLoadingProgress3((prev) => (prev < 90 ? prev + 10 : prev));
         }, 500);
-        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', {  binary_data: binaryInput3,
-          scheduled_time: debouncedScheduledTime3, });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_dieharder/",
+          { binary_data: binaryInput3, scheduled_time: debouncedScheduledTime3 }
+        );
         clearInterval(progressInterval); // Stop the interval
         setLoadingProgress3(100);
         setResult3(response.data); // Set the response data
-
       } catch (error) {
         console.error("Error executing generating final answer:", error);
         setLoadingProgress(0);
@@ -1228,12 +1989,13 @@ const Dieharder_tests = () => {
         let progressInterval = setInterval(() => {
           setLoadingProgress4((prev) => (prev < 90 ? prev + 10 : prev));
         }, 500);
-        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', {  binary_data: binaryInput4,
-          scheduled_time: debouncedScheduledTime4, });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_dieharder/",
+          { binary_data: binaryInput4, scheduled_time: debouncedScheduledTime4 }
+        );
         clearInterval(progressInterval); // Stop the interval
         setLoadingProgress4(100);
         setResult4(response.data); // Set the response data
-
       } catch (error) {
         setLoadingProgress4(0);
         console.error("Error executing generating final answer:", error);
@@ -1252,12 +2014,13 @@ const Dieharder_tests = () => {
         let progressInterval = setInterval(() => {
           setLoadingProgress5((prev) => (prev < 90 ? prev + 10 : prev));
         }, 500);
-        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', {  binary_data: binaryInput5,
-          scheduled_time: debouncedScheduledTime5, });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_dieharder/",
+          { binary_data: binaryInput5, scheduled_time: debouncedScheduledTime5 }
+        );
         clearInterval(progressInterval); // Stop the interval
         setLoadingProgress5(100);
         setResult5(response.data); // Set the response data
-
       } catch (error) {
         setLoadingProgress5(0);
         console.error("Error executing generating final answer:", error);
@@ -1275,12 +2038,13 @@ const Dieharder_tests = () => {
         let progressInterval = setInterval(() => {
           setLoadingProgress6((prev) => (prev < 90 ? prev + 10 : prev));
         }, 500);
-        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', {  binary_data: binaryInput6,
-          scheduled_time: debouncedScheduledTime6, });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_dieharder/",
+          { binary_data: binaryInput6, scheduled_time: debouncedScheduledTime6 }
+        );
         clearInterval(progressInterval); // Stop the interval
         setLoadingProgress6(100);
         setResult6(response.data); // Set the response data
-
       } catch (error) {
         setLoadingProgress6(0);
         console.error("Error executing generating final answer:", error);
@@ -1298,12 +2062,13 @@ const Dieharder_tests = () => {
         let progressInterval = setInterval(() => {
           setLoadingProgress7((prev) => (prev < 90 ? prev + 10 : prev));
         }, 500);
-        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', {  binary_data: binaryInput7,
-          scheduled_time: debouncedScheduledTime7, });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_dieharder/",
+          { binary_data: binaryInput7, scheduled_time: debouncedScheduledTime7 }
+        );
         clearInterval(progressInterval); // Stop the interval
         setLoadingProgress7(100);
         setResult7(response.data); // Set the response data
-
       } catch (error) {
         setLoadingProgress7(0);
         console.error("Error executing generating final answer:", error);
@@ -1321,12 +2086,13 @@ const Dieharder_tests = () => {
         let progressInterval = setInterval(() => {
           setLoadingProgress8((prev) => (prev < 90 ? prev + 10 : prev));
         }, 500);
-        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', {  binary_data: binaryInput8,
-          scheduled_time: debouncedScheduledTime8, });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_dieharder/",
+          { binary_data: binaryInput8, scheduled_time: debouncedScheduledTime8 }
+        );
         clearInterval(progressInterval); // Stop the interval
         setLoadingProgress8(100);
         setResult8(response.data); // Set the response data
-
       } catch (error) {
         setLoadingProgress8(0);
         console.error("Error executing generating final answer:", error);
@@ -1345,12 +2111,13 @@ const Dieharder_tests = () => {
         let progressInterval = setInterval(() => {
           setLoadingProgress9((prev) => (prev < 90 ? prev + 10 : prev));
         }, 500);
-        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', {  binary_data: binaryInput9,
-          scheduled_time: debouncedScheduledTime9, });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_dieharder/",
+          { binary_data: binaryInput9, scheduled_time: debouncedScheduledTime9 }
+        );
         clearInterval(progressInterval); // Stop the interval
         setLoadingProgress9(100);
         setResult9(response.data); // Set the response data
-
       } catch (error) {
         setLoadingProgress9(0);
         console.error("Error executing generating final answer:", error);
@@ -1368,12 +2135,16 @@ const Dieharder_tests = () => {
         let progressInterval = setInterval(() => {
           setLoadingProgress10((prev) => (prev < 90 ? prev + 10 : prev));
         }, 500);
-        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', {  binary_data: binaryInput10,
-          scheduled_time: debouncedScheduledTime10, });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_dieharder/",
+          {
+            binary_data: binaryInput10,
+            scheduled_time: debouncedScheduledTime10,
+          }
+        );
         clearInterval(progressInterval); // Stop the interval
         setLoadingProgress10(100);
         setResult10(response.data); // Set the response data
-
       } catch (error) {
         setLoadingProgress(0);
         console.error("Error executing generating final answer:", error);
@@ -1392,13 +2163,17 @@ const Dieharder_tests = () => {
         let progressInterval = setInterval(() => {
           setLoadingProgress11((prev) => (prev < 90 ? prev + 10 : prev));
         }, 500);
-        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', {  binary_data: binaryInput11,
-          scheduled_time: debouncedScheduledTime11, });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_dieharder/",
+          {
+            binary_data: binaryInput11,
+            scheduled_time: debouncedScheduledTime11,
+          }
+        );
         clearInterval(progressInterval); // Stop the interval
         setLoadingProgress11(100); // Set progress to 100% after response is received
 
         setResult11(response.data); // Set the response data
-
       } catch (error) {
         setLoadingProgress11(0);
         console.error("Error executing generating final answer:", error);
@@ -1413,10 +2188,14 @@ const Dieharder_tests = () => {
 
     const fetchResult = async () => {
       try {
-        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', {  binary_data: binaryInput12,
-          scheduled_time: debouncedScheduledTime12, });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_dieharder/",
+          {
+            binary_data: binaryInput12,
+            scheduled_time: debouncedScheduledTime12,
+          }
+        );
         setResult12(response.data); // Set the response data
-
       } catch (error) {
         console.error("Error executing generating final answer:", error);
       }
@@ -1434,12 +2213,16 @@ const Dieharder_tests = () => {
         let progressInterval = setInterval(() => {
           setLoadingProgress13((prev) => (prev < 90 ? prev + 10 : prev));
         }, 500);
-        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', {  binary_data: binaryInput13,
-          scheduled_time: debouncedScheduledTime13, });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_dieharder/",
+          {
+            binary_data: binaryInput13,
+            scheduled_time: debouncedScheduledTime13,
+          }
+        );
         clearInterval(progressInterval); // Stop the interval
         setLoadingProgress13(100);
         setResult13(response.data); // Set the response data
-
       } catch (error) {
         setLoadingProgress13(0);
         console.error("Error executing generating final answer:", error);
@@ -1457,12 +2240,16 @@ const Dieharder_tests = () => {
         let progressInterval = setInterval(() => {
           setLoadingProgress14((prev) => (prev < 90 ? prev + 10 : prev));
         }, 500);
-        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput14,
-          scheduled_time: debouncedScheduledTime14, });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_dieharder/",
+          {
+            binary_data: binaryInput14,
+            scheduled_time: debouncedScheduledTime14,
+          }
+        );
         clearInterval(progressInterval); // Stop the interval
         setLoadingProgress14(100);
         setResult14(response.data); // Set the response data
-
       } catch (error) {
         setLoadingProgress14(0);
         console.error("Error executing generating final answer:", error);
@@ -1481,13 +2268,17 @@ const Dieharder_tests = () => {
         let progressInterval = setInterval(() => {
           setLoadingProgress15((prev) => (prev < 90 ? prev + 10 : prev));
         }, 500);
-        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', {  binary_data: binaryInput15,
-          scheduled_time: debouncedScheduledTime15, });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_dieharder/",
+          {
+            binary_data: binaryInput15,
+            scheduled_time: debouncedScheduledTime15,
+          }
+        );
         clearInterval(progressInterval); // Stop the interval
         setLoadingProgress15(100); // Set progress to 100% after response is received
 
         setResult15(response.data); // Set the response data
-
       } catch (error) {
         setLoadingProgress15(0);
         console.error("Error executing generating final answer:", error);
@@ -1506,10 +2297,14 @@ const Dieharder_tests = () => {
         let progressInterval = setInterval(() => {
           setLoadingProgress16((prev) => (prev < 90 ? prev + 10 : prev));
         }, 500);
-        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', {  binary_data: binaryInput16,
-          scheduled_time: debouncedScheduledTime16, });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_dieharder/",
+          {
+            binary_data: binaryInput16,
+            scheduled_time: debouncedScheduledTime16,
+          }
+        );
         setResult16(response.data); // Set the response data
-
       } catch (error) {
         setLoadingProgress16(100);
         console.error("Error executing generating final answer:", error);
@@ -1528,12 +2323,16 @@ const Dieharder_tests = () => {
         let progressInterval = setInterval(() => {
           setLoadingProgress17((prev) => (prev < 90 ? prev + 10 : prev));
         }, 500);
-        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', {  binary_data: binaryInput17,
-          scheduled_time: debouncedScheduledTime17, });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_dieharder/",
+          {
+            binary_data: binaryInput17,
+            scheduled_time: debouncedScheduledTime17,
+          }
+        );
         clearInterval(progressInterval); // Stop the interval
         setLoadingProgress17(100);
         setResult17(response.data); // Set the response data
-
       } catch (error) {
         console.error("Error executing generating final answer:", error);
       }
@@ -1551,12 +2350,16 @@ const Dieharder_tests = () => {
         let progressInterval = setInterval(() => {
           setLoadingProgress18((prev) => (prev < 90 ? prev + 10 : prev));
         }, 500);
-        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', {  binary_data: binaryInput18,
-          scheduled_time: debouncedScheduledTime18, });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_dieharder/",
+          {
+            binary_data: binaryInput18,
+            scheduled_time: debouncedScheduledTime18,
+          }
+        );
         clearInterval(progressInterval); // Stop the interval
         setLoadingProgress18(100);
         setResult18(response.data); // Set the response data
-
       } catch (error) {
         setLoadingProgress18(0);
         console.error("Error executing generating final answer:", error);
@@ -1575,12 +2378,16 @@ const Dieharder_tests = () => {
         let progressInterval = setInterval(() => {
           setLoadingProgress19((prev) => (prev < 90 ? prev + 10 : prev));
         }, 500);
-        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', {  binary_data: binaryInput19,
-          scheduled_time: debouncedScheduledTime19,});
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_dieharder/",
+          {
+            binary_data: binaryInput19,
+            scheduled_time: debouncedScheduledTime19,
+          }
+        );
         clearInterval(progressInterval); // Stop the interval
         setLoadingProgress19(100);
         setResult19(response.data); // Set the response data
-
       } catch (error) {
         setLoadingProgress19(0);
         console.error("Error executing generating final answer:", error);
@@ -1600,12 +2407,16 @@ const Dieharder_tests = () => {
           setLoadingProgress20((prev) => (prev < 90 ? prev + 10 : prev));
         }, 500);
 
-        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', {  binary_data: binaryInput20,
-          scheduled_time: debouncedScheduledTime20, });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_dieharder/",
+          {
+            binary_data: binaryInput20,
+            scheduled_time: debouncedScheduledTime20,
+          }
+        );
         clearInterval(progressInterval); // Stop the interval
         setLoadingProgress20(100);
         setResult20(response.data); // Set the response data
-
       } catch (error) {
         setLoadingProgress(0);
         console.error("Error executing generating final answer:", error);
@@ -1614,9 +2425,6 @@ const Dieharder_tests = () => {
 
     fetchResult();
   }, [binaryInput20, debouncedScheduledTime20]);
-
-
-
 
   const handleButtonClick = (type) => {
     if (type === "report") {
@@ -1757,7 +2565,6 @@ const Dieharder_tests = () => {
         .catch((error) => console.error("Error generating graph:", error));
     }
   };
-
 
   const handleButtonClick6 = (type) => {
     if (type === "report") {
@@ -2039,7 +2846,6 @@ const Dieharder_tests = () => {
     }
   };
 
-
   const handleButtonClick16 = (type) => {
     if (type === "report") {
       fetch("http://localhost:8000/pdf-report-dieharder/", {
@@ -2218,14 +3024,20 @@ const Dieharder_tests = () => {
               <th style={{ width: "10%" }}>Uploading Time</th>
               <th style={{ width: "10%" }}>Filename</th>
               <th style={{ width: "20%" }}>Scheduling Time</th>
-
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>1</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -2282,7 +3094,6 @@ const Dieharder_tests = () => {
                       >
                         Generate Report
                       </Button>
-
                     </Box>
                   </Box>
                 </Box>
@@ -2307,40 +3118,70 @@ const Dieharder_tests = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress}%
                   </Typography>
                 </Box>
               </td>
 
-
               <td>{uploadTime || ""}</td>
               <td>{fileName || "No file selected"}</td>
               <td>
                 <TextField
-                  value={scheduledTime}
-                  onChange={handleScheduledTimeChange}
-                  placeholder="Enter scheduled time"
+                  label="Select Date"
+                  type="date"
+                  value={date}
+                  onChange={handleDateChange}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom: "10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time}
+                  onChange={handleTimeChange}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime || "Not set"}
+                </Typography>
               </td>
             </tr>
 
             <tr>
               <td>2</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -2397,7 +3238,6 @@ const Dieharder_tests = () => {
                       >
                         Generate Report
                       </Button>
-
                     </Box>
                   </Box>
                 </Box>
@@ -2422,7 +3262,12 @@ const Dieharder_tests = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress2}%
                   </Typography>
                 </Box>
@@ -2431,29 +3276,55 @@ const Dieharder_tests = () => {
               <td>{fileName2 || "No file selected"}</td>
               <td>
                 <TextField
-                  value={scheduledTime2}
-                  onChange={handleScheduledTimeChange2}
-                  placeholder="Enter scheduled time"
+                  label="Select Date"
+                  type="date"
+                  value={date2}
+                  onChange={handleDateChange2}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom: "10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time2}
+                  onChange={handleTimeChange2}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime2 || "Not set"}
+                </Typography>
               </td>
             </tr>
 
             <tr>
               <td>3</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -2510,7 +3381,6 @@ const Dieharder_tests = () => {
                       >
                         Generate Report
                       </Button>
-
                     </Box>
                   </Box>
                 </Box>
@@ -2535,7 +3405,12 @@ const Dieharder_tests = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress3}%
                   </Typography>
                 </Box>
@@ -2544,29 +3419,55 @@ const Dieharder_tests = () => {
               <td>{fileName3 || "No file selected"}</td>
               <td>
                 <TextField
-                  value={scheduledTime3}
-                  onChange={handleScheduledTimeChange3}
-                  placeholder="Enter scheduled time"
+                  label="Select Date"
+                  type="date"
+                  value={date3}
+                  onChange={handleDateChange3}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom: "10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time3}
+                  onChange={handleTimeChange3}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime3 || "Not set"}
+                </Typography>
               </td>
             </tr>
 
             <tr>
               <td>4</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -2623,7 +3524,6 @@ const Dieharder_tests = () => {
                       >
                         Generate Report
                       </Button>
-
                     </Box>
                   </Box>
                 </Box>
@@ -2648,7 +3548,12 @@ const Dieharder_tests = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress4}%
                   </Typography>
                 </Box>
@@ -2657,29 +3562,55 @@ const Dieharder_tests = () => {
               <td>{fileName4 || "No file selected"}</td>
               <td>
                 <TextField
-                  value={scheduledTime4}
-                  onChange={handleScheduledTimeChange4}
-                  placeholder="Enter scheduled time"
+                  label="Select Date"
+                  type="date"
+                  value={date4}
+                  onChange={handleDateChange4}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom: "10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time4}
+                  onChange={handleTimeChange4}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime4 || "Not set"}
+                </Typography>
               </td>
             </tr>
 
             <tr>
               <td>5</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -2736,7 +3667,6 @@ const Dieharder_tests = () => {
                       >
                         Generate Report
                       </Button>
-
                     </Box>
                   </Box>
                 </Box>
@@ -2761,7 +3691,12 @@ const Dieharder_tests = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress5}%
                   </Typography>
                 </Box>
@@ -2770,29 +3705,55 @@ const Dieharder_tests = () => {
               <td>{fileName5 || "No file selected"}</td>
               <td>
                 <TextField
-                  value={scheduledTime5}
-                  onChange={handleScheduledTimeChange5}
-                  placeholder="Enter scheduled time"
+                  label="Select Date"
+                  type="date"
+                  value={date5}
+                  onChange={handleDateChange5}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom: "10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time5}
+                  onChange={handleTimeChange5}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime5 || "Not set"}
+                </Typography>
               </td>
             </tr>
 
             <tr>
               <td>6</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -2849,7 +3810,6 @@ const Dieharder_tests = () => {
                       >
                         Generate Report
                       </Button>
-
                     </Box>
                   </Box>
                 </Box>
@@ -2874,7 +3834,12 @@ const Dieharder_tests = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress6}%
                   </Typography>
                 </Box>
@@ -2883,29 +3848,55 @@ const Dieharder_tests = () => {
               <td>{fileName6 || "No file selected"}</td>
               <td>
                 <TextField
-                  value={scheduledTime6}
-                  onChange={handleScheduledTimeChange6}
-                  placeholder="Enter scheduled time"
+                  label="Select Date"
+                  type="date"
+                  value={date6}
+                  onChange={handleDateChange6}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom: "10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time6}
+                  onChange={handleTimeChange6}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime6 || "Not set"}
+                </Typography>
               </td>
             </tr>
 
             <tr>
               <td>7</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -2962,7 +3953,6 @@ const Dieharder_tests = () => {
                       >
                         Generate Report
                       </Button>
-
                     </Box>
                   </Box>
                 </Box>
@@ -2987,7 +3977,12 @@ const Dieharder_tests = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress7}%
                   </Typography>
                 </Box>
@@ -2996,29 +3991,55 @@ const Dieharder_tests = () => {
               <td>{fileName7 || "No file selected"}</td>
               <td>
                 <TextField
-                  value={scheduledTime7}
-                  onChange={handleScheduledTimeChange7}
-                  placeholder="Enter scheduled time"
+                  label="Select Date"
+                  type="date"
+                  value={date7}
+                  onChange={handleDateChange7}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom: "10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time7}
+                  onChange={handleTimeChange7}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime7 || "Not set"}
+                </Typography>
               </td>
             </tr>
 
             <tr>
               <td>8</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -3075,7 +4096,6 @@ const Dieharder_tests = () => {
                       >
                         Generate Report
                       </Button>
-
                     </Box>
                   </Box>
                 </Box>
@@ -3100,7 +4120,12 @@ const Dieharder_tests = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress8}%
                   </Typography>
                 </Box>
@@ -3109,29 +4134,55 @@ const Dieharder_tests = () => {
               <td>{fileName8 || "No file selected"}</td>
               <td>
                 <TextField
-                  value={scheduledTime8}
-                  onChange={handleScheduledTimeChange8}
-                  placeholder="Enter scheduled time"
+                  label="Select Date"
+                  type="date"
+                  value={date8}
+                  onChange={handleDateChange8}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom: "10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time8}
+                  onChange={handleTimeChange8}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime8 || "Not set"}
+                </Typography>
               </td>
             </tr>
 
             <tr>
               <td>9</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -3188,7 +4239,6 @@ const Dieharder_tests = () => {
                       >
                         Generate Report
                       </Button>
-
                     </Box>
                   </Box>
                 </Box>
@@ -3213,7 +4263,12 @@ const Dieharder_tests = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress9}%
                   </Typography>
                 </Box>
@@ -3222,29 +4277,55 @@ const Dieharder_tests = () => {
               <td>{fileName9 || "No file selected"}</td>
               <td>
                 <TextField
-                  value={scheduledTime9}
-                  onChange={handleScheduledTimeChange9}
-                  placeholder="Enter scheduled time"
+                  label="Select Date"
+                  type="date"
+                  value={date9}
+                  onChange={handleDateChange9}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom: "10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time9}
+                  onChange={handleTimeChange9}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime9 || "Not set"}
+                </Typography>
               </td>
             </tr>
 
             <tr>
               <td>10</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -3301,7 +4382,6 @@ const Dieharder_tests = () => {
                       >
                         Generate Report
                       </Button>
-
                     </Box>
                   </Box>
                 </Box>
@@ -3326,7 +4406,12 @@ const Dieharder_tests = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress10}%
                   </Typography>
                 </Box>
@@ -3335,30 +4420,55 @@ const Dieharder_tests = () => {
               <td>{fileName10 || "No file selected"}</td>
               <td>
                 <TextField
-                  value={scheduledTime10}
-                  onChange={handleScheduledTimeChange10}
-                  placeholder="Enter scheduled time"
+                  label="Select Date"
+                  type="date"
+                  value={date10}
+                  onChange={handleDateChange10}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom: "10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time10}
+                  onChange={handleTimeChange10}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime10 || "Not set"}
+                </Typography>
               </td>
             </tr>
-
 
             <tr>
               <td>11</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -3415,7 +4525,6 @@ const Dieharder_tests = () => {
                       >
                         Generate Report
                       </Button>
-
                     </Box>
                   </Box>
                 </Box>
@@ -3440,7 +4549,12 @@ const Dieharder_tests = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress11}%
                   </Typography>
                 </Box>
@@ -3448,30 +4562,56 @@ const Dieharder_tests = () => {
               <td>{uploadTime11 || ""}</td>
               <td>{fileName11 || "No file selected"}</td>
               <td>
-                <TextField
-                  value={scheduledTime11}
-                  onChange={handleScheduledTimeChange11}
-                  placeholder="Enter scheduled time"
+              <TextField
+                  label="Select Date"
+                  type="date"
+                  value={date11}
+                  onChange={handleDateChange11}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom: "10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time11}
+                  onChange={handleTimeChange11}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime11 || "Not set"}
+                </Typography>
               </td>
             </tr>
 
             <tr>
               <td>12</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -3528,7 +4668,6 @@ const Dieharder_tests = () => {
                       >
                         Generate Report
                       </Button>
-
                     </Box>
                   </Box>
                 </Box>
@@ -3553,7 +4692,12 @@ const Dieharder_tests = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress12}%
                   </Typography>
                 </Box>
@@ -3561,30 +4705,56 @@ const Dieharder_tests = () => {
               <td>{uploadTime12 || ""}</td>
               <td>{fileName12 || "No file selected"}</td>
               <td>
-                <TextField
-                  value={scheduledTime12}
-                  onChange={handleScheduledTimeChange12}
-                  placeholder="Enter scheduled time"
+              <TextField
+                  label="Select Date"
+                  type="date"
+                  value={date12}
+                  onChange={handleDateChange12}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom: "10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time12}
+                  onChange={handleTimeChange12}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime12 || "Not set"}
+                </Typography>
               </td>
             </tr>
 
             <tr>
               <td>13</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -3641,7 +4811,6 @@ const Dieharder_tests = () => {
                       >
                         Generate Report
                       </Button>
-
                     </Box>
                   </Box>
                 </Box>
@@ -3666,7 +4835,12 @@ const Dieharder_tests = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress13}%
                   </Typography>
                 </Box>
@@ -3674,30 +4848,56 @@ const Dieharder_tests = () => {
               <td>{uploadTime13 || ""}</td>
               <td>{fileName13 || "No file selected"}</td>
               <td>
-                <TextField
-                  value={scheduledTime13}
-                  onChange={handleScheduledTimeChange13}
-                  placeholder="Enter scheduled time"
+              <TextField
+                  label="Select Date"
+                  type="date"
+                  value={date13}
+                  onChange={handleDateChange13}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom: "10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time13}
+                  onChange={handleTimeChange13}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime13 || "Not set"}
+                </Typography>
               </td>
             </tr>
 
             <tr>
               <td>14</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -3754,7 +4954,6 @@ const Dieharder_tests = () => {
                       >
                         Generate Report
                       </Button>
-
                     </Box>
                   </Box>
                 </Box>
@@ -3779,7 +4978,12 @@ const Dieharder_tests = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress14}%
                   </Typography>
                 </Box>
@@ -3787,30 +4991,56 @@ const Dieharder_tests = () => {
               <td>{uploadTime14 || ""}</td>
               <td>{fileName14 || "No file selected"}</td>
               <td>
-                <TextField
-                  value={scheduledTime14}
-                  onChange={handleScheduledTimeChange14}
-                  placeholder="Enter scheduled time"
+              <TextField
+                  label="Select Date"
+                  type="date"
+                  value={date14}
+                  onChange={handleDateChange14}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom: "10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time14}
+                  onChange={handleTimeChange14}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime14 || "Not set"}
+                </Typography>
               </td>
             </tr>
 
             <tr>
               <td>15</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -3867,7 +5097,6 @@ const Dieharder_tests = () => {
                       >
                         Generate Report
                       </Button>
-
                     </Box>
                   </Box>
                 </Box>
@@ -3892,7 +5121,12 @@ const Dieharder_tests = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress15}%
                   </Typography>
                 </Box>
@@ -3900,30 +5134,56 @@ const Dieharder_tests = () => {
               <td>{uploadTime15 || ""}</td>
               <td>{fileName15 || "No file selected"}</td>
               <td>
-                <TextField
-                  value={scheduledTime15}
-                  onChange={handleScheduledTimeChange15}
-                  placeholder="Enter scheduled time"
+              <TextField
+                  label="Select Date"
+                  type="date"
+                  value={date15}
+                  onChange={handleDateChange15}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom: "10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time15}
+                  onChange={handleTimeChange15}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime15 || "Not set"}
+                </Typography>
               </td>
             </tr>
 
             <tr>
               <td>16</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -3980,7 +5240,6 @@ const Dieharder_tests = () => {
                       >
                         Generate Report
                       </Button>
-
                     </Box>
                   </Box>
                 </Box>
@@ -4005,7 +5264,12 @@ const Dieharder_tests = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress16}%
                   </Typography>
                 </Box>
@@ -4013,30 +5277,56 @@ const Dieharder_tests = () => {
               <td>{uploadTime16 || ""}</td>
               <td>{fileName16 || "No file selected"}</td>
               <td>
-                <TextField
-                  value={scheduledTime16}
-                  onChange={handleScheduledTimeChange16}
-                  placeholder="Enter scheduled time"
+              <TextField
+                  label="Select Date"
+                  type="date"
+                  value={date16}
+                  onChange={handleDateChange16}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom: "10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time16}
+                  onChange={handleTimeChange16}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime16 || "Not set"}
+                </Typography>
               </td>
             </tr>
 
             <tr>
               <td>17</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -4093,7 +5383,6 @@ const Dieharder_tests = () => {
                       >
                         Generate Report
                       </Button>
-
                     </Box>
                   </Box>
                 </Box>
@@ -4118,7 +5407,12 @@ const Dieharder_tests = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress17}%
                   </Typography>
                 </Box>
@@ -4126,30 +5420,56 @@ const Dieharder_tests = () => {
               <td>{uploadTime17 || ""}</td>
               <td>{fileName17 || "No file selected"}</td>
               <td>
-                <TextField
-                  value={scheduledTime17}
-                  onChange={handleScheduledTimeChange17}
-                  placeholder="Enter scheduled time"
+              <TextField
+                  label="Select Date"
+                  type="date"
+                  value={date17}
+                  onChange={handleDateChange17}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom: "10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time17}
+                  onChange={handleTimeChange17}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime17 || "Not set"}
+                </Typography>
               </td>
             </tr>
 
             <tr>
               <td>18</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -4206,7 +5526,6 @@ const Dieharder_tests = () => {
                       >
                         Generate Report
                       </Button>
-
                     </Box>
                   </Box>
                 </Box>
@@ -4231,7 +5550,12 @@ const Dieharder_tests = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress18}%
                   </Typography>
                 </Box>
@@ -4239,30 +5563,56 @@ const Dieharder_tests = () => {
               <td>{uploadTime18 || ""}</td>
               <td>{fileName18 || "No file selected"}</td>
               <td>
-                <TextField
-                  value={scheduledTime18}
-                  onChange={handleScheduledTimeChange18}
-                  placeholder="Enter scheduled time"
+              <TextField
+                  label="Select Date"
+                  type="date"
+                  value={date18}
+                  onChange={handleDateChange18}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom: "10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time18}
+                  onChange={handleTimeChange18}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime18 || "Not set"}
+                </Typography>
               </td>
             </tr>
 
             <tr>
               <td>19</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -4319,7 +5669,6 @@ const Dieharder_tests = () => {
                       >
                         Generate Report
                       </Button>
-
                     </Box>
                   </Box>
                 </Box>
@@ -4344,7 +5693,12 @@ const Dieharder_tests = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress19}%
                   </Typography>
                 </Box>
@@ -4352,30 +5706,56 @@ const Dieharder_tests = () => {
               <td>{uploadTime19 || ""}</td>
               <td>{fileName19 || "No file selected"}</td>
               <td>
-                <TextField
-                  value={scheduledTime19}
-                  onChange={handleScheduledTimeChange19}
-                  placeholder="Enter scheduled time"
+              <TextField
+                  label="Select Date"
+                  type="date"
+                  value={date19}
+                  onChange={handleDateChange19}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom: "10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time19}
+                  onChange={handleTimeChange19}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime19 || "Not set"}
+                </Typography>
               </td>
             </tr>
 
             <tr>
               <td>20</td>
               <td>
-                <Box display="flex" justifyContent="center" flexDirection="column" alignItems="center" mt="10px" gap="10px">
+                <Box
+                  display="flex"
+                  justifyContent="center"
+                  flexDirection="column"
+                  alignItems="center"
+                  mt="10px"
+                  gap="10px"
+                >
                   <Box display="flex" justifyContent="center" gap="20px">
                     <Button
                       variant="contained"
@@ -4432,7 +5812,6 @@ const Dieharder_tests = () => {
                       >
                         Generate Report
                       </Button>
-
                     </Box>
                   </Box>
                 </Box>
@@ -4457,7 +5836,12 @@ const Dieharder_tests = () => {
                       color: "green",
                     }}
                   />
-                  <Typography variant="body2" fontWeight="bold" color="white" mt="5px">
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
                     {loadingProgress20}%
                   </Typography>
                 </Box>
@@ -4465,31 +5849,46 @@ const Dieharder_tests = () => {
               <td>{uploadTime20 || ""}</td>
               <td>{fileName20 || "No file selected"}</td>
               <td>
-                <TextField
-                  value={scheduledTime20}
-                  onChange={handleScheduledTimeChange20}
-                  placeholder="Enter scheduled time"
+              <TextField
+                  label="Select Date"
+                  type="date"
+                  value={date20}
+                  onChange={handleDateChange20}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom: "10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time20}
+                  onChange={handleTimeChange20}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime20 || "Not set"}
+                </Typography>
               </td>
             </tr>
-
           </tbody>
         </Box>
-
-
-
       </Box>
 
       <Header title="AI Analysis" />
@@ -4539,13 +5938,11 @@ const Dieharder_tests = () => {
 
         {/* Title */}
 
-
         {/* Button */}
         <Button
           variant="contained"
           onClick={() => {
             window.open("http://localhost:3000/report", "_blank");
-
           }}
           sx={{
             backgroundColor: "#E63946", // Red theme

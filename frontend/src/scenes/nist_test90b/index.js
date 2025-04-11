@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import axios from "axios"; // Make sure axios is imported
 import CircularProgress from "@mui/material/CircularProgress";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
+import dayjs from "dayjs";
 
 const MAX_STACK_SIZE_ESTIMATE = 1 * 1024 * 1024;
 
@@ -66,7 +67,417 @@ const Nist_tests90b = () => {
   const [fileName9, setFileName9] = useState(""); // New state to store filename
   const [fileName10, setFileName10] = useState(""); // New state to store filename
 
-  // Handle file upload
+  const [date, setDate] = useState(""); 
+  const [time, setTime] = useState(""); 
+
+  const [date2, setDate2] = useState(""); 
+  const [time2, setTime2] = useState(""); 
+
+  const [date3, setDate3] = useState(""); 
+  const [time3, setTime3] = useState(""); 
+
+  const [date4, setDate4] = useState(""); 
+  const [time4, setTime4] = useState(""); 
+
+  const [date5, setDate5] = useState(""); 
+  const [time5, setTime5] = useState(""); 
+
+  const [date6, setDate6] = useState(""); 
+  const [time6, setTime6] = useState(""); 
+
+  const [date7, setDate7] = useState(""); 
+  const [time7, setTime7] = useState(""); 
+
+  const [date8, setDate8] = useState(""); 
+  const [time8, setTime8] = useState(""); 
+
+  const [date9, setDate9] = useState(""); 
+  const [time9, setTime9] = useState(""); 
+
+  const [date10, setDate10] = useState(""); 
+  const [time10, setTime10] = useState(""); 
+
+
+  const handleDateChange = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  
+  const handleDateChange2 = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate2(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  
+  const handleDateChange3 = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate3(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  
+  const handleDateChange4 = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate4(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  
+  const handleDateChange5 = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate5(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  
+  const handleDateChange6 = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate6(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  
+  const handleDateChange7 = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate7(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  
+  const handleDateChange8 = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate8(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  
+  const handleDateChange9 = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate9(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  
+  const handleDateChange10 = (event) => {
+    const inputDate = event.target.value;
+    if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
+      setDate10(inputDate);
+    } else {
+      alert("Invalid date format. Use YYYY-MM-DD.");
+    }
+  };
+
+  
+  const handleTimeChange = (event) => {
+    const inputTime = event.target.value;
+    setTime(inputTime); // Update the time state immediately
+  };
+
+ 
+  const handleTimeChange2 = (event) => {
+    const inputTime = event.target.value;
+    setTime2(inputTime); // Update the time state immediately
+  };
+
+ 
+  const handleTimeChange3 = (event) => {
+    const inputTime = event.target.value;
+    setTime3(inputTime); // Update the time state immediately
+  };
+
+ 
+  const handleTimeChange4 = (event) => {
+    const inputTime = event.target.value;
+    setTime4(inputTime); // Update the time state immediately
+  };
+
+ 
+  const handleTimeChange5 = (event) => {
+    const inputTime = event.target.value;
+    setTime5(inputTime); // Update the time state immediately
+  };
+
+ 
+  const handleTimeChange6 = (event) => {
+    const inputTime = event.target.value;
+    setTime6(inputTime); // Update the time state immediately
+  };
+
+ 
+  const handleTimeChange7 = (event) => {
+    const inputTime = event.target.value;
+    setTime7(inputTime); // Update the time state immediately
+  };
+
+ 
+  const handleTimeChange8 = (event) => {
+    const inputTime = event.target.value;
+    setTime8(inputTime); // Update the time state immediately
+  };
+
+ 
+  const handleTimeChange9 = (event) => {
+    const inputTime = event.target.value;
+    setTime9(inputTime); // Update the time state immediately
+  };
+
+ 
+  const handleTimeChange10 = (event) => {
+    const inputTime = event.target.value;
+    setTime10(inputTime); // Update the time state immediately
+  };
+
+ 
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time && !timeRegex.test(time)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time]);
+
+  
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time2 && !timeRegex.test(time2)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time2]);
+
+  
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time3 && !timeRegex.test(time3)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time3]);
+
+  
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time4 && !timeRegex.test(time4)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time4]);
+
+  
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time5 && !timeRegex.test(time5)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time5]);
+
+  
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time6 && !timeRegex.test(time6)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time6]);
+
+  
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time7 && !timeRegex.test(time7)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time7]);
+
+  
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time8 && !timeRegex.test(time8)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time8]);
+
+  
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time9 && !timeRegex.test(time9)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time9]);
+
+  
+  useEffect(() => {
+    const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
+
+    const handler = setTimeout(() => {
+      if (time10 && !timeRegex.test(time10)) {
+        alert("Invalid time format. Use HH:mm:ss (24-hour format).");
+      }
+    }, 2000); // Wait 500ms after the user stops typing
+
+    return () => {
+      clearTimeout(handler); // Clear the timeout if the user types again
+    };
+  }, [time10]);
+
+  
+  useEffect(() => {
+    if (date && time) {
+      setScheduledTime(`${date} ${time}`);
+    }
+  }, [date, time]);
+
+  
+  useEffect(() => {
+    if (date2 && time2) {
+      setScheduledTime2(`${date2} ${time2}`);
+    }
+  }, [date2, time2]);
+
+  
+  useEffect(() => {
+    if (date3 && time3) {
+      setScheduledTime3(`${date3} ${time3}`);
+    }
+  }, [date3, time3]);
+
+  
+  useEffect(() => {
+    if (date4 && time4) {
+      setScheduledTime4(`${date4} ${time4}`);
+    }
+  }, [date4, time4]);
+
+  
+  useEffect(() => {
+    if (date5 && time5) {
+      setScheduledTime5(`${date5} ${time5}`);
+    }
+  }, [date5, time5]);
+
+  
+  useEffect(() => {
+    if (date6 && time6) {
+      setScheduledTime6(`${date6} ${time6}`);
+    }
+  }, [date6, time6]);
+
+  
+  useEffect(() => {
+    if (date7 && time7) {
+      setScheduledTime7(`${date7} ${time7}`);
+    }
+  }, [date7, time7]);
+
+  
+  useEffect(() => {
+    if (date8 && time8) {
+      setScheduledTime8(`${date8} ${time8}`);
+    }
+  }, [date8, time8]);
+
+  
+  useEffect(() => {
+    if (date9 && time9) {
+      setScheduledTime9(`${date9} ${time9}`);
+    }
+  }, [date9, time9]);
+
+  
+  useEffect(() => {
+    if (date10 && time10) {
+      setScheduledTime10(`${date10} ${time10}`);
+    }
+  }, [date10, time10]);
+
+  
   const handleFileUpload = () => {
     fileInputRef.current.click();
   };
@@ -1281,22 +1692,41 @@ const Nist_tests90b = () => {
 
               <td>
                 <TextField
-                  value={scheduledTime}
-                  onChange={handleScheduledTimeChange}
-                  placeholder="Enter scheduled time"
+                  label="Select Date"
+                  type="date"
+                  value={date}
+                  onChange={handleDateChange}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom:"10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time}
+                  onChange={handleTimeChange}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime || "Not set"}
+                </Typography>
               </td>
             </tr>
 
@@ -1404,23 +1834,42 @@ const Nist_tests90b = () => {
               <td>{uploadTime2 || ""}</td>
               <td>{fileName2 || "No file selected"}</td>
               <td>
-                <TextField
-                  value={scheduledTime2}
-                  onChange={handleScheduledTimeChange2}
-                  placeholder="Enter scheduled time"
+              <TextField
+                  label="Select Date"
+                  type="date"
+                  value={date2}
+                  onChange={handleDateChange2}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom:"10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time2}
+                  onChange={handleTimeChange2}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5}  sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime2 || "Not set"}
+                </Typography>
               </td>
             </tr>
 
@@ -1528,23 +1977,42 @@ const Nist_tests90b = () => {
               <td>{uploadTime3 || ""}</td>
               <td>{fileName3 || "No file selected"}</td>
               <td>
-                <TextField
-                  value={scheduledTime3}
-                  onChange={handleScheduledTimeChange3}
-                  placeholder="Enter scheduled time"
+              <TextField
+                  label="Select Date"
+                  type="date"
+                  value={date3}
+                  onChange={handleDateChange3}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom:"10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time3}
+                  onChange={handleTimeChange3}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime3 || "Not set"}
+                </Typography>
               </td>
             </tr>
 
@@ -1652,23 +2120,42 @@ const Nist_tests90b = () => {
               <td>{uploadTime4 || ""}</td>
               <td>{fileName4 || "No file selected"}</td>
               <td>
-                <TextField
-                  value={scheduledTime4}
-                  onChange={handleScheduledTimeChange4}
-                  placeholder="Enter scheduled time"
+              <TextField
+                  label="Select Date"
+                  type="date"
+                  value={date4}
+                  onChange={handleDateChange4}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom:"10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time4}
+                  onChange={handleTimeChange4}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime4 || "Not set"}
+                </Typography>
               </td>
             </tr>
 
@@ -1776,23 +2263,42 @@ const Nist_tests90b = () => {
               <td>{uploadTime5 || ""}</td>
               <td>{fileName5 || "No file selected"}</td>
               <td>
-                <TextField
-                  value={scheduledTime5}
-                  onChange={handleScheduledTimeChange5}
-                  placeholder="Enter scheduled time"
+              <TextField
+                  label="Select Date"
+                  type="date"
+                  value={date5}
+                  onChange={handleDateChange5}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom:"10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time5}
+                  onChange={handleTimeChange5}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime5 || "Not set"}
+                </Typography>
               </td>
               {/* <td>{binaryInput}</td> */}
             </tr>
@@ -1901,23 +2407,42 @@ const Nist_tests90b = () => {
               <td>{uploadTime6 || ""}</td>
               <td>{fileName6 || "No file selected"}</td>
               <td>
-                <TextField
-                  value={scheduledTime6}
-                  onChange={handleScheduledTimeChange6}
-                  placeholder="Enter scheduled time"
+              <TextField
+                  label="Select Date"
+                  type="date"
+                  value={date6}
+                  onChange={handleDateChange6}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom:"10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time6}
+                  onChange={handleTimeChange6}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime6 || "Not set"}
+                </Typography>
               </td>
             </tr>
 
@@ -2025,23 +2550,42 @@ const Nist_tests90b = () => {
               <td>{uploadTime7 || ""}</td>
               <td>{fileName7 || "No file selected"}</td>
               <td>
-                <TextField
-                  value={scheduledTime7}
-                  onChange={handleScheduledTimeChange7}
-                  placeholder="Enter scheduled time"
+              <TextField
+                  label="Select Date"
+                  type="date"
+                  value={date7}
+                  onChange={handleDateChange7}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom:"10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time7}
+                  onChange={handleTimeChange7}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime7 || "Not set"}
+                </Typography>
               </td>
             </tr>
 
@@ -2149,23 +2693,42 @@ const Nist_tests90b = () => {
               <td>{uploadTime8 || ""}</td>
               <td>{fileName8 || "No file selected"}</td>
               <td>
-                <TextField
-                  value={scheduledTime8}
-                  onChange={handleScheduledTimeChange8}
-                  placeholder="Enter scheduled time"
+              <TextField
+                  label="Select Date"
+                  type="date"
+                  value={date8}
+                  onChange={handleDateChange8}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom:"10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time8}
+                  onChange={handleTimeChange8}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime8 || "Not set"}
+                </Typography>
               </td>
             </tr>
 
@@ -2273,23 +2836,42 @@ const Nist_tests90b = () => {
               <td>{uploadTime9 || ""}</td>
               <td>{fileName9 || "No file selected"}</td>
               <td>
-                <TextField
-                  value={scheduledTime9}
-                  onChange={handleScheduledTimeChange9}
-                  placeholder="Enter scheduled time"
+              <TextField
+                  label="Select Date"
+                  type="date"
+                  value={date9}
+                  onChange={handleDateChange9}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom:"10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time9}
+                  onChange={handleTimeChange9}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime9 || "Not set"}
+                </Typography>
               </td>
             </tr>
 
@@ -2397,23 +2979,42 @@ const Nist_tests90b = () => {
               <td>{uploadTime10 || ""}</td>
               <td>{fileName10 || "No file selected"}</td>
               <td>
-                <TextField
-                  value={scheduledTime10}
-                  onChange={handleScheduledTimeChange10}
-                  placeholder="Enter scheduled time"
+              <TextField
+                  label="Select Date"
+                  type="date"
+                  value={date10}
+                  onChange={handleDateChange10}
+                  InputLabelProps={{ shrink: true }}
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    style: {
+                  sx={{
+                    "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
+                    marginBottom:"10px",
                   }}
+                />
+
+                {/* Time Input */}
+                <TextField
+                  label="Enter Time (HH:mm:ss)"
+                  placeholder="e.g., 14:30:00"
+                  value={time10}
+                  onChange={handleTimeChange10}
+                  InputLabelProps={{ shrink: true }}
+                  variant="outlined"
+                  size="small"
                   sx={{
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
                   }}
                 />
+
+                {/* Display Combined Scheduled Time */}
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
+                  Scheduled Time: {scheduledTime10 || "Not set"}
+                </Typography>
               </td>
             </tr>
           </tbody>
