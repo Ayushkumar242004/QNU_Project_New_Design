@@ -3229,7 +3229,7 @@ def generate_pdf_report(request):
     AIAnalysis_subtitle = Paragraph("AI Analysis:", subtitle_style)
 
     # Create the prompt
-    prompt = "Do the analysis of results of all these tests. Also tell about the quality of number used in that analysis. Note that if test gets p-value > 0.05 then they are random number else non-random number. GIve a short summary about the overall analysis also. "
+    prompt = "Perform a detailed analysis of the results from all the statistical tests. For each test, display the test name along with its p-value and indicate whether the result is Random or Non-Random based on the condition that if p-value > 0.05, the number is considered Random; otherwise, it is Non-Random. After presenting all individual test results, provide a short summary that includes the total number of tests that passed as Random and those that failed as Non-Random, with the counts written in bold. Also, comment on the overall quality of the number used in the analysis, based on how many tests it successfully passed. Ensure that important insights or conclusions in the summary are written in bold to highlight the key takeaways."
 
     # Send request to Gemini
     response1 = client.models.generate_content(
@@ -3247,7 +3247,16 @@ def generate_pdf_report(request):
 
     formatted_output = format_markdown(gemini_analysis)
 
-    gemini_analysis_paragraph = Paragraph(formatted_output, bold_red_style)
+    # Convert the formatted output into a list of bullet points
+    bullet_points = formatted_output.replace("<ul>", "").replace("</ul>", "").split("<li>")
+    bullet_points = [point.replace("</li>", "").strip() for point in bullet_points if point.strip()]
+
+    # Create a ListFlowable for the bullet points
+    gemini_analysis_paragraph = ListFlowable(
+        [ListItem(Paragraph(point, styles['Normal'])) for point in bullet_points],
+        bulletType='bullet',
+        
+    )
     
 
     # Build the PDF document
@@ -3280,10 +3289,27 @@ def generate_pdf_report(request):
 
 import markdown
 def format_markdown(gemini_analysis):
-    """Convert the text response into Markdown format."""
-    md_content = markdown.markdown(gemini_analysis)
-    return md_content
+    """Convert the text response into a list of bullet points with bold text up to the first semicolon."""
+    # Remove any extra "*" and split the response into lines
+    cleaned_analysis = gemini_analysis.replace("*", "").splitlines()
 
+    # Process each line to ensure proper formatting
+    formatted_points = []
+    for line in cleaned_analysis:
+        line = line.strip()
+        if ";" in line:
+            # Split the line at the first semicolon
+            parts = line.split(";", 1)
+            bold_part = f"<b>{parts[0].strip()}</b>"  # Make the part before the semicolon bold
+            rest_part = parts[1].strip()  # Keep the rest of the line as is
+            line = f"{bold_part}; {rest_part}"  # Combine the bold and non-bold parts
+        if line:  # Add non-empty lines as list items
+            formatted_points.append(f"<li>{line}</li>")
+
+    # Combine the formatted points into an unordered list
+    return f"<ul>{''.join(formatted_points)}</ul>"
+
+from reportlab.platypus import ListFlowable, ListItem
 
 @csrf_exempt
 def generate_pdf_report_nist90b(request):
@@ -3516,7 +3542,7 @@ def generate_pdf_report_nist90b(request):
     AIAnalysis_subtitle = Paragraph("AI Analysis:", subtitle_style)
 
     # Create the prompt
-    prompt = "Do the analysis of results of all these tests. Also tell about the quality of number used in that analysis. Note that if test gets p-value > 0.05 then they are random number else non-random number. GIve a short summary about the overall analysis also."
+    prompt = "Perform a detailed analysis of the results from all the statistical tests. For each test, display the test name along with its p-value and indicate whether the result is Random or Non-Random based on the condition that if p-value > 0.05, the number is considered Random; otherwise, it is Non-Random. After presenting all individual test results, provide a short summary that includes the total number of tests that passed as Random and those that failed as Non-Random, with the counts written in bold. Also, comment on the overall quality of the number used in the analysis, based on how many tests it successfully passed. Ensure that important insights or conclusions in the summary are written in bold to highlight the key takeaways."
 
     # Send request to Gemini
     response1 = client.models.generate_content(
@@ -3531,12 +3557,22 @@ def generate_pdf_report_nist90b(request):
     
 
 
-
+    # Format the Gemini analysis into bullet points
     formatted_output = format_markdown(gemini_analysis)
 
+    # Convert the formatted output into a list of bullet points
+    bullet_points = formatted_output.replace("<ul>", "").replace("</ul>", "").split("<li>")
+    bullet_points = [point.replace("</li>", "").strip() for point in bullet_points if point.strip()]
+
+    # Create a ListFlowable for the bullet points
+    gemini_analysis_paragraph = ListFlowable(
+        [ListItem(Paragraph(point, styles['Normal'])) for point in bullet_points],
+        bulletType='bullet',
+        
+    )
     
 
-    gemini_analysis_paragraph = Paragraph(formatted_output, description_style)
+    
     
     AIAnalysis_subtitle = Paragraph("AI Analysis:", subtitle_style)
 
@@ -3749,7 +3785,7 @@ def generate_pdf_report_dieharder(request):
     AIAnalysis_subtitle = Paragraph("AI Analysis:", subtitle_style)
 
     # Create the prompt
-    prompt = "Do the analysis of results of all these tests. Also tell about the quality of number used in that analysis. Note that if test gets p-value > 0.05 then they are random number else non-random number. GIve a short summary about the overall analysis also. "
+    prompt = "Perform a detailed analysis of the results from all the statistical tests. For each test, display the test name along with its p-value and indicate whether the result is Random or Non-Random based on the condition that if p-value > 0.05, the number is considered Random; otherwise, it is Non-Random. After presenting all individual test results, provide a short summary that includes the total number of tests that passed as Random and those that failed as Non-Random, with the counts written in bold. Also, comment on the overall quality of the number used in the analysis, based on how many tests it successfully passed. Ensure that important insights or conclusions in the summary are written in bold to highlight the key takeaways."
 
     # Send request to Gemini
     response1 = client.models.generate_content(
@@ -3763,10 +3799,6 @@ def generate_pdf_report_dieharder(request):
         print("No response received from Gemini.")
     
 
-
-
-    formatted_output = format_markdown(gemini_analysis)
-
     description_style = ParagraphStyle(
         'Description',
         parent=styles['Normal'],
@@ -3776,7 +3808,18 @@ def generate_pdf_report_dieharder(request):
         spaceAfter=10
     )
 
-    gemini_analysis_paragraph = Paragraph(formatted_output, description_style)
+    formatted_output = format_markdown(gemini_analysis)
+
+    # Convert the formatted output into a list of bullet points
+    bullet_points = formatted_output.replace("<ul>", "").replace("</ul>", "").split("<li>")
+    bullet_points = [point.replace("</li>", "").strip() for point in bullet_points if point.strip()]
+
+    # Create a ListFlowable for the bullet points
+    gemini_analysis_paragraph = ListFlowable(
+        [ListItem(Paragraph(point, styles['Normal'])) for point in bullet_points],
+        bulletType='bullet',
+        
+    )
     
     AIAnalysis_subtitle = Paragraph("AI Analysis:", subtitle_style)
 

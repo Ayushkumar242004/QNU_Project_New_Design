@@ -29,7 +29,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
     </MenuItem>
   );
 };
-
+const username = localStorage.getItem("username");
 const Sidebar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -105,7 +105,7 @@ const Sidebar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  Ayush Kumar
+                  {username}
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
                   User

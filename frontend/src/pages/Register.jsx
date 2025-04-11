@@ -25,6 +25,7 @@ export default function Register() {
 	const [error, setError] = useState(null);
 
 	const handleSubmit = async (e) => {
+		localStorage.setItem("username", formData.username);
 		e.preventDefault();
 		if (isLoading) {
 			return;

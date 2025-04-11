@@ -22,6 +22,9 @@ export default function Login() {
     const [error, setError] = useState(null);
 
     const handleSubmit = async (e) => {
+
+
+        localStorage.setItem("email", formData.email);
         e.preventDefault();
         if (isLoading) {
             return;
