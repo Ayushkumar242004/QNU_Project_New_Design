@@ -3,7 +3,10 @@ import { tokens } from "../../theme";
 import Header from "../../components/Header";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios"; // Make sure axios is imported
-import {  Select, MenuItem, FormControl, InputLabel } from "@mui/material";
+import { Select, MenuItem, FormControl, InputLabel } from "@mui/material";
+import dayjs from "dayjs";
+import CircularProgress from "@mui/material/CircularProgress";
+import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 
 const MAX_STACK_SIZE_ESTIMATE = 1 * 1024 * 1024;
 
@@ -11,28 +14,23 @@ const Qrng_Server = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-
   const [binaryInput, setBinaryInput] = useState(""); // State to store fetched binary data
   const [binaryInput2, setBinaryInput2] = useState(""); // State to store fetched binary data
   const [binaryInput3, setBinaryInput3] = useState(""); // State to store fetched binary data
   const [binaryInput4, setBinaryInput4] = useState(""); // State to store fetched binary data
   const [binaryInput5, setBinaryInput5] = useState(""); // State to store fetched binary data
-  
-  
-  
+
   const [isFetching, setIsFetching] = useState(false); // Fetching status
   const [isFetching2, setIsFetching2] = useState(false); // Fetching status
   const [isFetching3, setIsFetching3] = useState(false); // Fetching status
   const [isFetching4, setIsFetching4] = useState(false); // Fetching status
   const [isFetching5, setIsFetching5] = useState(false); // Fetching status
- 
- 
-  const [length,setLength]=useState(8);
-  const [length2,setLength2]=useState(8);
-  const [length3,setLength3]=useState(8);
-  const [length4,setLength4]=useState(8);
-  const [length5,setLength5]=useState(8);
 
+  const [length, setLength] = useState(8);
+  const [length2, setLength2] = useState(8);
+  const [length3, setLength3] = useState(8);
+  const [length4, setLength4] = useState(8);
+  const [length5, setLength5] = useState(8);
 
   const [resultNIST, setResultNIST] = useState(null);
   const [resultDieharder, setResultDieharder] = useState(null);
@@ -57,6 +55,14 @@ const Qrng_Server = () => {
   const [selectedServer4, setSelectedServer4] = useState("Server 1"); // State for selected server
   const [selectedServer5, setSelectedServer5] = useState("Server 1"); // State for selected server
 
+  const [scheduledTime, setScheduledTime] = useState("2025-04-10 11:31:08");
+  const [scheduledTime2, setScheduledTime2] = useState("2025-04-10 11:31:08");
+  const [scheduledTime3, setScheduledTime3] = useState("2025-04-10 11:31:08");
+  const [scheduledTime4, setScheduledTime4] = useState("2025-04-10 11:31:08");
+  const [scheduledTime5, setScheduledTime5] = useState("2025-04-10 11:31:08");
+  
+  
+
   // Handle server selection change
   const handleServerChange = (event) => {
     setSelectedServer(event.target.value);
@@ -76,94 +82,97 @@ const Qrng_Server = () => {
 
   const startFetching = () => {
     if (!isFetching) {
-        console.log("clicked");
-        setIsFetching(true);
+      console.log("clicked");
+      setIsFetching(true);
     }
-};
+  };
   const startFetching2 = () => {
     if (!isFetching2) {
-        console.log("clicked");
-        setIsFetching2(true);
+      console.log("clicked");
+      setIsFetching2(true);
     }
-};
+  };
   const startFetching3 = () => {
     if (!isFetching3) {
-        console.log("clicked");
-        setIsFetching3(true);
+      console.log("clicked");
+      setIsFetching3(true);
     }
-};
+  };
   const startFetching4 = () => {
     if (!isFetching4) {
-        console.log("clicked");
-        setIsFetching4(true);
+      console.log("clicked");
+      setIsFetching4(true);
     }
-};
+  };
   const startFetching5 = () => {
     if (!isFetching5) {
-        console.log("clicked");
-        setIsFetching5(true);
+      console.log("clicked");
+      setIsFetching5(true);
     }
-};
+  };
 
-useEffect(() => {
-  if (isFetching) {
-    console.log("hi");
+  
+
+
+  useEffect(() => {
+    if (isFetching) {
+      console.log("hi");
       fetchRandomNumber(); // Fetch immediately
       intervalRef.current = setInterval(fetchRandomNumber, 3000);
-  } else {
+    } else {
       clearInterval(intervalRef.current);
-  }
+    }
 
-  return () => clearInterval(intervalRef.current);
-}, [isFetching]);
+    return () => clearInterval(intervalRef.current);
+  }, [isFetching]);
 
-useEffect(() => {
-  if (isFetching2) {
-    console.log("hi");
+  useEffect(() => {
+    if (isFetching2) {
+      console.log("hi");
       fetchRandomNumber2(); // Fetch immediately
       intervalRef2.current = setInterval(fetchRandomNumber2, 3000);
-  } else {
+    } else {
       clearInterval(intervalRef2.current);
-  }
+    }
 
-  return () => clearInterval(intervalRef2.current);
-}, [isFetching2]);
+    return () => clearInterval(intervalRef2.current);
+  }, [isFetching2]);
 
-useEffect(() => {
-  if (isFetching3) {
-    console.log("hi");
+  useEffect(() => {
+    if (isFetching3) {
+      console.log("hi");
       fetchRandomNumber3(); // Fetch immediately
       intervalRef3.current = setInterval(fetchRandomNumber3, 3000);
-  } else {
+    } else {
       clearInterval(intervalRef3.current);
-  }
+    }
 
-  return () => clearInterval(intervalRef3.current);
-}, [isFetching3]);
+    return () => clearInterval(intervalRef3.current);
+  }, [isFetching3]);
 
-useEffect(() => {
-  if (isFetching4) {
-    console.log("hi");
+  useEffect(() => {
+    if (isFetching4) {
+      console.log("hi");
       fetchRandomNumber4(); // Fetch immediately
       intervalRef4.current = setInterval(fetchRandomNumber4, 3000);
-  } else {
+    } else {
       clearInterval(intervalRef4.current);
-  }
+    }
 
-  return () => clearInterval(intervalRef4.current);
-}, [isFetching4]);
+    return () => clearInterval(intervalRef4.current);
+  }, [isFetching4]);
 
-useEffect(() => {
-  if (isFetching5) {
-    console.log("hi");
+  useEffect(() => {
+    if (isFetching5) {
+      console.log("hi");
       fetchRandomNumber5(); // Fetch immediately
       intervalRef5.current = setInterval(fetchRandomNumber5, 3000);
-  } else {
+    } else {
       clearInterval(intervalRef5.current);
-  }
+    }
 
-  return () => clearInterval(intervalRef5.current);
-}, [isFetching5]);
+    return () => clearInterval(intervalRef5.current);
+  }, [isFetching5]);
 
   // Stop fetching binary data
   const stopFetching = () => {
@@ -203,7 +212,6 @@ useEffect(() => {
     setIsFetching5(false);
   };
 
-  
   useEffect(() => {
     return () => stopFetching();
   }, []);
@@ -224,9 +232,10 @@ useEffect(() => {
     if (!isFetching) return;
     console.log("function called");
     try {
-      const response = await axios.get("http://localhost:3000/random-binary", {
+      const response = await axios.get("http://localhost:3001/random-binary", {
         params: { length: length }, // Use the length state here
       });
+      console.log("response", response);
 
       if (response.data?.binary) {
         setBinaryInput(response.data.binary);
@@ -242,7 +251,7 @@ useEffect(() => {
     if (!isFetching2) return;
     console.log("function called");
     try {
-      const response = await axios.get("http://localhost:3000/random-binary", {
+      const response = await axios.get("http://localhost:3001/random-binary", {
         params: { length: length2 }, // Use the length state here
       });
 
@@ -260,7 +269,7 @@ useEffect(() => {
     if (!isFetching3) return;
     console.log("function called");
     try {
-      const response = await axios.get("http://localhost:3000/random-binary", {
+      const response = await axios.get("http://localhost:3001/random-binary", {
         params: { length: length3 }, // Use the length state here
       });
 
@@ -278,7 +287,7 @@ useEffect(() => {
     if (!isFetching4) return;
     console.log("function called");
     try {
-      const response = await axios.get("http://localhost:3000/random-binary", {
+      const response = await axios.get("http://localhost:3001/random-binary", {
         params: { length: length4 }, // Use the length state here
       });
 
@@ -296,7 +305,7 @@ useEffect(() => {
     if (!isFetching5) return;
     console.log("function called");
     try {
-      const response = await axios.get("http://localhost:3000/random-binary", {
+      const response = await axios.get("http://localhost:3001/random-binary", {
         params: { length: length5 }, // Use the length state here
       });
 
@@ -310,53 +319,26 @@ useEffect(() => {
     }
   };
 
-
   const saveBinaryNumber = async () => {
     // Use the binaryInput state which holds the fetched binary data
     const binaryNumber = binaryInput;
-
     if (!binaryNumber) {
-
       return;
     }
-
     try {
       // Fetch the username from the API
 
-      const token = localStorage.getItem("accessToken");
-
-      if (!token) {
-
-        return;
-      }
-
-
-
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-
-
-      const response = await axios.get("http://127.0.0.1:8000/api/user/", config);
-
-
-      const username = response.data.username;
+      const username = localStorage.getItem("username");
 
       // Format the current date and time
       const now = new Date();
       const formattedDate = `${now.getFullYear()}_${(now.getMonth() + 1)
         .toString()
-        .padStart(2, "0")}_${now
-          .getDate()
-          .toString()
-          .padStart(2, "0")}`;
+        .padStart(2, "0")}_${now.getDate().toString().padStart(2, "0")}`;
       const formattedTime = `${now.getHours().toString().padStart(2, "0")}_${now
         .getMinutes()
         .toString()
         .padStart(2, "0")}_${now.getSeconds().toString().padStart(2, "0")}`;
-
 
       // Combine to form the filename
       const fileName = `${username}_${formattedDate}_${formattedTime}.txt`;
@@ -374,7 +356,6 @@ useEffect(() => {
 
       // Clean up the URL object after the download is triggered
       URL.revokeObjectURL(link.href);
-
     } catch (error) {
       console.error("Error occurred:", error);
       alert("Failed to fetch username or save file.");
@@ -386,47 +367,23 @@ useEffect(() => {
     const binaryNumber = binaryInput2;
 
     if (!binaryNumber) {
-
       return;
     }
 
     try {
       // Fetch the username from the API
 
-      const token = localStorage.getItem("accessToken");
-
-      if (!token) {
-
-        return;
-      }
-
-
-
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-
-
-      const response = await axios.get("http://127.0.0.1:8000/api/user/", config);
-
-
-      const username = response.data.username;
+      const username = localStorage.getItem("username");
 
       // Format the current date and time
       const now = new Date();
       const formattedDate = `${now.getFullYear()}_${(now.getMonth() + 1)
         .toString()
-        .padStart(2, "0")}_${now
-          .getDate()
-          .toString()
-          .padStart(2, "0")}`;
+        .padStart(2, "0")}_${now.getDate().toString().padStart(2, "0")}`;
       const formattedTime = `${now.getHours().toString().padStart(2, "0")}_${now
         .getMinutes()
         .toString()
         .padStart(2, "0")}_${now.getSeconds().toString().padStart(2, "0")}`;
-
 
       // Combine to form the filename
       const fileName = `${username}_${formattedDate}_${formattedTime}.txt`;
@@ -444,7 +401,6 @@ useEffect(() => {
 
       // Clean up the URL object after the download is triggered
       URL.revokeObjectURL(link.href);
-
     } catch (error) {
       console.error("Error occurred:", error);
       alert("Failed to fetch username or save file.");
@@ -456,47 +412,23 @@ useEffect(() => {
     const binaryNumber = binaryInput3;
 
     if (!binaryNumber) {
-
       return;
     }
 
     try {
       // Fetch the username from the API
 
-      const token = localStorage.getItem("accessToken");
-
-      if (!token) {
-
-        return;
-      }
-
-
-
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-
-
-      const response = await axios.get("http://127.0.0.1:8000/api/user/", config);
-
-
-      const username = response.data.username;
+      const username = localStorage.getItem("username");
 
       // Format the current date and time
       const now = new Date();
       const formattedDate = `${now.getFullYear()}_${(now.getMonth() + 1)
         .toString()
-        .padStart(2, "0")}_${now
-          .getDate()
-          .toString()
-          .padStart(2, "0")}`;
+        .padStart(2, "0")}_${now.getDate().toString().padStart(2, "0")}`;
       const formattedTime = `${now.getHours().toString().padStart(2, "0")}_${now
         .getMinutes()
         .toString()
         .padStart(2, "0")}_${now.getSeconds().toString().padStart(2, "0")}`;
-
 
       // Combine to form the filename
       const fileName = `${username}_${formattedDate}_${formattedTime}.txt`;
@@ -514,7 +446,6 @@ useEffect(() => {
 
       // Clean up the URL object after the download is triggered
       URL.revokeObjectURL(link.href);
-
     } catch (error) {
       console.error("Error occurred:", error);
       alert("Failed to fetch username or save file.");
@@ -526,47 +457,23 @@ useEffect(() => {
     const binaryNumber = binaryInput4;
 
     if (!binaryNumber) {
-
       return;
     }
 
     try {
       // Fetch the username from the API
 
-      const token = localStorage.getItem("accessToken");
-
-      if (!token) {
-
-        return;
-      }
-
-
-
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-
-
-      const response = await axios.get("http://127.0.0.1:8000/api/user/", config);
-
-
-      const username = response.data.username;
+      const username = localStorage.getItem("username");
 
       // Format the current date and time
       const now = new Date();
       const formattedDate = `${now.getFullYear()}_${(now.getMonth() + 1)
         .toString()
-        .padStart(2, "0")}_${now
-          .getDate()
-          .toString()
-          .padStart(2, "0")}`;
+        .padStart(2, "0")}_${now.getDate().toString().padStart(2, "0")}`;
       const formattedTime = `${now.getHours().toString().padStart(2, "0")}_${now
         .getMinutes()
         .toString()
         .padStart(2, "0")}_${now.getSeconds().toString().padStart(2, "0")}`;
-
 
       // Combine to form the filename
       const fileName = `${username}_${formattedDate}_${formattedTime}.txt`;
@@ -584,7 +491,6 @@ useEffect(() => {
 
       // Clean up the URL object after the download is triggered
       URL.revokeObjectURL(link.href);
-
     } catch (error) {
       console.error("Error occurred:", error);
       alert("Failed to fetch username or save file.");
@@ -596,47 +502,23 @@ useEffect(() => {
     const binaryNumber = binaryInput;
 
     if (!binaryNumber) {
-
       return;
     }
 
     try {
       // Fetch the username from the API
 
-      const token = localStorage.getItem("accessToken");
-
-      if (!token) {
-
-        return;
-      }
-
-
-
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-
-
-      const response = await axios.get("http://127.0.0.1:8000/api/user/", config);
-
-
-      const username = response.data.username;
+      const username = localStorage.getItem("username");
 
       // Format the current date and time
       const now = new Date();
       const formattedDate = `${now.getFullYear()}_${(now.getMonth() + 1)
         .toString()
-        .padStart(2, "0")}_${now
-          .getDate()
-          .toString()
-          .padStart(2, "0")}`;
+        .padStart(2, "0")}_${now.getDate().toString().padStart(2, "0")}`;
       const formattedTime = `${now.getHours().toString().padStart(2, "0")}_${now
         .getMinutes()
         .toString()
         .padStart(2, "0")}_${now.getSeconds().toString().padStart(2, "0")}`;
-
 
       // Combine to form the filename
       const fileName = `${username}_${formattedDate}_${formattedTime}.txt`;
@@ -654,141 +536,236 @@ useEffect(() => {
 
       // Clean up the URL object after the download is triggered
       URL.revokeObjectURL(link.href);
-
     } catch (error) {
       console.error("Error occurred:", error);
       alert("Failed to fetch username or save file.");
     }
   };
 
-
-  
+  const [loadingProgress, setLoadingProgress] = useState(0);
+  const [loadingProgress2, setLoadingProgress2] = useState(0);
+  const [loadingProgress3, setLoadingProgress3] = useState(0);
+  const [loadingProgress4, setLoadingProgress4] = useState(0);
+  const [loadingProgress5, setLoadingProgress5] = useState(0);
 
   useEffect(() => {
-    if (!binaryInput) return; // Do not fetch if binaryInput is empty
+    if (!binaryInput ) return; // Do not fetch if binaryInput is empty
 
     const fetchResult = async () => {
-      try {
-        const response = await axios.post('http://localhost:8000/generate_final_ans/', { binary_data: binaryInput });
-        setResultNIST(response.data); // Set the response data
+      setLoadingProgress(0); // Start loading from 0%
 
+      try {
+        let progressInterval = setInterval(() => {
+          setLoadingProgress((prev) => (prev < 90 ? prev + 10 : prev));
+        }, 500); // Increment progress every 500ms until 90%
+        console.log("sent");
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans/",
+          {
+            binary_data: binaryInput,
+            scheduled_time: scheduledTime,
+          }
+        );
+
+        clearInterval(progressInterval); // Stop the interval
+        setLoadingProgress(100); // Set progress to 100% after response is received
+        setResultNIST(response.data); // Set the result data
       } catch (error) {
         console.error("Error executing generating final answer:", error);
+        setLoadingProgress(0); // Reset progress in case of failure
       }
     };
 
     fetchResult();
   }, [binaryInput]);
+
+
+ useEffect(() => {
+     if (!binaryInput) return; // Do not fetch if binaryInput is empty
+ 
+     const fetchResult = async () => {
+       setLoadingProgress(0); // Start loading from 0%
+ 
+       try {
+         let progressInterval = setInterval(() => {
+           setLoadingProgress((prev) => (prev < 90 ? prev + 10 : prev));
+         }, 500); // Increment progress every 500ms until 90%
+ 
+         const response = await axios.post(
+           "http://localhost:8000/generate_final_ans_dieharder/",
+           {
+             binary_data: binaryInput,
+             scheduled_time: scheduledTime,
+           }
+         );
+ 
+         clearInterval(progressInterval); // Stop the interval
+         setLoadingProgress(100); // Set progress to 100% after response is received
+         setResultDieharder(response.data); // Set the result data
+       } catch (error) {
+         console.error("Error executing generating final answer:", error);
+         setLoadingProgress(0); // Reset progress in case of failure
+       }
+     };
+ 
+     fetchResult();
+   }, [binaryInput]);
+
   useEffect(() => {
-    if (!binaryInput) return; // Do not fetch if binaryInput is empty
+    if (!binaryInput2 ) return; // Do not fetch if binaryInput is empty
 
     const fetchResult = async () => {
+      setLoadingProgress2(0);
       try {
-        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput });
-        setResultDieharder(response.data); // Set the response data
+        let progressInterval = setInterval(() => {
+          setLoadingProgress2((prev) => (prev < 90 ? prev + 10 : prev));
+        }, 500); // Increment progress every 500ms until 90%
 
-      } catch (error) {
-        console.error("Error executing generating final answer:", error);
-      }
-    };
-
-    fetchResult();
-  }, [binaryInput]);
-
-
-
-
-
-  useEffect(() => {
-    if (!binaryInput2) return; // Do not fetch if binaryInput is empty
-
-    const fetchResult = async () => {
-      try {
-        const response = await axios.post('http://localhost:8000/generate_final_ans/', { binary_data: binaryInput2 });
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans/",
+          {
+            binary_data: binaryInput2,
+            scheduled_time: scheduledTime2,
+          }
+        );
+        clearInterval(progressInterval); // Stop the interval
+        setLoadingProgress2(100);
         setResultNIST2(response.data); // Set the response data
-
       } catch (error) {
         console.error("Error executing generating final answer:", error);
+        setLoadingProgress2(0);
       }
     };
 
     fetchResult();
   }, [binaryInput2]);
+
   useEffect(() => {
     if (!binaryInput2) return; // Do not fetch if binaryInput is empty
 
     const fetchResult = async () => {
+      setLoadingProgress2(0);
       try {
-        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput2 });
-        setResultDieharder2(response.data); // Set the response data
+        let progressInterval = setInterval(() => {
+          setLoadingProgress2((prev) => (prev < 90 ? prev + 10 : prev));
+        }, 500); // Increment progress every 500ms until 90%
 
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_dieharder/",
+          { binary_data: binaryInput2, scheduled_time: scheduledTime2 }
+        );
+        clearInterval(progressInterval); // Stop the interval
+        setLoadingProgress2(100);
+        setResultDieharder2(response.data); // Set the response data
       } catch (error) {
         console.error("Error executing generating final answer:", error);
+        setLoadingProgress(0);
       }
     };
 
     fetchResult();
   }, [binaryInput2]);
 
-
-
   useEffect(() => {
     if (!binaryInput3) return; // Do not fetch if binaryInput is empty
 
     const fetchResult = async () => {
+      setLoadingProgress3(0);
       try {
-        const response = await axios.post('http://localhost:8000/generate_final_ans/', { binary_data: binaryInput3 });
+        let progressInterval = setInterval(() => {
+          setLoadingProgress3((prev) => (prev < 90 ? prev + 10 : prev));
+        }, 500); // Increment progress every 500ms until 90%
+
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans/",
+          {
+            binary_data: binaryInput3,
+            scheduled_time: scheduledTime3,
+          }
+        );
+        clearInterval(progressInterval); // Stop the interval
+        setLoadingProgress3(100);
         setResultNIST3(response.data); // Set the response data
-
       } catch (error) {
         console.error("Error executing generating final answer:", error);
+        setLoadingProgress3(0);
       }
     };
 
     fetchResult();
   }, [binaryInput3]);
+
   useEffect(() => {
     if (!binaryInput3) return; // Do not fetch if binaryInput is empty
-
+    setLoadingProgress3(0);
     const fetchResult = async () => {
       try {
-        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput3 });
+        let progressInterval = setInterval(() => {
+          setLoadingProgress3((prev) => (prev < 90 ? prev + 10 : prev));
+        }, 500);
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_dieharder/",
+          { binary_data: binaryInput3, scheduled_time: scheduledTime3 }
+        );
+        clearInterval(progressInterval); // Stop the interval
+        setLoadingProgress3(100);
         setResultDieharder3(response.data); // Set the response data
-
       } catch (error) {
         console.error("Error executing generating final answer:", error);
+        setLoadingProgress(0);
       }
     };
 
     fetchResult();
   }, [binaryInput3]);
 
-
-
   useEffect(() => {
-    if (!binaryInput4) return; // Do not fetch if binaryInput is empty
+    if (!binaryInput4 ) return; // Do not fetch if binaryInput is empty
 
     const fetchResult = async () => {
+      setLoadingProgress4(0);
       try {
-        const response = await axios.post('http://localhost:8000/generate_final_ans/', { binary_data: binaryInput4 });
+        let progressInterval = setInterval(() => {
+          setLoadingProgress4((prev) => (prev < 90 ? prev + 10 : prev));
+        }, 500); // Increment progress every 500ms until 90%
+
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans/",
+          {
+            binary_data: binaryInput4,
+            scheduled_time: scheduledTime4,
+          }
+        );
+        clearInterval(progressInterval); // Stop the interval
+        setLoadingProgress4(100);
         setResultNIST4(response.data); // Set the response data
-
       } catch (error) {
         console.error("Error executing generating final answer:", error);
+        setLoadingProgress4(0);
       }
     };
 
     fetchResult();
   }, [binaryInput4]);
+
   useEffect(() => {
     if (!binaryInput4) return; // Do not fetch if binaryInput is empty
 
     const fetchResult = async () => {
+      setLoadingProgress4(0);
       try {
-        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput4 });
+        let progressInterval = setInterval(() => {
+          setLoadingProgress4((prev) => (prev < 90 ? prev + 10 : prev));
+        }, 500);
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_dieharder/",
+          { binary_data: binaryInput4, scheduled_time: scheduledTime4 }
+        );
+        clearInterval(progressInterval); // Stop the interval
+        setLoadingProgress4(100);
         setResultDieharder4(response.data); // Set the response data
-
       } catch (error) {
+        setLoadingProgress4(0);
         console.error("Error executing generating final answer:", error);
       }
     };
@@ -796,39 +773,59 @@ useEffect(() => {
     fetchResult();
   }, [binaryInput4]);
 
-
-
   useEffect(() => {
-    if (!binaryInput5) return; // Do not fetch if binaryInput is empty
+    if (!binaryInput5 ) return; // Do not fetch if binaryInput is empty
 
     const fetchResult = async () => {
+      setLoadingProgress5(0);
       try {
-        const response = await axios.post('http://localhost:8000/generate_final_ans/', { binary_data: binaryInput5 });
+        let progressInterval = setInterval(() => {
+          setLoadingProgress5((prev) => (prev < 90 ? prev + 10 : prev));
+        }, 500); // Increment progress every 500ms until 90%
+
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans/",
+          {
+            binary_data: binaryInput5,
+            scheduled_time: scheduledTime5,
+          }
+        );
+        clearInterval(progressInterval); // Stop the interval
+        setLoadingProgress5(100);
         setResultNIST5(response.data); // Set the response data
-
       } catch (error) {
         console.error("Error executing generating final answer:", error);
+        setLoadingProgress5(0);
       }
     };
 
     fetchResult();
   }, [binaryInput5]);
+
   useEffect(() => {
     if (!binaryInput5) return; // Do not fetch if binaryInput is empty
 
     const fetchResult = async () => {
+      setLoadingProgress5(0);
       try {
-        const response = await axios.post('http://localhost:8000/generate_final_ans_dieharder/', { binary_data: binaryInput5 });
+        let progressInterval = setInterval(() => {
+          setLoadingProgress5((prev) => (prev < 90 ? prev + 10 : prev));
+        }, 500);
+        const response = await axios.post(
+          "http://localhost:8000/generate_final_ans_dieharder/",
+          { binary_data: binaryInput5, scheduled_time: scheduledTime5 }
+        );
+        clearInterval(progressInterval); // Stop the interval
+        setLoadingProgress5(100);
         setResultDieharder5(response.data); // Set the response data
-
       } catch (error) {
+        setLoadingProgress5(0);
         console.error("Error executing generating final answer:", error);
       }
     };
 
     fetchResult();
   }, [binaryInput5]);
-
 
   const handleButtonClick = (type) => {
     if (type === "report") {
@@ -974,7 +971,11 @@ useEffect(() => {
     <Box m="20px">
       <Header title="Server Connections" />
       {/* Table Section */}
-      <Box mt="40px" p="20px" sx={{ backgroundColor: colors.primary[400], borderRadius: "8px" }}>
+      <Box
+        mt="40px"
+        p="20px"
+        sx={{ backgroundColor: colors.primary[400], borderRadius: "8px" }}
+      >
         <Box
           component="table"
           sx={{
@@ -994,20 +995,21 @@ useEffect(() => {
         >
           <thead>
             <tr>
-              <th style={{ width: "5%" }}>Serial No</th>
-              <th style={{ width: "40%" }}>Test</th>
-             
+              <th style={{ width: "10%" }}>Serial No</th>
+              <th style={{ width: "30%" }}>Test</th>
+
               <th style={{ width: "10%" }}>Enter Length</th>
               <th style={{ width: "15%" }}>NIST Results</th>
               <th style={{ width: "15%" }}>Dieharder Tests Result</th>
-              <th>Server </th>
+              <th style={{ width: "15%" }}>Server </th>
+              <th style={{ width: "15%" }}>Progress Bar</th>
+
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>1</td>
               <td>
-
                 <Box
                   mt="20px"
                   display="flex"
@@ -1073,9 +1075,8 @@ useEffect(() => {
                     Save Binary Number
                   </button>
                 </Box>
-
               </td>
-              
+
               <td>
                 {/* TextField to accept user input for length */}
                 <TextField
@@ -1088,45 +1089,74 @@ useEffect(() => {
                   sx={{ width: "100px" }}
                 />
               </td>
-              <td>{resultNIST}</td>
-              {/* <td>{binaryInput}</td> */}
-              <td>{resultDieharder}</td>
+              <td>{resultNIST ? resultNIST.final_result : ""}</td>
+              <td>{resultDieharder ? resultDieharder.final_result : ""}</td>
               <td>
-            {/* Dropdown for server selection */}
-            <FormControl variant="outlined" size="small" sx={{ minWidth: 120 }}>
-              
-              <Select
-                value={selectedServer}
-                onChange={handleServerChange}
-                
-                MenuProps={{
-                  anchorOrigin: {
-                    vertical: "bottom",
-                    horizontal: "left",
-                  },
-                  transformOrigin: {
-                    vertical: "top",
-                    horizontal: "left",
-                  },
-                  getContentAnchorEl: null,
-                }}
-              >
-                <MenuItem value="Server 1">Server 1</MenuItem>
-                <MenuItem value="Server 2">Server 2</MenuItem>
-                <MenuItem value="Server 3">Server 3</MenuItem>
-                <MenuItem value="Server 4">Server 4</MenuItem>
-                <MenuItem value="Server 5">Server 5</MenuItem>
-              </Select>
-            </FormControl>
-          </td>
+                {/* Dropdown for server selection */}
+                <FormControl
+                  variant="outlined"
+                  size="small"
+                  sx={{ minWidth: 120 }}
+                >
+                  <Select
+                    value={selectedServer}
+                    onChange={handleServerChange}
+                    MenuProps={{
+                      anchorOrigin: {
+                        vertical: "bottom",
+                        horizontal: "left",
+                      },
+                      transformOrigin: {
+                        vertical: "top",
+                        horizontal: "left",
+                      },
+                      getContentAnchorEl: null,
+                    }}
+                  >
+                    <MenuItem value="Server 1">Server 1</MenuItem>
+                    <MenuItem value="Server 2">Server 2</MenuItem>
+                    <MenuItem value="Server 3">Server 3</MenuItem>
+                    <MenuItem value="Server 4">Server 4</MenuItem>
+                    <MenuItem value="Server 5">Server 5</MenuItem>
+                  </Select>
+                </FormControl>
+              </td>
+
+              <td>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  width="100%"
+                  height="100%"
+                  p="5px"
+                >
+                  <CircularProgress
+                    variant="determinate"
+                    value={loadingProgress} // Updated progress state
+                    size={50}
+                    thickness={5}
+                    sx={{
+                      color: "green",
+                    }}
+                  />
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
+                    {loadingProgress}%
+                  </Typography>
+                </Box>
+              </td>
+
             </tr>
-
-
-
+            
             <tr>
               <td>2</td>
               <td>
-
                 <Box
                   mt="20px"
                   display="flex"
@@ -1192,9 +1222,9 @@ useEffect(() => {
                     Save Binary Number
                   </button>
                 </Box>
-
               </td>
-              
+                
+
               <td>
                 {/* TextField to accept user input for length */}
                 <TextField
@@ -1207,43 +1237,74 @@ useEffect(() => {
                   sx={{ width: "100px" }}
                 />
               </td>
-              <td>{resultNIST2}</td>
-              {/* <td>{binaryInput2}</td> */}
-              <td>{resultDieharder2}</td>
+              <td>{resultNIST2 ? resultNIST2.final_result : ""}</td>
+              <td>{resultDieharder2 ? resultDieharder2.final_result : ""}</td>
+             
               <td>
-            {/* Dropdown for server selection */}
-            <FormControl variant="outlined" size="small" sx={{ minWidth: 120 }}>
-              
-              <Select
-                value={selectedServer2}
-                onChange={handleServerChange2}
-                
-                MenuProps={{
-                  anchorOrigin: {
-                    vertical: "bottom",
-                    horizontal: "left",
-                  },
-                  transformOrigin: {
-                    vertical: "top",
-                    horizontal: "left",
-                  },
-                  getContentAnchorEl: null,
-                }}
-              >
-                <MenuItem value="Server 1">Server 1</MenuItem>
-                <MenuItem value="Server 2">Server 2</MenuItem>
-                <MenuItem value="Server 3">Server 3</MenuItem>
-                <MenuItem value="Server 4">Server 4</MenuItem>
-                <MenuItem value="Server 5">Server 5</MenuItem>
-              </Select>
-            </FormControl>
-          </td>
+                {/* Dropdown for server selection */}
+                <FormControl
+                  variant="outlined"
+                  size="small"
+                  sx={{ minWidth: 120 }}
+                >
+                  <Select
+                    value={selectedServer2}
+                    onChange={handleServerChange2}
+                    MenuProps={{
+                      anchorOrigin: {
+                        vertical: "bottom",
+                        horizontal: "left",
+                      },
+                      transformOrigin: {
+                        vertical: "top",
+                        horizontal: "left",
+                      },
+                      getContentAnchorEl: null,
+                    }}
+                  >
+                    <MenuItem value="Server 1">Server 1</MenuItem>
+                    <MenuItem value="Server 2">Server 2</MenuItem>
+                    <MenuItem value="Server 3">Server 3</MenuItem>
+                    <MenuItem value="Server 4">Server 4</MenuItem>
+                    <MenuItem value="Server 5">Server 5</MenuItem>
+                  </Select>
+                </FormControl>
+              </td>
+
+              <td>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  width="100%"
+                  height="100%"
+                  p="5px"
+                >
+                  <CircularProgress
+                    variant="determinate"
+                    value={loadingProgress2} // Updated progress state
+                    size={50}
+                    thickness={5}
+                    sx={{
+                      color: "green",
+                    }}
+                  />
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
+                    {loadingProgress2}%
+                  </Typography>
+                </Box>
+              </td>
             </tr>
 
             <tr>
               <td>3</td>
               <td>
-
                 <Box
                   mt="20px"
                   display="flex"
@@ -1309,9 +1370,8 @@ useEffect(() => {
                     Save Binary Number
                   </button>
                 </Box>
-
               </td>
-              
+
               <td>
                 {/* TextField to accept user input for length */}
                 <TextField
@@ -1324,42 +1384,74 @@ useEffect(() => {
                   sx={{ width: "100px" }}
                 />
               </td>
-              <td>{resultNIST3}</td>
-              <td>{resultDieharder3}</td>
+              <td>{resultNIST3 ? resultNIST3.final_result : ""}</td>
+              <td>{resultDieharder3 ? resultDieharder3.final_result : ""}</td>
               <td>
-            {/* Dropdown for server selection */}
-            <FormControl variant="outlined" size="small" sx={{ minWidth: 120 }}>
-              
-              <Select
-                value={selectedServer3}
-                onChange={handleServerChange3}
-                
-                MenuProps={{
-                  anchorOrigin: {
-                    vertical: "bottom",
-                    horizontal: "left",
-                  },
-                  transformOrigin: {
-                    vertical: "top",
-                    horizontal: "left",
-                  },
-                  getContentAnchorEl: null,
-                }}
-              >
-                <MenuItem value="Server 1">Server 1</MenuItem>
-                <MenuItem value="Server 2">Server 2</MenuItem>
-                <MenuItem value="Server 3">Server 3</MenuItem>
-                <MenuItem value="Server 4">Server 4</MenuItem>
-                <MenuItem value="Server 5">Server 5</MenuItem>
-              </Select>
-            </FormControl>
-          </td>
+                {/* Dropdown for server selection */}
+                <FormControl
+                  variant="outlined"
+                  size="small"
+                  sx={{ minWidth: 120 }}
+                >
+                  <Select
+                    value={selectedServer3}
+                    onChange={handleServerChange3}
+                    MenuProps={{
+                      anchorOrigin: {
+                        vertical: "bottom",
+                        horizontal: "left",
+                      },
+                      transformOrigin: {
+                        vertical: "top",
+                        horizontal: "left",
+                      },
+                      getContentAnchorEl: null,
+                    }}
+                  >
+                    <MenuItem value="Server 1">Server 1</MenuItem>
+                    <MenuItem value="Server 2">Server 2</MenuItem>
+                    <MenuItem value="Server 3">Server 3</MenuItem>
+                    <MenuItem value="Server 4">Server 4</MenuItem>
+                    <MenuItem value="Server 5">Server 5</MenuItem>
+                  </Select>
+                </FormControl>
+              </td>
+
+
+              <td>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  width="100%"
+                  height="100%"
+                  p="5px"
+                >
+                  <CircularProgress
+                    variant="determinate"
+                    value={loadingProgress3} // Updated progress state
+                    size={50}
+                    thickness={5}
+                    sx={{
+                      color: "green",
+                    }}
+                  />
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
+                    {loadingProgress3}%
+                  </Typography>
+                </Box>
+              </td>
             </tr>
 
             <tr>
               <td>4</td>
               <td>
-
                 <Box
                   mt="20px"
                   display="flex"
@@ -1425,9 +1517,8 @@ useEffect(() => {
                     Save Binary Number
                   </button>
                 </Box>
-
               </td>
-              
+
               <td>
                 {/* TextField to accept user input for length */}
                 <TextField
@@ -1440,42 +1531,73 @@ useEffect(() => {
                   sx={{ width: "100px" }}
                 />
               </td>
-              <td>{resultNIST4}</td>
-              <td>{resultDieharder4}</td>
+              <td>{resultNIST4 ? resultNIST4.final_result : ""}</td>
+              <td>{resultDieharder4 ? resultDieharder4.final_result : ""}</td>
               <td>
-            {/* Dropdown for server selection */}
-            <FormControl variant="outlined" size="small" sx={{ minWidth: 120 }}>
-              
-              <Select
-                value={selectedServer4}
-                onChange={handleServerChange4}
-                
-                MenuProps={{
-                  anchorOrigin: {
-                    vertical: "bottom",
-                    horizontal: "left",
-                  },
-                  transformOrigin: {
-                    vertical: "top",
-                    horizontal: "left",
-                  },
-                  getContentAnchorEl: null,
-                }}
-              >
-                <MenuItem value="Server 1">Server 1</MenuItem>
-                <MenuItem value="Server 2">Server 2</MenuItem>
-                <MenuItem value="Server 3">Server 3</MenuItem>
-                <MenuItem value="Server 4">Server 4</MenuItem>
-                <MenuItem value="Server 5">Server 5</MenuItem>
-              </Select>
-            </FormControl>
-          </td>
+                {/* Dropdown for server selection */}
+                <FormControl
+                  variant="outlined"
+                  size="small"
+                  sx={{ minWidth: 120 }}
+                >
+                  <Select
+                    value={selectedServer4}
+                    onChange={handleServerChange4}
+                    MenuProps={{
+                      anchorOrigin: {
+                        vertical: "bottom",
+                        horizontal: "left",
+                      },
+                      transformOrigin: {
+                        vertical: "top",
+                        horizontal: "left",
+                      },
+                      getContentAnchorEl: null,
+                    }}
+                  >
+                    <MenuItem value="Server 1">Server 1</MenuItem>
+                    <MenuItem value="Server 2">Server 2</MenuItem>
+                    <MenuItem value="Server 3">Server 3</MenuItem>
+                    <MenuItem value="Server 4">Server 4</MenuItem>
+                    <MenuItem value="Server 5">Server 5</MenuItem>
+                  </Select>
+                </FormControl>
+              </td>
+
+              <td>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  width="100%"
+                  height="100%"
+                  p="5px"
+                >
+                  <CircularProgress
+                    variant="determinate"
+                    value={loadingProgress4} // Updated progress state
+                    size={50}
+                    thickness={5}
+                    sx={{
+                      color: "green",
+                    }}
+                  />
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
+                    {loadingProgress4}%
+                  </Typography>
+                </Box>
+              </td>
             </tr>
 
             <tr>
               <td>5</td>
               <td>
-
                 <Box
                   mt="20px"
                   display="flex"
@@ -1541,9 +1663,8 @@ useEffect(() => {
                     Save Binary Number
                   </button>
                 </Box>
-
               </td>
-              
+
               <td>
                 {/* TextField to accept user input for length */}
                 <TextField
@@ -1556,39 +1677,71 @@ useEffect(() => {
                   sx={{ width: "100px" }}
                 />
               </td>
-              <td>{resultNIST5}</td>
-              <td>{resultDieharder5}</td>
+              <td>{resultNIST5 ? resultNIST5.final_result : ""}</td>
+              <td>{resultDieharder5 ? resultDieharder5.final_result : ""}</td>
               <td>
-            {/* Dropdown for server selection */}
-            <FormControl variant="outlined" size="small" sx={{ minWidth: 120 }}>
-              
-              <Select
-                value={selectedServer5}
-                onChange={handleServerChange5}
-                
-                MenuProps={{
-                  anchorOrigin: {
-                    vertical: "bottom",
-                    horizontal: "left",
-                  },
-                  transformOrigin: {
-                    vertical: "top",
-                    horizontal: "left",
-                  },
-                  getContentAnchorEl: null,
-                }}
-              >
-                <MenuItem value="Server 1">Server 1</MenuItem>
-                <MenuItem value="Server 2">Server 2</MenuItem>
-                <MenuItem value="Server 3">Server 3</MenuItem>
-                <MenuItem value="Server 4">Server 4</MenuItem>
-                <MenuItem value="Server 5">Server 5</MenuItem>
-              </Select>
-            </FormControl>
-          </td>
+                {/* Dropdown for server selection */}
+                <FormControl
+                  variant="outlined"
+                  size="small"
+                  sx={{ minWidth: 120 }}
+                >
+                  <Select
+                    value={selectedServer5}
+                    onChange={handleServerChange5}
+                    MenuProps={{
+                      anchorOrigin: {
+                        vertical: "bottom",
+                        horizontal: "left",
+                      },
+                      transformOrigin: {
+                        vertical: "top",
+                        horizontal: "left",
+                      },
+                      getContentAnchorEl: null,
+                    }}
+                  >
+                    <MenuItem value="Server 1">Server 1</MenuItem>
+                    <MenuItem value="Server 2">Server 2</MenuItem>
+                    <MenuItem value="Server 3">Server 3</MenuItem>
+                    <MenuItem value="Server 4">Server 4</MenuItem>
+                    <MenuItem value="Server 5">Server 5</MenuItem>
+                  </Select>
+                </FormControl>
+
+
+              </td>
+
+              <td>
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  width="100%"
+                  height="100%"
+                  p="5px"
+                >
+                  <CircularProgress
+                    variant="determinate"
+                    value={loadingProgress5} // Updated progress state
+                    size={50}
+                    thickness={5}
+                    sx={{
+                      color: "green",
+                    }}
+                  />
+                  <Typography
+                    variant="body2"
+                    fontWeight="bold"
+                    color="white"
+                    mt="5px"
+                  >
+                    {loadingProgress5}%
+                  </Typography>
+                </Box>
+              </td>
             </tr>
-
-
           </tbody>
         </Box>
       </Box>

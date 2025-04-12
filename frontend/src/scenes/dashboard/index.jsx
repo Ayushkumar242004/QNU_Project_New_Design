@@ -201,7 +201,7 @@ const Dashboard = () => {
 
 
     try {
-      const response = await axios.get("http://localhost:3000/random-binary", {
+      const response = await axios.get("http://localhost:3001/random-binary", {
         params: { length: 8 }, // Use the length state here
       });
 

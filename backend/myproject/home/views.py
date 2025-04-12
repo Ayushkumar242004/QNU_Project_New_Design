@@ -50,6 +50,17 @@ from tests.u01_linear_complexity_test import TestU01LinearComplexityTest
 from tests.u01_longest_substring_test import TestU01LongestRepeatedSubstringTest
 from tests.u01_matrix_rank_test import TestU01MatrixRankTest
 
+from tests.minEntropy_test import MinEntropyTest
+from tests.collision_test import CollisionTest
+from tests.markov_test import MarkovTest
+from tests.compression_test import CompressionTest
+from tests.ttuple_test import TTupleTest
+from tests.mcv_test import MostCommonValueTest
+from tests.chiSquare_test import ChiSquareTest
+from tests.l278y_test import LZ78YTest
+from tests.multiBlock_test import MultiBlockEntropyTest
+from tests.predictor_test import PredictorTest
+
 from datetime import datetime
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import getSampleStyleSheet,ParagraphStyle
@@ -3229,7 +3240,7 @@ def generate_pdf_report(request):
     AIAnalysis_subtitle = Paragraph("AI Analysis:", subtitle_style)
 
     # Create the prompt
-    prompt = "Perform a detailed analysis of the results from all the statistical tests. For each test, display the test name along with its p-value and indicate whether the result is Random or Non-Random based on the condition that if p-value > 0.05, the number is considered Random; otherwise, it is Non-Random. After presenting all individual test results, provide a short summary that includes the total number of tests that passed as Random and those that failed as Non-Random, with the counts written in bold. Also, comment on the overall quality of the number used in the analysis, based on how many tests it successfully passed. Ensure that important insights or conclusions in the summary are written in bold to highlight the key takeaways."
+    prompt = "Perform a detailed analysis of the results from all the statistical tests. For each test, display the test name along with its p-value and indicate whether the result is Random or Non-Random based on the condition that if p-value > 0.05 e.g: test_name: test_result, the number is considered Random; otherwise, it is Non-Random. After presenting all individual test results, provide the basis of declaring the number as random or non random which is based on majority of tests. At the end tell about the quality of number after analysing the attached test results."
 
     # Send request to Gemini
     response1 = client.models.generate_content(
@@ -3542,7 +3553,7 @@ def generate_pdf_report_nist90b(request):
     AIAnalysis_subtitle = Paragraph("AI Analysis:", subtitle_style)
 
     # Create the prompt
-    prompt = "Perform a detailed analysis of the results from all the statistical tests. For each test, display the test name along with its p-value and indicate whether the result is Random or Non-Random based on the condition that if p-value > 0.05, the number is considered Random; otherwise, it is Non-Random. After presenting all individual test results, provide a short summary that includes the total number of tests that passed as Random and those that failed as Non-Random, with the counts written in bold. Also, comment on the overall quality of the number used in the analysis, based on how many tests it successfully passed. Ensure that important insights or conclusions in the summary are written in bold to highlight the key takeaways."
+    prompt = "Perform a detailed analysis of the results from all the statistical tests. For each test, display the test name along with its p-value and indicate whether the result is Random or Non-Random based on the condition that if p-value > 0.05 e.g: test_name: test_result, the number is considered Random; otherwise, it is Non-Random. After presenting all individual test results, provide the basis of declaring the number as random or non random which is based on majority of tests. At the end tell about the quality of number after analysing the attached test results."
 
     # Send request to Gemini
     response1 = client.models.generate_content(
@@ -3785,7 +3796,7 @@ def generate_pdf_report_dieharder(request):
     AIAnalysis_subtitle = Paragraph("AI Analysis:", subtitle_style)
 
     # Create the prompt
-    prompt = "Perform a detailed analysis of the results from all the statistical tests. For each test, display the test name along with its p-value and indicate whether the result is Random or Non-Random based on the condition that if p-value > 0.05, the number is considered Random; otherwise, it is Non-Random. After presenting all individual test results, provide a short summary that includes the total number of tests that passed as Random and those that failed as Non-Random, with the counts written in bold. Also, comment on the overall quality of the number used in the analysis, based on how many tests it successfully passed. Ensure that important insights or conclusions in the summary are written in bold to highlight the key takeaways."
+    prompt = "Perform a detailed analysis of the results from all the statistical tests. For each test, display the test name along with its p-value and indicate whether the result is Random or Non-Random based on the condition that if p-value > 0.05 e.g: test_name: test_result, the number is considered Random; otherwise, it is Non-Random. After presenting all individual test results, provide the basis of declaring the number as random or non random which is based on majority of tests. At the end tell about the quality of number after analysing the attached test results."
 
     # Send request to Gemini
     response1 = client.models.generate_content(
@@ -3946,12 +3957,15 @@ def generate_pdf_report_server(request):
     # Create a HttpResponse object with PDF headers
     graph_response1 = create_graph(request)
     graph_response = create_graph_dieharder(request)
+    graph_response2 = create_graph_nist90b(request)
 
     graph_buffer1 = graph_response1.content
     graph_buffer = graph_response.content
+    graph_buffer2 = graph_response2.content
 
     graph_image_io1 = BytesIO(graph_buffer1)
     graph_image_io = BytesIO(graph_buffer)
+    graph_image_io2 = BytesIO(graph_buffer2)
 
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'inline; filename="report.pdf"'
@@ -4121,7 +4135,58 @@ def generate_pdf_report_server(request):
     if adaptive_statistical_test_result:
         x += 1
 
-    final_text='random number' if x > 17 else 'non-random number'
+    
+    minEntropy_test_result = MinEntropyTest.MinEntropyTest(binary_data)[1]
+    if minEntropy_test_result:
+        x += 1
+
+    
+    collision_test_result = CollisionTest.CollisionTest(binary_data)[1]
+    if collision_test_result:
+        x += 1
+
+    
+    markov_test_result = MarkovTest.MarkovTest(binary_data)[1]
+    if markov_test_result:
+        x += 1
+
+    
+    compression_test_result = CompressionTest.CompressionTest(binary_data)[1]
+    if compression_test_result:
+        x += 1
+
+    
+    ttuple_test_result = TTupleTest.TTupleTest(binary_data)[1]
+    if ttuple_test_result:
+        x += 1
+
+    
+    mcv_test_result = MostCommonValueTest.MostCommonValueTest(binary_data)[1]
+    if mcv_test_result:
+        x += 1
+
+
+    chiSquare_test_result = ChiSquareTest.ChiSquareTest(binary_data)[1]
+    if chiSquare_test_result:
+        x += 1
+
+    
+    l278y_test_result = LZ78YTest.LZ78YTest(binary_data)[1]
+    if l278y_test_result:
+        x += 1
+
+    
+    multiBlock_test_result = MultiBlockEntropyTest.MultiBlockEntropyTest(binary_data)[1]
+    if multiBlock_test_result:
+        x += 1
+
+    
+    predictor_test_result = PredictorTest.PredictorTest(binary_data)[1]
+    if predictor_test_result:
+        x += 1
+
+    
+    final_text='random number' if x > 23 else 'non-random number'
 
     
     # Dynamically set the result text based on the test outcome
@@ -4164,6 +4229,17 @@ def generate_pdf_report_server(request):
     autocorrelation_text = 'random number' if autocorrelation_test_result else 'non-random number'
     adaptive_statistical_text = 'random number' if adaptive_statistical_test_result else 'non-random number'
 
+    minEntropy_text = 'random number' if minEntropy_test_result else 'non-random number'
+    collision_text = 'random number' if collision_test_result else 'non-random number'
+    markov_text = 'random number' if markov_test_result else 'non-random number'
+    compression_text = 'random number' if compression_test_result else 'non-random number'
+    ttuple_text = 'random number' if ttuple_test_result else 'non-random number'
+    mcv_text = 'random number' if mcv_test_result else 'non-random number'
+    chiSquare_text = 'random number' if chiSquare_test_result else 'non-random number'
+    l278y_text = 'random number' if l278y_test_result else 'non-random number'
+    multiBlock_text = 'random number' if multiBlock_test_result else 'non-random number'
+    predictor_text = 'random number' if predictor_test_result else 'non-random number'
+
 
 
     # Sample Table Data for the first table with "Final Result" in the last row
@@ -4196,7 +4272,18 @@ def generate_pdf_report_server(request):
          Paragraph('34. Random Excursions Test', styles['Normal']), random_excursion_text],
         [Paragraph('35. Random Excursions Variant Test', styles['Normal']), random_excursion_variant_text,
          Paragraph('36. Autocorrelation Test', styles['Normal']), autocorrelation_text],
-        [Paragraph('37. Adaptive Statistical Test', styles['Normal']), adaptive_statistical_text],
+        [Paragraph('37. Adaptive Statistical Test', styles['Normal']), adaptive_statistical_text,
+         Paragraph('38. Minimum Entropy Test', styles['Normal']), minEntropy_text],
+        [Paragraph('39. Collision Test', styles['Normal']), collision_text,
+         Paragraph('40. Markov Test', styles['Normal']),  markov_text],
+        [Paragraph('41. Compression Test', styles['Normal']), compression_text,
+         Paragraph('42. T-Tuple Test', styles['Normal']), ttuple_text],
+        [Paragraph('43. MCV Test', styles['Normal']), mcv_text,
+         Paragraph('44. Chi-Square Test', styles['Normal']), chiSquare_text],
+        [Paragraph('45. LZ78Y Test', styles['Normal']), l278y_text,
+         Paragraph('46. MultiBlock Test', styles['Normal']), multiBlock_text],
+        [Paragraph('47. Predictor Test', styles['Normal']), predictor_text],
+
 
         [Paragraph(' Final Result', styles['Normal']),  Paragraph(final_text, bold_red_style)],
        
@@ -4219,11 +4306,97 @@ def generate_pdf_report_server(request):
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),  # Vertically align text to the middle
         ('WORDWRAP', (0, 0), (-1, -1), True),  # Enable text wrapping
     ]))
+    
 
+    test_results = {
+        "Frequency Test": frequency_test_text,
+        "Frequency Test within a Block": frequency_test_block_text,
+        "Runs Test": runs_text,
+        "Test for the Longest Run of Ones": longest_run_of_ones_text,
+        "Binary Matrix Rank Test": binary_matrix_rank_text,
+        "Discrete Fourier Transform Test": dft_text,
+        "Non-overlapping Template Match": non_overlapping_text,
+        "Overlapping Template Matching Test": overlapping_text,
+        "Maurers Universal test": maurers_universal_text,
+        "Linear complexity Test": linear_complexity_text,
+        "Serial Test": serial_text,
+        "Approximate Entropy Test": approximate_entropy_text,
+        "Cumulative Sum Test": cumulative_sums_text,
+        "Random Excursions Test": random_excursion_text,
+        "Random Excursions Variant Test": random_excursion_variant_text,
+        "Autocorrelation Test": autocorrelation_text,
+        "Adaptive Statistical Test": adaptive_statistical_text,
+        
+        "Birthday Test":  birthday_text,
+        "Parking Test": parking_text,
+        "Overlapping Test": oevrlapping_5_text,
+        "Minimum Distance Test": minimum_distance_text,
+        "31x31 Rank Test":  rank31x31_text,
+        "Spheres Test": spheres_text ,
+        "32x32 Rank Test": rank32x32_text,
+        "Craps Test": craps_text,
+        "Bitstream test":  bitstream_text,
+        "GCD Test": gcd_text,
+        "OPSO Test": opso_text,
+        "OQSO Test": oqsq_text,
+        "DNA Test": dna_text,
+        "One stream Test": one_stream_text,
+        "One byte Test": one_byte_text,
+        "Simple Gcd Test": simple_gcd_text,
+        "Generalised Minimum Test": generalised_minimum_text,
+        "U01 Linear Test": u01_linear_text,
+        "U01 Longest Test": u01longest_text,
+        "U01 Matrix Test": u01_matrix_text,
+
+        "Minimum Entropy Test":  minEntropy_text,
+        "Collision Test":  collision_text ,
+        "Markov Test": markov_text,
+        "Compression Test": compression_text ,
+        "T Tuple Test":  ttuple_text,
+        "MCV Test": mcv_text ,
+        "Chi-Square Test": chiSquare_text,
+        "Lz78Y Test": l278y_text,
+        "Multiblock test":  multiBlock_text,
+        "Predictor Test": predictor_text ,
+    }
+
+    AIAnalysis_subtitle = Paragraph("AI Analysis:", subtitle_style)
+
+    # Create the prompt
+    prompt = "Perform a detailed analysis of the results from all the statistical tests. For each test, display the test name along with its p-value and indicate whether the result is Random or Non-Random based on the condition that if p-value > 0.05 e.g: test_name: test_result, the number is considered Random; otherwise, it is Non-Random. After presenting all individual test results, provide the basis of declaring the number as random or non random which is based on majority of tests. At the end tell about the quality of number after analysing the attached test results."
+
+    # Send request to Gemini
+    response1 = client.models.generate_content(
+        model="gemini-2.0-flash",
+        contents=[{"text": prompt}, {"text": json.dumps(test_results)}],
+    )
+    if response1.candidates:
+        gemini_analysis = response1.candidates[0].content.parts[0].text
+        # print(gemini_analysis)
+    else:
+        print("No response received from Gemini.")
+    
+
+
+
+    formatted_output = format_markdown(gemini_analysis)
+
+    # Convert the formatted output into a list of bullet points
+    bullet_points = formatted_output.replace("<ul>", "").replace("</ul>", "").split("<li>")
+    bullet_points = [point.replace("</li>", "").strip() for point in bullet_points if point.strip()]
+
+    # Create a ListFlowable for the bullet points
+    gemini_analysis_paragraph = ListFlowable(
+        [ListItem(Paragraph(point, styles['Normal'])) for point in bullet_points],
+        bulletType='bullet',
+        
+    )
+    
 
     # Use the BytesIO object to create an Image
     graph_image1 = Image(graph_image_io1)
     graph_image = Image(graph_image_io)
+    graph_image2 = Image(graph_image_io2)
     
     # Automatically scale the image
     graph_image.drawHeight = 4.5 * inch  # Set height
@@ -4231,6 +4404,10 @@ def generate_pdf_report_server(request):
 
     graph_image1.drawHeight = 4.5 * inch  # Set height
     graph_image1.drawWidth = 7 * inch  # Set width
+
+    graph_image2.drawHeight = 4.5 * inch  # Set height
+    graph_image2.drawWidth = 7 * inch  # Set width
+
 
     # Ensure the image fits within the page margins
     max_width = A4[0] - 20  # A4 width minus margins
@@ -4247,11 +4424,11 @@ def generate_pdf_report_server(request):
             graph_image.drawWidth = max_height * aspect_ratio
 
 
-    current_date = datetime.now().strftime("%B %d, %Y")  # Format as "December 06, 2024"
+    
 
      # Add a paragraph with the current date
     date_style = ParagraphStyle('Date', parent=styles['Normal'], fontSize=10, fontName='Helvetica-Bold',  alignment=2, spaceAfter=10)
-    date_paragraph = Paragraph(f"Date: {current_date}", date_style)
+    
 
     logo_path = os.path.join(os.path.dirname(__file__), 'qnulogo.png')
 
@@ -4271,10 +4448,10 @@ def generate_pdf_report_server(request):
     # elements.append(binary_data)
     elements.append(logo_table)
     elements.append(title)
-    elements.append(date_paragraph)
+    
     elements.append(title_space)  # Add space after the title
     elements.append(nist_subtitle)
-    elements.append(subtitle_space)  # Spacer below the first subtitle
+    
     elements.append(table1)
     # elements.append(Spacer(1, 0.5 * inch))  # Spacer between tables
     # elements.append(other_tests_subtitle)
@@ -4287,6 +4464,13 @@ def generate_pdf_report_server(request):
     elements.append(graph_image1)
     elements.append(subtitle_space)
     elements.append(graph_image)
+    elements.append(subtitle_space)
+    elements.append(graph_image2)
+    
+    elements.append(AIAnalysis_subtitle)
+    elements.append(gemini_analysis_paragraph)
+
+
     
     doc.build(elements)
 
