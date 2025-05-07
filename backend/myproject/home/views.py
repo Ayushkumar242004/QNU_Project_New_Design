@@ -123,30 +123,10 @@ def run_frequency_test(request):
             # Parse the JSON body
             data = json.loads(request.body)
             binary_data = data.get('binary_data', '')
-            scheduled_time_str = data.get('scheduled_time', '')
-
+        
             # Validate binary data
             if not binary_data:
                 return JsonResponse({"error": "binary_data is missing or empty"}, status=400)
-
-            # Validate scheduled time format
-            if not scheduled_time_str:
-                return JsonResponse({"error": "scheduled_time is required"}, status=400)
-
-            try:
-                # Convert scheduled_time to a datetime object
-                scheduled_time = datetime.datetime.strptime(scheduled_time_str, "%Y-%m-%d %H:%M:%S")
-            except ValueError:
-                return JsonResponse({"error": "Invalid scheduled_time format. Use 'YYYY-MM-DD HH:MM:SS'."}, status=400)
-
-            # Get the current time
-            current_time = datetime.datetime.now()
-
-            # Wait until the scheduled time
-            time_difference = (scheduled_time - current_time).total_seconds()
-            if time_difference > 0:
-                print(f"Waiting {time_difference:.2f} seconds until the scheduled time...")
-                time.sleep(time_difference)  # Sleep until scheduled time
 
             # Run the monobit test
             p_value, result = FrequencyTest.monobit_test(binary_data)
@@ -159,7 +139,6 @@ def run_frequency_test(request):
             response_data = {
                 'p_value': p_value,
                 'result': result_text,
-                'executed_at': datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             }
 
             return JsonResponse(response_data)
@@ -2436,6 +2415,27 @@ def run_min_entropy_test(request):
     return JsonResponse({"error": "Invalid request method. Use POST."}, status=405)
 
 
+@csrf_exempt
+def run_predictor_test(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            binary_data = data.get('binary_data', '')
+
+            if not binary_data:
+                return JsonResponse({"error": "binary_data is missing or empty"}, status=400)
+
+            p_value, result = PredictorTest.PredictorTest(binary_data)
+
+            result_text = "random number" if result == 1 else "non-random number"
+            return JsonResponse({'p_value': p_value, 'result': result_text})
+
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON data"}, status=400)
+
+    return JsonResponse({"error": "Invalid request method. Use POST."}, status=405)
+
+
 
 def send_binary_data(request):
     binary_data = '101010'  # Example binary data as a string
@@ -3240,7 +3240,7 @@ def generate_pdf_report(request):
     AIAnalysis_subtitle = Paragraph("AI Analysis:", subtitle_style)
 
     # Create the prompt
-    prompt = "Perform a detailed analysis of the results from all the statistical tests. For each test, display the test name along with its p-value and indicate whether the result is Random or Non-Random based on the condition that if p-value > 0.05 e.g: test_name: test_result, the number is considered Random; otherwise, it is Non-Random. After presenting all individual test results, provide the basis of declaring the number as random or non random which is based on majority of tests. At the end tell about the quality of number after analysing the attached test results."
+    prompt = "Perform a detailed analysis of the results from all the statistical tests. For each test, display the test name along with its p-value and indicate whether the result is Random or Non-Random based on the condition that if p-value > 0.05 e.g: test_name: test_result, the number is considered Random; otherwise, it is Non-Random. In the analysis, mention that basis of selecting random or non random is majority of tests response. Finally tell these many tests give random number or non random number as a result along with their names"
 
     # Send request to Gemini
     response1 = client.models.generate_content(
@@ -3553,7 +3553,7 @@ def generate_pdf_report_nist90b(request):
     AIAnalysis_subtitle = Paragraph("AI Analysis:", subtitle_style)
 
     # Create the prompt
-    prompt = "Perform a detailed analysis of the results from all the statistical tests. For each test, display the test name along with its p-value and indicate whether the result is Random or Non-Random based on the condition that if p-value > 0.05 e.g: test_name: test_result, the number is considered Random; otherwise, it is Non-Random. After presenting all individual test results, provide the basis of declaring the number as random or non random which is based on majority of tests. At the end tell about the quality of number after analysing the attached test results."
+    prompt = "Perform a detailed analysis of the results from all the statistical tests. For each test, display the test name along with its p-value and indicate whether the result is Random or Non-Random based on the condition that if p-value > 0.05 e.g: test_name: test_result, the number is considered Random; otherwise, it is Non-Random. In the analysis, mention that basis of selecting random or non random is majority of tests response. Finally tell these many tests give random number or non random number as a result along with their names"
 
     # Send request to Gemini
     response1 = client.models.generate_content(
@@ -3796,7 +3796,7 @@ def generate_pdf_report_dieharder(request):
     AIAnalysis_subtitle = Paragraph("AI Analysis:", subtitle_style)
 
     # Create the prompt
-    prompt = "Perform a detailed analysis of the results from all the statistical tests. For each test, display the test name along with its p-value and indicate whether the result is Random or Non-Random based on the condition that if p-value > 0.05 e.g: test_name: test_result, the number is considered Random; otherwise, it is Non-Random. After presenting all individual test results, provide the basis of declaring the number as random or non random which is based on majority of tests. At the end tell about the quality of number after analysing the attached test results."
+    prompt = "Perform a detailed analysis of the results from all the statistical tests. For each test, display the test name along with its p-value and indicate whether the result is Random or Non-Random based on the condition that if p-value > 0.05 e.g: test_name: test_result, the number is considered Random; otherwise, it is Non-Random. In the analysis, mention that basis of selecting random or non random is majority of tests response. Finally tell these many tests give random number or non random number as a result along with their names"
 
     # Send request to Gemini
     response1 = client.models.generate_content(
@@ -4363,7 +4363,7 @@ def generate_pdf_report_server(request):
     AIAnalysis_subtitle = Paragraph("AI Analysis:", subtitle_style)
 
     # Create the prompt
-    prompt = "Perform a detailed analysis of the results from all the statistical tests. For each test, display the test name along with its p-value and indicate whether the result is Random or Non-Random based on the condition that if p-value > 0.05 e.g: test_name: test_result, the number is considered Random; otherwise, it is Non-Random. After presenting all individual test results, provide the basis of declaring the number as random or non random which is based on majority of tests. At the end tell about the quality of number after analysing the attached test results."
+    prompt = "Perform a detailed analysis of the results from all the statistical tests. For each test, display the test name along with its p-value and indicate whether the result is Random or Non-Random based on the condition that if p-value > 0.05 e.g: test_name: test_result, the number is considered Random; otherwise, it is Non-Random. In the analysis, mention that basis of selecting random or non random is majority of tests response. Finally tell these many tests give random number or non random number as a result along with their names"
 
     # Send request to Gemini
     response1 = client.models.generate_content(

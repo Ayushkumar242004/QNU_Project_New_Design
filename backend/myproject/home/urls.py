@@ -23,17 +23,23 @@ urlpatterns = [
     path('random_excursions_variant_test/',views.random_excursions_variant_test, name='random_excursions_variant_test'),
     path('run_binary_matrix_rank_text/',views.run_binary_matrix_rank_text, name='run_binary_matrix_rank_test'),
     path('run_spectral_test/',views.run_spectral_test, name='run_spectral_test'),
-
     path('run_autocorrelation_test/',views.run_autocorrelation_test, name='run_autocorrelation_test'),
     path('run_adaptive_statistical_test/',views.run_adaptive_statistical_test, name='adaptive_statistical_test'),   
 
-    # nist sp 800-22b
-
-
+    # nist sp 800-90b
+    path('run_chi_square_test/', views.run_chi_square_test, name='run_chi_square_test'),
+    path('run_mcv_test/', views.run_mcv_test, name='run_mcv_test'),
+    path('run_collision_test/', views.run_collision_test, name='run_collision_test'),
+    path('run_markov_test/',views.run_markov_test, name='run_markov_test'),
+    path('run_compression_test/',views.run_compression_test, name='run_compression_test'),
+    path('run_t_tuple_test/',views.run_t_tuple_test, name='run_t_tuple_test'),
+    path('run_multi_block_entropy_test/',views.run_multi_block_entropy_test, name='run_overlapping_test'),
+    path('run_lz78y_test/',views.run_lz78y_test, name='run_lz78y_test'),
+    path('run_min_entropy_test/',views.run_min_entropy_test, name='run_min_entropy_test'),
+    path('run_predictor_test/',views.run_predictor_test, name='run_predictor_test'),
 
     # dieharder tests
     path('run_binary_spacings_test/',views.run_birthday_spacings_test, name='binary_spacings_test'),  
-
     path('run_parking_lot_test/',views.run_parking_lot_test, name='run_parking_lot_test'),  
     path('run_overlapping_5_test/',views.run_overlapping_5_test, name='run_overlapping_5_test'),  
     path('run_minimum_distance_test/',views.run_minimum_distance_test, name='run_minimum_distance_test'),  
@@ -54,11 +60,6 @@ urlpatterns = [
     path('run_u01_longest_repeated_substring_test/',views.run_u01_longest_repeated_substring_test, name='run_u01_longest_repeated_substring_test'),  
     path('run_matrix_rank_test/',views.run_matrix_rank_test, name='run_matrix_rank_test'),  
     
-
-    #live streaming
-    path('stream-binary/', sse_binary_view, name='sse_binary_view'),
-    path('sse_binary_example/', sse_binary_example_view, name='sse_binary_example_view'),
-    
     #report generation
     path('pdf-report/', views.generate_pdf_report, name='generate_pdf_report'),
     path('pdf-report-nist90b/', views.generate_pdf_report_nist90b, name='generate_pdf_report'),
@@ -73,9 +74,6 @@ urlpatterns = [
     
     path('generate_final_ans/', views.generate_final_ans, name='generate_final_ans'),
     path('generate_final_ans_nist90b/', views.generate_final_ans_nist90b, name='generate_final_ans_nist90b'),
-
-
-
     path('generate_final_ans_dieharder/', views.generate_final_ans_dieharder, name='generate_final_ans_dieharder'),
 ]
 
