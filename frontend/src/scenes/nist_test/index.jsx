@@ -108,35 +108,35 @@ const Nist_tests = () => {
 
 
 
- const [date, setDate] = useState(""); 
-  const [time, setTime] = useState(""); 
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
 
-  const [date2, setDate2] = useState(""); 
-  const [time2, setTime2] = useState(""); 
+  const [date2, setDate2] = useState("");
+  const [time2, setTime2] = useState("");
 
-  const [date3, setDate3] = useState(""); 
-  const [time3, setTime3] = useState(""); 
+  const [date3, setDate3] = useState("");
+  const [time3, setTime3] = useState("");
 
-  const [date4, setDate4] = useState(""); 
-  const [time4, setTime4] = useState(""); 
+  const [date4, setDate4] = useState("");
+  const [time4, setTime4] = useState("");
 
-  const [date5, setDate5] = useState(""); 
-  const [time5, setTime5] = useState(""); 
+  const [date5, setDate5] = useState("");
+  const [time5, setTime5] = useState("");
 
-  const [date6, setDate6] = useState(""); 
-  const [time6, setTime6] = useState(""); 
+  const [date6, setDate6] = useState("");
+  const [time6, setTime6] = useState("");
 
-  const [date7, setDate7] = useState(""); 
-  const [time7, setTime7] = useState(""); 
+  const [date7, setDate7] = useState("");
+  const [time7, setTime7] = useState("");
 
-  const [date8, setDate8] = useState(""); 
-  const [time8, setTime8] = useState(""); 
+  const [date8, setDate8] = useState("");
+  const [time8, setTime8] = useState("");
 
-  const [date9, setDate9] = useState(""); 
-  const [time9, setTime9] = useState(""); 
+  const [date9, setDate9] = useState("");
+  const [time9, setTime9] = useState("");
 
-  const [date10, setDate10] = useState(""); 
-  const [time10, setTime10] = useState(""); 
+  const [date10, setDate10] = useState("");
+  const [time10, setTime10] = useState("");
 
 
   const handleDateChange = (event) => {
@@ -148,7 +148,7 @@ const Nist_tests = () => {
     }
   };
 
-  
+
   const handleDateChange2 = (event) => {
     const inputDate = event.target.value;
     if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
@@ -158,7 +158,7 @@ const Nist_tests = () => {
     }
   };
 
-  
+
   const handleDateChange3 = (event) => {
     const inputDate = event.target.value;
     if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
@@ -168,7 +168,7 @@ const Nist_tests = () => {
     }
   };
 
-  
+
   const handleDateChange4 = (event) => {
     const inputDate = event.target.value;
     if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
@@ -178,7 +178,7 @@ const Nist_tests = () => {
     }
   };
 
-  
+
   const handleDateChange5 = (event) => {
     const inputDate = event.target.value;
     if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
@@ -188,7 +188,7 @@ const Nist_tests = () => {
     }
   };
 
-  
+
   const handleDateChange6 = (event) => {
     const inputDate = event.target.value;
     if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
@@ -198,7 +198,7 @@ const Nist_tests = () => {
     }
   };
 
-  
+
   const handleDateChange7 = (event) => {
     const inputDate = event.target.value;
     if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
@@ -208,7 +208,7 @@ const Nist_tests = () => {
     }
   };
 
-  
+
   const handleDateChange8 = (event) => {
     const inputDate = event.target.value;
     if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
@@ -218,7 +218,7 @@ const Nist_tests = () => {
     }
   };
 
-  
+
   const handleDateChange9 = (event) => {
     const inputDate = event.target.value;
     if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
@@ -228,7 +228,7 @@ const Nist_tests = () => {
     }
   };
 
-  
+
   const handleDateChange10 = (event) => {
     const inputDate = event.target.value;
     if (dayjs(inputDate, "YYYY-MM-DD", true).isValid()) {
@@ -238,67 +238,67 @@ const Nist_tests = () => {
     }
   };
 
-  
+
   const handleTimeChange = (event) => {
     const inputTime = event.target.value;
     setTime(inputTime); // Update the time state immediately
   };
 
- 
+
   const handleTimeChange2 = (event) => {
     const inputTime = event.target.value;
     setTime2(inputTime); // Update the time state immediately
   };
 
- 
+
   const handleTimeChange3 = (event) => {
     const inputTime = event.target.value;
     setTime3(inputTime); // Update the time state immediately
   };
 
- 
+
   const handleTimeChange4 = (event) => {
     const inputTime = event.target.value;
     setTime4(inputTime); // Update the time state immediately
   };
 
- 
+
   const handleTimeChange5 = (event) => {
     const inputTime = event.target.value;
     setTime5(inputTime); // Update the time state immediately
   };
 
- 
+
   const handleTimeChange6 = (event) => {
     const inputTime = event.target.value;
     setTime6(inputTime); // Update the time state immediately
   };
 
- 
+
   const handleTimeChange7 = (event) => {
     const inputTime = event.target.value;
     setTime7(inputTime); // Update the time state immediately
   };
 
- 
+
   const handleTimeChange8 = (event) => {
     const inputTime = event.target.value;
     setTime8(inputTime); // Update the time state immediately
   };
 
- 
+
   const handleTimeChange9 = (event) => {
     const inputTime = event.target.value;
     setTime9(inputTime); // Update the time state immediately
   };
 
- 
+
   const handleTimeChange10 = (event) => {
     const inputTime = event.target.value;
     setTime10(inputTime); // Update the time state immediately
   };
 
- 
+
   useEffect(() => {
     const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
 
@@ -313,7 +313,7 @@ const Nist_tests = () => {
     };
   }, [time]);
 
-  
+
   useEffect(() => {
     const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
 
@@ -328,7 +328,7 @@ const Nist_tests = () => {
     };
   }, [time2]);
 
-  
+
   useEffect(() => {
     const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
 
@@ -343,7 +343,7 @@ const Nist_tests = () => {
     };
   }, [time3]);
 
-  
+
   useEffect(() => {
     const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
 
@@ -358,7 +358,7 @@ const Nist_tests = () => {
     };
   }, [time4]);
 
-  
+
   useEffect(() => {
     const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
 
@@ -373,7 +373,7 @@ const Nist_tests = () => {
     };
   }, [time5]);
 
-  
+
   useEffect(() => {
     const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
 
@@ -388,7 +388,7 @@ const Nist_tests = () => {
     };
   }, [time6]);
 
-  
+
   useEffect(() => {
     const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
 
@@ -403,7 +403,7 @@ const Nist_tests = () => {
     };
   }, [time7]);
 
-  
+
   useEffect(() => {
     const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
 
@@ -418,7 +418,7 @@ const Nist_tests = () => {
     };
   }, [time8]);
 
-  
+
   useEffect(() => {
     const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
 
@@ -433,7 +433,7 @@ const Nist_tests = () => {
     };
   }, [time9]);
 
-  
+
   useEffect(() => {
     const timeRegex = /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/; // 24-hour format validation
 
@@ -448,70 +448,70 @@ const Nist_tests = () => {
     };
   }, [time10]);
 
-  
+
   useEffect(() => {
     if (date && time) {
       setScheduledTime(`${date} ${time}`);
     }
   }, [date, time]);
 
-  
+
   useEffect(() => {
     if (date2 && time2) {
       setScheduledTime2(`${date2} ${time2}`);
     }
   }, [date2, time2]);
 
-  
+
   useEffect(() => {
     if (date3 && time3) {
       setScheduledTime3(`${date3} ${time3}`);
     }
   }, [date3, time3]);
 
-  
+
   useEffect(() => {
     if (date4 && time4) {
       setScheduledTime4(`${date4} ${time4}`);
     }
   }, [date4, time4]);
 
-  
+
   useEffect(() => {
     if (date5 && time5) {
       setScheduledTime5(`${date5} ${time5}`);
     }
   }, [date5, time5]);
 
-  
+
   useEffect(() => {
     if (date6 && time6) {
       setScheduledTime6(`${date6} ${time6}`);
     }
   }, [date6, time6]);
 
-  
+
   useEffect(() => {
     if (date7 && time7) {
       setScheduledTime7(`${date7} ${time7}`);
     }
   }, [date7, time7]);
 
-  
+
   useEffect(() => {
     if (date8 && time8) {
       setScheduledTime8(`${date8} ${time8}`);
     }
   }, [date8, time8]);
 
-  
+
   useEffect(() => {
     if (date9 && time9) {
       setScheduledTime9(`${date9} ${time9}`);
     }
   }, [date9, time9]);
 
-  
+
   useEffect(() => {
     if (date10 && time10) {
       setScheduledTime10(`${date10} ${time10}`);
@@ -1698,7 +1698,7 @@ const Nist_tests = () => {
               <td>{uploadTime || ""}</td>
               <td>{fileName || "No file selected"}</td>
               <td>
-              <TextField
+                <TextField
                   label="Select Date"
                   type="date"
                   value={date}
@@ -1710,7 +1710,7 @@ const Nist_tests = () => {
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
-                    marginBottom:"10px",
+                    marginBottom: "10px",
                   }}
                 />
 
@@ -1833,7 +1833,7 @@ const Nist_tests = () => {
               <td>{fileName2 || "No file selected"}</td>
 
               <td>
-              <TextField
+                <TextField
                   label="Select Date"
                   type="date"
                   value={date2}
@@ -1845,7 +1845,7 @@ const Nist_tests = () => {
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
-                    marginBottom:"10px",
+                    marginBottom: "10px",
                   }}
                 />
 
@@ -1866,7 +1866,7 @@ const Nist_tests = () => {
                 />
 
                 {/* Display Combined Scheduled Time */}
-                <Typography variant="body2" mt={0.5}  sx={{ color: "#4CCEAC" }}>
+                <Typography variant="body2" mt={0.5} sx={{ color: "#4CCEAC" }}>
                   Scheduled Time: {scheduledTime2 || "Not set"}
                 </Typography>
               </td>
@@ -1965,7 +1965,7 @@ const Nist_tests = () => {
               <td>{uploadTime3 || ""}</td>
               <td>{fileName3 || "No file selected"}</td>
               <td>
-              <TextField
+                <TextField
                   label="Select Date"
                   type="date"
                   value={date3}
@@ -1977,7 +1977,7 @@ const Nist_tests = () => {
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
-                    marginBottom:"10px",
+                    marginBottom: "10px",
                   }}
                 />
 
@@ -2097,7 +2097,7 @@ const Nist_tests = () => {
               <td>{uploadTime4 || ""}</td>
               <td>{fileName4 || "No file selected"}</td>
               <td>
-              <TextField
+                <TextField
                   label="Select Date"
                   type="date"
                   value={date4}
@@ -2109,7 +2109,7 @@ const Nist_tests = () => {
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
-                    marginBottom:"10px",
+                    marginBottom: "10px",
                   }}
                 />
 
@@ -2229,7 +2229,7 @@ const Nist_tests = () => {
               <td>{uploadTime5 || ""}</td>
               <td>{fileName5 || "No file selected"}</td>
               <td>
-              <TextField
+                <TextField
                   label="Select Date"
                   type="date"
                   value={date5}
@@ -2241,7 +2241,7 @@ const Nist_tests = () => {
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
-                    marginBottom:"10px",
+                    marginBottom: "10px",
                   }}
                 />
 
@@ -2362,7 +2362,7 @@ const Nist_tests = () => {
               <td>{uploadTime6 || ""}</td>
               <td>{fileName6 || "No file selected"}</td>
               <td>
-              <TextField
+                <TextField
                   label="Select Date"
                   type="date"
                   value={date6}
@@ -2374,7 +2374,7 @@ const Nist_tests = () => {
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
-                    marginBottom:"10px",
+                    marginBottom: "10px",
                   }}
                 />
 
@@ -2494,7 +2494,7 @@ const Nist_tests = () => {
               <td>{uploadTime7 || ""}</td>
               <td>{fileName7 || "No file selected"}</td>
               <td>
-              <TextField
+                <TextField
                   label="Select Date"
                   type="date"
                   value={date7}
@@ -2506,7 +2506,7 @@ const Nist_tests = () => {
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
-                    marginBottom:"10px",
+                    marginBottom: "10px",
                   }}
                 />
 
@@ -2626,7 +2626,7 @@ const Nist_tests = () => {
               <td>{uploadTime8 || ""}</td>
               <td>{fileName8 || "No file selected"}</td>
               <td>
-              <TextField
+                <TextField
                   label="Select Date"
                   type="date"
                   value={date8}
@@ -2638,7 +2638,7 @@ const Nist_tests = () => {
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
-                    marginBottom:"10px",
+                    marginBottom: "10px",
                   }}
                 />
 
@@ -2758,7 +2758,7 @@ const Nist_tests = () => {
               <td>{uploadTime9 || ""}</td>
               <td>{fileName9 || "No file selected"}</td>
               <td>
-              <TextField
+                <TextField
                   label="Select Date"
                   type="date"
                   value={date9}
@@ -2770,7 +2770,7 @@ const Nist_tests = () => {
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
-                    marginBottom:"10px",
+                    marginBottom: "10px",
                   }}
                 />
 
@@ -2890,7 +2890,7 @@ const Nist_tests = () => {
               <td>{uploadTime10 || ""}</td>
               <td>{fileName10 || "No file selected"}</td>
               <td>
-              <TextField
+                <TextField
                   label="Select Date"
                   type="date"
                   value={date10}
@@ -2902,7 +2902,7 @@ const Nist_tests = () => {
                     "& .MuiInputBase-input": {
                       textAlign: "center",
                     },
-                    marginBottom:"10px",
+                    marginBottom: "10px",
                   }}
                 />
 
@@ -2935,7 +2935,9 @@ const Nist_tests = () => {
 
 
       </Box>
-      <Header title="AI Analysis" />
+
+   
+
       <Box
         sx={{
           background: "linear-gradient(135deg, #1F2A40 30%, #29314F 100%)",
@@ -2945,14 +2947,44 @@ const Nist_tests = () => {
           justifyContent: "center",
           height: "250px",
           textAlign: "center",
-          borderRadius: "12px",
-          mt: 4,
-          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Subtle shadow for depth
+
+          mt: 2,
+          boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.3)",
           position: "relative",
           overflow: "hidden",
+          '&:hover': {
+            boxShadow: "0px 8px 30px rgba(0, 0, 0, 0.4)",
+          },
+          transition: "all 0.5s ease",
         }}
       >
-        {/* Floating AI Elements for Design */}
+        {/* Animated background elements */}
+        <Box
+          sx={{
+            position: "absolute",
+            top: -50,
+            left: -50,
+            width: 100,
+            height: 100,
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%)",
+            animation: "float 15s infinite ease-in-out",
+          }}
+        />
+        <Box
+          sx={{
+            position: "absolute",
+            bottom: -30,
+            right: -30,
+            width: 120,
+            height: 120,
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%)",
+            animation: "float 18s infinite ease-in-out 2s",
+          }}
+        />
+
+        {/* Floating AI Elements with animation */}
         <AutoAwesomeIcon
           sx={{
             position: "absolute",
@@ -2960,6 +2992,7 @@ const Nist_tests = () => {
             left: 30,
             fontSize: 40,
             color: "rgba(255, 255, 255, 0.3)",
+            animation: "pulse 4s infinite ease-in-out",
           }}
         />
         <AutoAwesomeIcon
@@ -2969,29 +3002,37 @@ const Nist_tests = () => {
             right: 30,
             fontSize: 40,
             color: "rgba(255, 255, 255, 0.3)",
+            animation: "pulse 5s infinite ease-in-out 1s",
           }}
         />
 
-        {/* Gemini Logo */}
+        {/* Animated Gemini Logo */}
         <Box
           component="img"
           src="/image.png"
           alt="Gemini Logo"
-          sx={{ width: 80, height: "auto", mb: 2, borderRadius: "12px" }}
+          sx={{
+            width: 80,
+            height: "auto",
+            mb: 2,
+            borderRadius: "12px",
+            transition: "all 0.5s ease",
+            transform: "translateY(0)",
+            animation: "floatLogo 6s infinite ease-in-out",
+            '&:hover': {
+              transform: "scale(1.1) rotate(5deg)",
+            }
+          }}
         />
 
-        {/* Title */}
-
-
-        {/* Button */}
+        {/* Button with enhanced animation */}
         <Button
           variant="contained"
           onClick={() => {
             window.open("http://localhost:3000/report", "_blank");
-
           }}
           sx={{
-            backgroundColor: "#E63946", // Red theme
+            backgroundColor: "#E63946",
             color: "white",
             textTransform: "none",
             padding: "15px 40px",
@@ -2999,16 +3040,51 @@ const Nist_tests = () => {
             width: "50%",
             maxWidth: "320px",
             borderRadius: "8px",
-            transition: "all 0.3s ease-in-out",
-            "&:hover": {
+            transition: "all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55)",
+            position: "relative",
+            overflow: "hidden",
+            zIndex: 1,
+            '&:hover': {
               backgroundColor: "#F77F00",
               transform: "scale(1.05)",
-              boxShadow: "0px 4px 10px rgba(255, 99, 71, 0.5)", // Glow effect
+              boxShadow: "0px 8px 20px rgba(255, 99, 71, 0.6)",
             },
+            '&::before': {
+              content: '""',
+              position: "absolute",
+              top: 0,
+              left: "-100%",
+              width: "100%",
+              height: "100%",
+              background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)",
+              transition: "all 0.7s ease",
+              zIndex: -1,
+            },
+            '&:hover::before': {
+              left: "100%",
+            }
           }}
         >
           Analyze with AI
         </Button>
+
+        {/* Glow effect on hover */}
+        <Box
+          sx={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background: "radial-gradient(circle at center, rgba(230, 57, 70, 0.1) 0%, transparent 70%)",
+            opacity: 0,
+            transition: "opacity 0.5s ease",
+            pointerEvents: "none",
+            '&:hover': {
+              opacity: 1,
+            }
+          }}
+        />
       </Box>
 
     </Box>

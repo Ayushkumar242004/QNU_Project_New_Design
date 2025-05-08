@@ -3020,79 +3020,154 @@ const Nist_tests90b = () => {
           </tbody>
         </Box>
       </Box>
-      <Header title="AI Analysis" />
       <Box
-        sx={{
-          background: "linear-gradient(135deg, #1F2A40 30%, #29314F 100%)",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          height: "250px",
-          textAlign: "center",
-          borderRadius: "12px",
-          mt: 4,
-          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Subtle shadow for depth
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
-        {/* Floating AI Elements for Design */}
-        <AutoAwesomeIcon
-          sx={{
-            position: "absolute",
-            top: 20,
-            left: 30,
-            fontSize: 40,
-            color: "rgba(255, 255, 255, 0.3)",
-          }}
-        />
-        <AutoAwesomeIcon
-          sx={{
-            position: "absolute",
-            bottom: 20,
-            right: 30,
-            fontSize: 40,
-            color: "rgba(255, 255, 255, 0.3)",
-          }}
-        />
+  sx={{
+    background: "linear-gradient(135deg, #1F2A40 30%, #29314F 100%)",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "250px",
+    textAlign: "center",
+   
+    mt: 2,
+    boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.3)",
+    position: "relative",
+    overflow: "hidden",
+    '&:hover': {
+      boxShadow: "0px 8px 30px rgba(0, 0, 0, 0.4)",
+    },
+    transition: "all 0.5s ease",
+  }}
+>
+  {/* Animated background elements */}
+  <Box
+    sx={{
+      position: "absolute",
+      top: -50,
+      left: -50,
+      width: 100,
+      height: 100,
+      borderRadius: "50%",
+      background: "radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%)",
+      animation: "float 15s infinite ease-in-out",
+    }}
+  />
+  <Box
+    sx={{
+      position: "absolute",
+      bottom: -30,
+      right: -30,
+      width: 120,
+      height: 120,
+      borderRadius: "50%",
+      background: "radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%)",
+      animation: "float 18s infinite ease-in-out 2s",
+    }}
+  />
+  
+  {/* Floating AI Elements with animation */}
+  <AutoAwesomeIcon
+    sx={{
+      position: "absolute",
+      top: 20,
+      left: 30,
+      fontSize: 40,
+      color: "rgba(255, 255, 255, 0.3)",
+      animation: "pulse 4s infinite ease-in-out",
+    }}
+  />
+  <AutoAwesomeIcon
+    sx={{
+      position: "absolute",
+      bottom: 20,
+      right: 30,
+      fontSize: 40,
+      color: "rgba(255, 255, 255, 0.3)",
+      animation: "pulse 5s infinite ease-in-out 1s",
+    }}
+  />
+  
+  {/* Animated Gemini Logo */}
+  <Box
+    component="img"
+    src="/image.png"
+    alt="Gemini Logo"
+    sx={{ 
+      width: 80, 
+      height: "auto", 
+      mb: 2, 
+      borderRadius: "12px",
+      transition: "all 0.5s ease",
+      transform: "translateY(0)",
+      animation: "floatLogo 6s infinite ease-in-out",
+      '&:hover': {
+        transform: "scale(1.1) rotate(5deg)",
+      }
+    }}
+  />
+  
+  {/* Button with enhanced animation */}
+  <Button
+    variant="contained"
+    onClick={() => {
+      window.open("http://localhost:3000/report", "_blank");
+    }}
+    sx={{
+      backgroundColor: "#E63946",
+      color: "white",
+      textTransform: "none",
+      padding: "15px 40px",
+      fontSize: "1.5rem",
+      width: "50%",
+      maxWidth: "320px",
+      borderRadius: "8px",
+      transition: "all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55)",
+      position: "relative",
+      overflow: "hidden",
+      zIndex: 1,
+      '&:hover': {
+        backgroundColor: "#F77F00",
+        transform: "scale(1.05)",
+        boxShadow: "0px 8px 20px rgba(255, 99, 71, 0.6)",
+      },
+      '&::before': {
+        content: '""',
+        position: "absolute",
+        top: 0,
+        left: "-100%",
+        width: "100%",
+        height: "100%",
+        background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)",
+        transition: "all 0.7s ease",
+        zIndex: -1,
+      },
+      '&:hover::before': {
+        left: "100%",
+      }
+    }}
+  >
+    Analyze with AI
+  </Button>
 
-        {/* Gemini Logo */}
-        <Box
-          component="img"
-          src="/image.png"
-          alt="Gemini Logo"
-          sx={{ width: 80, height: "auto", mb: 2, borderRadius: "12px" }}
-        />
-
-        {/* Title */}
-
-        {/* Button */}
-        <Button
-          variant="contained"
-          onClick={() => {
-            window.open("http://localhost:3000/report", "_blank");
-          }}
-          sx={{
-            backgroundColor: "#E63946", // Red theme
-            color: "white",
-            textTransform: "none",
-            padding: "15px 40px",
-            fontSize: "1.5rem",
-            width: "50%",
-            maxWidth: "320px",
-            borderRadius: "8px",
-            transition: "all 0.3s ease-in-out",
-            "&:hover": {
-              backgroundColor: "#F77F00",
-              transform: "scale(1.05)",
-              boxShadow: "0px 4px 10px rgba(255, 99, 71, 0.5)", // Glow effect
-            },
-          }}
-        >
-          Analyze with AI
-        </Button>
-      </Box>
+  {/* Glow effect on hover */}
+  <Box
+    sx={{
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      background: "radial-gradient(circle at center, rgba(230, 57, 70, 0.1) 0%, transparent 70%)",
+      opacity: 0,
+      transition: "opacity 0.5s ease",
+      pointerEvents: "none",
+      '&:hover': {
+        opacity: 1,
+      }
+    }}
+  />
+</Box>
     </Box>
   );
 };
