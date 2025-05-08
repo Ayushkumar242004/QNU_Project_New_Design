@@ -101,10 +101,22 @@ const Dashboard = () => {
   const [isFetching, setIsFetching] = useState(false); // Fetching status
   const [intervalId, setIntervalId] = useState(null); // Interval ID
   const [reportUrl, setReportUrl] = useState(null);
+  const [currentTime, setCurrentTime] = useState("");
+
   // Handle API URL input
   const handleUrlChange = (e) => {
     setUrl(e.target.value);
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const now = new Date();
+      setCurrentTime(now.toLocaleTimeString()); // Format the time as HH:mm:ss
+    }, 1000);
+
+    return () => clearInterval(interval); // Cleanup the interval on component unmount
+  }, []);
+
 
   const [length, setLength] = useState(8);
   const MAX_STACK_SIZE_ESTIMATE = 1 * 1024 * 1024;
@@ -761,7 +773,7 @@ const Dashboard = () => {
           justifyContent="center"
         >
           <StatBox
-            title="0.5ms"
+            title={currentTime || "Loading..."}
             subtitle="Current Time"
 
             icon={

@@ -62,7 +62,7 @@ from scipy.stats import chi2
 from concurrent.futures import ThreadPoolExecutor, as_completed, TimeoutError
 
 class BirthdaySpacingsTest:
-    MAX_TIME_LIMIT = 2  # Maximum time limit per task in seconds
+    MAX_TIME_LIMIT = 30  # Maximum time limit per task in seconds
 
     @staticmethod
     def BirthdaySpacingsTest(data, t=512, verbose=False):

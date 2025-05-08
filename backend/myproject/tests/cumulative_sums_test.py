@@ -124,7 +124,7 @@ from math import ceil, floor
 
 class CumulativeSums:
     
-    MAX_TIME_LIMIT = 2  # Maximum time limit (seconds) for each chunk processing
+    MAX_TIME_LIMIT = 30  # Maximum time limit (seconds) for each chunk processing
 
     @staticmethod
     def cumulative_sums_test(binary_data: str, mode=0, verbose=False):
