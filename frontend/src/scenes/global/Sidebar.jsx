@@ -131,7 +131,7 @@ const Sidebar = () => {
               DATA
             </Typography>
             <Item
-              title="NIST SP 800-22"
+              title="NIST SP 800-22B"
               to="/nist_test"
               icon={<ReceiptOutlinedIcon />}
               selected={selected}

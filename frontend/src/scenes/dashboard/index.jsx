@@ -84,20 +84,7 @@ const BinaryGraphDisplay = ({ binaryInput }) => {
             alt="Generated Graph"
             style={{ width: "845px", height: "450px" }}
           />
-          <button
-            onClick={downloadGraph}
-            style={{
-              backgroundColor: "red",
-              color: "#fff",
-              border: "none",
-              borderRadius: 8,
-              padding: "10px 20px",
-              cursor: "pointer",
-              marginTop: "10px",
-            }}
-          >
-            Download Graph
-          </button>
+         
         </>
       )}
     </Box>
@@ -244,7 +231,7 @@ const Dashboard = () => {
 
     try {
       const response = await axios.get("http://localhost:3001/random-binary", {
-        params: { length: 8 }, // Use the length state here
+        params: { length: length }, // Use the length state here
       });
 
       if (response.data?.binary) {
@@ -775,7 +762,7 @@ const Dashboard = () => {
         >
           <StatBox
             title="0.5ms"
-            subtitle="Average Connection Time"
+            subtitle="Current Time"
 
             icon={
               <AccessTimeOutlinedIcon

@@ -4244,7 +4244,7 @@ def generate_pdf_report_server(request):
 
     # Sample Table Data for the first table with "Final Result" in the last row
     data1 = [
-        [Paragraph('Test type', styles['Normal']), 'Result', 'Test type', 'Result'],
+        ['Test Type', 'Result', 'Test type', 'Result'],
         [Paragraph('1. Birthday Spacing', styles['Normal']), birthday_text, Paragraph('2. Parking Lot Test', styles['Normal']), parking_text],
         [Paragraph('3. Overlapping 5 Permutation', styles['Normal']), oevrlapping_5_text, Paragraph('4. Minimum Distance Test', styles['Normal']), minimum_distance_text],
         [Paragraph('5. Ranks of 31x31 Test', styles['Normal']), rank31x31_text, Paragraph('6. 3d Spheres Test', styles['Normal']), spheres_text],
