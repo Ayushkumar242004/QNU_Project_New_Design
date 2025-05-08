@@ -82,7 +82,7 @@ Frontend: http://localhost:3000
 
 Backend API: http://localhost:8000 (primarily accessed via frontend)
 
-📝 Notes
+### 📝 Notes
 Keep both servers running while working with the application
 
 The frontend will proxy API requests to the backend automatically
