@@ -20,43 +20,60 @@ Before you begin, ensure you have met the following requirements:
 ```bash
 git clone https://github.com/Ayushkumar242004/QNU_Project_New_Design.git
 cd QNU_Project_New_Design
+```
 
-📂 Frontend Setup
+### 📂 Frontend Setup
 Navigate to the frontend directory:
-cd frontend
 
-Install dependencies (use --force to resolve potential conflicts):
+```bash
+cd frontend
+```
+
+ Install dependencies (use --force to resolve potential conflicts):
+
+```bash
 npm install --force
 npm install dayjs --force
 npm install marked --force
+```
 
-Start the development server:
+ Start the development server:
 
+```bash
 npm start
-The frontend will automatically open in your browser at http://localhost:3000.
+```
 
-⚙️ Backend Setup
+ The frontend will automatically open in your browser at http://localhost:3000.
+
+### ⚙️ Backend Setup
 
 Navigate to the backend directory:
+```bash
 cd ../backend/myproject
+```
 
 Set up virtual environment:
 
 Windows:
+```bash
 python -m venv venv
 venv\Scripts\activate
-
+```
 macOS/Linux:
+```bash
 python -m venv venv
 source venv/bin/activate
+```
 
 Install dependencies:
-
+```bash
 pip install -r requirements.txt
 pip install django  # Only if Django isn't installed already
-
+```
 Run the Django development server:
+```bash
 python manage.py runserver
+```
 
 ✅ Accessing the Application
 Once both servers are running:
